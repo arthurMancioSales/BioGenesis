@@ -37,3 +37,82 @@ button {
     color: white;
     font-size: large;
 }
+
+
+.container {
+    position: relative;
+    padding: 15px;
+    width: 100%;
+    height: 100%;
+    margin-top: 50px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(143, 210, 236);
+}
+
+.gallery-wrapper {
+    overflow-x: auto;
+}
+
+.arrow-left,
+.arrow-right {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: auto;
+    bottom: 0;
+    font-size: 20px;
+    line-height: 250px;
+    width: 40px;
+    color: #fff;
+    transition: all 600ms ease-in-out;
+    background: linear-gradient(to left, transparent 0%, black 200%);
+    opacity: 0.1;
+    cursor: pointer;
+    border: none;
+}
+
+.arrow-left:hover,
+.arrow-right:hover {
+    opacity: 1;
+}
+
+.arrow-right {
+    right: 0;
+    left: auto;
+    text-align: right;
+    background: linear-gradient(to right, transparent 0%, black 200%);
+}
+
+.gallery {
+    display: flex;
+    flex-flow: row nowrap;
+    gap: 15px;
+}
+
+.item {
+    width: 700px;
+    height: 500px;
+    flex-shrink: 0;
+    transition: all 600ms ease-in-out;
+    opacity: 0.5;
+
+}
+
+.current-item {
+    opacity: 1;
+    cursor: pointer;
+}
+
+
+.gallery-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.gallery-wrapper {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+
