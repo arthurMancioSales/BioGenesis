@@ -1,24 +1,33 @@
+/* @Autor: Pedro */
+
 body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
     height: 100vh;
     width: 100vw;
-    background-color: lightgray;
+    background-color: rgba(238, 255, 245, 0.84);
+    overflow: hidden;
 }
 
 .container {
     position: relative;
-    padding: 15px;
+
+    padding: 0 2rem 0 2rem;
+
     width: 100%;
     height: 100%;
-    margin-top: 50px;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    background-color: rgb(143, 210, 236);
+
     display: flex;
     flex-direction: column;
+
+    justify-content: center;
+    align-items: center;
+    
+    min-height: 100vh;
+
+    background-image: url("/images/bookshelf.svg");
+    
     overflow: hidden;
 }
 
@@ -34,6 +43,7 @@ body {
     font-size: 20px;
     line-height: 250px;
     width: 40px;
+    height: 100%;
     color: #fff;
     transition: all 600ms ease-in-out;
     background: linear-gradient(to right, transparent 0%, black 200%);
@@ -48,12 +58,12 @@ body {
 }
 
 .arrow-right {
-    right: 100%;
+    right: 0;
     text-align: right;
 }
 
 .arrow-left {
-    left: 100%;
+    left: 0;
     text-align: right;
 }
 
@@ -85,6 +95,201 @@ body {
 .gallery-wrapper {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+
+/* @Autor: Davi */
+.bodyHome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    
+    background-size: 100%;
+
+    height: 100vh;
+    width: 100vw;
+}
+
+.loginBg{
+    background-image: url('../imagens/Login.png');
+}
+
+.cadastroBg{
+    background-image: url('../imagens/Cadastro.png');
+}
+
+.homeBg{
+    background-image: url('../imagens/home.png');
+}
+
+.mainSize {
+    height: 90%;
+    width: 90%;
+    
+}
+
+header{
+    padding-top: 20px;
+    width: 90%;
+    height: 10%;
+}
+
+.flexRowCenter{
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.flexRowSpace{
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.flexRowSpaceAround{
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+.flexRowSpaceEven{
+    display: flex;
+    flex-direction: row;
+    align-items:center ;
+    justify-content: space-evenly;
+    overflow: hidden;
+}
+
+.boxSize{
+    width: 25%;
+}
+
+.sectionBox{
+    width: 30%;
+}
+
+.headerText{
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 19px;
+
+    line-height: 30px;
+    font-weight: bolder;
+
+    overflow-wrap: break-word;
+}
+
+.titleText{
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 40px;
+
+    line-height: 50px;
+    font-weight: bolder;
+
+    overflow-wrap: break-word;
+}
+
+.bodyText{
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 20px;
+
+    line-height: 30px;
+
+    overflow-wrap: break-word;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+
+    width: 100%;
+} 
+
+input, select {
+    background: #fafafa;
+    box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 80%);
+    border-radius: 5px;
+    border: none;
+    outline: none;
+    padding: 7px;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+
+    margin: 7px 10px 7px 10px;
+    height: 50px;
+    width: 400px;
+
+}
+
+button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-size: 24px;
+    font-weight: bold;
+    
+    box-shadow: 0 4px #999;
+    
+    border-radius: 10px;
+    padding: 5px;
+    margin: 5px;
+    margin-top: 25px;
+
+    width: 150px;
+    height: 50px;
+}
+
+button:hover {
+    background-color: #357737;
+    cursor:pointer;
+}
+
+button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 1px #666;
+  transform: translateY(4px);
+  cursor:pointer;
+}
+
+#p{
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 16px;
+
+    line-height: 30px;
+
+    overflow-wrap: break-word;
+}
+
+.pPosition{
+    position: relative;
+    right: 120px;
+}
+
+.link{
+    cursor: pointer;
+    
+}
+
+.link:hover{
+    cursor:pointer;
+    text-decoration: underline;
+}
+
+.backImg{
+    position: relative;
+    bottom: 5%;
+    right: 45%;
 }
 
 
