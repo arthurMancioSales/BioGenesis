@@ -1,5 +1,6 @@
+// @author: {Arthur}
 import { Router } from "express";
 
-const router = Router()
+const router = Router();
 
 // router.get('/admin', )

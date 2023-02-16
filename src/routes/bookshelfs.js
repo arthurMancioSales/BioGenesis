@@ -1,7 +1,10 @@
+// @author: {Arthur}
 import { Router } from "express";
+import * as bookshelfController from '../controllers/bookshelfController.js'
 
 export const router = Router();
 
+// Dados mokados para teste
 const bookshelfs = [
     {'id': 123, 'name': 'animais terrestres'}
 ];
@@ -10,35 +13,40 @@ const books = [
 ];
 const bookPages = {'id': 1, 'conteudo': 'vivie n sei onde', 'imagem': 'AJKLSDLK', 'topico': 'habitat'};
 
-// pegar todas as estantes
-router.get("/", (req, res) => {
-    res.json(bookshelfs);
-});
+// Retorna todas as estantes
+// router.get("/", (req, res) => {
+//     res.json(bookshelfs);
+// });
+router.get('/', bookshelfController.getAllBookshelves)
 
-//Pega todos os livros
+// Retorna todos os livros
 router.get("/:id/books", (req, res) => {
     req.body;
     res.json(books);
 });
 
-//Pega as páginas de um livro especifico
+// Retorna todas as páginas de um livro específico
 router.get("/books/:id", (req, res) => {
     res.json(bookPages);
 });
 
-//Criar um livro novo
-router.post()
+// Cria uma estante nova
+router.post('/', bookshelfController.createBookshelf)
+// {
+//     'name': 'nome da estante'
+// }
 
-//Criar uma estante nova
+
+// Cria um livro novo
 
 //Criar uma pagina nova
 
-//Apagar um livro
-router.post()
+// Apaga um livro
+// router.post()
 
-//Apagar uma pagina
+// Apaga uma pagina
 
-//Atualizar livro
-router.post()
+// Atualiza um livro
+// router.post()
 
-//Atualizar pagina
+// Atualiza uma pagina
