@@ -4,14 +4,14 @@ import * as bookshelfController from '../controllers/bookshelfController.js'
 
 export const router = Router();
 
-// Dados mokados para teste
-const bookshelfs = [
-    {'id': 123, 'name': 'animais terrestres'}
-];
-const books = [
-    {'id': 1, 'nome': 'leão', 'estante_id': 123}
-];
-const bookPages = {'id': 1, 'conteudo': 'vivie n sei onde', 'imagem': 'AJKLSDLK', 'topico': 'habitat'};
+const bookshelfs = [{ id: 123, name: "animais terrestres" }];
+const books = [{ id: 1, nome: "leão", estante_id: 123 }];
+const bookPages = {
+  id: 1,
+  conteudo: "vivie n sei onde",
+  imagem: "AJKLSDLK",
+  topico: "habitat",
+};
 
 // Retorna todas as estantes
 // router.get("/", (req, res) => {
@@ -21,13 +21,13 @@ router.get('/', bookshelfController.getAllBookshelves)
 
 // Retorna todos os livros
 router.get("/:id/books", (req, res) => {
-    req.body;
-    res.json(books);
+  req.body;
+  res.json(books);
 });
 
 // Retorna todas as páginas de um livro específico
 router.get("/books/:id", (req, res) => {
-    res.json(bookPages);
+  res.json(bookPages);
 });
 
 // Cria uma estante nova

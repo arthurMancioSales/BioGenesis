@@ -19,10 +19,10 @@ app.use('/', router)
 
 // Redirecionamento de página não encontrada
 app.use(function (req, res) {
-    res.status(404).send("Não foi possível encontrar o recurso especificado");
+  res.status(404).send("Não foi possível encontrar o recurso especificado");
 });
 
 //  Roda o servidor
 app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });
