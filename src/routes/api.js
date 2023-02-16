@@ -13,25 +13,25 @@ const bookPages = {
   topico: "habitat",
 };
 
-// Retorna todas as estantes
-// router.get("/", (req, res) => {
-//     res.json(bookshelfs);
-// });
-router.get('/', bookshelfController.getAllBookshelves)
+// Retorna um array com todas as estantes
+router.get("/bookshelves", (req, res) => {
+    res.json(bookshelfs);
+});
+// router.get('/bookshelves', bookshelfController.getAllBookshelves)
 
-// Retorna todos os livros
-router.get("/:id/books", (req, res) => {
+// Retorna um array com todos os livros
+router.get("/bookshelves/:id/books", (req, res) => {
   req.body;
   res.json(books);
 });
 
-// Retorna todas as páginas de um livro específico
+// Retorna um array com todas as páginas de um livro específico
 router.get("/books/:id", (req, res) => {
   res.json(bookPages);
 });
 
 // Cria uma estante nova
-router.post('/', bookshelfController.createBookshelf)
+router.post('/bookshelves', bookshelfController.createBookshelf)
 // {
 //     'name': 'nome da estante'
 // }
