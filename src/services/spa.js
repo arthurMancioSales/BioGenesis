@@ -7,7 +7,7 @@ import Page1 from "../pages/page1.js";
 import Page2 from "../pages/page2.js";
 import Page3 from "../pages/page3.js";
 
-export default function Router() {
+export default function SPA() {
   return {
     "/": Home,
     "/page1": Page1,
