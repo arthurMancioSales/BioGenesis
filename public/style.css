@@ -6,70 +6,47 @@ body {
     box-sizing: border-box;
     height: 100vh;
     width: 100vw;
-    background-color: lightgray;
+    background-color: rgba(238, 255, 245, 0.84);
+    overflow: hidden;
 }
-
-section {
-    display: flex;
-    gap: 1vw;
-}
-
-#root {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#page {
-    gap: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-button {
-    width: 6vw;
-    height: 4vh;
-    border-radius: 15px;
-    cursor: pointer;
-    box-shadow: 2px 2px 13px 2px rgba(0, 0, 0, 0.75);
-    background-color: rgb(187, 0, 0);
-    color: white;
-    font-size: large;
-}
-
 
 .container {
     position: relative;
-    padding: 15px;
+
+    padding: 0 2rem 0 2rem;
+
     width: 100%;
     height: 100%;
-    margin-top: 50px;
+
+    display: flex;
+    flex-direction: column;
+
     justify-content: center;
     align-items: center;
-    border-radius: 20px;
-    background-color: rgb(143, 210, 236);
+    
+    min-height: 100vh;
+
+    background-image: url("/images/bookshelf.svg");
+    
+    overflow: hidden;
 }
 
 .gallery-wrapper {
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 .arrow-left,
 .arrow-right {
     position: absolute;
-    top: 0;
-    left: 0;
     right: auto;
     bottom: 0;
     font-size: 20px;
     line-height: 250px;
     width: 40px;
+    height: 100%;
     color: #fff;
     transition: all 600ms ease-in-out;
-    background: linear-gradient(to left, transparent 0%, black 200%);
+    background: linear-gradient(to right, transparent 0%, black 200%);
     opacity: 0.1;
     cursor: pointer;
     border: none;
@@ -82,9 +59,12 @@ button {
 
 .arrow-right {
     right: 0;
-    left: auto;
     text-align: right;
-    background: linear-gradient(to right, transparent 0%, black 200%);
+}
+
+.arrow-left {
+    left: 0;
+    text-align: right;
 }
 
 .gallery {
@@ -133,27 +113,18 @@ button {
 }
 
 .loginBg{
-    background-image: url('../imagens/Login.png');
+    background-image: url('../images/Login.png');
 }
 
 .cadastroBg{
-    background-image: url('../imagens/Cadastro.png');
+    background-image: url('../images/Cadastro.png');
 }
 
 .homeBg{
-    background-image: url('../imagens/home.png');
+    background-image: url('../images/home.png');
 }
 
 .mainSize {
-    /* display: flex;
-    flex-direction: column;
-    align-items:center ;
-    justify-content: center;
-    overflow: hidden;
-
-
-    color: rgb(0, 0, 0); */
-
     height: 90%;
     width: 90%;
     
@@ -238,7 +209,6 @@ header{
     font-size: 20px;
 
     line-height: 30px;
-    /* font-weight: bolder; */
 
     overflow-wrap: break-word;
 }
@@ -249,10 +219,7 @@ form {
     justify-content: space-around;
     align-items: center;
 
-    /* height: 70%; */
     width: 100%;
-    /* background-color: rgba(226, 14, 14, 0.712); */
-    /* border-radius: 20px; */
 } 
 
 input, select {
@@ -268,8 +235,6 @@ input, select {
     margin: 7px 10px 7px 10px;
     height: 50px;
     width: 400px;
-    /* margin-top: 7px;
-    margin-bottom: 7px */
 
 }
 
@@ -321,7 +286,6 @@ button:active {
 
 .link{
     cursor: pointer;
-    
 }
 
 .link:hover{

@@ -35,7 +35,7 @@ export default function homeUser() {
     // cria a imagem do cabeçalho
     const imgDiv2 = document.createElement('img');
     imgDiv2.classList.add('link');
-    imgDiv2.setAttribute('src', '../imagens/links.png');
+    imgDiv2.setAttribute('src', '/images/links.png');
     imgDiv2.setAttribute('id', 'menu');
     div2.appendChild(imgDiv2);
 
@@ -67,8 +67,9 @@ export default function homeUser() {
     buttonSection.setAttribute('type', 'button');
     buttonSection.setAttribute('id', 'beginBtn');
     buttonSection.textContent = 'COMEÇAR';
-    section.appendChild(buttonSection);
+    buttonSection.onclick = () => spa.redirect("/bookshelves");
 
+    section.appendChild(buttonSection);
     main.appendChild(section);
 
     // cria o aside
@@ -77,10 +78,11 @@ export default function homeUser() {
     // cria a imagem do aside
     const imgAside = document.createElement('img');
     imgAside.classList.add('link');
-    imgAside.setAttribute('src', '../imagens/prateleira.png');
+    imgAside.setAttribute('src', '/images/prateleira.png');
     imgAside.setAttribute('id', 'shelf');
-    aside.appendChild(imgAside);
+    imgAside.onclick = () => spa.redirect("/bookshelves");
 
+    aside.appendChild(imgAside);
     main.appendChild(aside);
 
     // adiciona tudo ao body da página

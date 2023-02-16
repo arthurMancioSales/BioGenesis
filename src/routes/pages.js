@@ -10,6 +10,10 @@ router.get(`/`, (req, res) => {
   res.sendFile("/public/index.html", { root: "./" });
 });
 
+router.get(`/bookshelves`, (req, res) => {
+  res.sendFile("/public/index.html", { root: "./" });
+});
+
 router.get(`/page2`, (req, res) => {
   res.sendFile("/public/index.html", { root: "./" });
 });
