@@ -21,5 +21,12 @@ export default function SPA() {
 
       return this[url]();
     },
+
+    redirect(url) {
+      const page = this.getPage(url);
+      window.history.pushState({}, "", url);
+      root.innerHTML = "";
+      root.appendChild(page);
+    },
   };
 }

@@ -9,11 +9,6 @@ const port = process.env.SERVER_PORT;
 
 app.use(express.json());
 
-/**
- * @author {Thiago}
- */
-app.use("/src", express.static("./src"));
-
 app.use("/", express.static("./public"));
 
 app.use("/", router);
