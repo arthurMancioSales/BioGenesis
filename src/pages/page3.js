@@ -1,3 +1,7 @@
+/**
+ * @author {Thiago}
+ */
+
 import customEvent from "./CustomEvent.js";
 
 export default function Page3() {

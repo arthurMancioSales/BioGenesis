@@ -1,3 +1,7 @@
+/**
+ * @author {Thiago}
+ */
+
 import Router from "../src/services/Router.js";
 
 const root = document.querySelector("#root");

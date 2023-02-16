@@ -1,3 +1,7 @@
+/**
+ * @author {Thiago}
+ */
+
 import Home from "../pages/home.js";
 import Page1 from "../pages/page1.js";
 import Page2 from "../pages/page2.js";
