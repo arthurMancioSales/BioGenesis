@@ -1,11 +1,30 @@
 // @author: {Arthur}
 import { Router } from "express";
-import * as bookshelfController from '../controllers/bookshelfController.js'
+import * as bookshelfController from "../controllers/bookshelfController.js";
 
 export const router = Router();
 
 const bookshelfs = [{ id: 123, name: "animais terrestres" }];
-const books = [{ id: 1, nome: "leão", estante_id: 123 }];
+const books = [
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+  { id: 1, nome: "leão", estante_id: 123 },
+];
 const bookPages = {
   id: 1,
   conteudo: "vivie n sei onde",
@@ -15,7 +34,7 @@ const bookPages = {
 
 // Retorna um array com todas as estantes
 router.get("/bookshelves", (req, res) => {
-    res.json(bookshelfs);
+  res.json(bookshelfs);
 });
 // router.get('/bookshelves', bookshelfController.getAllBookshelves)
 
@@ -31,11 +50,10 @@ router.get("/books/:id", (req, res) => {
 });
 
 // Cria uma estante nova
-router.post('/bookshelves', bookshelfController.createBookshelf)
+router.post("/bookshelves", bookshelfController.createBookshelf);
 // {
 //     'name': 'nome da estante'
 // }
-
 
 // Cria um livro novo
 

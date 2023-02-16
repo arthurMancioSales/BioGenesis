@@ -12,7 +12,7 @@ export default function Home() {
   const buttonPage1 = document.createElement("button");
   buttonPage1.type = "button";
   buttonPage1.textContent = "Page 1";
-  buttonPage1.onclick = () => spa.redirect("/page1");
+  buttonPage1.onclick = () => spa.redirect("/bookshelves");
 
   const buttonPage2 = document.createElement("button");
   buttonPage2.type = "button";
