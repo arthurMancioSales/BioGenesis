@@ -1,16 +1,18 @@
-/**
- * @author {Thiago}
- */
+
+// @author {Thiago}
+// @coauthor {Arthur}
+
 
 import Home from "../pages/home.js";
 import Page1 from "../pages/page1.js";
 import Page2 from "../pages/page2.js";
 import Page3 from "../pages/page3.js";
+import bookshelf from "../pages/bookShelf.js";
 
 export default function SPA() {
   return {
     "/": Home,
-    "/page1": Page1,
+    "/bookshelves": bookshelf,
     "/page2": Page2,
     "/page3": Page3,
 

@@ -7,38 +7,6 @@ body {
     background-color: lightgray;
 }
 
-section {
-    display: flex;
-    gap: 1vw;
-}
-
-#root {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-#page {
-    gap: 0;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-button {
-    width: 6vw;
-    height: 4vh;
-    border-radius: 15px;
-    cursor: pointer;
-    box-shadow: 2px 2px 13px 2px rgba(0, 0, 0, 0.75);
-    background-color: rgb(187, 0, 0);
-    color: white;
-    font-size: large;
-}
-
-
 .container {
     position: relative;
     padding: 15px;
@@ -49,17 +17,18 @@ button {
     align-items: center;
     border-radius: 20px;
     background-color: rgb(143, 210, 236);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
 }
 
 .gallery-wrapper {
-    overflow-x: auto;
+    overflow-x: hidden;
 }
 
 .arrow-left,
 .arrow-right {
     position: absolute;
-    top: 0;
-    left: 0;
     right: auto;
     bottom: 0;
     font-size: 20px;
@@ -67,7 +36,7 @@ button {
     width: 40px;
     color: #fff;
     transition: all 600ms ease-in-out;
-    background: linear-gradient(to left, transparent 0%, black 200%);
+    background: linear-gradient(to right, transparent 0%, black 200%);
     opacity: 0.1;
     cursor: pointer;
     border: none;
@@ -79,10 +48,13 @@ button {
 }
 
 .arrow-right {
-    right: 0;
-    left: auto;
+    right: 100%;
     text-align: right;
-    background: linear-gradient(to right, transparent 0%, black 200%);
+}
+
+.arrow-left {
+    left: 100%;
+    text-align: right;
 }
 
 .gallery {
