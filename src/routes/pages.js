@@ -6,7 +6,7 @@ import { Router } from "express";
 
 export const router = Router();
 
-router.get(`/page1`, (req, res) => {
+router.get(`/bookshelves`, (req, res) => {
   res.sendFile("/public/index.html", { root: "./" });
 });
 
