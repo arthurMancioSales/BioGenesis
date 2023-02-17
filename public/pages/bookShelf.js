@@ -1,5 +1,7 @@
 // @author {Pedro}
 import { isLeft, isRight } from "../modules/carrossel.js";
+import loadBook from "../modules/bookLoader.js";
+
 
 export default function bookshelf() {
     const container = document.createElement("div");
@@ -34,6 +36,10 @@ export default function bookshelf() {
     const secondBookShelf = document.createElement("img");
     secondBookShelf.classList.add("item", "current-item");
     secondBookShelf.alt = "secondBookShelf";
+    secondBookShelf.onclick = async(e) => {
+        console.log('teste')
+        await loadBook(1)
+    }
 
     const thirdBookShelf = document.createElement("img");
     thirdBookShelf.classList.add("item", "current-item");

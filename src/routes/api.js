@@ -6,12 +6,26 @@ export const router = Router();
 
 const bookshelfs = [{ id: 123, name: "animais terrestres" }];
 const books = [{ id: 1, nome: "leão", estante_id: 123 }];
-const bookPages = {
-  id: 1,
-  conteudo: "vivie n sei onde",
-  imagem: "AJKLSDLK",
-  topico: "habitat",
-};
+const bookPages = [
+  {
+    id: 1,
+    conteudo: "vivie n sei onde",
+    imagem: "AJKLSDLK",
+    topico: "habitat",
+  },
+  {
+    id: 2,
+    conteudo: "rteste",
+    imagem: "AJKLSDLK",
+    topico: "habitat",
+  },
+  {
+    id: 3,
+    conteudo: "vivie n sei onde",
+    imagem: "AJKLSDLK",
+    topico: "habitat",
+  },
+];
 
 // Retorna um array com todas as estantes
 router.get("/bookshelves", (req, res) => {

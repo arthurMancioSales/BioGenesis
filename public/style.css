@@ -293,3 +293,53 @@ button:active {
 }
 
 
+/* @author {Arthur} */
+.page {
+    background-color: #f3e9d8;
+
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+    text-align: justify;
+}
+
+.coverPage {
+    background-color: #474541;
+}
+
+.bookWrapper {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bookChapter {
+    text-align: center;
+}
+
+.bookIndex:hover {
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+/* .bookText {
+
+} */
+
+.bookImage {
+    width: 410px;
+}
+
+.book {
+    width: fit-content;
+}
