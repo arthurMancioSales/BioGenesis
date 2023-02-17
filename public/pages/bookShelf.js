@@ -5,7 +5,7 @@ import loadBook from "../modules/bookLoader.js";
 
 export default function bookshelf() {
     const container = document.createElement("div");
-    container.classList.add('container')
+    container.classList.add('container',"backgrondShilf");
 
     const title = document.createElement("h1");
     title.textContent = "Estantes";
@@ -29,12 +29,17 @@ export default function bookshelf() {
     nextImage.classList.add("arrow-right", "control");
     nextImage.onclick = () => isRight();
 
+    // const numberShelf = fetch()
+
+
     const firstBookShelf = document.createElement("img");
+    firstBookShelf.src = "http://localhost:3000/images/prateleira.png";
     firstBookShelf.classList.add("item", "current-item");
     firstBookShelf.alt = "firstBookShelf";
 
     const secondBookShelf = document.createElement("img");
-    secondBookShelf.classList.add("item", "current-item");
+    secondBookShelf.src = "http://localhost:3000/images/prateleira.png";
+    secondBookShelf.classList.add("item");
     secondBookShelf.alt = "secondBookShelf";
     secondBookShelf.onclick = async(e) => {
         console.log('teste')
@@ -42,18 +47,31 @@ export default function bookshelf() {
     }
 
     const thirdBookShelf = document.createElement("img");
-    thirdBookShelf.classList.add("item", "current-item");
+    thirdBookShelf.src = "http://localhost:3000/images/prateleira.png";
+    thirdBookShelf.classList.add("item");
     thirdBookShelf.alt = "thirdBookShelf";
+
+    const ExBookShelf = document.createElement("img");
+    ExBookShelf.src = "http://localhost:3000/images/prateleira.png";
+    ExBookShelf.classList.add("item");
+    ExBookShelf.alt = "ExBookShelf";
+
+    const header =  document.createElement("div");
+    header.classList.add("headerShelf");
+    header.appendChild(previousImage);
+    header.appendChild(title);
+    header.appendChild(nextImage);
 
     gallery.appendChild(firstBookShelf);
     gallery.appendChild(secondBookShelf);
     gallery.appendChild(thirdBookShelf);
+    gallery.appendChild(ExBookShelf);
+
+
 
     galleryWrapper.appendChild(gallery);
 
-    container.appendChild(title);
-    container.appendChild(previousImage);
-    container.appendChild(nextImage);
+    container.appendChild(header);
     container.appendChild(galleryWrapper);
 
     return container;

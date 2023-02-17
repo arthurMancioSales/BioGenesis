@@ -1,6 +1,18 @@
 /* @Autor: Pedro */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-body {
+.title_shiefbook {
+    text-align: center;
+    margin: 1em 0;
+    font-size: 60px;
+    font-family: roboto;
+}
+
+/* body {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -8,27 +20,30 @@ body {
     width: 100vw;
     background-color: rgba(238, 255, 245, 0.84);
     overflow: hidden;
-}
+} */
 
 .container {
     position: relative;
-
     padding: 0 2rem 0 2rem;
-
-    width: 100%;
-    height: 100%;
-
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
-
-    justify-content: center;
-    align-items: center;
+    background-color: rgb(189, 235, 235);
     
-    min-height: 100vh;
+}
 
+.backgrondShilf {
     background-image: url("/images/bookshelf.svg");
-    
-    overflow: hidden;
+    background-size: 100%;
+}
+
+.headerShelf {
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+    align-items: center;
+
 }
 
 .gallery-wrapper {
@@ -74,7 +89,7 @@ body {
 }
 
 .item {
-    width: 700px;
+    width: 500px;
     height: 500px;
     flex-shrink: 0;
     transition: all 600ms ease-in-out;
@@ -99,7 +114,7 @@ body {
 
 
 /* @Autor: Davi */
-.bodyHome {
+/* .bodyHome {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -228,9 +243,9 @@ input, select {
     height: 50px;
     width: 400px;
 
-}
+} */
 
-button {
+/* button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -253,16 +268,16 @@ button {
 button:hover {
     background-color: #357737;
     cursor:pointer;
-}
+} */
 
-button:active {
+/* button:active {
   background-color: #3e8e41;
   box-shadow: 0 1px #666;
   transform: translateY(4px);
   cursor:pointer;
-}
+} */
 
-#p{
+/* #p{
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 16px;
 
