@@ -33,13 +33,13 @@ export default function bookshelf() {
 
 
     const firstBookShelf = document.createElement("img");
-    firstBookShelf.src = "http://localhost:3000/images/prateleira.png";
-    firstBookShelf.classList.add("item", "current-item");
+    firstBookShelf.src = "/images/prateleira.png";
+    firstBookShelf.classList.add("item");
     firstBookShelf.alt = "firstBookShelf";
 
     const secondBookShelf = document.createElement("img");
-    secondBookShelf.src = "http://localhost:3000/images/prateleira.png";
-    secondBookShelf.classList.add("item");
+    secondBookShelf.src = "/images/prateleira.png";
+    secondBookShelf.classList.add("item", "current-item");
     secondBookShelf.alt = "secondBookShelf";
     secondBookShelf.onclick = async(e) => {
         console.log('teste')
@@ -47,12 +47,12 @@ export default function bookshelf() {
     }
 
     const thirdBookShelf = document.createElement("img");
-    thirdBookShelf.src = "http://localhost:3000/images/prateleira.png";
+    thirdBookShelf.src = "/images/prateleira.png";
     thirdBookShelf.classList.add("item");
     thirdBookShelf.alt = "thirdBookShelf";
 
     const ExBookShelf = document.createElement("img");
-    ExBookShelf.src = "http://localhost:3000/images/prateleira.png";
+    ExBookShelf.src = "/images/prateleira.png";
     ExBookShelf.classList.add("item");
     ExBookShelf.alt = "ExBookShelf";
 

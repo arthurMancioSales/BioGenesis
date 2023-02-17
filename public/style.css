@@ -29,13 +29,15 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: rgb(189, 235, 235);
+    background-color: rgba(238, 255, 245, 0.84);
     
 }
 
 .backgrondShilf {
     background-image: url("/images/bookshelf.svg");
     background-size: 100%;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
 }
 
 .headerShelf {
@@ -323,6 +325,10 @@ button:hover {
     background-color: #474541;
 }
 
+.coverPage .page-content {
+    justify-content: center;
+}
+
 .bookWrapper {
     width: 100%;
     height: 100%;
@@ -340,21 +346,84 @@ button:hover {
 
 .bookChapter {
     text-align: center;
+    margin: 1rem 0 1.5rem 0;
+    text-transform: capitalize;
+}
+
+.indexList {
+    counter-reset: item 1;
+    list-style-type: none;
+}
+
+.indexList li:before {
+    counter-increment: item 2;
+    content: counter(item) ". ";
+}
+
+.bookIndex {
+    margin-left: 20px;
 }
 
 .bookIndex:hover {
     text-decoration: underline;
     cursor: pointer;
+    font-weight: bold;
 }
 
-/* .bookText {
-
-} */
+.bookText {
+    text-indent: 30px;
+}
 
 .bookImage {
     width: 410px;
+    margin-top: auto;
 }
 
-.book {
-    width: fit-content;
+.page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    text-align: justify;
+
+    padding: 1rem;
+
+    height: 100%;
+}
+
+.pageRight {
+    border-left: 0;
+    box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.pageLeft {
+    border-right: 0;
+    box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.bookTitle {
+    align-self: center;
+    justify-self: center;
+    font-size: 25px;
+    color: white;
+}
+
+.pageFooter {
+    margin-top: auto;
+}
+
+.footerRight {
+    align-self: flex-end;
+}
+.footerLeft {
+    align-self: flex-start;
+}
+.closeIcon {
+    position: absolute;
+    bottom: 90%;
+    left: 95%;
+
+    font-size: 40px;
+    color: white;
+
+    cursor: pointer;
 }
