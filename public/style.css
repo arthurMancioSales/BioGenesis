@@ -12,16 +12,6 @@
     font-family: roboto;
 }
 
-/* body {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(238, 255, 245, 0.84);
-    overflow: hidden;
-} */
-
 .container {
     position: relative;
     padding: 0 2rem 0 2rem;
@@ -29,13 +19,16 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: rgba(238, 255, 245, 0.84);
+    background-color: rgba(238, 255, 245, 0.84)
+
     
 }
 
 .backgrondShilf {
     background-image: url("/images/bookshelf.svg");
     background-size: 100%;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
     background-position: 0 -25%;
     background-repeat: no-repeat;
 }

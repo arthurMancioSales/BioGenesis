@@ -1,7 +1,8 @@
+// @author {Arthur}
 import { PageFlip } from "/vendor/page-flip.module.js"
 
 export default async function loadBook(bookID) {
-    const json = await fetch(`http://localhost:8080/api/books/${bookID}`)
+    const json = await fetch(`http://localhost:3000/api/books/${bookID}`)
     const pages = await json.json()
 
     let pageCount = 1
@@ -128,8 +129,8 @@ export default async function loadBook(bookID) {
     document.querySelector("#root").appendChild(wrapper)
 
     const pageFlip = new PageFlip(book, {
-        width: 886/2, // required parameter - base page width
-        height: 600, // required parameter - base page height
+        width: 886/2,
+        height: 600,
         showCover: true
     })
     pageFlip.loadFromHTML(document.querySelectorAll('.page'));
