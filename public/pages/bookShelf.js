@@ -1,13 +1,14 @@
 // @author {Pedro}
+
+import loadBook from "../modules/bookLoader.js";
 import { isLeft, isRight } from "../modules/carrossel.js";
 import loadBooks from "../modules/loadBooks.js";
 
 export default function bookshelf() {
   const container = document.createElement("div");
-  container.classList.add("container");
+  container.classList.add("container", "backgrondShilf");
 
   const title = document.createElement("h1");
-  title.textContent = "Estantes";
   title.className = "title_shiefbook";
 
   const galleryWrapper = document.createElement("div");
@@ -28,35 +29,41 @@ export default function bookshelf() {
   nextImage.classList.add("arrow-right", "control");
   nextImage.onclick = () => isRight();
 
-  const firstBookShelf = document.createElement("div");
-  firstBookShelf.classList.add("item", "prateleira");
-  firstBookShelf.alt = "firstBookShelf";
+  const json = fetch(`http://localhost:8080/api/bookshelves`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      response.forEach((shelf, index) => {
+        const Shelf = document.createElement("div");
+        Shelf.classList.add("shelf");
+        Shelf.dataset.id = shelf.id;
 
-  const secondBookShelf = document.createElement("div");
-  secondBookShelf.classList.add("item", "current-item", "prateleira");
-  secondBookShelf.alt = "secondBookShelf";
+        const BookShelf = document.createElement("div");
+        BookShelf.classList.add("item", "prateleira");
+        BookShelf.alt = shelf.id;
+        if (index === 0) {
+          BookShelf.classList.add("current-item");
+          title.textContent = shelf.name;
+          loadBooks(shelf.id);
+        }
+        BookShelf.dataset.name = shelf.name;
+        BookShelf.dataset.id = shelf.id;
 
-  const thirdBookShelf = document.createElement("div");
-  thirdBookShelf.classList.add("item", "prateleira");
-  thirdBookShelf.alt = "thirdBookShelf";
+        BookShelf.appendChild(Shelf);
+        gallery.appendChild(BookShelf);
+      });
+    });
 
-  const Shelf = document.createElement("div");
-  Shelf.classList.add("shelf");
-
-  secondBookShelf.appendChild(Shelf);
-
-  gallery.appendChild(firstBookShelf);
-  gallery.appendChild(secondBookShelf);
-  gallery.appendChild(thirdBookShelf);
+  const header = document.createElement("div");
+  header.classList.add("headerShelf");
+  header.appendChild(previousImage);
+  header.appendChild(title);
+  header.appendChild(nextImage);
 
   galleryWrapper.appendChild(gallery);
-
-  container.appendChild(title);
-  container.appendChild(previousImage);
-  container.appendChild(nextImage);
+  container.appendChild(header);
   container.appendChild(galleryWrapper);
-
-  loadBooks(1);
 
   return container;
 }

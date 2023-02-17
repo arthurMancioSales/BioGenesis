@@ -1,34 +1,44 @@
 /* @Autor: Pedro */
-
-body {
-    padding: 0;
+* {
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
-    height: 100vh;
-    width: 100vw;
-    background-color: rgba(238, 255, 245, 0.84);
-    overflow: hidden;
+}
+
+.title_shiefbook {
+    text-align: center;
+    margin: 1em 0;
+    font-size: 60px;
+    font-family: roboto;
 }
 
 .container {
     position: relative;
-
     padding: 0 2rem 0 2rem;
-
-    width: 100%;
-    height: 100%;
-
+    width: 100vw;
+    height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: rgba(238, 255, 245, 0.84)
 
-    justify-content: center;
-    align-items: center;
     
-    min-height: 100vh;
+}
 
+.backgrondShilf {
     background-image: url("/images/bookshelf.svg");
-    
-    overflow: hidden;
+    background-size: 100%;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
+}
+
+.headerShelf {
+    display: flex;
+    justify-content: space-around;
+    height: 20%;
+    align-items: center;
+
 }
 
 .gallery-wrapper {
@@ -74,7 +84,7 @@ body {
 }
 
 .item {
-    width: 700px;
+    width: 500px;
     height: 500px;
     flex-shrink: 0;
     transition: all 600ms ease-in-out;
@@ -98,7 +108,7 @@ body {
 
 
 /* @Autor: Davi */
-.bodyHome {
+/* .bodyHome {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -227,9 +237,9 @@ input, select {
     height: 50px;
     width: 400px;
 
-}
+} */
 
-button {
+/* button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -252,16 +262,16 @@ button {
 button:hover {
     background-color: #357737;
     cursor:pointer;
-}
+} */
 
-button:active {
+/* button:active {
   background-color: #3e8e41;
   box-shadow: 0 1px #666;
   transform: translateY(4px);
   cursor:pointer;
-}
+} */
 
-#p{
+/* #p{
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 16px;
 
@@ -290,6 +300,7 @@ button:active {
     bottom: 5%;
     right: 45%;
 }
+*/
 
 .prateleira {
     background-image: url('./images/prateleira.png');
@@ -311,7 +322,124 @@ button:active {
     flex-wrap: wrap;
 }
 
-.book {
+/* @author {Arthur} */
+.page {
+    background-color: #f3e9d8;
+
+    display: flex; 
+    justify-content: center;
+    align-items: center;
+
+    text-align: justify;
+}
+
+.coverPage {
+    background-color: #474541;
+}
+
+.coverPage .page-content {
+    justify-content: center;
+}
+
+.bookWrapper {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    bottom: 0;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.bookChapter {
+    text-align: center;
+    margin: 1rem 0 1.5rem 0;
+    text-transform: capitalize;
+}
+
+.indexList {
+    counter-reset: item 1;
+    list-style-type: none;
+}
+
+.indexList li:before {
+    counter-increment: item 2;
+    content: counter(item) ". ";
+}
+
+.bookIndex {
+    margin-left: 20px;
+}
+
+.bookIndex:hover {
+    text-decoration: underline;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.bookText {
+    text-indent: 30px;
+}
+
+.bookImage {
+    width: 410px;
+    margin-top: auto;
+}
+
+.page-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    text-align: justify;
+
+    padding: 1rem;
+
+    height: 100%;
+}
+
+.pageRight {
+    border-left: 0;
+    box-shadow: inset 7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.pageLeft {
+    border-right: 0;
+    box-shadow: inset -7px 0 30px -7px rgba(0, 0, 0, 0.4);
+}
+
+.bookTitle {
+    align-self: center;
+    justify-self: center;
+    font-size: 25px;
+    color: white;
+}
+
+.pageFooter {
+    margin-top: auto;
+}
+
+.footerRight {
+    align-self: flex-end;
+}
+.footerLeft {
+    align-self: flex-start;
+}
+.closeIcon {
+    position: absolute;
+    bottom: 90%;
+    left: 95%;
+
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    }
+
+.bookSpine {
     display: flex;
     align-items: center;
     justify-content: center;

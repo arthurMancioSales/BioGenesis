@@ -1,55 +1,72 @@
+import loadBooks from "./loadBooks.js";
+
 // @author {Pedro}
+let currentItem = 0;
+
 export function isLeft() {
-    let currentItem = 0;
-    const items = document.querySelectorAll(".item");
-    const maxItems = items.length;
-    const title = document.querySelector(".title_shiefbook");
-    currentItem -= 1;
-    title.innerHTML = `Estante ${currentItem + 1}`
-    if (currentItem >= maxItems) {
-        currentItem = 0;
-        title.innerHTML = `Estante ${currentItem + 1}`
-    }
+  const items = document.querySelectorAll(".item");
+  const maxItems = items.length;
+  const title = document.querySelector(".title_shiefbook");
 
-    if (currentItem < 0) {
-        currentItem = maxItems - 1;
-        title.innerHTML = `Estante ${currentItem + 1}`
-    }
+  items[currentItem].firstChild.innerHTML = "";
 
-    items.forEach((item) => item.classList.remove("current-item"));
+  currentItem -= 1;
 
-    items[currentItem].scrollIntoView({
-        behavior: "smooth",
-        inline: "center"
-    });
+  if (currentItem >= maxItems) {
+    currentItem = 0;
+  }
+  if (currentItem < 0) {
+    currentItem = maxItems - 1;
+  }
 
-    items[currentItem].classList.add("current-item");
+  items.forEach((item) => item.classList.remove("current-item"));
+
+  items[currentItem].scrollIntoView({
+    behavior: "smooth",
+    inline: "center",
+  });
+
+  items[currentItem].classList.add("current-item");
+
+  const titleNew = document.querySelector(".current-item");
+
+  console.log(titleNew);
+
+  loadBooks(titleNew.dataset.id);
+
+  title.innerHTML = titleNew.dataset.name;
 }
 
 // @author {Pedro}
 export function isRight() {
-    let currentItem = 0;
-    const items = document.querySelectorAll(".item");
-    const maxItems = items.length;
-    const title = document.querySelector(".title_shiefbook");
-    currentItem += 1;
-    title.innerHTML = `Estante ${currentItem + 1}`
-    if (currentItem >= maxItems) {
-        currentItem = 0;
-        title.innerHTML = `Estante ${currentItem + 1}`
-    }
+  const items = document.querySelectorAll(".item");
+  const maxItems = items.length;
+  const title = document.querySelector(".title_shiefbook");
 
-    if (currentItem < 0) {
-        currentItem = maxItems - 1;
-        title.innerHTML = `Estante ${currentItem + 1}`
-    }
+  items[currentItem].firstChild.innerHTML = "";
 
-    items.forEach((item) => item.classList.remove("current-item"));
+  currentItem += 1;
 
-    items[currentItem].scrollIntoView({
-        behavior: "smooth",
-        inline: "center"
-    });
+  if (currentItem >= maxItems) {
+    currentItem = 0;
+  }
 
-    items[currentItem].classList.add("current-item");
+  if (currentItem < 0) {
+    currentItem = maxItems - 1;
+  }
+
+  items.forEach((item) => item.classList.remove("current-item"));
+
+  items[currentItem].scrollIntoView({
+    behavior: "smooth",
+    inline: "center",
+  });
+
+  items[currentItem].classList.add("current-item");
+
+  const titleNew = document.querySelector(".current-item");
+
+  loadBooks(titleNew.dataset.id);
+
+  title.innerHTML = titleNew.dataset.name;
 }
