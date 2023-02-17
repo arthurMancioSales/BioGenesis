@@ -89,7 +89,6 @@
     flex-shrink: 0;
     transition: all 600ms ease-in-out;
     opacity: 0.5;
-
 }
 
 .current-item {
@@ -109,7 +108,7 @@
 
 
 /* @Autor: Davi */
-/* .bodyHome {
+.bodyHome {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -123,15 +122,15 @@
 }
 
 .loginBg{
-    background-image: url('../imagens/Login.png');
+    background-image: url('../images/Login.png');
 }
 
 .cadastroBg{
-    background-image: url('../imagens/Cadastro.png');
+    background-image: url('../images/Cadastro.png');
 }
 
 .homeBg{
-    background-image: url('../imagens/home.png');
+    background-image: url('../images/home.png');
 }
 
 .mainSize {
@@ -178,8 +177,16 @@ header{
     overflow: hidden;
 }
 
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+    align-items:center ;
+    justify-content: center;
+    overflow: hidden;
+}
+
 .boxSize{
-    width: 25%;
+    width: 27%;
 }
 
 .sectionBox{
@@ -238,9 +245,9 @@ input, select {
     height: 50px;
     width: 400px;
 
-} */
+}
 
-/* button {
+button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -263,16 +270,16 @@ input, select {
 button:hover {
     background-color: #357737;
     cursor:pointer;
-} */
+}
 
-/* button:active {
+button:active {
   background-color: #3e8e41;
   box-shadow: 0 1px #666;
   transform: translateY(4px);
   cursor:pointer;
-} */
+}
 
-/* #p{
+#p{
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 16px;
 
@@ -288,7 +295,6 @@ button:hover {
 
 .link{
     cursor: pointer;
-    
 }
 
 .link:hover{
@@ -302,6 +308,26 @@ button:hover {
     right: 45%;
 }
 
+
+.prateleira {
+    background-image: url('./images/prateleira.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.shelf {
+    display: flex;
+    gap: 5px;
+    height: 45%;
+    width: 45%;
+    padding-top: 5%;
+    padding-left: 2%;
+    flex-wrap: wrap;
+}
 
 /* @author {Arthur} */
 .page {
@@ -417,6 +443,25 @@ button:hover {
 
     font-size: 40px;
     color: white;
-
     cursor: pointer;
+    }
+
+.bookSpine {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    border: 1px solid black;
+    font-size: larger;
+    font-weight: 600;
+    text-transform: capitalize;
+    height: 55%;
+    width: 12%;
+    background-image: url("./images/bookSpine.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    margin-bottom: 4%;
 }

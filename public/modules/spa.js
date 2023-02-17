@@ -1,10 +1,13 @@
-
 // @author {Thiago}
 // @coauthor {Arthur}
+
+// import Home from "../pages/homeUser.js";
 import bookshelf from "../pages/bookShelf.js";
+import homeUser from "../pages/homeUser.js";
 
 export default function SPA() {
   return {
+    "/": homeUser,
     "/bookshelves": bookshelf,
 
     getPage: function (url) {
@@ -12,7 +15,6 @@ export default function SPA() {
       if (url == "/index.html") {
         url = "/";
       }
-
       return this[url]();
     },
 
