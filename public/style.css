@@ -108,7 +108,7 @@
 
 
 /* @Autor: Davi */
-/* .bodyHome {
+.bodyHome {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -245,9 +245,9 @@ input, select {
     height: 50px;
     width: 400px;
 
-} */
+}
 
-/* button {
+button {
     background-color: #4CAF50;
     border: none;
     color: white;
@@ -270,16 +270,16 @@ input, select {
 button:hover {
     background-color: #357737;
     cursor:pointer;
-} */
+}
 
-/* button:active {
+button:active {
   background-color: #3e8e41;
   box-shadow: 0 1px #666;
   transform: translateY(4px);
   cursor:pointer;
-} */
+}
 
-/* #p{
+#p{
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 16px;
 
@@ -307,7 +307,7 @@ button:hover {
     bottom: 5%;
     right: 45%;
 }
-*/
+
 
 .prateleira {
     background-image: url('./images/prateleira.png');
