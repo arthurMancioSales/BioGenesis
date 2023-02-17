@@ -29,13 +29,16 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: rgb(189, 235, 235);
+    background-color: rgba(238, 255, 245, 0.84)
+
     
 }
 
 .backgrondShilf {
     background-image: url("/images/bookshelf.svg");
     background-size: 100%;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
 }
 
 .headerShelf {

@@ -1,7 +1,7 @@
 import { PageFlip } from "/vendor/page-flip.module.js"
 
 export default async function loadBook(bookID) {
-    const json = await fetch(`http://localhost:8080/api/books/${bookID}`)
+    const json = await fetch(`http://localhost:3000/api/books/${bookID}`)
     const pages = await json.json()
     console.log(pages)
    
