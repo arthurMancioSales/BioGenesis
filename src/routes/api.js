@@ -14,14 +14,10 @@ const bookPages = {
 };
 
 // Retorna um array com todas as estantes
-router.get("/bookshelves", (req, res) => {
-    res.json(bookshelfs);
-});
-// router.get('/bookshelves', bookshelfController.getAllBookshelves)
+router.get('/bookshelves', bookshelfController.getAllBookshelves)
 
-// Retorna um array com todos os livros
+// Retorna um array com todos os livros da estante
 router.get("/bookshelves/:id/books", (req, res) => {
-  req.body;
   res.json(books);
 });
 

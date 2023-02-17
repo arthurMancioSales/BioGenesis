@@ -32,3 +32,14 @@ export async function getAllBookshelves() {
         throw error;
     }
 }
+
+export async function getBookshelfBooks(bookshelfID) {
+    try {
+        const getBookQuery= `
+        `
+        const response = await pool.query(getBookQuery, [bookshelfID])
+    } catch (error) {
+        console.log(TAG, "Error caught getBookshelfBooks()")
+        throw error
+    }
+}
