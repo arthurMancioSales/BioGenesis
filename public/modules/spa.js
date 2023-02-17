@@ -3,10 +3,11 @@
 
 // import Home from "../pages/homeUser.js";
 import bookshelf from "../pages/bookShelf.js";
+import homeUser from "../pages/homeUser.js";
 
 export default function SPA() {
   return {
-    // "/": Home,
+    "/": homeUser,
     "/bookshelves": bookshelf,
 
     getPage: function (url) {
