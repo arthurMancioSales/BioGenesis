@@ -1,3 +1,5 @@
+import loadSingleBook from "./bookLoader.js";
+
 export default async function loadBooks(id) {
   // console.log(id);
 
@@ -31,6 +33,9 @@ function createBookSpine(item) {
   Book.innerText = item.nome;
   Book.classList.add("Livro");
   Book.alt = "Book";
+  Book.onclick = () => {
+    loadSingleBook(item.id)
+  }
 
   bookshelf.appendChild(Book);
 }
