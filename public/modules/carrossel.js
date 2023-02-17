@@ -1,6 +1,7 @@
 // @author {Pedro}
+let currentItem = 0;
+
 export function isLeft() {
-    let currentItem = 0;
     const items = document.querySelectorAll(".item");
     const maxItems = items.length;
     const title = document.querySelector(".title_shiefbook");
@@ -28,7 +29,6 @@ export function isLeft() {
 
 // @author {Pedro}
 export function isRight() {
-    let currentItem = 0;
     const items = document.querySelectorAll(".item");
     const maxItems = items.length;
     const title = document.querySelector(".title_shiefbook");

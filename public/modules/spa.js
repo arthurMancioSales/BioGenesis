@@ -17,6 +17,7 @@ export default function SPA() {
     "/page3": Page3,
 
     getPage: function (url) {
+      console.log(url);
       if (url == "/index.html") {
         url = "/";
       }
