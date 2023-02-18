@@ -37,7 +37,7 @@ export async function createBookshelf(req, res) {
         console.log(TAG, error);
 
         response.message = "Não foi possível criar a estante";
-        response.error = "Erro interno do servidor";
+        response.error = error;
 
         res.status(500).json(response);
         console.timeEnd("createBookshelf()");

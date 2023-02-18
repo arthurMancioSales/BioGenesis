@@ -6,6 +6,19 @@ const TAG = "Bookshelf Repository";
 // Cria uma estante nova -> @author {Arthur}
 export async function createBookshelf(name) {
     try {
+        const duplicateBookshelf = `
+        SELECT 
+            count(name)
+        FROM 
+            bookshelves
+        WHERE 
+            name = $1`
+        
+        const duplicate = await pool.query(duplicateBookshelf, [name])
+        if (duplicate.rows[0].count == 1) {
+            throw "Já existe uma esante com esse nome"
+        }
+
         const createQuery = `
             INSERT INTO bookshelves (
                 name
