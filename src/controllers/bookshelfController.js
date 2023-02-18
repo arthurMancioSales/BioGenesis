@@ -1,8 +1,8 @@
 // @author: {Arthur}
 import * as bookshelfService from "../services/bookshelfService.js";
-
 const TAG = "Bookshelf Controller";
 
+// Cria uma estante nova -> @author {Arthur}
 export async function createBookshelf(req, res) {
     //  Operações de debugging
     console.log(TAG);
@@ -16,7 +16,7 @@ export async function createBookshelf(req, res) {
         error: null,
     };
 
-    if (name.length == 0) {
+    if (name.length == 0 || typeof(name) != "string") {
         response.message = "Informe um nome válido para a estante";
         response.data = null;
         response.error = "Nome inválido"
@@ -44,6 +44,7 @@ export async function createBookshelf(req, res) {
     }
 }
 
+// Retorna um array com todas as estantes -> @author {Arthur}
 export async function getAllBookshelves(req, res) {
     //  Operações de debugging
     console.log(TAG);

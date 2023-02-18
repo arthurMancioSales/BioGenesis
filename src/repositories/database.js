@@ -7,7 +7,7 @@ config();
 
 //Instancia um novo pool de conexões
 const pool = new pg.Pool({
-    host: process.env.HOST,
+    host: process.env.DBHOST,
     database: process.env.DATABASE,
     user: process.env.DB_USER,
     password: process.env.USER_PASSWORD,

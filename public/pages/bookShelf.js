@@ -34,7 +34,7 @@ export default function bookshelf() {
       return response.json();
     })
     .then((response) => {
-      response.forEach((shelf, index) => {
+      response.data.forEach((shelf, index) => {
         const Shelf = document.createElement("div");
         Shelf.classList.add("shelf");
         Shelf.dataset.id = shelf.id;
