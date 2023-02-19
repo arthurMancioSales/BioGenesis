@@ -3,7 +3,7 @@ const spa = SPA();
 
 export default function list() {
     const outDiv = document.createElement("div")
-    outDiv.classList.add("flexColumn");
+    outDiv.classList.add("flexColumNoncenter", "listBg");
 
    // cria o header
     const header = document.createElement('header');
@@ -19,7 +19,7 @@ export default function list() {
     main.classList.add("mainList")
 
     const divMain = document.createElement('div');
-    divMain.classList.add('container');
+    divMain.classList.add('containerList');
 
     const h2Div = document.createElement('h2');
     h2Div.classList.add("h2List")
@@ -65,7 +65,7 @@ export default function list() {
     sectionMain.id = 'section-lista';
 
     const divSection = document.createElement('div');
-    divSection.classList.add('container');
+    divSection.classList.add('containerList');
 
     const h2Section = document.createElement('h2');
     h2Section.textContent = 'LISTA DE LIVROS CADASTRADOS';

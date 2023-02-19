@@ -475,7 +475,7 @@ button:active {
 #headerList {
     /* Rectangle 1 */
     width: 100%;
-    height: 100px;
+    height: 70px;
 
     background: #14BC39;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
@@ -485,10 +485,12 @@ button:active {
     align-items: center;
 
     margin-bottom: 20px;
+    padding-top: 0px;
 }
 
 .mainList {
     width: 90%;
+    height: 80px;
     /* margin: auto; */
 }
 
@@ -507,7 +509,6 @@ button:active {
 }
 
 .h2List {
-    /* FORMULÁRIO DE CADASTRO DE USUÁRIOS */
     width: 582px;
     height: 35px;
 
@@ -518,9 +519,6 @@ button:active {
 }
 
 .pList {
-    /* Para inserir usuários na lista, preencha os dados abaixo. */
-
-
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
@@ -528,7 +526,7 @@ button:active {
     line-height: 21px;
 }
 
-.container {
+.containerList {
     border-bottom: 1px solid #14BC39;
     padding: 6px;
     margin-bottom: 13px;
@@ -544,7 +542,6 @@ button:active {
 }
 
 .input-field {
-    /* Rectangle 2 */
     box-sizing: border-box;
 
     width: 40%;
@@ -644,4 +641,21 @@ td {
 
 tr:nth-child(even) {
     background: #BDE3C6;
+}
+
+.listBg{
+    background-image: url('../images/listBg.png');
+    background-size: 100% 100%;
+}
+
+.flexColumNoncenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    /* justify-content: center; */
+    /* overflow: hidden; */
+
+    height: 100vh;
+
 }
