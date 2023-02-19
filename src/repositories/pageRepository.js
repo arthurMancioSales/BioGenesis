@@ -3,7 +3,13 @@ import pool from "./database.js";
 const TAG = "Page Repository";
 
 // Cria uma página nova para um livro -> @author {Arthur}
-export async function createPage(bookID, topicName, content, image, authorName) {
+export async function createPage(
+    bookID,
+    topicName,
+    content,
+    image,
+    authorName
+) {
     try {
         const duplicatePageQuery = `        
         SELECT 
@@ -13,7 +19,10 @@ export async function createPage(bookID, topicName, content, image, authorName) 
         WHERE
             book_id = $1  AND topic_id = (SELECT topic_id FROM topic WHERE name = $2)`;
 
-        const duplicate = await pool.query(duplicatePageQuery, [bookID, topicName]);
+        const duplicate = await pool.query(duplicatePageQuery, [
+            bookID,
+            topicName,
+        ]);
         if (duplicate.rows[0].count == 1) {
             throw "Já existe uma página com esse tópico no livro especificado";
         }
@@ -45,6 +54,32 @@ export async function createPage(bookID, topicName, content, image, authorName) 
         return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at createPage()");
+        throw error;
+    }
+}
+
+// Retorna um array com todas as páginas de um livro específico -> @author {Arthur}
+export async function getAllPagesFromBook(bookID) {
+    try {
+        const getPagesQuery = `        
+        SELECT 
+            pages.content,
+            pages.image,
+            users.username,
+            topic.name as topic_name
+        FROM 
+            pages
+        JOIN
+            users ON pages.author = users.user_id
+        JOIN
+            topic ON pages.topic_id = topic.topic_id
+        WHERE
+            pages.book_id = $1`;
+
+        const response = await pool.query(getPagesQuery, [bookID]);
+        return response.rows;
+    } catch (error) {
+        console.log(TAG, "error caught at getAllPagesFromBook()");
         throw error;
     }
 }

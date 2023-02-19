@@ -59,13 +59,11 @@ const bookPages = [
 // Retorna um array com todas as estantes -> @author {Arthur}
 router.get("/bookshelves", bookshelfController.getAllBookshelves);
 
-// Retorna um array com todos os livros de uma estante -> @author {Arthur}
+// Retorna um array com todos os livros de uma estante específica-> @author {Arthur}
 router.get("/bookshelves/:id/books", bookController.readAllBooksOnShelf)
 
 // Retorna um array com todas as páginas de um livro específico -> @author {Arthur}
-router.get("/books/:id", (req, res) => {
-    res.json(bookPages);
-});
+router.get("/books/:id", pageController.getAllPagesFromBook)
 
 // Cria uma estante nova -> @author {Arthur}
 router.post("/bookshelves", bookshelfController.createBookshelf);
