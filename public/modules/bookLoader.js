@@ -4,7 +4,7 @@ import { PageFlip } from "/vendor/page-flip.module.js"
 export default async function loadSingleBook(bookID) {
     const json = await fetch(`http://localhost:5000/api/books/${bookID}`)
     const pages = await json.json()
-
+    console.log(pages, bookID)
     let pageCount = 1
 
     const wrapper = document.createElement('div')
@@ -67,9 +67,10 @@ export default async function loadSingleBook(bookID) {
     let pageIndex = 2
 
     pages.forEach((page, i) => {
+        console.log(page)
         const index = document.createElement('li')
         index.classList.add('bookIndex')
-        index.textContent = page.topico
+        index.textContent = page.topic_name
         index.onclick = () => {
             pageFlip.turnToPage(2 * i + 1)
         }
@@ -84,7 +85,7 @@ export default async function loadSingleBook(bookID) {
         imgDiv.appendChild(imgDivContent)
 
         const img = document.createElement('img')
-        img.src = '/images/prateleira.png'
+        img.src = `/uploads/${page.image}`
         img.classList.add("bookImage")
         imgDivContent.appendChild(img)
 
@@ -103,12 +104,12 @@ export default async function loadSingleBook(bookID) {
         
         const title = document.createElement('h2')
         title.classList.add('bookChapter')
-        title.textContent = page.topico
+        title.textContent = page.topic_name
         textDivContent.appendChild(title)
 
         const text = document.createElement('p')
         text.classList.add('bookText')
-        text.textContent = page.conteudo
+        text.textContent = page.content
         textDivContent.appendChild(text)
 
         const textIndex = document.createElement('p')
@@ -134,10 +135,6 @@ export default async function loadSingleBook(bookID) {
         showCover: true
     })
     pageFlip.loadFromHTML(document.querySelectorAll('.page'));
-
-    pageFlip.on('changeState', (e) => {
-        console.log(e)
-    })
 
     wrapper.onclick = (e) => {
         if (e.target == wrapper) {
