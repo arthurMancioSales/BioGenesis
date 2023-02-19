@@ -14,10 +14,10 @@ router.get(`/bookshelves`, (req, res) => {
   res.sendFile("/public/index.html", { root: "./" });
 });
 
-router.get(`/page2`, (req, res) => {
+router.get(`/login`, (req, res) => {
   res.sendFile("/public/index.html", { root: "./" });
 });
 
-router.get(`/page3`, (req, res) => {
+router.get(`/register`, (req, res) => {
   res.sendFile("/public/index.html", { root: "./" });
 });
