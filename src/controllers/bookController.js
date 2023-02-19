@@ -55,7 +55,7 @@ export async function createBook(req, res) {
         console.log(TAG, error)
 
         response.message = "Não foi possível criar o livro"
-        response.error = "Erro interno do servidor"
+        response.error = error
 
         res.status(500).json(response)
         console.timeEnd("createBook()")
