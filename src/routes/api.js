@@ -59,14 +59,8 @@ const bookPages = [
 // Retorna um array com todas as estantes -> @author {Arthur}
 router.get("/bookshelves", bookshelfController.getAllBookshelves);
 
-// Retorna um array com todos os livros da estante -> @author {Arthur}
-router.get("/bookshelves/:id/books", (req, res) => {
-    req.body;
-
-    const foundBooks = books.filter((item) => item.estante_id == req.params.id);
-
-    res.json(foundBooks);
-});
+// Retorna um array com todos os livros de uma estante -> @author {Arthur}
+router.get("/bookshelves/:id/books", bookController.readAllBooksOnShelf)
 
 // Retorna um array com todas as páginas de um livro específico -> @author {Arthur}
 router.get("/books/:id", (req, res) => {
@@ -97,12 +91,20 @@ router.post("/book/page", pageController.createPage)
 //     authorName: nome do autor -> String
 // }
 
+// Apaga uma estante
+// router.delete()
+
 // Apaga um livro
-// router.post()
+// router.delete()
 
 // Apaga uma pagina
+// router.delete()
 
 // Atualiza um livro
-// router.post()
+// router.put()
+
+// Atualiza um livro
+// router.put()
 
 // Atualiza uma pagina
+// router.put()

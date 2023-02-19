@@ -7,7 +7,6 @@
 
 .title_shiefbook {
     text-align: center;
-    margin: 1em 0;
     font-size: 60px;
     font-family: roboto;
 }
@@ -38,7 +37,7 @@
     justify-content: space-around;
     height: 20%;
     align-items: center;
-
+    flex-direction: column;
 }
 
 .gallery-wrapper {
@@ -464,4 +463,5 @@ button:active {
     background-position: top;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     margin-bottom: 4%;
+    font-family: 'Roboto Condensed', sans-serif;
 }

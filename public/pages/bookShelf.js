@@ -11,6 +11,10 @@ export default function bookshelf() {
   const title = document.createElement("h1");
   title.className = "title_shiefbook";
 
+  const subtitle = document.createElement("h2");
+  subtitle.id = "subtitle"
+  // subtitle.className = "subtitle_shiefbook";
+
   const galleryWrapper = document.createElement("div");
   galleryWrapper.className = "gallery-wrapper";
 
@@ -59,6 +63,7 @@ export default function bookshelf() {
   header.classList.add("headerShelf");
   header.appendChild(previousImage);
   header.appendChild(title);
+  header.appendChild(subtitle);
   header.appendChild(nextImage);
 
   galleryWrapper.appendChild(gallery);

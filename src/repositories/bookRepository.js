@@ -13,11 +13,14 @@ export async function createBook(bookTitle, bookshelfName, userName) {
         WHERE 
             book_name = $1 
         AND 
-            bookshelves.name = $2`
-        
-        const duplicate = await pool.query(duplicateBook, [bookTitle, bookshelfName])
+            bookshelves.name = $2`;
+
+        const duplicate = await pool.query(duplicateBook, [
+            bookTitle,
+            bookshelfName,
+        ]);
         if (duplicate.rows[0].count == 1) {
-            throw "Já existe um livro com esse nome nessa estante"
+            throw "Já existe um livro com esse nome nessa estante";
         }
 
         const createBookQuery = `
@@ -46,6 +49,31 @@ export async function createBook(bookTitle, bookshelfName, userName) {
         return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at createBook()");
+        throw error;
+    }
+}
+
+// Retorna um array com todos os livros de uma estante -> @author {Arthur}
+export async function readAllBooksOnShelf(bookshelfID) {
+    try {
+        const readBooksQuery = `
+        SELECT 
+            book_id,
+            book_name,
+            username,
+            created_at,
+            updated_at
+        FROM 
+            books
+        JOIN
+            users ON users.user_id = books.author_id
+        WHERE 
+            bookshelf_id = $1`;
+
+        const response = await pool.query(readBooksQuery, [bookshelfID]);
+        return response.rows;
+    } catch (error) {
+        console.log(TAG, "error caught at readAllBooksOnShelf()");
         throw error;
     }
 }
