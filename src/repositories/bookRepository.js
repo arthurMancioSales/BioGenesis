@@ -33,13 +33,14 @@ export async function createBook(
             bookshelf_id,
             book_name,
             author_id,
-            created_at
+            created_at,
+            cover_image
         )
         SELECT 
             bookshelf_id,
             $1,
             user_id,
-            NOW()
+            NOW(),
             $4
         FROM
             bookshelves,
