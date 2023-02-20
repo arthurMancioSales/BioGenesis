@@ -3,7 +3,12 @@ import pool from "./database.js";
 const TAG = "Books Repository";
 
 // Cria um livro novo -> @author {Arthur}
-export async function createBook(bookTitle, bookshelfName, userName, coverImage) {
+export async function createBook(
+    bookTitle,
+    bookshelfName,
+    userName,
+    coverImage
+) {
     try {
         const duplicateBook = `
         SELECT 
@@ -46,7 +51,7 @@ export async function createBook(bookTitle, bookshelfName, userName, coverImage)
             bookTitle,
             bookshelfName,
             userName,
-            coverImage
+            coverImage,
         ]);
         return response.rows;
     } catch (error) {
@@ -76,6 +81,29 @@ export async function readAllBooksOnShelf(bookshelfID) {
         return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at readAllBooksOnShelf()");
+        throw error;
+    }
+}
+
+export async function getAllBooks() {
+    try {
+        const getAllBooksQuery = `        
+        SELECT 
+            books.book_id,
+            books.book_name,
+            bookshelves.name as bookshelf_name,
+            users.username as author
+        FROM
+            books
+        JOIN
+            bookshelves ON books.bookshelf_id = bookshelves.bookshelf_id
+        JOIN
+            users ON books.author_id = users.user_id`;
+        
+            const response = await pool.query(getAllBooksQuery);
+        return response.rows;
+    } catch (error) {
+        console.log(TAG, "error caught at getAllBooks()");
         throw error;
     }
 }

@@ -2,16 +2,16 @@
 import * as bookService from "../services/bookService.js";
 const TAG = "Book Controller";
 
+const response = {
+    message: "",
+    data: null,
+    error: null,
+};
+
 // Cria um livro novo -> @author {Arthur}
 export async function createBook(req, res) {
     console.log(TAG);
     console.time("createBook()");
-
-    const response = {
-        message: "",
-        data: null,
-        error: null,
-    };
 
     const { bookTitle, bookshelfName, userName, coverImage } = req.body;
 
@@ -80,12 +80,6 @@ export async function readAllBooksOnShelf(req, res) {
     console.log(TAG);
     console.time("readAllBooksOnShelf()");
 
-    const response = {
-        message: "",
-        data: null,
-        error: null,
-    };
-
     const bookshelfID = req.params.id;
 
     if (isNaN(bookshelfID) || bookshelfID < 0) {
@@ -112,5 +106,28 @@ export async function readAllBooksOnShelf(req, res) {
 
         console.log(TAG, error);
         console.timeEnd("readAllBooksOnShelf()");
+    }
+}
+
+export async function getAllBooks(req, res) {
+    console.log(TAG);
+    console.time("getAllBooks()")
+
+    try {
+        const serviceResponse = await bookService.getAllBooks()
+
+        response.message = "Operação concluida com sucesso"
+        response.data = serviceResponse
+        
+        res.status(200).json(response)
+        console.timeEnd("readAllBooksOnShelf()");
+    } catch (error) {
+        response.message = "Não foi possível retornar todo os livros";
+        response.error = "Erro interno do servidor";
+
+        res.status(500).json(response);
+
+        console.log(TAG, error)
+        console.timeEnd("getAllBooks()")
     }
 }
