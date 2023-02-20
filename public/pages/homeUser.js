@@ -97,7 +97,6 @@ export default function homeUser() {
 
             nav.style.display = "none"
             nav.style.width = "0"
-
         }
         else {
             imgDiv2.style.transform = "rotate(90deg)";
@@ -106,11 +105,9 @@ export default function homeUser() {
 
             nav.style.display = "flex";
             nav.style.width = "30%"
+
         }
     };
-
-
-
 
     div2.appendChild(imgDiv2);
 
