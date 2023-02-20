@@ -121,8 +121,13 @@ export default function list() {
     outDiv.appendChild(main);
 
     async function printTable(){
-        let userList = await get();
-        createTable(userList);
+        await fetch("http://localhost:5000/books/1")
+        .then((response) => {
+            return response.json();
+        })
+        .then((data) => {
+            createTable(data);
+        })
     };
     
     function createTable(userList){
@@ -155,15 +160,17 @@ export default function list() {
     
         let i = cont - 1;
       
-        col1.innerHTML = `<span>${i+1}</span>`;
-        col2.innerHTML = `<span>${userList[i].name}</span>`;
-        col3.innerHTML = `<span>${userList[i].email}<span>`;
+        col1.innerHTML = `<span>${userList[i].id}</span>`;
+        col2.innerHTML = `<span>${userList[i].nome}</span>`;
+        col3.innerHTML = `<span>${userList[i].estante_id}<span>`;
         col4.innerHTML = `<img src="../images/lapis.png" alt="edit">`;
         col5.innerHTML = `<img src="../images/excluir.png" alt="del">`;
     
-        col4.addEventListener("click", () => editFunction(userList[i].id, userList[i].name, userList[i].email));
-        col5.addEventListener("click", () => del(userList[i].id));
+        /* col4.addEventListener("click", () => editFunction(userList[i].id, userList[i].name, userList[i].email));
+        col5.addEventListener("click", () => del(userList[i].id)); */
     };
+
+    printTable();
 
 
 

@@ -149,6 +149,8 @@ export default function homeUser() {
 
     // cria a imagem do aside
     const imgAside = document.createElement('img');
+    imgAside.classList.add('link');
+    imgAside.setAttribute('src', '/images/estante.png');
     imgAside.classList.add('link', "imgScale");
     imgAside.setAttribute('src', '/images/prateleira.png');
     imgAside.setAttribute('id', 'shelf');

@@ -1,7 +1,6 @@
 // @author {Thiago}
 // @coauthor {Arthur}
 
-// import Home from "../pages/homeUser.js";
 import bookshelf from "../pages/bookShelf.js";
 import homeUser from "../pages/homeUser.js";
 import login from "../pages/login.js";
@@ -24,7 +23,7 @@ export default function SPA() {
       return this[url]();
     },
 
-    redirect(url) {
+    redirect: function (url) {
       const page = this.getPage(url);
       window.history.pushState({}, "", url);
       root.innerHTML = "";
