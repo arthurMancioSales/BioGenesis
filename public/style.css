@@ -308,30 +308,9 @@ button:active {
     right: 45%;
 }
 
-
-.prateleira {
-    background-image: url('./images/prateleira.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.shelf {
-    display: flex;
-    gap: 5px;
-    height: 45%;
-    width: 45%;
-    padding-top: 5%;
-    padding-left: 2%;
-    flex-wrap: wrap;
-}
-
 /* @author {Arthur} */
 .page {
-    background-color: #f3e9d8;
+    /* background-color: #f3e9d8; */
 
     display: flex; 
     justify-content: center;
@@ -340,9 +319,9 @@ button:active {
     text-align: justify;
 }
 
-.coverPage {
+/* .coverPage {
     background-color: #474541;
-}
+} */
 
 .coverPage .page-content {
     justify-content: center;
@@ -446,6 +425,31 @@ button:active {
     cursor: pointer;
     }
 
+/* @author {Thiago} */
+.prateleira {
+    background-image: url('./images/prateleira.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.shelf {
+    position: relative;
+    top: 7.3%;
+    display: flex;
+    gap: 5px;
+    height: 78%;
+    width: 60%;
+    padding-top: 5%;
+    padding-left: 4.5%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    align-content: flex-start
+}
+
 .bookSpine {
     display: flex;
     align-items: center;
@@ -456,8 +460,8 @@ button:active {
     font-size: larger;
     font-weight: 600;
     text-transform: capitalize;
-    height: 55%;
-    width: 12%;
+    height: 30%;
+    width: 9%;
     background-image: url("./images/bookSpine.png");
     background-repeat: no-repeat;
     background-size: cover;
