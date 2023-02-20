@@ -78,7 +78,7 @@ export default function homeUser() {
     // cria a imagem do aside
     const imgAside = document.createElement('img');
     imgAside.classList.add('link');
-    imgAside.setAttribute('src', '/images/prateleira.png');
+    imgAside.setAttribute('src', '/images/estante.png');
     imgAside.setAttribute('id', 'shelf');
     imgAside.onclick = () => spa.redirect("/bookshelves");
 

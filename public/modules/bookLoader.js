@@ -3,10 +3,10 @@
 
 import { PageFlip } from "/vendor/page-flip.module.js";
 
-export default async function loadSingleBook(bookID, title, color) {
+export default async function loadSingleBook(bookID, title, color, author) {
   const json = await fetch(`http://localhost:5000/api/books/${bookID}`);
   const pages = await json.json();
-
+  console.log(pages);
   let pageCount = 1;
 
   const wrapper = document.createElement("div");
@@ -24,12 +24,13 @@ export default async function loadSingleBook(bookID, title, color) {
   wrapper.appendChild(book);
 
   const pageCover = document.createElement("div");
-  pageCover.classList.add("coverPage", "page");
+  pageCover.classList.add("page");
   pageCover.dataset.density = "hard";
+  pageCover.style.backgroundColor = color;
   book.appendChild(pageCover);
 
   const pageCoverContent = document.createElement("div");
-  pageCoverContent.classList.add("page-content");
+  pageCoverContent.classList.add("coverPage");
   pageCoverContent.style.backgroundColor = color;
   pageCover.appendChild(pageCoverContent);
 
@@ -39,8 +40,18 @@ export default async function loadSingleBook(bookID, title, color) {
   pageCover.appendChild(bookTitle);
   pageCoverContent.appendChild(bookTitle);
 
+  const bookCoverImage = document.createElement("img");
+  bookCoverImage.classList.add("bookCoverImage");
+  bookCoverImage.src = `/uploads/${pages[0].cover_image}`;
+  pageCoverContent.appendChild(bookCoverImage);
+
+  const bookAuthor = document.createElement("h3");
+  bookAuthor.classList.add("bookAuthor");
+  bookAuthor.innerText = `por \n ${author}`;
+  pageCoverContent.appendChild(bookAuthor);
+
   const openCover = document.createElement("div");
-  openCover.classList.add("coverPage", "page");
+  openCover.classList.add("page");
   openCover.dataset.density = "hard";
   book.appendChild(openCover);
 
@@ -75,15 +86,15 @@ export default async function loadSingleBook(bookID, title, color) {
   pageCount++;
   let pageIndex = 2;
 
-  pages.forEach((page, i) => {
-    const index = document.createElement("li");
-    index.classList.add("bookIndex");
-    index.textContent = page.topico;
-    index.onclick = () => {
-      pageFlip.turnToPage(2 * i + 1);
-    };
-    indexList.appendChild(index);
-    pageIndex++;
+    pages.forEach((page, i) => {
+        const index = document.createElement('li')
+        index.classList.add('bookIndex')
+        index.textContent = page.topic_name
+        index.onclick = () => {
+            pageFlip.turnToPage(2 * i + 1)
+        }
+        indexList.appendChild(index)
+        pageIndex++
 
     const imgDiv = document.createElement("div");
     imgDiv.classList.add("page");
@@ -93,10 +104,10 @@ export default async function loadSingleBook(bookID, title, color) {
     imgDivContent.style.backgroundColor = "#f3e9d8";
     imgDiv.appendChild(imgDivContent);
 
-    const img = document.createElement("img");
-    img.src = "/images/prateleira.png";
-    img.classList.add("bookImage");
-    imgDivContent.appendChild(img);
+        const img = document.createElement('img')
+        img.src = `/uploads/${page.image}`
+        img.classList.add("bookImage")
+        imgDivContent.appendChild(img)
 
     const imgIndex = document.createElement("p");
     imgIndex.classList.add("pageFooter", "footerLeft");
@@ -114,13 +125,13 @@ export default async function loadSingleBook(bookID, title, color) {
 
     const title = document.createElement("h2");
     title.classList.add("bookChapter");
-    title.textContent = page.topico;
+    title.textContent = page.topic_name;
     textDivContent.appendChild(title);
 
-    const text = document.createElement("p");
-    text.classList.add("bookText");
-    text.textContent = page.conteudo;
-    textDivContent.appendChild(text);
+        const text = document.createElement('p')
+        text.classList.add('bookText')
+        text.textContent = page.content
+        textDivContent.appendChild(text)
 
     const textIndex = document.createElement("p");
     textIndex.classList.add("pageFooter", "footerRight");
@@ -133,27 +144,23 @@ export default async function loadSingleBook(bookID, title, color) {
   });
 
   const closeCover = document.createElement("div");
-  closeCover.classList.add("coverPage", "page");
+  closeCover.classList.add("page");
   closeCover.dataset.density = "hard";
   book.appendChild(closeCover);
 
   const closeCoverContent = document.createElement("div");
-  closeCoverContent.classList.add("page-content");
+  closeCoverContent.classList.add("coverPage");
   closeCoverContent.style.backgroundColor = color;
   closeCover.appendChild(closeCoverContent);
 
   document.querySelector("#root").appendChild(wrapper);
 
-  const pageFlip = new PageFlip(book, {
-    width: 886 / 2,
-    height: 600,
-    showCover: true,
-  });
-  pageFlip.loadFromHTML(document.querySelectorAll(".page"));
-
-  pageFlip.on("changeState", (e) => {
-    console.log(e);
-  });
+    const pageFlip = new PageFlip(book, {
+        width: 886/2,
+        height: 600,
+        showCover: true
+    })
+    pageFlip.loadFromHTML(document.querySelectorAll('.page'));
 
   wrapper.onclick = (e) => {
     if (e.target == wrapper) {
