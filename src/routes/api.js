@@ -65,6 +65,9 @@ router.get("/bookshelves/:id/books", bookController.readAllBooksOnShelf)
 // Retorna um array com todas as páginas de um livro específico -> @author {Arthur}
 router.get("/books/:id", pageController.getAllPagesFromBook)
 
+// Retorna um array com todos os livros -> @author {Arthur}
+router.get('/books', bookController.getAllBooks)
+
 // Cria uma estante nova -> @author {Arthur}
 router.post("/bookshelves", bookshelfController.createBookshelf);
 // {
@@ -89,6 +92,8 @@ router.post("/book/page", pageController.createPage)
 //     image: "nome da imagem", -> String
 //     authorName: nome do autor -> String
 // }
+
+
 
 // Apaga uma estante
 // router.delete()
