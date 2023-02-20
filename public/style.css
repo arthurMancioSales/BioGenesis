@@ -127,7 +127,11 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    background-color: rgba(238, 255, 245, 0.84)
+    background-color: rgba(238, 255, 245, 0.84);
+    background-image: url("/images/bookshelf.svg");
+    background-size: 100%;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
 
 }
 
@@ -138,13 +142,16 @@
     flex-direction: column;
     justify-content: center;
     border-radius: 10px;
-    background-color: aquamarine;
+    background-color: rgb(201, 252, 235);
     padding: 10px;
     margin: 10px;
+    box-shadow:rgba(0, 0, 0, 0.5);
+    border: 1px solid #000000;
 }
 
 .divbtn input[type="submit"]{
     margin: 10px;
+    padding: 5px;
 }
 
 input, select, textarea {
@@ -162,6 +169,11 @@ input, select, textarea {
     margin-bottom: 0.2em;
     color: #0b041f;
     display: block;
+}
+
+.input-container label textarea {
+    width: 400px;
+    height: 100px;
 }
 
 
@@ -182,7 +194,7 @@ input, select, textarea {
 
 
 /* @Autor: Davi */
-/* .bodyHome {
+/* /* .bodyHome {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -373,7 +385,7 @@ button:hover {
     position: relative;
     bottom: 5%;
     right: 45%;
-}
+} */
 
 
 /* @author {Arthur} */
