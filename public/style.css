@@ -18,7 +18,7 @@
     height: 100vh;
     display: flex;
     flex-direction: column;
-    background-color: rgba(238, 255, 245, 0.84)
+    background-color: rgba(206, 222, 213, 0.84)
 
     
 }
@@ -55,8 +55,8 @@
     height: 100%;
     color: #fff;
     transition: all 600ms ease-in-out;
-    background: linear-gradient(to right, transparent 0%, black 200%);
-    opacity: 0.1;
+    
+    opacity: 0.6;
     cursor: pointer;
     border: none;
 }
@@ -69,11 +69,14 @@
 .arrow-right {
     right: 0;
     text-align: right;
+    background: linear-gradient(to right, transparent 0%, black 200%);
 }
 
 .arrow-left {
     left: 0;
-    text-align: right;
+    text-align: left;
+    background: linear-gradient(to left, transparent 0%, black 200%);
+
 }
 
 .gallery {
@@ -105,6 +108,25 @@
     scrollbar-width: none;
 }
 
+.prateleira {
+    background-image: url('./images/prateleira.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    position: relative;
+    display: flex;
+    justify-content: center;
+}
+
+.shelf {
+    display: flex;
+    gap: 5px;
+    height: 45%;
+    width: 45%;
+    padding-top: 5%;
+    padding-left: 2%;
+    flex-wrap: wrap;
+}
 
 /* @Autor: Davi */
 .bodyHome {
@@ -190,6 +212,8 @@ header{
 
 .sectionBox{
     width: 30%;
+    margin-right: auto;
+    align-items: start;
 }
 
 .headerText{
@@ -210,13 +234,16 @@ header{
     font-weight: bolder;
 
     overflow-wrap: break-word;
+
+    margin-bottom: 1.5rem;
 }
 
 .bodyText{
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 20px;
+    color: #207A29;
 
-    line-height: 30px;
+    /* line-height: 30px; */
 
     overflow-wrap: break-word;
 }
@@ -246,32 +273,33 @@ input, select {
 
 }
 
-button {
-    background-color: #4CAF50;
+#beginBtn {
+    background-color: #8BE67E;
     border: none;
-    color: white;
+    color: black;
     text-align: center;
     text-decoration: none;
     font-size: 24px;
-    font-weight: bold;
+    font-weight: 500;
     
     box-shadow: 0 4px #999;
     
-    border-radius: 10px;
+    border-radius: 30px;
     padding: 5px;
-    margin: 5px;
-    margin-top: 25px;
+    margin:  1.5rem 0px 5px 0;
 
-    width: 150px;
-    height: 50px;
+    width: 270px;
+    height: 60px;
+
+    transition: all 600ms;
 }
 
-button:hover {
-    background-color: #357737;
+#beginBtn:hover {
+    background-color: #68b05f;
     cursor:pointer;
 }
 
-button:active {
+#beginBtn:active {
   background-color: #3e8e41;
   box-shadow: 0 1px #666;
   transform: translateY(4px);
@@ -307,25 +335,8 @@ button:active {
     right: 45%;
 }
 
-
-.prateleira {
-    background-image: url('./images/prateleira.png');
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
-    position: relative;
-    display: flex;
-    justify-content: center;
-}
-
-.shelf {
-    display: flex;
-    gap: 5px;
-    height: 45%;
-    width: 45%;
-    padding-top: 5%;
-    padding-left: 2%;
-    flex-wrap: wrap;
+#shelf {
+    width: 700px;
 }
 
 /* @author {Arthur} */
@@ -464,4 +475,8 @@ button:active {
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     margin-bottom: 4%;
     font-family: 'Roboto Condensed', sans-serif;
+}
+
+#subtitle {
+    transition: all 5s;
 }
