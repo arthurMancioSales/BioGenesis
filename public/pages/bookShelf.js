@@ -1,6 +1,6 @@
 // @author {Pedro}
+// @coauthor {Thiago}
 
-import loadBook from "../modules/bookLoader.js";
 import { isLeft, isRight } from "../modules/carrossel.js";
 import loadBooks from "../modules/loadBooks.js";
 
