@@ -3,11 +3,17 @@
 
 import bookshelf from "../pages/bookShelf.js";
 import homeUser from "../pages/homeUser.js";
+import login from "../pages/login.js";
+import register from "../pages/register.js";
+import list from "../pages/list.js";
 
 export default function SPA() {
   return {
     "/": homeUser,
     "/bookshelves": bookshelf,
+    "/login": login,
+    "/register": register,
+    "/list": list,
 
     getPage: function (url) {
       console.log(url);

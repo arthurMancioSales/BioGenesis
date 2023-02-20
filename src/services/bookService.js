@@ -30,3 +30,13 @@ export async function readAllBooksOnShelf(bookshelfID) {
         throw error;
     }
 }
+
+export async function getAllBooks() {
+    try {
+        const dbResponse = await bookRepository.getAllBooks()
+        return dbResponse
+    } catch (error) {
+        console.log(TAG, "error caught at getAllBooks()");
+        throw error
+    }
+}
