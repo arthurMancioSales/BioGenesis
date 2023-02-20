@@ -13,7 +13,8 @@ export default function bookshelf() {
 
   const subtitle = document.createElement("h2");
   subtitle.id = "subtitle"
-  // subtitle.className = "subtitle_shiefbook";
+  subtitle.innerText = 'a'
+  subtitle.style.opacity = 0
 
   const galleryWrapper = document.createElement("div");
   galleryWrapper.className = "gallery-wrapper";

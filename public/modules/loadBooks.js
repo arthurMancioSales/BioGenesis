@@ -41,10 +41,13 @@ function createBookSpine(item) {
   Book.onmouseover = (e) => {
 		const subtitle = document.querySelector("#subtitle")
 		subtitle.innerText = e.target.outerText
+		subtitle.style.opacity = 1
   }
 	Book.onmouseleave = (e) => {
 		const subtitle = document.querySelector("#subtitle")
-		subtitle.innerText = ""
+    console.log(e)
+    subtitle.style.userSelect = "none" 
+		subtitle.style.opacity = 0
   };
 
   bookshelf.appendChild(Book);
