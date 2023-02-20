@@ -12,8 +12,8 @@ const response = {
 export async function createBook(req, res) {
     console.log(TAG);
     console.time("createBook()");
-
     const { bookTitle, bookshelfName, userName, coverImage } = req.body;
+    console.log(req.body)
 
     if (bookTitle.length == 0 || typeof bookTitle != "string") {
         response.message = "Informe um nome válido para o livro";

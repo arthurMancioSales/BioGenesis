@@ -45,7 +45,7 @@ export default function list() {
 
     const inputShelfDiv = document.createElement('input');
     inputShelfDiv.type = 'text';
-    inputShelfDiv.id = 'email';
+    inputShelfDiv.id = 'bookshelfName';
     inputShelfDiv.classList.add('input-field');
     inputShelfDiv.placeholder = 'Prateleira';
 
@@ -53,6 +53,20 @@ export default function list() {
     buttonDiv.type = 'button';
     buttonDiv.id = 'cadastrar';
     buttonDiv.textContent = "Cadastrar";
+    buttonDiv.onclick = async () => {
+        const bookTitle = document.querySelector("#name").value
+        console.log(bookTitle)
+        const bookShelfName = document.querySelector("#bookshelfName").value
+        console.log(bookShelfName)
+    
+        await fetch("http://localhost:5000/api/book", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({'bookTitle': bookTitle,'bookshelfName': bookShelfName,'userName': 'usuarioTeste','coverImage': '63e56d334e133.png'})
+        })
+        document.querySelector("#table").innerHTML = ""
+        await printTable()
+    }
     buttonDiv.classList.add('button');
 
     inputdivMain.appendChild(inputBookDiv);
@@ -157,7 +171,7 @@ export default function list() {
         line.appendChild(col4);
         line.appendChild(col5);
     
-        table.appendChild(line);
+        tbody.appendChild(line);
     
         let i = cont - 1;
       
@@ -172,27 +186,5 @@ export default function list() {
     };
 
     printTable();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     return outDiv;
 }

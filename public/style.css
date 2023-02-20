@@ -2,10 +2,6 @@
     --bookFont: "Roboto Condensed", sans-serif;
 }
 
-body {
-    overflow: hidden;
-}
-
 /* @Autor: Pedro */
 * {
     margin: 0;
@@ -666,6 +662,8 @@ select {
 .bookWrapper {
     width: 100%;
     height: 100%;
+
+    overflow: hidden;
 
     position: absolute;
     bottom: 0;
