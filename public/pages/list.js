@@ -121,17 +121,18 @@ export default function list() {
     outDiv.appendChild(main);
 
     async function printTable(){
-        await fetch("http://localhost:5000/books/1")
+        await fetch("http://localhost:5000/api/books/")
         .then((response) => {
             return response.json();
         })
         .then((data) => {
-            createTable(data);
+            createTable(data.data);
+            console.log(data.data)
         })
     };
     
     function createTable(userList){
-        table.innerHTML = "";
+        /* table.innerHTML = ""; */
     
         let cont = 1;
         while (userList.length >= cont){
@@ -160,9 +161,9 @@ export default function list() {
     
         let i = cont - 1;
       
-        col1.innerHTML = `<span>${userList[i].id}</span>`;
-        col2.innerHTML = `<span>${userList[i].nome}</span>`;
-        col3.innerHTML = `<span>${userList[i].estante_id}<span>`;
+        col1.innerHTML = `<span>${userList[i].book_id}</span>`;
+        col2.innerHTML = `<span>${userList[i].book_name}</span>`;
+        col3.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
         col4.innerHTML = `<img src="../images/lapis.png" alt="edit">`;
         col5.innerHTML = `<img src="../images/excluir.png" alt="del">`;
     
