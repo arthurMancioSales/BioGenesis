@@ -76,7 +76,8 @@ router.post("/book", bookController.createBook);
 // {
 //     'bookTitle': 'nome do livro', -> String
 //     'bookshelfName': 'nome da estante', -> String
-//     'userName': 'nome do usuário' -> String
+//     'userName': 'nome do usuário' -> String,
+//     'coverImage': 'nome da imagem' -> String
 // }
 
 //Criar uma pagina nova

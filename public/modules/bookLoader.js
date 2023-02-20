@@ -3,10 +3,10 @@
 
 import { PageFlip } from "/vendor/page-flip.module.js";
 
-export default async function loadSingleBook(bookID, title, color) {
+export default async function loadSingleBook(bookID, title, color, author) {
   const json = await fetch(`http://localhost:5000/api/books/${bookID}`);
   const pages = await json.json();
-
+  console.log(pages);
   let pageCount = 1;
 
   const wrapper = document.createElement("div");
@@ -24,12 +24,13 @@ export default async function loadSingleBook(bookID, title, color) {
   wrapper.appendChild(book);
 
   const pageCover = document.createElement("div");
-  pageCover.classList.add("coverPage", "page");
+  pageCover.classList.add("page");
   pageCover.dataset.density = "hard";
+  pageCover.style.backgroundColor = color;
   book.appendChild(pageCover);
 
   const pageCoverContent = document.createElement("div");
-  pageCoverContent.classList.add("page-content");
+  pageCoverContent.classList.add("coverPage");
   pageCoverContent.style.backgroundColor = color;
   pageCover.appendChild(pageCoverContent);
 
@@ -39,8 +40,18 @@ export default async function loadSingleBook(bookID, title, color) {
   pageCover.appendChild(bookTitle);
   pageCoverContent.appendChild(bookTitle);
 
+  const bookCoverImage = document.createElement("img");
+  bookCoverImage.classList.add("bookCoverImage");
+  bookCoverImage.src = `/uploads/${pages[0].cover_image}`;
+  pageCoverContent.appendChild(bookCoverImage);
+
+  const bookAuthor = document.createElement("h3");
+  bookAuthor.classList.add("bookAuthor");
+  bookAuthor.innerText = `por \n ${author}`;
+  pageCoverContent.appendChild(bookAuthor);
+
   const openCover = document.createElement("div");
-  openCover.classList.add("coverPage", "page");
+  openCover.classList.add("page");
   openCover.dataset.density = "hard";
   book.appendChild(openCover);
 
@@ -76,7 +87,6 @@ export default async function loadSingleBook(bookID, title, color) {
   let pageIndex = 2;
 
     pages.forEach((page, i) => {
-        console.log(page)
         const index = document.createElement('li')
         index.classList.add('bookIndex')
         index.textContent = page.topic_name
@@ -134,12 +144,12 @@ export default async function loadSingleBook(bookID, title, color) {
   });
 
   const closeCover = document.createElement("div");
-  closeCover.classList.add("coverPage", "page");
+  closeCover.classList.add("page");
   closeCover.dataset.density = "hard";
   book.appendChild(closeCover);
 
   const closeCoverContent = document.createElement("div");
-  closeCoverContent.classList.add("page-content");
+  closeCoverContent.classList.add("coverPage");
   closeCoverContent.style.backgroundColor = color;
   closeCover.appendChild(closeCoverContent);
 

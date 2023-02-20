@@ -3,12 +3,13 @@ import * as bookRepository from "../repositories/bookRepository.js";
 const TAG = "Bookshelf Service";
 
 // Cria um livro novo -> @author {Arthur}
-export async function createBook(bookTitle, bookshelfName, userName) {
+export async function createBook(bookTitle, bookshelfName, userName, coverImage) {
     try {
         const dbResponse = await bookRepository.createBook(
             bookTitle,
             bookshelfName,
-            userName
+            userName,
+            coverImage
         );
         return dbResponse;
     } catch (error) {

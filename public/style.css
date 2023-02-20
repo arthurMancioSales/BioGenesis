@@ -1,3 +1,11 @@
+:root {
+    --bookFont: 'Roboto Condensed', sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
 /* @Autor: Pedro */
 * {
     margin: 0;
@@ -350,12 +358,21 @@ input, select {
     text-align: justify;
 }
 
-/* .coverPage {
-    background-color: #474541;
-} */
-
-.coverPage .page-content {
+.page-content {
     justify-content: center;
+}
+
+.coverPage {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+    padding: 30px;
+    background-image: url('./images/BookCover.png');
+    background-size: 92% 94%;
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .bookWrapper {
@@ -432,8 +449,11 @@ input, select {
 .bookTitle {
     align-self: center;
     justify-self: center;
-    font-size: 25px;
-    color: white;
+    font-size: 30px;
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+    font-family: var(--bookFont);
+    text-transform: uppercase;
 }
 
 .pageFooter {
@@ -455,6 +475,16 @@ input, select {
     color: white;
     cursor: pointer;
     }
+
+.bookCoverImage {
+    width: 90%;
+}
+
+.bookAuthor {
+    text-align: center;
+    color: black;
+    text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
+}
 
 /* @author {Thiago} */
 .prateleira {
@@ -499,7 +529,7 @@ input, select {
     background-position: top;
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
     margin-bottom: 4%;
-    font-family: 'Roboto Condensed', sans-serif;
+    font-family: var(--bookFont)
 }
 
 #subtitle {

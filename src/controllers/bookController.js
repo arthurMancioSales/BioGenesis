@@ -13,7 +13,7 @@ export async function createBook(req, res) {
         error: null,
     };
 
-    const { bookTitle, bookshelfName, userName } = req.body;
+    const { bookTitle, bookshelfName, userName, coverImage } = req.body;
 
     if (bookTitle.length == 0 || typeof bookTitle != "string") {
         response.message = "Informe um nome válido para o livro";
@@ -42,11 +42,21 @@ export async function createBook(req, res) {
         return;
     }
 
+    if (coverImage.length == 0 || typeof coverImage != "string") {
+        response.message = "Informe uma imagem válida";
+        response.data = null;
+        response.error = "Nome de imagem fornecida é inválido";
+
+        res.status(400).json(response);
+        return;
+    }
+
     try {
         const serviceResponse = await bookService.createBook(
             bookTitle,
             bookshelfName,
-            userName
+            userName,
+            coverImage
         );
 
         response.message = "Livro criado com sucesso";

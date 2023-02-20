@@ -66,13 +66,17 @@ export async function getAllPagesFromBook(bookID) {
             pages.content,
             pages.image,
             users.username,
-            topic.name as topic_name
+            topic.name as topic_name,
+            books.cover_image
+            
         FROM 
             pages
         JOIN
             users ON pages.author = users.user_id
         JOIN
             topic ON pages.topic_id = topic.topic_id
+        JOIN
+            books ON pages.book_id = books.book_id
         WHERE
             pages.book_id = $1`;
 

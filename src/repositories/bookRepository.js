@@ -3,7 +3,7 @@ import pool from "./database.js";
 const TAG = "Books Repository";
 
 // Cria um livro novo -> @author {Arthur}
-export async function createBook(bookTitle, bookshelfName, userName) {
+export async function createBook(bookTitle, bookshelfName, userName, coverImage) {
     try {
         const duplicateBook = `
         SELECT 
@@ -35,6 +35,7 @@ export async function createBook(bookTitle, bookshelfName, userName) {
             $1,
             user_id,
             NOW()
+            $4
         FROM
             bookshelves,
             users
@@ -45,6 +46,7 @@ export async function createBook(bookTitle, bookshelfName, userName) {
             bookTitle,
             bookshelfName,
             userName,
+            coverImage
         ]);
         return response.rows;
     } catch (error) {
