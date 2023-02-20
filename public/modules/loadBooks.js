@@ -1,8 +1,8 @@
+// @author {Thiago}
+
 import loadSingleBook from "./bookLoader.js";
 
 export default async function loadBooks(id) {
-  // console.log(id);
-
   await fetch(`http://localhost:5000/api/bookshelves/${id}/books`)
     .then((response) => {
       return response.json();
@@ -23,21 +23,20 @@ function renderDivs(response) {
 function createBookSpine(item) {
   const bookshelf = document.querySelector(".current-item div");
 
-  // console.log(bookshelf);
-
-  const color = "#" + ((Math.random() * 0xffffff) << 0).toString(16);
+  const color = randomColor();
 
   const Book = document.createElement("div");
 
   Book.style.backgroundColor = color;
   Book.classList.add("bookSpine");
   Book.dataset.id = item.book_id;
+  Book.dataset.color = color;
   Book.innerText = item.book_name;
   Book.dataset.author = item.username
   Book.classList.add("Livro");
   Book.alt = "Book";
   Book.onclick = () => {
-    loadSingleBook(item.book_id)
+    loadSingleBook(item.book_id, item.nome, color);
   }
   Book.onmouseover = (e) => {
 		const subtitle = document.querySelector("#subtitle")
@@ -46,7 +45,14 @@ function createBookSpine(item) {
 	Book.onmouseleave = (e) => {
 		const subtitle = document.querySelector("#subtitle")
 		subtitle.innerText = ""
-  }
+  };
 
   bookshelf.appendChild(Book);
+}
+
+function randomColor() {
+  const hue = Math.random() * 360;
+  const saturation = Math.random() * 100;
+  const lightness = Math.random() * 100;
+  return `hsl(${hue}, ${saturation}%, ${lightness}%)`;
 }
