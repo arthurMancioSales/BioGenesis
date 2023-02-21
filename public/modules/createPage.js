@@ -11,6 +11,7 @@ export function createPage() {
 
     const divContainer = document.createElement("div");
     divContainer.classList.add('containerForms');
+    divContainer.id = "containerForms";
 
     const form = document.createElement("form");
     form.setAttribute("action", "");
