@@ -38,6 +38,78 @@ export default function homeUser() {
     imgDiv2.classList.add('link');
     imgDiv2.setAttribute('src', '/images/links.png');
     imgDiv2.setAttribute('id', 'menu');
+    
+    const nav = document.createElement("nav");
+    nav.classList.add('collapsible');
+
+    const divNav = document.createElement("div");
+    nav.classList.add('flexColumn');
+
+    const h2Nav = document.createElement("h2");
+    h2Nav.classList.add('h2coll');
+    h2Nav.textContent = "NOSSO ACERVO:"
+
+    nav.appendChild(h2Nav);
+
+    //Criação dos itens do menu colapsavel
+    for(let i = 0; i < 9; i++){
+        const btnNav = document.createElement("button");
+        btnNav.classList.add('colBtn');
+        btnNav.setAttribute('type', 'button');
+        btnNav.textContent = 'TEMA 1' + i;
+        nav.appendChild(btnNav)
+        
+
+        const colDivnav = document.createElement("div");
+        colDivnav.classList.add('colDivnav');
+
+        nav.appendChild(colDivnav)
+
+        btnNav.onclick = () => {
+            if(colDivnav.style.display == "block"){
+                colDivnav.style.display = "none"
+            }
+            else {
+                colDivnav.style.display = "block";
+            }
+        }
+
+        for(var j = 0; j < 9; j++){
+            const A = document.createElement("a");
+            A.classList.add('aNav', "link", "flexColumn");
+            A.textContent = `Livro 1 + ${j}`;
+            colDivnav.appendChild(A)
+    
+            A.onclick = () => {
+                console.log(A.textContent, btnNav.textContent)
+            }
+        }
+    }
+
+    nav.appendChild(divNav);
+    divInitial.appendChild(nav)
+
+    //Criação de dinamissidade para o simbolo do menu
+    imgDiv2.onclick = () => {
+
+        if(nav.style.display == "flex"){
+            imgDiv2.style.transform = "rotate(0deg)";
+            imgDiv2.style.right = "0";
+
+            nav.style.display = "none"
+            nav.style.width = "0"
+        }
+        else {
+            imgDiv2.style.transform = "rotate(90deg)";
+            imgDiv2.style.position = "relative";
+            imgDiv2.style.right = "400%";
+
+            nav.style.display = "flex";
+            nav.style.width = "30%"
+
+        }
+    };
+
     div2.appendChild(imgDiv2);
 
     header.appendChild(div2);
@@ -80,6 +152,8 @@ export default function homeUser() {
     const imgAside = document.createElement('img');
     imgAside.classList.add('link');
     imgAside.setAttribute('src', '/images/estante.png');
+    imgAside.classList.add('link', "imgScale");
+    imgAside.setAttribute('src', '/images/prateleira.png');
     imgAside.setAttribute('id', 'shelf');
     imgAside.onclick = () => spa.redirect("/bookshelves");
 

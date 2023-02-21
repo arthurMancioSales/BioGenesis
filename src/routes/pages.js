@@ -11,6 +11,18 @@ router.get(`/bookshelves`, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
 
-router.get(`/forms`, (req, res) => {
-    res.sendFile("/public/index.html", { root: "./" });
+router.get(`/login`, (req, res) => {
+  res.sendFile("/public/index.html", { root: "./" });
+});
+
+router.get(`/register`, (req, res) => {
+  res.sendFile("/public/index.html", { root: "./" });
+});
+
+router.get(`/list`, (req, res) => {
+  res.sendFile("/public/index.html", { root: "./" });
+});
+
+router.get(`/listShelves`, (req, res) => {
+  res.sendFile("/public/index.html", { root: "./" });
 });

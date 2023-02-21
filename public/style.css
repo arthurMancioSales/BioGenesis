@@ -3,10 +3,6 @@
     --bookFont: "Roboto Condensed", sans-serif;
 }
 
-body {
-    overflow: hidden;
-}
-
 /* @Autor: Pedro */
 /* @Coutor: Arthur */
 * {
@@ -94,8 +90,8 @@ body {
 }
 
 .item {
-    width: 500px;
-    height: 500px;
+    width: 33vw;
+    height: 33vw;
     flex-shrink: 0;
     transition: all 600ms ease-in-out;
     opacity: 0.5;
@@ -112,6 +108,290 @@ body {
 .gallery-wrapper {
     -ms-overflow-style: none;
     scrollbar-width: none;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerPages{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(238, 255, 245, 0.84);
+    background-image: url("/images/bookshelf.svg");
+    background-size: 100%;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
+
+}
+
+.containerForms {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(201, 252, 235);
+    padding: 10px;
+    margin: 10px;
+    box-shadow:rgba(0, 0, 0, 0.5);
+    border: 1px solid #000000;
+}
+
+.divbtn input[type="submit"]{
+    margin: 10px;
+    padding: 5px;
+}
+
+input, select, textarea {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #0b041f;
+    border-radius: 5px;
+}
+
+.input-container {
+    margin-bottom: 1em;
+}
+
+.input-container label {
+    margin-bottom: 0.2em;
+    color: #0b041f;
+    display: block;
+}
+
+.input-container label textarea {
+    width: 400px;
+    height: 100px;
+}
+
+
+.input-container .input-container input[type="file"], .input-container select, .input-container textarea {
+    padding: 0.2em;
+    color: #0b041f;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.input-container select option {
+    padding-right: 1em;
+}
+
+.input-container input:focus, .input-container select:focus, .input-container textarea:focus {
+    background: #E0E0F8;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerPages{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(238, 255, 245, 0.84);
+    background-image: url("/images/bookshelf.svg");
+    background-size: 100%;
+    background-position: 0 -25%;
+    background-repeat: no-repeat;
+
+}
+
+.containerForms {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: rgb(201, 252, 235);
+    padding: 10px;
+    margin: 10px;
+    box-shadow:rgba(0, 0, 0, 0.5);
+    border: 1px solid #000000;
+}
+
+.divbtn input[type="submit"]{
+    margin: 10px;
+    padding: 5px;
+}
+
+input, select, textarea {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #0b041f;
+    border-radius: 5px;
+}
+
+.input-container {
+    margin-bottom: 1em;
+}
+
+.input-container label {
+    margin-bottom: 0.2em;
+    color: #0b041f;
+    display: block;
+}
+
+.input-container label textarea {
+    width: 400px;
+    height: 100px;
+}
+
+
+.input-container .input-container input[type="file"], .input-container select, .input-container textarea {
+    padding: 0.2em;
+    color: #0b041f;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.input-container select option {
+    padding-right: 1em;
+}
+
+.input-container input:focus, .input-container select:focus, .input-container textarea:focus {
+    background: #E0E0F8;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerPages{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(238, 255, 245, 0.84)
+
+}
+
+.containerForms {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: aquamarine;
+    padding: 10px;
+    margin: 10px;
+}
+
+.divbtn input[type="submit"]{
+    margin: 10px;
+}
+
+input, select, textarea {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #0b041f;
+    border-radius: 5px;
+}
+
+.input-container {
+    margin-bottom: 1em;
+}
+
+.input-container label {
+    margin-bottom: 0.2em;
+    color: #0b041f;
+    display: block;
+}
+
+
+.input-container .input-container input[type="file"], .input-container select, .input-container textarea {
+    padding: 0.2em;
+    color: #0b041f;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.input-container select option {
+    padding-right: 1em;
+}
+
+.input-container input:focus, .input-container select:focus, .input-container textarea:focus {
+    background: #E0E0F8;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+}
+
+.containerPages{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    background-color: rgba(238, 255, 245, 0.84)
+
+}
+
+.containerForms {
+    width: 80vw;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: aquamarine;
+    padding: 10px;
+    margin: 10px;
+}
+
+.divbtn input[type="submit"]{
+    margin: 10px;
+}
+
+input, select, textarea {
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #0b041f;
+    border-radius: 5px;
+}
+
+.input-container {
+    margin-bottom: 1em;
+}
+
+.input-container label {
+    margin-bottom: 0.2em;
+    color: #0b041f;
+    display: block;
+}
+
+
+.input-container .input-container input[type="file"], .input-container select, .input-container textarea {
+    padding: 0.2em;
+    color: #0b041f;
+    box-shadow: 2px 2px 2px rgba(0,0,0,0.2);
+    display: block;
+}
+
+.input-container select option {
+    padding-right: 1em;
+}
+
+.input-container input:focus, .input-container select:focus, .input-container textarea:focus {
+    background: #E0E0F8;
 }
 
 .prateleira {
@@ -141,8 +421,8 @@ body {
     justify-content: center;
     align-items: center;
     align-content: center;
-
-    background-size: 100%;
+    
+    background-size: 100% 100%;
 
     height: 100vh;
     width: 100vw;
@@ -238,6 +518,8 @@ header {
     line-height: 50px;
     font-weight: bolder;
 
+    margin-bottom: 20px;
+
     overflow-wrap: break-word;
 
     margin-bottom: 1.5rem;
@@ -320,6 +602,9 @@ select {
 .pPosition {
     position: relative;
     right: 120px;
+
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 16px;
 }
 
 .link {
@@ -335,6 +620,10 @@ select {
     position: relative;
     bottom: 5%;
     right: 45%;
+} */
+
+#shelf {
+    width: 700px;
 }
 
 #shelf {
@@ -370,6 +659,8 @@ select {
 .bookWrapper {
     width: 100%;
     height: 100%;
+
+    overflow: hidden;
 
     position: absolute;
     bottom: 0;
@@ -526,7 +817,355 @@ select {
     user-select: none;
 }
 
+.modalWrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-background {
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalForms {
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    border-radius: 10px;
+    background-color: rgb(201, 252, 235);
+    padding: 15px 10px;
+    margin: 10px;
+    box-shadow:rgba(0, 0, 0, 0.5);
+    border: 1px solid #000000;
+}
+
+.modalWrapper {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-background {
+    background-color: white;
+    padding: 15px;
+    border-radius: 15px;
+    width: 40vw;
+    display: flex;
+    flex-direction: column;
+}
+
+.modalForms {
+    width: 95%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-self: center;
+    border-radius: 10px;
+    background-color: rgb(201, 252, 235);
+    padding: 15px 10px;
+    margin: 10px;
+    box-shadow:rgba(0, 0, 0, 0.5);
+    border: 1px solid #000000;
+}
+
 /* @author {Arthur} */
 #subtitle {
     transition: all 300ms;
 }
+
+/* list css */
+
+#headerList {
+    /* Rectangle 1 */
+    width: 100%;
+    height: 70px;
+
+    background: #14BC39;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 20px;
+    padding-top: 0px;
+}
+
+.mainList {
+    width: 90%;
+    height: 80px;
+    /* margin: auto; */
+}
+
+.h1List {
+    /* FRONT API */
+    /* width: 161px; */
+    height: 38px;
+
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+    /* identical to box height */
+    color: #FFFFFF;
+}
+
+.h2List {
+    width: 582px;
+    height: 35px;
+
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 30px;
+    color: #000000;
+}
+
+.pList {
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21px;
+}
+
+.containerList {
+    border-bottom: 1px solid #14BC39;
+    padding: 6px;
+    margin-bottom: 13px;
+    height: 100%;
+}
+
+
+.input-box {
+    width: 100%;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-field {
+    box-sizing: border-box;
+
+    width: 40%;
+    height: 50px;
+    margin-right: 15px;
+
+    background: #FBFBFB;
+    border: 1px solid #14BC39;
+    border-radius: 5px;
+
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26px;
+    padding-left: 20px;
+    padding-right: 20px;
+    
+    /* margin-bottom: 20px; */
+}
+
+.input-field::placeholder {
+    color: #827F7F;
+}
+
+#cadastrar {
+    width: 20%;
+    height: 50px;
+
+    margin-top: 7px;
+
+    background: #14BC39;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 26px;
+    /* identical to box height */
+
+    color: #FFFCFC;
+}
+
+#cadastrar:hover {
+    background-color: #108d2b;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #108d2b;
+    cursor: pointer;
+}
+
+.button:active {
+    background-color: #1a712d;
+}
+
+table {
+    width: 100%;
+
+    margin-top: 10px;
+    text-align: center;
+}
+
+#table-heading {
+    background-color: #14BC39;
+    color: #FFFFFF;
+}
+
+tr {
+    height: 50px;
+    width: 100%;
+}
+
+td {
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid white;
+}
+
+
+.theme, .title {
+    width: 35%;
+}
+
+.id-number, .edit {
+    width: 10%;
+}
+
+.imgList {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+
+.delete {
+    width: 10%;
+    border-right: 0px;
+}
+
+tr:nth-child(even) {
+    background: #BDE3C6;
+}
+
+.listBg{
+    background-image: url('../images/listBg.png');
+    background-size: 100% 100%;
+}
+
+.flexColumNoncenter{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: flex-start;
+    /* justify-content: center; */
+    overflow-y: scroll;
+
+    height: 100vh;
+
+}
+
+#section-lista {
+    padding-bottom: 3rem;
+}
+
+.imgScale{
+    max-width: 100%;
+    /* height: auto; */
+}
+
+.collapsible{
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow: auto;
+
+    position: absolute;
+    top: 0;
+    right: 0;
+
+    z-index: 9998;
+
+    width: 0;
+    height: 100%;
+    background-color: rgba(112, 192, 75, 0.9);
+    
+
+
+    padding-top: 90px;
+
+    transition: all 10ms ease;
+
+    /* transition: width 5s; */
+    /* transition: width 1s ease-out; */
+}
+
+#menu {
+    z-index: 9999;
+}
+
+.h2coll {
+    font-size: 26px;
+    font-family: Roboto, Helvetica, sans-serif;
+    padding-bottom: 15px;
+}
+
+.colBtn{
+    width: 100%;
+    margin-top: 0;
+    font-size: 18px;
+    height: 30px;
+    box-shadow: none;
+    margin: 0;
+    border-radius: 0;
+    padding: 5px;
+}
+
+.colBtn:active{
+    box-shadow: none;
+    transform: none;
+}
+
+.colDivnav{
+    display: none;
+    background-color: #827F7F;
+    width: 100%;
+    padding-top: 5px;
+
+}
+
+.aNav{
+    font-size: 16px;
+    font-family: Roboto, Helvetica, sans-serif;
+    /* margin-top: 5px;
+    margin-bottom: 5px; */
+    line-height: 20px;
+    padding: 5px;
+}
+
+
+
+/* button:active {
+    background-color: #3e8e41;
+    
+    
+  } */

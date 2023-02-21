@@ -4,12 +4,19 @@
 import bookshelf from "../pages/bookShelf.js";
 import form from "../pages/froms.js";
 import homeUser from "../pages/homeUser.js";
+import login from "../pages/login.js";
+import register from "../pages/register.js";
+import list from "../pages/list.js";
+import listShelves from "../pages/listShelves.js";
 
 export default function SPA() {
-    return {
-        "/": homeUser,
-        "/bookshelves": bookshelf,
-        "/forms": form,
+  return {
+    "/": homeUser,
+    "/bookshelves": bookshelf,
+    "/login": login,
+    "/register": register,
+    "/list": list,
+    "/listShelves": listShelves,
 
         getPage: function (url) {
             if (url == "/index.html") {
