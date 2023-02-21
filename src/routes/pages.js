@@ -25,3 +25,7 @@ router.get(`/register`, (req, res) => {
 router.get(`/list`, (req, res) => {
   res.sendFile("/public/index.html", { root: "./" });
 });
+
+router.get(`/listShelves`, (req, res) => {
+  res.sendFile("/public/index.html", { root: "./" });
+});
