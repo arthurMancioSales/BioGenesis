@@ -142,5 +142,5 @@ export default function form() {
 
     root.appendChild(form);
 
-    return root;
+    document.querySelector("body").appendChild(root);
 }

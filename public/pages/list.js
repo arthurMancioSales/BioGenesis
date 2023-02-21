@@ -1,4 +1,5 @@
 import SPA from "../modules/spa.js";
+import form from "./froms.js";
 const spa = SPA();
 
 export default function list() {
@@ -54,18 +55,19 @@ export default function list() {
     buttonDiv.id = 'cadastrar';
     buttonDiv.textContent = "Cadastrar";
     buttonDiv.onclick = async () => {
-        const bookTitle = document.querySelector("#name").value
-        console.log(bookTitle)
-        const bookShelfName = document.querySelector("#bookshelfName").value
-        console.log(bookShelfName)
+        form()
+        // const bookTitle = document.querySelector("#name").value
+        // console.log(bookTitle)
+        // const bookShelfName = document.querySelector("#bookshelfName").value
+        // console.log(bookShelfName)
     
-        await fetch("http://localhost:5000/api/book", {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({'bookTitle': bookTitle,'bookshelfName': bookShelfName,'userName': 'usuarioTeste','coverImage': '63e56d334e133.png'})
-        })
-        document.querySelector("#table").innerHTML = ""
-        await printTable()
+        // await fetch("http://localhost:5000/api/book", {
+        //     method: 'POST',
+        //     headers: { 'Content-Type': 'application/json' },
+        //     body: JSON.stringify({'bookTitle': bookTitle,'bookshelfName': bookShelfName,'userName': 'usuarioTeste','coverImage': '63e56d334e133.png'})
+        // })
+        // document.querySelector("#table").innerHTML = ""
+        // await printTable()
     }
     buttonDiv.classList.add('button');
 
