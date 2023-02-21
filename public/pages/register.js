@@ -45,6 +45,7 @@ export default function login() {
 
     // Crie um elemento <button> com o ID "createUser" e o texto "Cadastrar"
     const buttonMain = document.createElement("button");
+    buttonMain.classList.add("button");
     buttonMain.type = "button";
     buttonMain.id = "createUser";
     buttonMain.textContent = "Cadastrar";
