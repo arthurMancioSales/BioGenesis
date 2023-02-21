@@ -1,3 +1,4 @@
+/* @author {Arthur} */
 :root {
     --bookFont: "Roboto Condensed", sans-serif;
 }
@@ -7,6 +8,7 @@ body {
 }
 
 /* @Autor: Pedro */
+/* @Coutor: Arthur */
 * {
     margin: 0;
     padding: 0;
@@ -245,9 +247,6 @@ header {
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 20px;
     color: #207a29;
-
-    /* line-height: 30px; */
-
     overflow-wrap: break-word;
 }
 
@@ -344,8 +343,6 @@ select {
 
 /* @author {Arthur} */
 .page {
-    /* background-color: #f3e9d8; */
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -529,6 +526,7 @@ select {
     user-select: none;
 }
 
+/* @author {Arthur} */
 #subtitle {
     transition: all 300ms;
 }

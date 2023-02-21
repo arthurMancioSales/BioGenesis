@@ -5,9 +5,7 @@ import { router as pageRouter } from "./routes/pages.js";
 
 const router = Router();
 
-/**
- * @author {Thiago}
- */
+// @author {Thiago}
 router.use("/", pageRouter);
 
 // @author: {Arthur}

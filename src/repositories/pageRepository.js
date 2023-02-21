@@ -8,7 +8,8 @@ export async function createPage(
     topicName,
     content,
     image,
-    authorName
+    authorName,
+    client
 ) {
     try {
         const duplicatePageQuery = `        
@@ -19,7 +20,7 @@ export async function createPage(
         WHERE
             book_id = $1  AND topic_id = (SELECT topic_id FROM topic WHERE name = $2)`;
 
-        const duplicate = await pool.query(duplicatePageQuery, [
+        const duplicate = await client.query(duplicatePageQuery, [
             bookID,
             topicName,
         ]);
@@ -43,8 +44,8 @@ export async function createPage(
             (SELECT user_id FROM users WHERE username = $5)
         )
         RETURNING *`;
-
-        const response = await pool.query(createPageQuery, [
+        console.log("repository", topicName);
+        const response = await client.query(createPageQuery, [
             bookID,
             topicName,
             content,
