@@ -6,6 +6,7 @@ import homeUser from "../pages/homeUser.js";
 import login from "../pages/login.js";
 import register from "../pages/register.js";
 import list from "../pages/list.js";
+import listShelves from "../pages/listShelves.js";
 
 export default function SPA() {
   return {
@@ -14,6 +15,7 @@ export default function SPA() {
     "/login": login,
     "/register": register,
     "/list": list,
+    "/listShelves": listShelves,
 
     getPage: function (url) {
       console.log(url);
