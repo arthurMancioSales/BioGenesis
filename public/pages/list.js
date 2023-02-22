@@ -2,6 +2,8 @@ import SPA from "../modules/spa.js";
 import form from "./froms.js";
 const spa = SPA();
 
+import collapsableMenu from "./collapsableMenu.js";
+
 export default function list() {
     const outDiv = document.createElement("div")
     outDiv.classList.add("flexColumNoncenter", "listBg");
@@ -17,7 +19,7 @@ export default function list() {
 
     // cria o main
     const main = document.createElement('main');
-    main.classList.add("mainList")
+    main.classList.add("mainSectionList")
 
     const divMain = document.createElement('div');
     divMain.classList.add('containerList');
@@ -108,6 +110,14 @@ export default function list() {
     tdTheme.classList.add('theme');
     tdTheme.textContent = 'TEMA';
 
+    const tdAuthor = document.createElement('td');
+    tdAuthor.classList.add('authorTable');
+    tdAuthor.textContent = 'AUTOR';
+
+    /* const tdLastEdit = document.createElement('td');
+    tdLastEdit.classList.add('lastEdit');
+    tdLastEdit.textContent = 'ÚLTIMA EDIÇÃO'; */
+
     const tdEdit = document.createElement('td');
     tdEdit.classList.add('edit');
     tdEdit.textContent = 'EDITAR';
@@ -119,6 +129,8 @@ export default function list() {
     tr.appendChild(tdID);
     tr.appendChild(tdTitle);
     tr.appendChild(tdTheme);
+    tr.appendChild(tdAuthor);
+    /* tr.appendChild(tdLastEdit); */
     tr.appendChild(tdEdit);
     tr.appendChild(tdDelete);
 
@@ -136,6 +148,8 @@ export default function list() {
     outDiv.appendChild(header);
     outDiv.appendChild(main);
 
+
+    //Criação da tabela, todas as tres funções abaixo são necessarias para a criação da mesma.
     async function printTable(){
 
         await fetch("http://localhost:5000/api/books/")
@@ -165,32 +179,38 @@ export default function list() {
     
         let line = document.createElement("tr");
     
-        let col1 = document.createElement("td");
-        let col2 = document.createElement("td");
-        let col3 = document.createElement("td");
-        let col4 = document.createElement("td");
-        let col5 = document.createElement("td");
+        let bookID = document.createElement("td");
+        let bookTitle = document.createElement("td");
+        let bookTheme = document.createElement("td");
+        let bookAuthor = document.createElement("td");
+        /* let bookLastEdit = document.createElement("td"); */
+        let BookEdit = document.createElement("td");
+        let bookDelete = document.createElement("td");
         
-        line.appendChild(col1);
-        line.appendChild(col2);
-        line.appendChild(col3);
-        line.appendChild(col4);
-        line.appendChild(col5);
+        line.appendChild(bookID);
+        line.appendChild(bookTitle);
+        line.appendChild(bookTheme);
+        line.appendChild(bookAuthor);
+        /* line.appendChild(bookLastEdit); */
+        line.appendChild(BookEdit);
+        line.appendChild(bookDelete);
     
         tbody.appendChild(line);
     
         let i = cont - 1;
       
-        col1.innerHTML = `<span>${userList[i].book_id}</span>`;
-        col2.innerHTML = `<span>${userList[i].book_name}</span>`;
-        col3.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
-        col4.innerHTML = `<img src="../images/lapis.png" alt="edit">`;
-        col5.innerHTML = `<img src="../images/excluir.png" alt="del">`;
-    
-        /* col4.addEventListener("click", () => editFunction(userList[i].id, userList[i].name, userList[i].email));
-        col5.addEventListener("click", () => del(userList[i].id)); */
+        bookID.innerHTML = `<span>${userList[i].book_id}</span>`;
+        bookTitle.innerHTML = `<span>${userList[i].book_name}</span>`;
+        bookTheme.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
+        bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
+        /* bookLastEdit.innerHTML = `<span>${userList[i].bookshelf_name}<span>`; */
+        BookEdit.innerHTML = `<img src="../images/lapis.png" class="link tableImg" alt="edit">`;
+        bookDelete.innerHTML = `<img src="../images/excluir.png" class="link" alt="del">`;
     };
 
     printTable();
+
+    collapsableMenu();
+
     return outDiv;
 }
