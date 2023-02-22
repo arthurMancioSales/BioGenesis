@@ -3,7 +3,8 @@ import { Router } from "express";
 import * as bookshelfController from "../controllers/bookshelfController.js";
 import * as bookController from "../controllers/bookController.js";
 import * as pageController from "../controllers/pageController.js";
-import * as userController from "../controllers/userController.js"
+import * as userController from "../controllers/userController.js";
+import authenticateUser from "../lib/authenticateUser.js";
 
 export const router = Router();
 
@@ -27,7 +28,7 @@ router.post("/bookshelves", bookshelfController.createBookshelf);
 
 // Cria um livro novo -> @author {Arthur}
 router.post("/book", (req, res, next) => {
-    bookController.createBook(req, res, next)
+    bookController.createBook(req, res, next);
 });
 // {
 //     'bookTitle': 'nome do livro', -> String
@@ -65,4 +66,4 @@ router.post("/book/page", pageController.createPage);
 // router.put()
 
 // Cria um usuário novo -> @author {Arthur}
-router.post("/createUser", userController.createUser)
+router.post("/createUser", authenticateUser, userController.createUser);

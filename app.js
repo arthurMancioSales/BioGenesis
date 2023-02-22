@@ -5,6 +5,7 @@ import router from "./src/router.js";
 import files from "./src/lib/upload.js";
 import { createBook } from "./src/controllers/bookController.js";
 import pool from "./src/repositories/database.js";
+import cookieParser from "cookie-parser";
 
 // Carrega variáveis de ambiente
 dotenv.config();
@@ -15,6 +16,7 @@ const port = process.env.SERVER_PORT;
 
 // Middlewares
 app.use(express.json());
+app.use(cookieParser());
 
 // Rotas
 app.use("/", express.static("./public"));
@@ -22,8 +24,8 @@ app.use("/", router);
 
 // Rota para upload de arquivos
 app.post("/upload", files, async (req, res, next) => {
-    const client = await pool.connect()
-    createBook(req, res, next, client)
+    const client = await pool.connect();
+    createBook(req, res, next, client);
 });
 
 // Redirecionamento de página não encontrada

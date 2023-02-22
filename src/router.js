@@ -13,6 +13,6 @@ router.use("/", pageRouter);
 router.use("/api", apiRouter);
 
 // @author: {Arthur}
-router.post("/session", logUser)
+router.post("/session", logUser);
 
 export default router;

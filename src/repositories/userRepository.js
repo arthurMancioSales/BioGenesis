@@ -10,25 +10,27 @@ export async function createUser(username, email, passwordHash) {
         FROM
             users
         WHERE 
-            users.username = $1`
-        const userNameDuplicate = await pool.query(usernameDuplicateCheck, [username])
+            users.username = $1`;
+        const userNameDuplicate = await pool.query(usernameDuplicateCheck, [
+            username,
+        ]);
 
         if (userNameDuplicate.rows[0].count == 1) {
-            throw "Já existe um usuário com esse nome"
+            throw "Já existe um usuário com esse nome";
         }
-       
+
         const emailDuplicateCheck = `
         SELECT
             count(users.username)
         FROM
             users
         WHERE 
-            users.email = $1`
+            users.email = $1`;
 
-        const emailDuplicate = await pool.query(emailDuplicateCheck, [email])
-        
+        const emailDuplicate = await pool.query(emailDuplicateCheck, [email]);
+
         if (emailDuplicate.rows[0].count == 1) {
-            throw "Já existe uma conta associada a esse email"
+            throw "Já existe uma conta associada a esse email";
         }
 
         const createUserQuery = `
@@ -58,6 +60,7 @@ export async function createUser(username, email, passwordHash) {
     }
 }
 
+// Autentica um usuário -> @author {Arthur}
 export async function logUser(username, email) {
     try {
         const passwordQuery = `
@@ -66,12 +69,12 @@ export async function logUser(username, email) {
         FROM
             users
         WHERE 
-            users.username = $1 OR users.email = $2`
+            users.username = $1 OR users.email = $2`;
 
-        const response = await pool.query(passwordQuery, [username, email])
-        return response.rows
+        const response = await pool.query(passwordQuery, [username, email]);
+        return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at logUser()");
-        throw error
+        throw error;
     }
 }

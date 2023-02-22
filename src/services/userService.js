@@ -20,13 +20,14 @@ export async function createUser(username, email, password) {
     }
 }
 
+// Autentica um usuário -> @author {Arthur}
 export async function logUser(username, email, password) {
     try {
-        const dbResponse = await userRepository.logUser(username, email)
-        const login = await bcrypt.compare(password, dbResponse[0].password)
-        return login
+        const dbResponse = await userRepository.logUser(username, email);
+        const login = await bcrypt.compare(password, dbResponse[0].password);
+        return login;
     } catch (error) {
         console.log(TAG, "error caught at logUser()");
-        throw error
+        throw error;
     }
 }

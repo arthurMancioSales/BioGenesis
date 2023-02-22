@@ -15,10 +15,10 @@ export async function createBook(req, res, next, client = pool) {
     console.log(TAG);
     console.time("createBook()");
 
-    const { bookTitle, bookshelfName, userName} = req.body;
-    const coverImage = req.files["coverImage"][0].filename
+    const { bookTitle, bookshelfName, userName } = req.body;
+    const coverImage = req.files["coverImage"][0].filename;
 
-    if (bookTitle.length == 0 || typeof( bookTitle) != "string") {
+    if (bookTitle.length == 0 || typeof bookTitle != "string") {
         response.message = "Informe um nome válido para o livro";
         response.data = null;
         response.error = "Nome de livro inválido";
@@ -27,7 +27,7 @@ export async function createBook(req, res, next, client = pool) {
         return;
     }
 
-    if (bookshelfName.length == 0 || typeof( bookshelfName) != "string") {
+    if (bookshelfName.length == 0 || typeof bookshelfName != "string") {
         response.message = "Informe um nome de estante válida";
         response.data = null;
         response.error = "Nome de estante inválido";
@@ -36,7 +36,7 @@ export async function createBook(req, res, next, client = pool) {
         return;
     }
 
-    if (userName.length == 0 || typeof( userName) != "string") {
+    if (userName.length == 0 || typeof userName != "string") {
         response.message = "Informe um nome válido para o autor";
         response.data = null;
         response.error = "Nome de autor inválido";
@@ -45,7 +45,7 @@ export async function createBook(req, res, next, client = pool) {
         return;
     }
 
-    if (coverImage.length == 0 || typeof( coverImage) != "string") {
+    if (coverImage.length == 0 || typeof coverImage != "string") {
         response.message = "Informe uma imagem válida";
         response.data = null;
         response.error = "Nome de imagem fornecida é inválido";
@@ -55,7 +55,7 @@ export async function createBook(req, res, next, client = pool) {
     }
 
     try {
-        client.query("BEGIN")
+        client.query("BEGIN");
         const serviceResponse = await bookService.createBook(
             bookTitle,
             bookshelfName,
@@ -66,9 +66,9 @@ export async function createBook(req, res, next, client = pool) {
         if (req.files) {
             for (const key in req.files) {
                 const filename = req.files[key][0].filename;
-                const bookID = serviceResponse[0]['book_id'];
+                const bookID = serviceResponse[0]["book_id"];
                 switch (key) {
-                    case "imageUpload2":    
+                    case "imageUpload2":
                         const { textInput2, dropdown2 } = req.body;
                         await pageService.createPage(
                             bookID,
@@ -118,21 +118,21 @@ export async function createBook(req, res, next, client = pool) {
         response.message = "Livro criado com sucesso";
         response.data = serviceResponse;
 
-        client.query("COMMIT")
+        client.query("COMMIT");
         res.status(200).json(response);
         console.timeEnd("createBook()");
     } catch (error) {
         console.log(TAG);
-        console.table(error)
+        console.table(error);
 
         response.message = "Não foi possível criar o livro";
         response.error = error;
 
-        client.query("ROLLBACK")
+        client.query("ROLLBACK");
         res.status(500).json(response);
         console.timeEnd("createBook()");
     } finally {
-        client.release()
+        client.release();
     }
 }
 
