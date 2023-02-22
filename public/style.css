@@ -325,6 +325,10 @@ select {
     width: 270px;
     height: 60px;
     transition: all 600ms;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 .beginBtn:hover {
     background-color: #68b05f;
@@ -815,11 +819,10 @@ tr:nth-child(even) {
 
 .listBtn {
     margin-right: auto;
-    font-size: 30px;
+    font-size: 25px;
     background-color: #8be67e;
-    border-radius: 50%;
     padding: 10px;
-
+    font-weight: 500;
 }
 
 .listTitle {
