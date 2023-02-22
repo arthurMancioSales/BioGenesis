@@ -26,7 +26,6 @@ export async function createBook(req, res, next, client = pool) {
         res.status(400).json(response);
         return;
     }
-    console.log(req.body);
 
     if (bookshelfName.length == 0 || typeof( bookshelfName) != "string") {
         response.message = "Informe um nome de estante válida";

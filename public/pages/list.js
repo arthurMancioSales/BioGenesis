@@ -59,7 +59,6 @@ export default function list() {
     const buttonDiv = document.createElement('i');
     buttonDiv.classList.add('listBtn', "fa-solid", "fa-plus");
     buttonDiv.onclick = async () => {
-        console.log("a");
         form()
     }
 
