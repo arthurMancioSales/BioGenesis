@@ -897,7 +897,9 @@ tr:nth-child(even) {
     /* justify-content: center; */
     overflow-y: scroll;
 
-    height
+    
+}
+
 #section-lista {
     padding-bottom: 3rem;
 }

@@ -137,17 +137,21 @@ export default function list() {
     outDiv.appendChild(main);
 
     async function printTable(){
+
         await fetch("http://localhost:5000/api/books/")
         .then((response) => {
             return response.json();
         })
         .then((data) => {
+            console.log(data);
             createTable(data.data);
             console.log(data.data)
         })
     };
-    
+
     function createTable(userList){
+        console.log(userList);
+
         /* table.innerHTML = ""; */
     
         let cont = 1;
