@@ -1,6 +1,7 @@
 // @author {Arthur}
 // @coauthor {Thiago}
 
+import collapsableMenu from "../pages/collapsableMenu.js";
 import { PageFlip } from "/vendor/page-flip.module.js";
 
 export default async function loadSingleBook(bookID, title, color, author) {
@@ -16,6 +17,7 @@ export default async function loadSingleBook(bookID, title, color, author) {
     closeIcon.onclick = () => {
         document.querySelector("#root").removeChild(wrapper);
         pageFlip.destroy();
+        collapsableMenu()
     };
     wrapper.appendChild(closeIcon);
 
@@ -165,6 +167,7 @@ export default async function loadSingleBook(bookID, title, color, author) {
         if (e.target == wrapper) {
             document.querySelector("#root").removeChild(wrapper);
             pageFlip.destroy();
+            collapsableMenu()
         }
     };
 }

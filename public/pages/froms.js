@@ -143,6 +143,6 @@ export default function form() {
     form.appendChild(submitButton)
 
     root.appendChild(form);
-
+    console.log("a");
     document.querySelector("body").appendChild(root);
 }
