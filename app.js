@@ -23,7 +23,7 @@ app.use("/", router);
 // Rota para upload de arquivos
 app.post("/upload", files, async (req, res, next) => {
     const client = await pool.connect()
-    createBobookshelvesok(req, res, next, client)
+    createBook(req, res, next, client)
 });
 
 // Redirecionamento de página não encontrada

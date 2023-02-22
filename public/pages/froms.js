@@ -1,4 +1,5 @@
 import submitForm from "../modules/submitForm.js";
+import { printTable } from "./list.js";
 
 export default function form() {
     const root = document.createElement("div");
@@ -6,9 +7,10 @@ export default function form() {
     const form = document.createElement("form");
     form.id = "my-form";
     form.setAttribute("id", "form");
-    form.onsubmit = (e) => {
+    form.onsubmit = async (e) => {
         e.preventDefault();
-        submitForm();
+        await submitForm();
+        await printTable()
     };
 
     // Cria o primeiro grupo de campos
