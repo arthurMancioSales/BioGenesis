@@ -344,9 +344,14 @@ select {
 }
 .pPosition {
     position: relative;
-    right: 120px;
+    right: 105px;
+
     font-family: Roboto, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
+    /* color: black; */
+
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 .link {
     cursor: pointer;
@@ -360,7 +365,8 @@ select {
     bottom: 5%;
     right: 45%;
 }
-#shelf {
+
+*/ #shelf {
     width: 700px;
 }
 #shelf {
@@ -607,8 +613,15 @@ select {
 }
 .mainList {
     width: 90%;
+    height: 90px;
+    /* margin: auto; */
+}
+
+.mainSectionList{
+    width: 90%;
     height: 80px;
 }
+
 .h1List {
     /* FRONT API */
     height: 38px;
@@ -663,7 +676,8 @@ select {
 .input-field::placeholder {
     color: #827f7f;
 }
-#cadastrar {
+
+.button {
     width: 20%;
     height: 50px;
     margin-top: 7px;
@@ -675,12 +689,14 @@ select {
     line-height: 26px;
     color: #fffcfc;
 }
-#cadastrar:hover {
+
+/* #cadastrar:hover {
     background-color: #108d2b;
     cursor: pointer;
-}
+} */
+
 .button:hover {
-    background-color: #108d2b;
+    /* background-color: #108d2b; */
     cursor: pointer;
 }
 .button:active {
@@ -704,9 +720,9 @@ td {
     vertical-align: middle;
     border: 1px solid white;
 }
-.theme,
-.title {
-    width: 35%;
+
+.theme, .title {
+    width: 25%;
 }
 .id-number,
 .edit {
@@ -728,7 +744,6 @@ tr:nth-child(even) {
     background-image: url("../images/listBg.png");
     background-size: 100% 100%;
     min-height: 100vh;
-    overflow-x: scroll;
 }
 .flexColumNoncenter {
     display: flex;
@@ -740,55 +755,71 @@ tr:nth-child(even) {
 #section-lista {
     padding-bottom: 3rem;
 }
-.imgScale {
-    max-width: 100%;
+
+.imgScale{
+    width: 100%;
+    /* height: auto; */
 }
-.collapsible {
-    display: none;
-    flex-direction: column;
-    justify-content: flex-start;
-    overflow: auto;
+
+.homeAside{
+    width: 55%;
+    height: 100%;
+}
+
+.collapsible{
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: right;
+    overflow: none;
+
     position: absolute;
     top: 0;
     right: 0;
     z-index: 9998;
-    width: 0;
-    height: 100%;
-    background-color: rgba(112, 192, 75, 0.9);
-    padding-top: 90px;
-    transition: all 10ms ease;
+
+    width: 150px; /* 400px */
+    height: 80px;
+
+    background-image: url('/images/colMenuBg.png');
+    background-size: 100% 100%;
+
+    transition: all 500ms ease;
+    /* background-color: rgba(112, 192, 75, 0.9); */
+    
+
+    /* transition: all 10ms ease; */
+
+    /* transition: width 5s; */
+    /* transition: width 1s ease-out; */
 }
-#menu {
-    z-index: 9999;
+
+.colImg{
+    height: 25px;
+    margin-left: 15px;
+    margin-right: 20px;
+
+    position:relative;
+
+    transition: all 500ms ease;
 }
-.h2coll {
-    font-size: 26px;
-    font-family: Roboto, Helvetica, sans-serif;
-    padding-bottom: 15px;
+
+#menu{
+    height: 40px;
+    margin-right: 50px;
+
+    transform: rotate(0deg);
 }
-.colBtn {
-    width: 100%;
-    margin-top: 0;
-    font-size: 18px;
-    height: 30px;
-    box-shadow: none;
-    margin: 0;
-    border-radius: 0;
-    padding: 5px;
+
+.tableImg{
+    height: 40px;
 }
-.colBtn:active {
-    box-shadow: none;
-    transform: none;
+
+.authorTable{
+    width: 20%;
 }
-.colDivnav {
-    display: none;
-    background-color: #827f7f;
-    width: 100%;
-    padding-top: 5px;
-}
-.aNav {
-    font-size: 16px;
-    font-family: Roboto, Helvetica, sans-serif;
-    line-height: 20px;
-    padding: 5px;
+
+#homePageImg{
+    color: white;
+    font-size: 25px;
 }

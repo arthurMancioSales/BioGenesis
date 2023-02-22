@@ -8,6 +8,7 @@ import login from "../pages/login.js";
 import register from "../pages/register.js";
 import list from "../pages/list.js";
 import listShelves from "../pages/listShelves.js";
+import edit from "../pages/edit.js";
 
 export default function SPA() {
   return {
@@ -17,6 +18,7 @@ export default function SPA() {
     "/register": register,
     "/list": list,
     "/listShelves": listShelves,
+    "/edit": edit,
 
         getPage: function (url) {
             if (url == "/index.html") {
