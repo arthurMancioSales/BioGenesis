@@ -6,6 +6,19 @@ export default function collapsableMenu() {
     const colMenuDiv = document.createElement('div');
     colMenuDiv.classList.add('collapsible');
 
+    document.body.appendChild(colMenuDiv)
+
+    const homePage = document.createElement("i");
+    homePage.classList.add("fa-solid", "fa-house", "link", 'colImg'); //'colImg', 'link'
+    homePage.id = "homePageImg";
+    homePage.style.left = "310px";
+    homePage.style.opacity = "0";
+    homePage.style.userSelect = "none";
+    homePage.onclick = () => {
+        document.body.removeChild(colMenuDiv)
+        spa.redirect("/");
+    };
+
     const editBook = document.createElement('img');
     editBook.classList.add('colImg', 'link');
     editBook.setAttribute('src', '/images/editBookPage.png');
@@ -13,8 +26,10 @@ export default function collapsableMenu() {
     editBook.style.left = "250px";
     editBook.style.opacity = "0";
     editBook.style.userSelect = "none";
-    editBook.onclick = () => spa.redirect("/list");
-
+    editBook.onclick = () => {
+        document.body.removeChild(colMenuDiv)
+        spa.redirect("/list");
+    }
 
     const addUser = document.createElement('img');
     addUser.classList.add('colImg', 'link');
@@ -23,7 +38,10 @@ export default function collapsableMenu() {
     addUser.style.left = "200px";
     addUser.style.opacity = "0";
     addUser.style.userSelect = "none";
-    addUser.onclick = () => spa.redirect("/register");
+    addUser.onclick = () => {
+        document.body.removeChild(colMenuDiv);
+        spa.redirect("/register");
+    }
 
     const userProfile = document.createElement('img');
     userProfile.classList.add('colImg', 'link');
@@ -32,6 +50,10 @@ export default function collapsableMenu() {
     userProfile.style.left = "120px";
     userProfile.style.opacity = "0";
     userProfile.style.userSelect = "none";
+    userProfile.onclick = () => {
+        document.body.removeChild(colMenuDiv);
+        spa.redirect("/login");
+    }
 
     const logOut = document.createElement('img');
     logOut.classList.add('colImg', 'link');
@@ -51,7 +73,11 @@ export default function collapsableMenu() {
 
             colMenuDiv.style.width= "150px";
 
-            openMenu.style.transform = "rotate(0deg)"
+            openMenu.style.transform = "rotate(0deg)";
+
+            homePage.style.left = "310px";
+            homePage.style.opacity = "0";
+            homePage.style.userSelect = "none";
 
             editBook.style.left = "250px";
             editBook.style.opacity = "0";
@@ -70,9 +96,13 @@ export default function collapsableMenu() {
             logOut.style.userSelect = "none";
 
         } else{
-            colMenuDiv.style.width= "500px";
+            colMenuDiv.style.width= "520px";
 
             openMenu.style.transform = "rotate(90deg)";
+
+            homePage.style.left = "0";
+            homePage.style.opacity = "100";
+            homePage.style.userSelect = "all";
 
             editBook.style.left = "0";
             editBook.style.opacity = "100";
@@ -92,14 +122,12 @@ export default function collapsableMenu() {
         }
     }
 
+    colMenuDiv.appendChild(homePage);
     colMenuDiv.appendChild(editBook);
     colMenuDiv.appendChild(addUser);
     colMenuDiv.appendChild(userProfile);
     colMenuDiv.appendChild(logOut);
     colMenuDiv.appendChild(openMenu);
-
-    // adiciona tudo ao body da página
-    document.body.appendChild(colMenuDiv)
 
     return colMenuDiv
 }

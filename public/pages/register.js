@@ -1,7 +1,9 @@
 import SPA from "../modules/spa.js";
 const spa = SPA();
 
-export default function login() {
+import collapsableMenu from "./collapsableMenu.js";
+
+export default function register() {
     const outDiv = document.createElement("div")
     outDiv.classList.add("cadastroBg", "bodyHome");
 
@@ -60,6 +62,8 @@ export default function login() {
 
     // Adicione o elemento <main> ao corpo do documento
     outDiv.appendChild(main);
+
+    collapsableMenu();
 
     return outDiv;
 }

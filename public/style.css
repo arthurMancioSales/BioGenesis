@@ -585,10 +585,14 @@ select {
 
 .pPosition {
     position: relative;
-    right: 120px;
+    right: 105px;
 
     font-family: Roboto, Helvetica, sans-serif;
-    font-size: 16px;
+    font-size: 20px;
+    /* color: black; */
+
+    margin-top: 10px;
+    margin-bottom: 30px;
 }
 
 .link {
@@ -923,7 +927,7 @@ select {
 } */
 
 .button:hover {
-    background-color: #108d2b;
+    /* background-color: #108d2b; */
     cursor: pointer;
 }
 
@@ -954,9 +958,8 @@ td {
     border: 1px solid white;
 }
 
-
 .theme, .title {
-    width: 35%;
+    width: 25%;
 }
 
 .id-number, .edit {
@@ -981,6 +984,7 @@ tr:nth-child(even) {
 .listBg{
     background-image: url('../images/listBg.png');
     background-size: 100% 100%;
+    background-attachment: fixed;
 }
 
 .flexColumNoncenter{
@@ -1049,4 +1053,17 @@ tr:nth-child(even) {
     margin-right: 50px;
 
     transform: rotate(0deg);
+}
+
+.tableImg{
+    height: 40px;
+}
+
+.authorTable{
+    width: 20%;
+}
+
+#homePageImg{
+    color: white;
+    font-size: 25px;
 }
