@@ -760,7 +760,6 @@ tr:nth-child(even) {
 
 .homeAside{
     width: 55%;
-    height: 100%;
     display: flex;
 }
 
