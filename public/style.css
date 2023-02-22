@@ -727,6 +727,8 @@ tr:nth-child(even) {
 .listBg {
     background-image: url("../images/listBg.png");
     background-size: 100% 100%;
+    min-height: 100vh;
+    overflow-x: scroll;
 }
 .flexColumNoncenter {
     display: flex;

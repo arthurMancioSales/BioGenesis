@@ -9,7 +9,8 @@ let currentItem = 0;
 export function isLeft() {
     const items = document.querySelectorAll(".item");
     const maxItems = items.length;
-    const title = document.querySelector(".title_shiefbook");
+    const title = document.querySelector("#titleCreateBook");
+    console.log(title);
 
     items[currentItem].firstChild.innerHTML = "";
 
@@ -35,14 +36,14 @@ export function isLeft() {
 
     loadBooks(titleNew.dataset.id);
 
-    title.innerHTML = titleNew.dataset.name;
+    title.innerText = titleNew.dataset.name;
 }
 
 // @author {Pedro}
 export function isRight() {
     const items = document.querySelectorAll(".item");
     const maxItems = items.length;
-    const title = document.querySelector(".title_shiefbook");
+    const title = document.querySelector("#titleCreateBook");
 
     items[currentItem].firstChild.innerHTML = "";
 
