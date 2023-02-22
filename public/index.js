@@ -1,6 +1,4 @@
-/**
- * @author {Thiago}
- */
+// @author {Thiago}
 
 import SPA from "./modules/spa.js";
 
@@ -11,7 +9,7 @@ const spa = SPA();
 root.appendChild(spa.getPage(window.location.pathname));
 
 window.onpopstate = () => {
-  const page = spa.getPage(window.location.pathname);
-  root.innerHTML = "";
-  root.appendChild(page);
+    const page = spa.getPage(window.location.pathname);
+    root.innerHTML = "";
+    root.appendChild(page);
 };

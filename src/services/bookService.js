@@ -3,13 +3,20 @@ import * as bookRepository from "../repositories/bookRepository.js";
 const TAG = "Bookshelf Service";
 
 // Cria um livro novo -> @author {Arthur}
-export async function createBook(bookTitle, bookshelfName, userName, coverImage) {
+export async function createBook(
+    bookTitle,
+    bookshelfName,
+    userName,
+    coverImage,
+    client
+) {
     try {
         const dbResponse = await bookRepository.createBook(
             bookTitle,
             bookshelfName,
             userName,
-            coverImage
+            coverImage,
+            client
         );
         return dbResponse;
     } catch (error) {
@@ -31,12 +38,13 @@ export async function readAllBooksOnShelf(bookshelfID) {
     }
 }
 
+// Retorna um array com todos os livros -> @author {Arthur}
 export async function getAllBooks() {
     try {
-        const dbResponse = await bookRepository.getAllBooks()
-        return dbResponse
+        const dbResponse = await bookRepository.getAllBooks();
+        return dbResponse;
     } catch (error) {
         console.log(TAG, "error caught at getAllBooks()");
-        throw error
+        throw error;
     }
 }

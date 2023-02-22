@@ -16,10 +16,10 @@ export async function createBookshelf(name) {
 // Retorna um array com todas as estantes -> @author {Arthur}
 export async function getAllBookshelves() {
     try {
-        const dbResponse = await bookshelfRepository.getAllBookshelves()
-        return dbResponse
+        const dbResponse = await bookshelfRepository.getAllBookshelves();
+        return dbResponse;
     } catch (error) {
-        console.log(TAG, "error caught at getAllBookshelves()")
+        console.log(TAG, "error caught at getAllBookshelves()");
         throw error;
     }
 }

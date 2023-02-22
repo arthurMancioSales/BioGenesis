@@ -16,13 +16,13 @@ export async function createBookshelf(req, res) {
         error: null,
     };
 
-    if (name.length == 0 || typeof(name) != "string") {
+    if (name.length == 0 || typeof name != "string") {
         response.message = "Informe um nome válido para a estante";
         response.data = null;
-        response.error = "Nome inválido"
+        response.error = "Nome inválido";
 
-        res.status(400).json(response)
-        return
+        res.status(400).json(response);
+        return;
     }
 
     try {
@@ -57,20 +57,20 @@ export async function getAllBookshelves(req, res) {
     };
 
     try {
-        const serviceResponse = await bookshelfService.getAllBookshelves()
+        const serviceResponse = await bookshelfService.getAllBookshelves();
 
-        response.message = "Estantes retornadas com sucesso"
-        response.data = serviceResponse
+        response.message = "Estantes retornadas com sucesso";
+        response.data = serviceResponse;
 
-        res.status(200).json(response)
-        console.timeEnd("getAllBookshelves()")
+        res.status(200).json(response);
+        console.timeEnd("getAllBookshelves()");
     } catch (error) {
-        console.log(TAG, error)
+        console.log(TAG, error);
 
-        response.message = "Não foi possível retornar as estantes"
-        response.error = "Error interno do servidor"
+        response.message = "Não foi possível retornar as estantes";
+        response.error = "Error interno do servidor";
 
-        res.status(400).json(response)
-        console.timeEnd("getAllBookshelves()")
+        res.status(400).json(response);
+        console.timeEnd("getAllBookshelves()");
     }
 }

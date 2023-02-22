@@ -1,3 +1,4 @@
+// @author {Davi}
 import SPA from "../modules/spa.js";
 const spa = SPA();
 
@@ -56,7 +57,7 @@ export default function homeUser() {
     // cria o botão da seção
     const buttonSection = document.createElement('button');
     buttonSection.setAttribute('type', 'button');
-    buttonSection.setAttribute('id', 'beginBtn');
+    buttonSection.setAttribute('class', 'beginBtn');
     buttonSection.textContent = 'COMEÇAR';
     buttonSection.onclick = () => spa.redirect("/bookshelves");
 
@@ -71,8 +72,6 @@ export default function homeUser() {
     const imgAside = document.createElement('img');
     imgAside.classList.add('link');
     imgAside.setAttribute('src', '/images/estante.png');
-    imgAside.classList.add('link', "imgScale");
-    imgAside.setAttribute('src', '/images/prateleira.png');
     imgAside.setAttribute('id', 'shelf');
     imgAside.onclick = () => spa.redirect("/bookshelves");
 

@@ -7,7 +7,8 @@ export async function createBook(
     bookTitle,
     bookshelfName,
     userName,
-    coverImage
+    coverImage,
+    client
 ) {
     try {
         const duplicateBook = `
@@ -20,7 +21,7 @@ export async function createBook(
         AND 
             bookshelves.name = $2`;
 
-        const duplicate = await pool.query(duplicateBook, [
+        const duplicate = await client.query(duplicateBook, [
             bookTitle,
             bookshelfName,
         ]);
@@ -48,7 +49,7 @@ export async function createBook(
         WHERE
             bookshelves.name = $2 AND users.username = $3
         RETURNING *`;
-        const response = await pool.query(createBookQuery, [
+        const response = await client.query(createBookQuery, [
             bookTitle,
             bookshelfName,
             userName,
@@ -86,6 +87,7 @@ export async function readAllBooksOnShelf(bookshelfID) {
     }
 }
 
+// Retorna um array com todos os livros -> @author {Arthur}
 export async function getAllBooks() {
     try {
         const getAllBooksQuery = `        
@@ -100,8 +102,8 @@ export async function getAllBooks() {
             bookshelves ON books.bookshelf_id = bookshelves.bookshelf_id
         JOIN
             users ON books.author_id = users.user_id`;
-        
-            const response = await pool.query(getAllBooksQuery);
+
+        const response = await pool.query(getAllBooksQuery);
         return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at getAllBooks()");

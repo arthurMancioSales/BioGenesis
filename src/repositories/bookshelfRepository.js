@@ -1,5 +1,5 @@
 // @author: {Arthur}
-import pool from './database.js'
+import pool from "./database.js";
 
 const TAG = "Bookshelf Repository";
 
@@ -12,11 +12,11 @@ export async function createBookshelf(name) {
         FROM 
             bookshelves
         WHERE 
-            name = $1`
-        
-        const duplicate = await pool.query(duplicateBookshelf, [name])
+            name = $1`;
+
+        const duplicate = await pool.query(duplicateBookshelf, [name]);
         if (duplicate.rows[0].count == 1) {
-            throw "Já existe uma esante com esse nome"
+            throw "Já existe uma esante com esse nome";
         }
 
         const createQuery = `
@@ -29,7 +29,7 @@ export async function createBookshelf(name) {
             ON CONFLICT (name) DO NOTHING
             RETURNING *`;
         const response = await pool.query(createQuery, [name]);
-        return response.rows
+        return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at createBookshelf()");
         throw error;
@@ -39,13 +39,13 @@ export async function createBookshelf(name) {
 // Retorna um array com todas as estantes -> @author {Arthur}
 export async function getAllBookshelves() {
     try {
-        const getQuery= `
+        const getQuery = `
             SELECT 
                 bookshelf_id as id,
                 name 
-            FROM bookshelves`
-        const response = await pool.query(getQuery)
-        return response.rows
+            FROM bookshelves`;
+        const response = await pool.query(getQuery);
+        return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at getAllBookshelves()");
         throw error;
@@ -55,12 +55,12 @@ export async function getAllBookshelves() {
 // Retorna um array com todos os livros da estante -> @author {Arthur}
 export async function getBookshelfBooks(bookshelfID) {
     try {
-        const getBookQuery= `
-        `
-        const response = await pool.query(getBookQuery, [bookshelfID])
-        return response.rows
+        const getBookQuery = `
+        `;
+        const response = await pool.query(getBookQuery, [bookshelfID]);
+        return response.rows;
     } catch (error) {
-        console.log(TAG, "error caught at getBookshelfBooks()")
-        throw error
+        console.log(TAG, "error caught at getBookshelfBooks()");
+        throw error;
     }
 }

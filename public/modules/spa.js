@@ -2,6 +2,7 @@
 // @coauthor {Arthur}
 
 import bookshelf from "../pages/bookShelf.js";
+import form from "../pages/froms.js";
 import homeUser from "../pages/homeUser.js";
 import login from "../pages/login.js";
 import register from "../pages/register.js";
@@ -19,19 +20,18 @@ export default function SPA() {
     "/listShelves": listShelves,
     "/edit": edit,
 
-    getPage: function (url) {
-      console.log(url);
-      if (url == "/index.html") {
-        url = "/";
-      }
-      return this[url]();
-    },
+        getPage: function (url) {
+            if (url == "/index.html") {
+                url = "/";
+            }
+            return this[url]();
+        },
 
-    redirect: function (url) {
-      const page = this.getPage(url);
-      window.history.pushState({}, "", url);
-      root.innerHTML = "";
-      root.appendChild(page);
-    },
-  };
+        redirect: function (url) {
+            const page = this.getPage(url);
+            window.history.pushState({}, "", url);
+            root.innerHTML = "";
+            root.appendChild(page);
+        },
+    };
 }

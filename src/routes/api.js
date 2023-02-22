@@ -2,7 +2,7 @@
 import { Router } from "express";
 import * as bookshelfController from "../controllers/bookshelfController.js";
 import * as bookController from "../controllers/bookController.js";
-import * as pageController from "../controllers/pageController.js"
+import * as pageController from "../controllers/pageController.js";
 
 export const router = Router();
 
@@ -10,13 +10,13 @@ export const router = Router();
 router.get("/bookshelves", bookshelfController.getAllBookshelves);
 
 // Retorna um array com todos os livros de uma estante específica-> @author {Arthur}
-router.get("/bookshelves/:id/books", bookController.readAllBooksOnShelf)
+router.get("/bookshelves/:id/books", bookController.readAllBooksOnShelf);
 
 // Retorna um array com todas as páginas de um livro específico -> @author {Arthur}
-router.get("/books/:id", pageController.getAllPagesFromBook)
+router.get("/books/:id", pageController.getAllPagesFromBook);
 
 // Retorna um array com todos os livros -> @author {Arthur}
-router.get('/books', bookController.getAllBooks)
+router.get("/books", bookController.getAllBooks);
 
 // Cria uma estante nova -> @author {Arthur}
 router.post("/bookshelves", bookshelfController.createBookshelf);
@@ -34,7 +34,7 @@ router.post("/book", bookController.createBook);
 // }
 
 //Criar uma pagina nova
-router.post("/book/page", pageController.createPage)
+router.post("/book/page", pageController.createPage);
 // {
 //     bookID: id do livro, -> Int
 //     topicName: id do topico, -> String
@@ -42,8 +42,6 @@ router.post("/book/page", pageController.createPage)
 //     image: "nome da imagem", -> String
 //     authorName: nome do autor -> String
 // }
-
-
 
 // Apaga uma estante
 // router.delete()

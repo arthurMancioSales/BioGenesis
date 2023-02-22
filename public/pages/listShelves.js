@@ -138,8 +138,8 @@ export default function listShelves() {
 
     col1.innerHTML = `<span>${userList[i].id}</span>`;
     col2.innerHTML = `<span>${userList[i].name}</span>`;
-    col3.innerHTML = `<img src="../images/lapis.png" alt="edit">`;
-    col4.innerHTML = `<img src="../images/excluir.png" alt="del">`;
+    col3.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
+    col4.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
   }
 
   function createBookShelvesPage() {
