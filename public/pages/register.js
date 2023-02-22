@@ -19,6 +19,8 @@ export default function register() {
 
     // Crie um elemento <form> com vários elementos <input> e seus atributos
     const formMain = document.createElement("form");
+    formMain.classList.add("flexColumn");
+
     const inputUserName = document.createElement("input");
     inputUserName.id = "userName";
     inputUserName.placeholder = "Nome Completo";

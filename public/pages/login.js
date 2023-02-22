@@ -14,6 +14,8 @@ export default function login() {
     
     // Crie um elemento <form> com vários elementos <input> e seus atributos
     const formMain = document.createElement("form");
+    formMain.classList.add("flexColumn");
+
     const inputLogin = document.createElement("input");
     inputLogin.id = "login";
     inputLogin.placeholder = "E-mail";

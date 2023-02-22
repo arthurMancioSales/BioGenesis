@@ -18,7 +18,7 @@ export default function list() {
 
     // cria o main
     const main = document.createElement('main');
-    main.classList.add("mainList")
+    main.classList.add("mainSectionList")
 
     const divMain = document.createElement('div');
     divMain.classList.add('containerList');
