@@ -1,7 +1,9 @@
 import SPA from "../modules/spa.js";
 const spa = SPA();
 
-export default function login() {
+import collapsableMenu from "./collapsableMenu.js";
+
+export default function register() {
     const outDiv = document.createElement("div")
     outDiv.classList.add("cadastroBg", "bodyHome");
 
@@ -17,6 +19,8 @@ export default function login() {
 
     // Crie um elemento <form> com vários elementos <input> e seus atributos
     const formMain = document.createElement("form");
+    formMain.classList.add("flexColumn");
+
     const inputUserName = document.createElement("input");
     inputUserName.id = "userName";
     inputUserName.placeholder = "Nome Completo";
@@ -45,6 +49,7 @@ export default function login() {
 
     // Crie um elemento <button> com o ID "createUser" e o texto "Cadastrar"
     const buttonMain = document.createElement("button");
+    buttonMain.classList.add("button");
     buttonMain.type = "button";
     buttonMain.id = "createUser";
     buttonMain.textContent = "Cadastrar";
@@ -59,6 +64,8 @@ export default function login() {
 
     // Adicione o elemento <main> ao corpo do documento
     outDiv.appendChild(main);
+
+    collapsableMenu();
 
     return outDiv;
 }
