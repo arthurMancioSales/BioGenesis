@@ -37,7 +37,7 @@ router.post("/book", authenticateUser, (req, res, next) => {
 //     'coverImage': 'nome da imagem' -> String
 // }
 
-//Criar uma pagina nova
+//Criar uma pagina nova -> @author {Arthur}
 router.post("/book/page", authenticateUser, pageController.createPage);
 // {
 //     bookID: id do livro, -> Int
@@ -47,8 +47,8 @@ router.post("/book/page", authenticateUser, pageController.createPage);
 //     authorName: nome do autor -> String
 // }
 
-// Apaga uma estante
-router.delete("/bookshelves/:id")
+// Apaga uma estante -> @author {Arthur}
+router.delete("/bookshelves/:id", authenticateUser, bookshelfController.deleteBookshelf)
 
 // Apaga um livro
 // router.delete()

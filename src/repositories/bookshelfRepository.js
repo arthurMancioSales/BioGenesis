@@ -64,3 +64,19 @@ export async function getBookshelfBooks(bookshelfID) {
         throw error;
     }
 }
+
+// Apaga uma estante -> @author {Arthur}
+export async function deleteBookshelf(bookshelfID) {
+    try {
+        const deleteBookshelfQuery = `
+        DELETE FROM bookshelves 
+        WHERE bookshelves.bookshelf_id = $1
+`;
+
+        const response = await pool.query(deleteBookshelfQuery, [bookshelfID]);
+        return response.rows;
+    } catch (error) {
+        console.log(TAG, "error caught at deleteBookshelf()");
+        throw error;
+    }
+}

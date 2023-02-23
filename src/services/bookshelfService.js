@@ -23,3 +23,14 @@ export async function getAllBookshelves() {
         throw error;
     }
 }
+
+// Apaga uma estante -> @author {Arthur}
+export async function deleteBookshelf(bookshelfID) {
+    try {
+        const dbResponse = await bookshelfRepository.deleteBookshelf(bookshelfID)
+        return dbResponse
+    } catch (error) {
+        console.log(TAG, "error caught at deleteBookshelf()");
+        throw error
+    }
+}
