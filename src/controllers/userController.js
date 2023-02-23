@@ -75,7 +75,7 @@ export async function logUser(req, res) {
 
     const { username, email, password } = req.body;
 
-    if (username.length == 0 || typeof username != "string") {
+    if (username == undefined || typeof username != "string") {
         response.message = "Informe um nome de usuário válido";
         response.data = null;
         response.error = "Nome usuário inválido";
@@ -83,7 +83,7 @@ export async function logUser(req, res) {
         res.status(400).json(response);
         return;
     }
-    if (email.length == 0 || typeof email != "string") {
+    if (email == undefined || typeof email != "string") {
         response.message = "Informe um email válido";
         response.data = null;
         response.error = "Email inválido";
@@ -91,7 +91,7 @@ export async function logUser(req, res) {
         res.status(400).json(response);
         return;
     }
-    if (password.length == 0 || typeof password != "string") {
+    if (password == undefined || typeof password != "string") {
         response.message = "Informe uma senha válida";
         response.data = null;
         response.error = "Senha inválida";
