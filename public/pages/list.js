@@ -61,7 +61,7 @@ export default function list() {
     buttonDiv.classList.add('listBtn', "beginBtn");
     buttonDiv.value = "Cadastrar"
     buttonDiv.onclick = async () => {
-        console.log("a");
+        /* console.log("a"); */
         form()
     }
 
