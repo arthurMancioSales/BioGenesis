@@ -43,9 +43,9 @@ export default async function submitForm() {
     formData.append("dropdown5", dropdown5.value);
     formData.append("imageUpload5", fourthImageInput.files[0]);
 
-    await fetch("http://localhost:5000/upload", {
+    await fetch("http://localhost:5000/upload",{
         method: "POST",
         body: formData,
-    })
+    });
 }
 

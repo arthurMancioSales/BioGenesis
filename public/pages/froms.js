@@ -3,7 +3,7 @@ import { printTable } from "./list.js";
 
 export default function form() {
     const root = document.createElement("div");
-
+    
     const form = document.createElement("form");
     form.id = "my-form";
     form.setAttribute("id", "form");
@@ -49,18 +49,18 @@ export default function form() {
     dropdown1.name = "bookshelfName";
 
     const json = fetch(`http://localhost:5000/api/bookshelves`)
-    .then((response) => {
-        return response.json();
-    })
-    .then((response) => {        
-        response.data.forEach((name, index) => {
-            const dropdown1Option = document.createElement("option");
-            dropdown1Option.value = `${name.name}`;
-            dropdown1Option.textContent = `${name.name}`;
-            dropdown1.appendChild(dropdown1Option);
-            
+        .then((response) => {
+            return response.json();
         })
-    });
+        .then((response) => {
+            response.data.forEach((name, index) => {
+                const dropdown1Option = document.createElement("option");
+                dropdown1Option.value = `${name.name}`;
+                dropdown1Option.textContent = `${name.name}`;
+                dropdown1.appendChild(dropdown1Option);
+
+            })
+        });
 
     group1.appendChild(page1);
     group1.appendChild(textInput1Label);
@@ -79,7 +79,7 @@ export default function form() {
         group.className = "input-group";
 
         const pages = document.createElement("h2");
-        pages.innerHTML = `Pagina ${i-1}`;
+        pages.innerHTML = `Pagina ${i - 1}`;
 
         const textInputLabel = document.createElement("label");
         textInputLabel.htmlFor = `textInput${i}`;
@@ -122,7 +122,6 @@ export default function form() {
         dropdownOption4.value = `comportamento`;
         dropdownOption4.textContent = "comportamento";
 
-        
         dropdown.appendChild(dropdownOption1);
         dropdown.appendChild(dropdownOption2);
         dropdown.appendChild(dropdownOption3);
@@ -136,7 +135,6 @@ export default function form() {
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
 
-
         form.appendChild(group);
     }
 
@@ -147,7 +145,6 @@ export default function form() {
     form.appendChild(submitButton)
 
     root.appendChild(form);
-
 
     document.querySelector(".bookWrapper").appendChild(root);
 }
