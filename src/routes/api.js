@@ -56,8 +56,12 @@ router.delete("/bookshelves/:id", authenticateUser, bookshelfController.deleteBo
 // Apaga uma pagina
 // router.delete()
 
-// Atualiza uma estante
-// router.put()
+// Atualiza uma estante -> @author {Arthur}
+router.put("/bookshelves/", authenticateUser, bookshelfController.updateBookshelf)
+// {
+//     bookshelfID: "ID da estante",
+//     newName: "novo nome da estante"
+// }
 
 // Atualiza um livro
 // router.put()

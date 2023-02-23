@@ -80,3 +80,22 @@ export async function deleteBookshelf(bookshelfID) {
         throw error;
     }
 }
+
+// Atualiza uma estante -> @author {Arthur}
+export async function updateBookshelf(newName, bookshelfID) {
+    try {
+        const updateQuery = `
+        UPDATE 	
+            bookshelves
+        SET
+            name = $1
+        WHERE
+            bookshelves.bookshelf_id = $2`
+        
+        const response = await pool.query(updateQuery, [newName, bookshelfID])
+        return response.rows
+    } catch (error) {
+        console.log(TAG, "error caught at updateBookshelf()");
+        throw error
+    }
+}

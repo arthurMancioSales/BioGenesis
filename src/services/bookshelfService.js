@@ -34,3 +34,14 @@ export async function deleteBookshelf(bookshelfID) {
         throw error
     }
 }
+
+// Atualiza uma estante -> @author {Arthur}
+export async function updateBookshelf(newName, bookshelfID) {
+    try {
+        const dbResponse = await bookshelfRepository.updateBookshelf(newName, bookshelfID)
+        return dbResponse
+    } catch (error) {
+        console.log(TAG, "error caught at updateBookshelf()");
+        throw error
+    }
+}

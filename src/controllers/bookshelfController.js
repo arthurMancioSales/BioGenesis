@@ -109,3 +109,38 @@ export async function deleteBookshelf(req, res) {
         console.timeEnd("deleteBookshelf()")
     }
 }
+
+// Atualiza uma estante -> @author {Arthur}
+export async function updateBookshelf(req, res) {
+    console.log(TAG);
+    console.time("updateBookshelf()")
+
+    const {bookshelfID, newName} = req.body
+
+    if (bookshelfID > 0 || typeof(bookshelfID) != "int") {
+        response.message = "Não foi possível atualizar a estante";
+        response.data = null;
+        response.error = "Informe um ID válido";
+    }
+
+    try {
+        const serviceResponse = await bookshelfService.updateBookshelf(newName, bookshelfID)
+        
+        response.message = "Estante atualizada com sucesso";
+        response.data = serviceResponse;
+        response.error = null;
+
+        res.status(200).json(response)
+        console.timeEnd("updateBookshelf()")
+    } catch (error) {
+        console.log(TAG);
+        console.log(error); 
+
+        response.message = "Não foi possível atualizar a estante";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+
+        res.status(500).json(response)
+        console.timeEnd("updateBookshelf()")
+    }
+}
