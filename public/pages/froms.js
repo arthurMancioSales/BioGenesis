@@ -1,12 +1,14 @@
 import submitForm from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 
-export default function form() {
+export default function form(bookPages = 0, bookCape = 0) {
+    console.log(bookPages, bookCape)
     const root = document.createElement("div");
 
     const form = document.createElement("form");
     form.id = "my-form";
     form.setAttribute("id", "form");
+    form.classList.add("ride");
     form.classList.add("ride");
     form.onsubmit = async (e) => {
         e.preventDefault();
@@ -30,7 +32,10 @@ export default function form() {
     textInput1.type = "text";
     textInput1.id = "bookTitle";
     textInput1.name = "bookTitle";
-
+    if(bookCape !== 0){
+        textInput1.value = `${bookCape.book_name}`;
+    }
+    
     const imageUpload1Label = document.createElement("label");
     imageUpload1Label.htmlFor = "coverImage";
     imageUpload1Label.textContent = "Imagem:";
@@ -52,15 +57,22 @@ export default function form() {
     .then((response) => {
         return response.json();
     })
-    .then((response) => {        
+    .then((response) => {    
+        console.log(response)    
         response.data.forEach((name, index) => {
             const dropdown1Option = document.createElement("option");
             dropdown1Option.value = `${name.name}`;
             dropdown1Option.textContent = `${name.name}`;
+
+            if(bookCape !== 0 && bookCape.bookshelf_name == dropdown1Option.value){
+                dropdown1Option.selected = true;
+            }
             dropdown1.appendChild(dropdown1Option);
             
         })
     });
+
+    
 
     group1.appendChild(page1);
     group1.appendChild(textInput1Label);
@@ -88,6 +100,9 @@ export default function form() {
         const textInput = document.createElement("textarea");
         textInput.id = `textInput${i}`;
         textInput.name = `textInput${i}`;
+        if(bookPages !== 0){
+            textInput.value = `${bookPages[i-2].content}`;
+        }
 
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${i}`;
@@ -127,27 +142,32 @@ export default function form() {
         dropdown.appendChild(dropdownOption2);
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
+
+        if(bookPages !== 0){
+            dropdown.value = bookPages[i-2].topic_name
+        }
+
         group.appendChild(pages);
-        group.appendChild(dropdownLabel);
-        group.appendChild(dropdown);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
+        group.appendChild(dropdownLabel);
+        group.appendChild(dropdown);
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
-
 
         form.appendChild(group);
     }
 
     const submitButton = document.createElement('button');
-    submitButton.setAttribute('class', 'submit-btn');
+    submitButton.setAttribute('class', 'submit-btn button');
     submitButton.setAttribute('type', 'submit');
     submitButton.textContent = 'Upload';
+    submitButton.onclick = () =>{
+        submitForm();
+    }
+    
     form.appendChild(submitButton)
-
     root.appendChild(form);
 
-
-    /* document.querySelector(".bookWrapper").appendChild(root); */
-    document.body.appendChild(root);
+    document.querySelector(".bookWrapper").appendChild(root);
 }
