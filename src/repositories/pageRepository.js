@@ -63,6 +63,7 @@ export async function getAllPagesFromBook(bookID) {
     try {
         const getPagesQuery = `        
         SELECT 
+            pages.page_id,
             pages.content,
             pages.image,
             users.username,
