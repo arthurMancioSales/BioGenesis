@@ -67,6 +67,11 @@ router.delete("/bookshelves/:id")
 
 // Cria um usuário novo -> @author {Arthur}
 router.post("/createUser", authenticateUser, userController.createUser);
+// {
+//     username: "nome do usuario",
+//     email, "email do usuario",
+//     password: "senha do usuario"
+// }
 
 // Atualiza um usuário -> @author {Arthur}
 

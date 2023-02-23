@@ -63,7 +63,8 @@ export async function createUser(req, res) {
         response.data = null;
         response.error = error;
 
-        res.status(500).json(response);
+        res.status(500)
+        res.json(JSON.stringify(response));
         console.timeEnd("createUser()");
     }
 }

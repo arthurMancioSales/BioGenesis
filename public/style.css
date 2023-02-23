@@ -817,3 +817,20 @@ tr:nth-child(even) {
 .loginPage {
     justify-content: space-evenly;
 }
+
+.campoInvalido {
+    animation: tremer 0.5s;
+    border: crimson 1px solid;
+}
+
+.campoValido {
+    border: lime 1px solid;
+}
+
+@keyframes tremer {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }
