@@ -1,4 +1,5 @@
 import submitForm from "../modules/submitForm.js";
+import { printTable } from "./list.js";
 
 export default function form() {
     const root = document.createElement("div");
@@ -6,9 +7,11 @@ export default function form() {
     const form = document.createElement("form");
     form.id = "my-form";
     form.setAttribute("id", "form");
-    form.onsubmit = (e) => {
+    form.classList.add("ride");
+    form.onsubmit = async (e) => {
         e.preventDefault();
-        submitForm();
+        await submitForm();
+        await printTable()
     };
 
     // Cria o primeiro grupo de campos
@@ -16,9 +19,12 @@ export default function form() {
     group1.id = "group-1";
     group1.className = "input-group";
 
+    const page1 = document.createElement("h2");
+    page1.innerHTML = "Capa";
+
     const textInput1Label = document.createElement("label");
     textInput1Label.htmlFor = "bookTitle";
-    textInput1Label.textContent = "Texto:";
+    textInput1Label.textContent = "Titulo:";
 
     const textInput1 = document.createElement("input");
     textInput1.type = "text";
@@ -42,27 +48,21 @@ export default function form() {
     dropdown1.id = "bookshelfName";
     dropdown1.name = "bookshelfName";
 
-    const dropdown1Option1 = document.createElement("option");
-    dropdown1Option1.value = "Animais terrestres";
-    dropdown1Option1.textContent = "Animais terrestres";
+    const json = fetch(`http://localhost:5000/api/bookshelves`)
+    .then((response) => {
+        return response.json();
+    })
+    .then((response) => {        
+        response.data.forEach((name, index) => {
+            const dropdown1Option = document.createElement("option");
+            dropdown1Option.value = `${name.name}`;
+            dropdown1Option.textContent = `${name.name}`;
+            dropdown1.appendChild(dropdown1Option);
+            
+        })
+    });
 
-    const dropdown1Option2 = document.createElement("option");
-    dropdown1Option2.value = "Animais marítimos";
-    dropdown1Option2.textContent = "Animais marítimos";
-
-    const dropdown1Option3 = document.createElement("option");
-    dropdown1Option3.value = "Animais voadores";
-    dropdown1Option3.textContent = "Animais voadores";
-
-    const dropdown1Option4 = document.createElement("option");
-    dropdown1Option4.value = "Animais vulcanicos";
-    dropdown1Option4.textContent = "Animais vulcanicos";
-
-    dropdown1.appendChild(dropdown1Option1);
-    dropdown1.appendChild(dropdown1Option2);
-    dropdown1.appendChild(dropdown1Option3);
-    dropdown1.appendChild(dropdown1Option4);
-
+    group1.appendChild(page1);
     group1.appendChild(textInput1Label);
     group1.appendChild(textInput1);
     group1.appendChild(imageUpload1Label);
@@ -77,6 +77,9 @@ export default function form() {
         const group = document.createElement("div");
         group.id = `group-${i}`;
         group.className = "input-group";
+
+        const pages = document.createElement("h2");
+        pages.innerHTML = `Pagina ${i-1}`;
 
         const textInputLabel = document.createElement("label");
         textInputLabel.htmlFor = `textInput${i}`;
@@ -119,17 +122,20 @@ export default function form() {
         dropdownOption4.value = `comportamento`;
         dropdownOption4.textContent = "comportamento";
 
+        
         dropdown.appendChild(dropdownOption1);
         dropdown.appendChild(dropdownOption2);
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
+        group.appendChild(pages);
+        group.appendChild(dropdownLabel);
+        group.appendChild(dropdown);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
-        group.appendChild(dropdownLabel);
-        group.appendChild(dropdown);
+
 
         form.appendChild(group);
     }
@@ -142,5 +148,6 @@ export default function form() {
 
     root.appendChild(form);
 
-    document.querySelector("body").appendChild(root);
+
+    document.querySelector(".bookWrapper").appendChild(root);
 }

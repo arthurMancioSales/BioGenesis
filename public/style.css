@@ -1,4 +1,5 @@
-/* @author {Arthur} */
+/* @author {Arthur}
+*/
 :root {
     --bookFont: "Roboto Condensed", sans-serif;
 }
@@ -60,7 +61,6 @@
     height: 100%;
     color: #fff;
     transition: all 600ms ease-in-out;
-
     opacity: 0.6;
     cursor: pointer;
     border: none;
@@ -129,7 +129,6 @@
     background-size: 100%;
     background-position: 0 -25%;
     background-repeat: no-repeat;
-
 }
 
 .containerForms {
@@ -161,6 +160,9 @@ textarea {
     font-size: 1em;
     color: #0b041f;
     border-radius: 5px;
+    width: 500px;
+    height: 100px;
+    margin: 10px;
 }
 
 .input-container {
@@ -173,8 +175,8 @@ textarea {
     display: block;
     font-size: 20px;
     font-family: sans-serif;
-
 }
+
 .input-container label input[type="file"] {
     color: #0b041f;
     display: block;
@@ -184,14 +186,12 @@ textarea {
     background: none;
     box-shadow: none;
     width: auto;
-
 }
 
 .input-container label textarea {
     width: 500px;
     height: 100px;
 }
-
 
 .input-container .input-container input[type="file"],
 .input-container select,
@@ -200,7 +200,7 @@ textarea {
     color: #0b041f;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
     margin: 10px 0px 10px 0px;
-    width:auto;
+    width: auto;
     display: block;
     cursor: pointer;
 }
@@ -212,7 +212,7 @@ textarea {
 .input-container input:focus,
 .input-container select:focus,
 .input-container textarea:focus {
-    background: #E0E0F8;
+    background: #e0e0f8;
 }
 
 .prateleira {
@@ -242,9 +242,7 @@ textarea {
     justify-content: center;
     align-items: center;
     align-content: center;
-
     background-size: 100% 100%;
-
     height: 100vh;
     width: 100vw;
 }
@@ -325,24 +323,18 @@ header {
 .headerText {
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 19px;
-
     line-height: 30px;
     font-weight: bolder;
-
     overflow-wrap: break-word;
 }
 
 .titleText {
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 40px;
-
     line-height: 50px;
     font-weight: bolder;
-
     margin-bottom: 20px;
-
     overflow-wrap: break-word;
-
     margin-bottom: 1.5rem;
 }
 
@@ -353,21 +345,18 @@ header {
     overflow-wrap: break-word;
 }
 
-
 input,
 select {
     background: #fafafa;
-    box-shadow: inset 0 1px 3px 0 rgb(0 0 0 / 80%);
     border-radius: 5px;
     border: none;
     outline: none;
-    padding: 7px;
+    padding: 5px;
     font-size: 18px;
     color: rgb(0, 0, 0);
-
-    margin: 7px 10px 7px 10px;
+    margin: 10px 0px 10px 10px;
     height: 50px;
-    width: 400px;
+    width: auto;
 }
 
 #beginBtn {
@@ -378,15 +367,13 @@ select {
     text-decoration: none;
     font-size: 24px;
     font-weight: 500;
-
     box-shadow: 0 4px #999;
-
     border-radius: 30px;
     padding: 5px;
     margin: 1.5rem 0px 5px 0;
-
     width: 270px;
     height: 60px;
+    transition: all 600ms;
 }
 
 #beginBtn:hover {
@@ -404,9 +391,7 @@ select {
 #p {
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 16px;
-
     line-height: 30px;
-
     overflow-wrap: break-word;
 }
 
@@ -437,21 +422,19 @@ select {
     right: 45%;
 }
 
-#shelf {
-    height: auto;
-    max-width: 100%
+*/ #shelf {
+    width: 700px;
 }
 
 #shelf {
     width: 700px;
 }
 
-/* @author {Arthur} */
+/* @author {Arthur}*/
 .page {
     display: flex;
     justify-content: center;
     align-items: center;
-
     text-align: justify;
 }
 
@@ -475,17 +458,12 @@ select {
 .bookWrapper {
     width: 100%;
     height: 100%;
-
     overflow: hidden;
-
     position: absolute;
     bottom: 0;
-
     display: flex;
-
     justify-content: center;
     align-items: center;
-
     background-color: rgba(0, 0, 0, 0.5);
 }
 
@@ -529,9 +507,7 @@ select {
     flex-direction: column;
     justify-content: stretch;
     text-align: justify;
-
     padding: 1rem;
-
     height: 100%;
 }
 
@@ -571,7 +547,6 @@ select {
     position: absolute;
     bottom: 90%;
     left: 95%;
-
     font-size: 40px;
     color: white;
     cursor: pointer;
@@ -587,7 +562,7 @@ select {
     text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
 }
 
-/* @author {Thiago} */
+/* @author {Thiago}*/
 .prateleira {
     background-image: url("./images/prateleira.png");
     background-repeat: no-repeat;
@@ -667,7 +642,7 @@ select {
     background-color: rgb(201, 252, 235);
     padding: 15px 10px;
     margin: 10px;
-    box-shadow:rgba(0, 0, 0, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.5);
     border: 1px solid #000000;
 }
 
@@ -703,29 +678,25 @@ select {
     background-color: rgb(201, 252, 235);
     padding: 15px 10px;
     margin: 10px;
-    box-shadow:rgba(0, 0, 0, 0.5);
+    box-shadow: rgba(0, 0, 0, 0.5);
     border: 1px solid #000000;
 }
 
-/* @author {Arthur} */
+/* @author {Arthur}
+*/
 #subtitle {
     transition: all 300ms;
 }
 
 /* list css */
-
 #headerList {
-    /* Rectangle 1 */
     width: 100%;
     height: 70px;
-
-    background: #14BC39;
+    background: #14bc39;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     margin-bottom: 20px;
     padding-top: 0px;
 }
@@ -736,29 +707,25 @@ select {
     /* margin: auto; */
 }
 
-.mainSectionList{
+.mainSectionList {
     width: 90%;
     height: 80px;
 }
 
 .h1List {
     /* FRONT API */
-    /* width: 161px; */
     height: 38px;
-
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 700;
     font-size: 32px;
     line-height: 38px;
-    /* identical to box height */
-    color: #FFFFFF;
+    color: #ffffff;
 }
 
 .h2List {
     width: 582px;
     height: 35px;
-
     font-weight: 500;
     font-size: 26px;
     line-height: 30px;
@@ -766,7 +733,7 @@ select {
 }
 
 .pList {
-    font-family: 'Roboto';
+    font-family: "Roboto";
     font-style: normal;
     font-weight: 400;
     font-size: 18px;
@@ -774,12 +741,11 @@ select {
 }
 
 .containerList {
-    border-bottom: 1px solid #14BC39;
+    border-bottom: 1px solid #14bc39;
     padding: 6px;
     margin-bottom: 13px;
     height: 100%;
 }
-
 
 .input-box {
     width: 100%;
@@ -790,43 +756,34 @@ select {
 
 .input-field {
     box-sizing: border-box;
-
     width: 40%;
     height: 50px;
     margin-right: 15px;
-
-    background: #FBFBFB;
-    border: 1px solid #14BC39;
+    background: #fbfbfb;
+    border: 1px solid #14bc39;
     border-radius: 5px;
-
     font-weight: 400;
     font-size: 18px;
     line-height: 26px;
     padding-left: 20px;
     padding-right: 20px;
-
-    /* margin-bottom: 20px; */
 }
 
 .input-field::placeholder {
-    color: #827F7F;
+    color: #827f7f;
 }
 
 .button {
     width: 20%;
     height: 50px;
-
     margin-top: 7px;
-
-    background: #14BC39;
+    background: #14bc39;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
     border-radius: 5px;
     font-weight: 400;
     font-size: 22px;
     line-height: 26px;
-    /* identical to box height */
-
-    color: #FFFCFC;
+    color: #fffcfc;
 }
 
 /* #cadastrar:hover {
@@ -845,14 +802,13 @@ select {
 
 table {
     width: 100%;
-
     margin-top: 10px;
     text-align: center;
 }
 
 #table-heading {
-    background-color: #14BC39;
-    color: #FFFFFF;
+    background-color: #14bc39;
+    color: #ffffff;
 }
 
 tr {
@@ -866,7 +822,8 @@ td {
     border: 1px solid white;
 }
 
-.theme, .title {
+.theme,
+.title {
     width: 25%;
 }
 
@@ -887,15 +844,13 @@ td {
 }
 
 tr:nth-child(even) {
-    background: #BDE3C6;
+    background: #bde3c6;
 }
 
 .listBg {
-    background-image: url('../images/listBg.png');
+    background-image: url("../images/listBg.png");
     background-size: 100% 100%;
-    background-attachment: fixed;
-
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .flexColumNoncenter {
@@ -903,25 +858,24 @@ tr:nth-child(even) {
     flex-direction: column;
     align-items: center;
     align-content: flex-start;
-    /* justify-content: center; */
     overflow-y: scroll;
 }
-    
+
 #section-lista {
     padding-bottom: 3rem;
 }
 
-.imgScale{
+.imgScale {
     width: 100%;
     /* height: auto; */
 }
 
-.homeAside{
+.homeAside {
     width: 55%;
     height: 100%;
 }
 
-.collapsible{
+.collapsible {
     display: flex;
     /* flex-direction: row; */
     align-items: center;
@@ -931,10 +885,10 @@ tr:nth-child(even) {
     position: absolute;
     top: 0;
     right: 0;
-
     z-index: 9998;
 
-    width: 150px; /* 400px */
+    width: 150px;
+    /* 400px */
     height: 80px;
 
     background-image: url('/images/colMenuBg.png');
@@ -942,7 +896,7 @@ tr:nth-child(even) {
 
     transition: all 500ms ease;
     /* background-color: rgba(112, 192, 75, 0.9); */
-    
+
 
     /* transition: all 10ms ease; */
 
@@ -950,32 +904,119 @@ tr:nth-child(even) {
     /* transition: width 1s ease-out; */
 }
 
-.colImg{
+.colImg {
     height: 25px;
     margin-left: 15px;
     margin-right: 20px;
 
-    position:relative;
+    position: relative;
 
     transition: all 500ms ease;
 }
 
-#menu{
+#menu {
     height: 40px;
     margin-right: 50px;
 
     transform: rotate(0deg);
 }
 
-.tableImg{
+.tableImg {
     height: 40px;
 }
 
-.authorTable{
+.authorTable {
     width: 20%;
 }
 
-#homePageImg{
+#homePageImg {
     color: white;
     font-size: 25px;
+}
+
+
+#fadeModal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    z-index: 10;
+} 
+
+
+#form {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 700px;
+    height: 600px;
+    max-width: 90%;
+    background-color: #fff;
+    padding: 1.2rem;
+    border-radius: 0.5rem;
+    z-index: 10;
+}
+
+#form,
+#fadeModal {
+    transition: 0.5s;
+    opacity: 1;
+    pointer-events: all;
+}
+
+#form.hide,
+#fadeModal.hide {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#form.hide {
+    top: 0;
+}
+
+#form {
+    margin-bottom: 1em;
+    overflow-y: scroll;
+
+}
+#form label {
+    margin-bottom: 0.2em;
+    color: #000000;
+    display: block;
+}
+
+#form .input-group input[type="file"] {
+    color: #000000;
+    box-shadow: none;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+
+#form .input-group {
+    background-color: #d4d4d4;
+    margin: 30px;
+    border-radius: 5px;
+
+
+}
+
+#form .input-group label {
+    font-size: 24px;
+    font-family: sans-serif;
+    margin: 10px 0px 0px 15px;
+}
+
+#form .input-group h2 {
+    text-align:end;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    padding: 10px;
+    font-size: 24px;
+    font-family: sans-serif;
+    background-color: #b2b1b1;
+
 }
