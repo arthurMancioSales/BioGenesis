@@ -26,6 +26,8 @@ export default function listShelves() {
   const sectionMain = document.createElement("section");
   sectionMain.id = "section-lista";
 
+
+
   const divSection = document.createElement("div");
   divSection.classList.add("containerList");
 
@@ -45,6 +47,7 @@ export default function listShelves() {
   inputdivMain.appendChild(buttonDiv);
 
   sectionMain.appendChild(divSection);
+
 
   const table = document.createElement("table");
   const thead = document.createElement("thead");
@@ -92,6 +95,7 @@ export default function listShelves() {
   return outDiv;
 }
 
+
 export async function printTable() {
   await fetch("http://localhost:5000/api/bookshelves")
     .then((response) => {
@@ -100,6 +104,7 @@ export async function printTable() {
     .then((data) => {
       createTable(data.data);
     });
+
 }
 
 function createTable(userList) {

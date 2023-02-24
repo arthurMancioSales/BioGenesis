@@ -1,9 +1,8 @@
-import submitForm from "../modules/submitForm.js";
+import submitForm  from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 import { editPages } from "../modules/editPages.js";
 
-export default function form(bookPages = 0, bookCape = 0) {
-    console.log(bookPages, bookCape)
+export default function form() {
     const root = document.createElement("div");
 
     const form = document.createElement("form");
@@ -63,15 +62,14 @@ export default function form(bookPages = 0, bookCape = 0) {
     };
 
     const json = fetch(`http://localhost:5000/api/bookshelves`)
-    .then((response) => {
-        return response.json();
-    })
-    .then((response) => {    
-        console.log(response)    
-        response.data.forEach((name, index) => {
-            const dropdown1Option = document.createElement("option");
-            dropdown1Option.value = `${name.name}`;
-            dropdown1Option.textContent = `${name.name}`;
+        .then((response) => {
+            return response.json();
+        })
+        .then((response) => {
+            response.data.forEach((name, index) => {
+                const dropdown1Option = document.createElement("option");
+                dropdown1Option.value = `${name.name}`;
+                dropdown1Option.textContent = `${name.name}`;
 
                 dropdown1.appendChild(dropdown1Option);
             });
@@ -125,7 +123,11 @@ export default function form(bookPages = 0, bookCape = 0) {
     const dropdown = document.createElement("select");
     dropdown.id = `dropdown2`;
     dropdown.name = `dropdown2`;
+    dropdown.className = "selectDropdown";
     dropdown.required = true;
+    dropdown.onclick = () => {
+        validateInputSelect()
+    }; 
 
 
     const dropdownOption0 = document.createElement("option");
@@ -204,6 +206,7 @@ function createIput() {
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
         imageUploadLabel.textContent = "Imagem:";
+    
 
         const imageUpload = document.createElement("input");
         imageUpload.type = "file";
@@ -217,7 +220,11 @@ function createIput() {
 
         const dropdown = document.createElement("select");
         dropdown.id = `dropdown${counter}`;
+        dropdown.className = "selectDropdown";
         dropdown.name = `dropdown${counter}`;
+        dropdown.onclick = () => {
+            validateInputSelect()
+        }; 
 
         const dropdownOption0 = document.createElement("option");
         dropdownOption0.value = ``;
@@ -245,10 +252,6 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
-        if(bookPages !== 0){
-            dropdown.value = bookPages[i-2].topic_name
-        }
-
         group.appendChild(pages);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
@@ -261,3 +264,34 @@ function createIput() {
         form.insertBefore(group, document.querySelector(".submit-btn"));
     }
 }
+
+function validateInputSelect() {
+    const mySelects = document.querySelectorAll('.selectDropdown');
+    console.log(mySelects.length);
+    mySelects.forEach(select => {
+        console.log(select.value);
+        if (select.value !== "") {
+            const selectedId = select.id;
+            for (let i = 2; i <= mySelects.length+1; i++) {
+                const nextSelect = document.getElementById(`dropdown${i}`);
+                if (selectedId !== nextSelect.id) {
+                    nextSelect.querySelectorAll('option').forEach(option => {
+                        if (option.value == select.value) {
+                        option.disabled = true;
+                        }
+                        //  else {
+                        // option.disabled = false;
+                        // }
+                    });
+                };
+            };
+        };
+    });
+};
+
+//     form.appendChild(btnFormBook);
+
+//     root.appendChild(form);
+
+//     document.querySelector(".bookWrapper").appendChild(root);
+// }

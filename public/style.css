@@ -106,12 +106,10 @@
 .gallery-wrapper::-webkit-scrollbar {
     display: none;
 }
-
 .gallery-wrapper {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-
 .form {
     display: flex;
     flex-direction: column;
@@ -231,7 +229,6 @@ textarea {
 .input-container textarea:focus {
     background: #e0e0f8;
 }
-
 .prateleira {
     background-image: url("./images/prateleira.png");
     background-repeat: no-repeat;
@@ -241,7 +238,6 @@ textarea {
     display: flex;
     justify-content: center;
 }
-
 .shelf {
     display: flex;
     gap: 5px;
@@ -464,6 +460,7 @@ select {
     bottom: 5%;
     right: 45%;
 }
+
 #shelf {
     width: 700px;
 }
@@ -861,6 +858,7 @@ td {
 tr:nth-child(odd) {
     background: rgba(211, 235, 209, 1);
 }
+
 tr:nth-child(even) {
     background: rgba(248, 248, 248, 1);
 }
@@ -952,102 +950,6 @@ tr:nth-child(even) {
     background-color: #8be67e;
     padding: 10px;
     font-weight: 500;
-}
-
-.listTitle {
-    font-size: 40px;
-}
-
-.listIcon {
-    font-size: 28px;
-}
-
-.listIcon:hover {
-    text-decoration: none;
-}
-
-#fadeModal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    z-index: 10;
-}
-
-#form {
-    position: fixed;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    height: 600px;
-    max-width: 90%;
-    background-color: #fff;
-    padding: 1.2rem;
-    border-radius: 0.5rem;
-    z-index: 10;
-}
-
-#form,
-#fadeModal {
-    transition: 0.5s;
-    opacity: 1;
-    pointer-events: all;
-}
-
-#form.hide,
-#fadeModal.hide {
-    opacity: 0;
-    pointer-events: none;
-}
-
-#form.hide {
-    top: 0;
-}
-
-.opacity0 {
-    display: none;
-}
-
-#form {
-    margin-bottom: 1em;
-    overflow-y: scroll;
-}
-#form label {
-    margin-bottom: 0.2em;
-    color: #000000;
-    display: block;
-}
-
-#form .input-group input[type="file"] {
-    color: #000000;
-    box-shadow: none;
-    padding: 10px;
-    margin-left: 10px;
-}
-
-#form .input-group {
-    background-color: #d4d4d4;
-    margin: 30px;
-    border-radius: 5px;
-}
-
-#form .input-group label {
-    font-size: 24px;
-    font-family: sans-serif;
-    margin: 10px 0px 0px 15px;
-}
-
-#form .input-group h2 {
-    text-align: end;
-    border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
-    font-size: 24px;
-    font-family: sans-serif;
-    background-color: #b2b1b1;
 }
 
 .listTitle {
@@ -1208,6 +1110,9 @@ tr:nth-child(even) {
     cursor: pointer;
     border-radius: 8px;
 }
+
+
+
 
 .submit-btn {
     width: auto;

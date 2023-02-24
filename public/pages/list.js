@@ -46,6 +46,7 @@ export default function list() {
 
     inputdivMain.appendChild(buttonDiv);
 
+
     main.appendChild(inputdivMain);
 
     const sectionMain = document.createElement('section');
@@ -61,9 +62,11 @@ export default function list() {
     inputdivMain.appendChild(h2Section);
 
     //Adicionar animação de expandir
+    
     inputdivMain.appendChild(buttonDiv);
 
-    // inputdivMain.appendChild(buttonDiv);
+    //Adicionar animação de expandir
+    inputdivMain.appendChild(h2Section);
 
     sectionMain.appendChild(divSection);
 
