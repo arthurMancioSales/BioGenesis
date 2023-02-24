@@ -83,8 +83,6 @@ export function createPage() {
 
     divContainer.appendChild(form);
 
-    console.log(divContainer);
-
     document.getElementById("containerPages").insertAdjacentHTML("beforeend", divContainer.outerHTML);
 
     return divContainer

@@ -93,7 +93,7 @@ export default function list() {
     }
 
     inputdivMain.appendChild(h2Section);
-    inputdivMain.appendChild(buttonDiv);
+    // inputdivMain.appendChild(buttonDiv);
 
     sectionMain.appendChild(divSection);
 

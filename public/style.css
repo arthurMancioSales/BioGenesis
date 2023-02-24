@@ -234,6 +234,22 @@ textarea {
     padding-left: 2%;
     flex-wrap: wrap;
 }
+.submit-btn {
+    width: auto;
+    height: auto;
+    cursor: pointer; 
+    background-color: #4CAF50;
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+};
 
 /* @Autor: Davi */
 .bodyHome {
@@ -359,7 +375,7 @@ select {
     width: auto;
 }
 
-#beginBtn {
+.beginBtn {
     background-color: #8be67e;
     border: none;
     color: black;
@@ -380,11 +396,12 @@ select {
     align-items: center;
 }
 
-#beginBtn:hover {
+.beginBtn:hover {
     background-color: #68b05f;
     cursor: pointer;
 }
-#beginBtn:active {
+
+.beginBtn:active {
     background-color: #3e8e41;
     box-shadow: 0 1px #666;
     transform: translateY(4px);
@@ -424,11 +441,6 @@ select {
     bottom: 5%;
     right: 45%;
 }
-
-*/ #shelf {
-    width: 700px;
-}
-
 #shelf {
     width: 700px;
     
@@ -1013,6 +1025,11 @@ tr:nth-child(even) {
     top: 0;
 }
 
+.opacity0 {
+    display: none;
+
+}
+
 #form {
     margin-bottom: 1em;
     overflow-y: scroll;
@@ -1035,7 +1052,7 @@ tr:nth-child(even) {
 #form .input-group {
     background-color: #d4d4d4;
     margin: 30px;
-    border-radius: 5px;
+        border-radius: 5px;
 
 
 }
@@ -1056,3 +1073,61 @@ tr:nth-child(even) {
     background-color: #b2b1b1;
 
 }
+
+.listBtn {
+    margin-right: auto;
+    font-size: 30px;
+    background-color: #8be67e;
+    border-radius: 50%;
+    padding: 10px;
+
+}
+
+.listTitle {
+    font-size: 40px;
+}
+
+.listIcon {
+    font-size: 28px;
+}
+
+.listIcon:hover {
+    text-decoration: none;
+}
+
+#btnFormBook{
+    width: auto;
+    height: auto;
+    cursor: pointer; 
+    background-color: #4CAF50;
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+
+};
+
+.submit-btn {
+    width: auto;
+    height: auto;
+    cursor: pointer; 
+    background-color: #4CAF50;
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+};
+
+

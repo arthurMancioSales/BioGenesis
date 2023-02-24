@@ -5,6 +5,7 @@ import { config } from "dotenv";
 //Carrega variáveis de ambiente
 config();
 
+// @author: {Arthur}
 //Instancia um novo pool de conexões
 const pool = new pg.Pool({
     host: process.env.DBHOST,

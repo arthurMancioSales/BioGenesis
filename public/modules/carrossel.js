@@ -10,7 +10,6 @@ export function isLeft() {
     const items = document.querySelectorAll(".item");
     const maxItems = items.length;
     const title = document.querySelector("#titleCreateBook");
-    console.log(title);
 
     items[currentItem].firstChild.innerHTML = "";
 
