@@ -44,6 +44,10 @@ export default async function loadSingleBook(bookID, title, color, author) {
     const bookCoverImage = document.createElement("img");
     bookCoverImage.classList.add("bookCoverImage");
     bookCoverImage.src = `/uploads/${pages[0].cover_image}`;
+    bookCoverImage.onerror = (e) => {
+        bookCoverImage.onerror = null
+        e.target.src = ""
+    }
     pageCoverContent.appendChild(bookCoverImage);
 
     const bookAuthor = document.createElement("h3");
@@ -107,6 +111,10 @@ export default async function loadSingleBook(bookID, title, color, author) {
 
         const img = document.createElement("img");
         img.src = `/uploads/${page.image}`;
+        img.onerror = (e) => {
+            img.onerror = null
+            img.src = ""
+        }
         img.classList.add("bookImage");
         imgDivContent.appendChild(img);
 

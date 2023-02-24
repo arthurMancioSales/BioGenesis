@@ -12,17 +12,17 @@ router.get(`/bookshelves`, (req, res) => {
 });
 
 router.get(`/login`, (req, res) => {
-  res.sendFile("/public/index.html", { root: "./" });
+    res.sendFile("/public/index.html", { root: "./" });
 });
 
 router.get(`/register`, (req, res) => {
-  res.sendFile("/public/index.html", { root: "./" });
+    res.sendFile("/public/index.html", { root: "./" });
 });
 
 router.get(`/list`, (req, res) => {
-  res.sendFile("/public/index.html", { root: "./" });
+    res.sendFile("/public/index.html", { root: "./" });
 });
 
 router.get(`/listShelves`, (req, res) => {
-  res.sendFile("/public/index.html", { root: "./" });
+    res.sendFile("/public/index.html", { root: "./" });
 });

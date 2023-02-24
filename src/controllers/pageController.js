@@ -100,6 +100,9 @@ export async function getAllPagesFromBook(req, res) {
         res.status(200).json(response);
         console.timeEnd("getAllPagesFromBook()");
     } catch (error) {
+        console.log(TAG);
+        console.log(error);
+        
         response.message = "Não foi possível concluir a operação";
         response.error = "Erro interno do servidor";
 
