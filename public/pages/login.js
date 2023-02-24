@@ -30,11 +30,13 @@ export default function login() {
     const inputLogin = document.createElement("input");
     inputLogin.id = "login";
     inputLogin.placeholder = "E-mail";
+    inputLogin.classList.add("userInput");
     
     const inputPassword = document.createElement("input");
     inputPassword.id = "password";
     inputPassword.placeholder = "Senha";
     inputPassword.type = "password";
+    inputPassword.classList.add("userInput");
     
     formMain.appendChild(inputLogin);
     formMain.appendChild(inputPassword);

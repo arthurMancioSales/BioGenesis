@@ -1,229 +1,143 @@
 // @author {Thiago}
 
+import modal from "../modules/modal.js";
+import createBookShelvesPage from "../modules/modalCreateShelf.js";
+import deleteBookShelvesPage from "../modules/modalDeleteShelf.js";
+import editBookShelvesPage from "../modules/modalEditShelf.js";
+import collapsableMenu from "./collapsableMenu.js";
+
 export default function listShelves() {
-    const outDiv = document.createElement("div");
-    outDiv.classList.add("flexColumNoncenter", "listBg");
+  const outDiv = document.createElement("div");
+  outDiv.classList.add("flexColumNoncenter", "listBg");
 
-    // cria o header
-    const header = document.createElement("header");
-    header.id = "headerList";
+  // cria o main
+  const main = document.createElement("main");
+  main.classList.add("mainSectionList");
 
-    const h1Header = document.createElement("h1");
-    h1Header.classList.add("h1List");
-    h1Header.textContent = "ESTANTES CADASTRADAS";
-    header.appendChild(h1Header);
+  const divMain = document.createElement("div");
 
-    // cria o main
-    const main = document.createElement("main");
-    main.classList.add("mainList");
+  const inputdivMain = document.createElement("div");
+  inputdivMain.classList.add("input-box");
 
-    const divMain = document.createElement("div");
-    divMain.classList.add("containerList");
+  main.appendChild(divMain);
 
-    const h2Div = document.createElement("h2");
-    h2Div.classList.add("h2List");
-    h2Div.textContent = "CADASTRAR NOVA ESTANTE";
+  main.appendChild(inputdivMain);
 
-    divMain.appendChild(h2Div);
+  const sectionMain = document.createElement("section");
+  sectionMain.id = "section-lista";
 
-    main.appendChild(divMain);
+  const divSection = document.createElement("div");
+  divSection.classList.add("containerList");
 
-    const headerdivMain = document.createElement("div");
-    headerdivMain.classList.add("input-box");
-    headerdivMain.style.justifyContent = "space-between";
+  const h2Section = document.createElement("h2");
+  h2Section.classList.add("listTitle");
+  h2Section.textContent = "ESTANTES CADASTRADAS";
 
-    const h2Section = document.createElement("h2");
-    h2Section.textContent = "LISTA DE ESTANTES CADASTRADAS";
-    h2Section.style.alignSelf = "flex-end";
+  const buttonDiv = document.createElement("input");
+  buttonDiv.setAttribute("type", "button");
+  buttonDiv.classList.add("listBtn", "button");
+  buttonDiv.value = "Cadastrar";
+  buttonDiv.onclick = async () => {
+    modal(createBookShelvesPage);
+  };
 
-    headerdivMain.appendChild(h2Section);
+  inputdivMain.appendChild(h2Section);
+  inputdivMain.appendChild(buttonDiv);
 
-    const buttonDiv = document.createElement("button");
-    buttonDiv.type = "button";
-    buttonDiv.id = "cadastrar";
-    buttonDiv.textContent = "Criar Nova";
-    buttonDiv.style.alignSelf = "flex-end";
-    buttonDiv.onclick = () => {
-        createBookShelvesPage();
-    };
-    buttonDiv.classList.add("button");
+  sectionMain.appendChild(divSection);
 
-    headerdivMain.appendChild(buttonDiv);
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
 
-    main.appendChild(headerdivMain);
+  const tr = document.createElement("tr");
+  tr.id = "table-heading";
 
-    const sectionMain = document.createElement("section");
-    sectionMain.id = "section-lista";
+  const tdID = document.createElement("td");
+  tdID.classList.add("id-number");
+  tdID.textContent = "#ID";
 
-    const divSection = document.createElement("div");
-    divSection.classList.add("containerList");
+  const tdTitle = document.createElement("td");
+  tdTitle.classList.add("title");
+  tdTitle.textContent = "TEMA DA ESTANTE";
 
-    sectionMain.appendChild(divSection);
+  const tdEdit = document.createElement("td");
+  tdEdit.classList.add("edit");
+  tdEdit.textContent = "EDITAR";
 
-    const table = document.createElement("table");
-    const thead = document.createElement("thead");
+  const tdDelete = document.createElement("td");
+  tdDelete.classList.add("delete");
+  tdDelete.textContent = "EXCLUIR";
 
-    const tr = document.createElement("tr");
-    tr.id = "table-heading";
+  tr.appendChild(tdID);
+  tr.appendChild(tdTitle);
+  tr.appendChild(tdEdit);
+  tr.appendChild(tdDelete);
 
-    const tdID = document.createElement("td");
-    tdID.classList.add("id-number");
-    tdID.textContent = "#ID";
+  thead.appendChild(tr);
+  table.appendChild(thead);
 
-    const tdTitle = document.createElement("td");
-    tdTitle.classList.add("title");
-    tdTitle.textContent = "TEMA DA ESTANTE";
+  const tbody = document.createElement("tbody");
+  tbody.id = "table";
+  table.appendChild(tbody);
 
-    const tdEdit = document.createElement("td");
-    tdEdit.classList.add("edit");
-    tdEdit.textContent = "EDITAR";
+  sectionMain.appendChild(table);
+  main.appendChild(sectionMain);
 
-    const tdDelete = document.createElement("td");
-    tdDelete.classList.add("delete");
-    tdDelete.textContent = "EXCLUIR";
+  outDiv.appendChild(main);
 
-    tr.appendChild(tdID);
-    tr.appendChild(tdTitle);
-    tr.appendChild(tdEdit);
-    tr.appendChild(tdDelete);
+  printTable();
 
-    thead.appendChild(tr);
-    table.appendChild(thead);
+  collapsableMenu();
 
-    const tbody = document.createElement("tbody");
-    tbody.id = "table";
-    table.appendChild(tbody);
+  return outDiv;
+}
 
-    sectionMain.appendChild(table);
-    main.appendChild(sectionMain);
+export async function printTable() {
+  await fetch("http://localhost:5000/api/bookshelves")
+    .then((response) => {
+      return response.json();
+    })
+    .then((data) => {
+      createTable(data.data);
+    });
+}
 
-    // adiciona o main ao body
-    outDiv.appendChild(header);
-    outDiv.appendChild(main);
+function createTable(userList) {
+  const table = document.querySelector("#table");
+  table.innerHTML = "";
 
-    async function printTable() {
-        await fetch("http://localhost:5000/api/bookshelves")
-            .then((response) => {
-                return response.json();
-            })
-            .then((resolved) => {
-                createTable(resolved.data);
-            });
-    }
+  let cont = 1;
+  while (userList.length >= cont) {
+    addRow(userList, cont);
+    cont++;
+  }
+}
 
-    function createTable(userList) {
-        let cont = 1;
-        while (userList.length >= cont) {
-            addRow(userList, cont);
-            cont++;
-        }
-    }
+function addRow(userList, cont) {
+  let line = document.createElement("tr");
+  let i = cont - 1;
 
-    function addRow(userList, cont) {
-        let line = document.createElement("tr");
+  let col1 = document.createElement("td");
+  let col2 = document.createElement("td");
+  let col3 = document.createElement("td");
+  col3.onclick = async () => {
+    modal(editBookShelvesPage, userList[i].name, userList[i].id);
+  };
+  let col4 = document.createElement("td");
+  col4.onclick = async () => {
+    modal(deleteBookShelvesPage, userList[i].id);
+  };
 
-        let col1 = document.createElement("td");
-        let col2 = document.createElement("td");
-        let col3 = document.createElement("td");
-        let col4 = document.createElement("td");
+  line.appendChild(col1);
+  line.appendChild(col2);
+  line.appendChild(col3);
+  line.appendChild(col4);
 
-        line.appendChild(col1);
-        line.appendChild(col2);
-        line.appendChild(col3);
-        line.appendChild(col4);
+  const tbody = document.querySelector("#table");
+  tbody.appendChild(line);
 
-        tbody.appendChild(line);
-
-        let i = cont - 1;
-
-        col1.innerHTML = `<span>${userList[i].id}</span>`;
-        col2.innerHTML = `<span>${userList[i].name}</span>`;
-        col3.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
-        col4.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
-    }
-
-    function createBookShelvesPage() {
-        const wrapper = document.createElement("div");
-        wrapper.classList.add("modalWrapper");
-
-        const closeIcon = document.createElement("i");
-        closeIcon.classList.add("fa-solid", "fa-xmark", "closeIcon");
-        closeIcon.onclick = () => {
-            document.querySelector("body").removeChild(wrapper);
-        };
-
-        wrapper.appendChild(closeIcon);
-
-        const container = document.createElement("div");
-        container.classList.add("modal-background");
-
-        const title = document.createElement("h1");
-        title.innerHTML = "Criação de estante";
-        title.style.textAlign = "center";
-
-        const divContainer = document.createElement("div");
-        divContainer.classList.add("modalForms");
-
-        const form = document.createElement("form");
-        form.setAttribute("action", "");
-        form.classList.add("form");
-
-        const labelarea = document.createElement("label");
-        labelarea.setAttribute("for", "labelarea");
-        labelarea.textContent = "Conteudo:";
-
-        const newShelf = document.createElement("input");
-        newShelf.setAttribute("type", "submit");
-        newShelf.setAttribute("name", "newShelf");
-        newShelf.setAttribute("value", "Nova Estante");
-        newShelf.style.alignSelf = "center";
-        newShelf.onclick = async () => {
-            const shelfName = document.querySelector("#shelf-name").value;
-            try {
-                createBookshelf(shelfName);
-                document.querySelector("body").removeChild(wrapper);
-                document.querySelector("#table").innerHTML = "";
-                await printTable();
-            } catch (error) {
-                console.log("error:", error);
-            }
-        };
-
-        const divInputName = document.createElement("input");
-        divInputName.id = "shelf-name";
-        divInputName.setAttribute("name", "shelf-name");
-        divInputName.setAttribute("placeholder", "Nome");
-
-        form.appendChild(divInputName);
-
-        divContainer.appendChild(form);
-        container.appendChild(title);
-
-        container.appendChild(divContainer);
-        container.appendChild(newShelf);
-
-        wrapper.appendChild(container);
-
-        document.querySelector("body").appendChild(wrapper);
-
-        wrapper.onclick = (e) => {
-            if (e.target == wrapper) {
-                document.querySelector("body").removeChild(wrapper);
-                pageFlip.destroy();
-            }
-        };
-    }
-
-    async function createBookshelf(name) {
-        await fetch("http://localhost:5000/api/bookshelves", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                name,
-            }),
-        });
-    }
-
-    printTable();
-    return outDiv;
+  col1.innerHTML = `<span>${userList[i].id}</span>`;
+  col2.innerHTML = `<span>${userList[i].name}</span>`;
+  col3.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
+  col4.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
 }

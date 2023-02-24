@@ -2,7 +2,8 @@ import submitForm from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 import { editPages } from "../modules/editPages.js";
 
-export default function form() {
+export default function form(bookPages = 0, bookCape = 0) {
+    console.log(bookPages, bookCape)
     const root = document.createElement("div");
 
     const form = document.createElement("form");
@@ -62,14 +63,15 @@ export default function form() {
     };
 
     const json = fetch(`http://localhost:5000/api/bookshelves`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((response) => {
-            response.data.forEach((name, index) => {
-                const dropdown1Option = document.createElement("option");
-                dropdown1Option.value = `${name.name}`;
-                dropdown1Option.textContent = `${name.name}`;
+    .then((response) => {
+        return response.json();
+    })
+    .then((response) => {    
+        console.log(response)    
+        response.data.forEach((name, index) => {
+            const dropdown1Option = document.createElement("option");
+            dropdown1Option.value = `${name.name}`;
+            dropdown1Option.textContent = `${name.name}`;
 
                 dropdown1.appendChild(dropdown1Option);
             });
@@ -243,11 +245,15 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
+        if(bookPages !== 0){
+            dropdown.value = bookPages[i-2].topic_name
+        }
+
         group.appendChild(pages);
-        group.appendChild(dropdownLabel);
-        group.appendChild(dropdown);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
+        group.appendChild(dropdownLabel);
+        group.appendChild(dropdown);
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
 
