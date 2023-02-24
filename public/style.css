@@ -48,6 +48,8 @@
 
 .gallery-wrapper {
     overflow-x: hidden;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
 }
 
 .arrow-left,
@@ -517,7 +519,9 @@ select {
     width: 410px;
     margin-top: auto;
 }
-
+/* .page-content {
+    justify-content: center;
+} */
 .page-content {
     display: flex;
     flex-direction: column;
@@ -603,6 +607,7 @@ select {
     align-content: flex-start;
 }
 
+
 .bookSpine {
     display: flex;
     align-items: center;
@@ -639,6 +644,7 @@ select {
     background-color: rgba(0, 0, 0, 0.5);
 }
 
+
 .modal-background {
     background-color: white;
     padding: 15px;
@@ -652,15 +658,6 @@ select {
     width: 95%;
     height: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-self: center;
-    border-radius: 10px;
-    background-color: rgb(201, 252, 235);
-    padding: 15px 10px;
-    margin: 10px;
-    box-shadow: rgba(0, 0, 0, 0.5);
-    border: 1px solid #000000;
 }
 
 .modalWrapper {
@@ -697,6 +694,11 @@ select {
     margin: 10px;
     box-shadow: rgba(0, 0, 0, 0.5);
     border: 1px solid #000000;
+}
+
+#shelf-name {
+    align-self: center;
+    width: 90%;
 }
 
 /* @author {Arthur}
