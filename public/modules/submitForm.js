@@ -1,8 +1,6 @@
 // @author {Arthur}
 export default async function submitForm() {
 
-    validateInput()
-
     const inputs = document.querySelectorAll(".input-group").length
     
     const bookTitle = document.getElementById("bookTitle");
@@ -45,6 +43,4 @@ export default async function submitForm() {
     });
 }
 
-function validateInput() {
-    
-}
+

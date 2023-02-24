@@ -1,4 +1,4 @@
-import submitForm from "../modules/submitForm.js";
+import submitForm  from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 import { editPages } from "../modules/editPages.js";
 
@@ -123,7 +123,11 @@ export default function form() {
     const dropdown = document.createElement("select");
     dropdown.id = `dropdown2`;
     dropdown.name = `dropdown2`;
+    dropdown.className = "selectDropdown";
     dropdown.required = true;
+    dropdown.onclick = () => {
+        validateInputSelect()
+    }; 
 
 
     const dropdownOption0 = document.createElement("option");
@@ -216,7 +220,11 @@ function createIput() {
 
         const dropdown = document.createElement("select");
         dropdown.id = `dropdown${counter}`;
+        dropdown.className = "selectDropdown";
         dropdown.name = `dropdown${counter}`;
+        dropdown.onclick = () => {
+            validateInputSelect()
+        }; 
 
         const dropdownOption0 = document.createElement("option");
         dropdownOption0.value = ``;
@@ -256,3 +264,28 @@ function createIput() {
         form.insertBefore(group, document.querySelector(".submit-btn"));
     }
 }
+
+
+function validateInputSelect() {
+    const mySelects = document.querySelectorAll('.selectDropdown');
+    console.log(mySelects.length);
+    mySelects.forEach(select => {
+        console.log(select.value);
+        if (select.value !== "") {
+            const selectedId = select.id;
+            for (let i = 2; i <= mySelects.length+1; i++) {
+                const nextSelect = document.getElementById(`dropdown${i}`);
+                if (selectedId !== nextSelect.id) {
+                    nextSelect.querySelectorAll('option').forEach(option => {
+                        if (option.value == select.value) {
+                        option.disabled = true;
+                        }
+                        //  else {
+                        // option.disabled = false;
+                        // }
+                    });
+                };
+            };
+        };
+    });
+};
