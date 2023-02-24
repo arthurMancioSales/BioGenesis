@@ -40,8 +40,6 @@ export default function list() {
     buttonDiv.textContent = "Cadastrar";
     buttonDiv.onclick = async () => {
         body.appendChild(wrapper);
-        console.log("a");
-        
         wrapper.innerHTML = ""
         wrapper.appendChild(form())
     }
