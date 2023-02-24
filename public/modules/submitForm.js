@@ -21,6 +21,7 @@ export default async function submitForm() {
     const fourthImageInput = document.querySelector("#imageUpload5");
 
     const formData = new FormData();
+
     formData.append("bookTitle", bookTitle.value);
     formData.append("bookshelfName", bookshelfName.value);
     formData.append("coverImage", coverImage.files[0]);
@@ -42,8 +43,9 @@ export default async function submitForm() {
     formData.append("dropdown5", dropdown5.value);
     formData.append("imageUpload5", fourthImageInput.files[0]);
 
-    await fetch("http://localhost:5000/upload", {
+    await fetch("http://localhost:5000/upload",{
         method: "POST",
         body: formData,
-    })
+    });
 }
+

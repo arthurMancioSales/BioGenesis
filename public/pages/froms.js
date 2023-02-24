@@ -1,12 +1,14 @@
 import submitForm from "../modules/submitForm.js";
 import { printTable } from "./list.js";
+import { editPages } from "../modules/editPages.js";
 
 export default function form() {
     const root = document.createElement("div");
-
+    
     const form = document.createElement("form");
     form.id = "my-form";
     form.setAttribute("id", "form");
+    form.classList.add("ride");
     form.onsubmit = async (e) => {
         e.preventDefault();
         await submitForm();
@@ -16,11 +18,14 @@ export default function form() {
     // Cria o primeiro grupo de campos
     const group1 = document.createElement("div");
     group1.id = "group-1";
-    group1.className = "input-group";
+    group1.classList = "input-group";
+
+    const page1 = document.createElement("h2");
+    page1.innerHTML = "Capa";
 
     const textInput1Label = document.createElement("label");
     textInput1Label.htmlFor = "bookTitle";
-    textInput1Label.textContent = "Texto:";
+    textInput1Label.textContent = "Titulo:";
 
     const textInput1 = document.createElement("input");
     textInput1.type = "text";
@@ -44,27 +49,28 @@ export default function form() {
     dropdown1.id = "bookshelfName";
     dropdown1.name = "bookshelfName";
 
-    const dropdown1Option1 = document.createElement("option");
-    dropdown1Option1.value = "Animais terrestres";
-    dropdown1Option1.textContent = "Animais terrestres";
+    const btnFormBook = document.createElement("button");
+    btnFormBook.id = "btnFormBook";
+    btnFormBook.innerText = "adicionar Pagina"
+    btnFormBook.setAttribute('type', 'button');
+    btnFormBook.onclick = () => editPages();
 
-    const dropdown1Option2 = document.createElement("option");
-    dropdown1Option2.value = "Animais marítimos";
-    dropdown1Option2.textContent = "Animais marítimos";
 
-    const dropdown1Option3 = document.createElement("option");
-    dropdown1Option3.value = "Animais voadores";
-    dropdown1Option3.textContent = "Animais voadores";
+    const json = fetch(`http://localhost:5000/api/bookshelves`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((response) => {
+            response.data.forEach((name, index) => {
+                const dropdown1Option = document.createElement("option");
+                dropdown1Option.value = `${name.name}`;
+                dropdown1Option.textContent = `${name.name}`;
 
-    const dropdown1Option4 = document.createElement("option");
-    dropdown1Option4.value = "Animais vulcanicos";
-    dropdown1Option4.textContent = "Animais vulcanicos";
+                dropdown1.appendChild(dropdown1Option);
+            })
+        });
 
-    dropdown1.appendChild(dropdown1Option1);
-    dropdown1.appendChild(dropdown1Option2);
-    dropdown1.appendChild(dropdown1Option3);
-    dropdown1.appendChild(dropdown1Option4);
-
+    group1.appendChild(page1);
     group1.appendChild(textInput1Label);
     group1.appendChild(textInput1);
     group1.appendChild(imageUpload1Label);
@@ -72,13 +78,86 @@ export default function form() {
     group1.appendChild(dropdown1Label);
     group1.appendChild(dropdown1);
 
-    form.appendChild(group1)
+    form.appendChild(group1);
 
     // Cria os outros grupos de campos
-    for (let i = 2; i <= 5; i++) {
+    const group = document.createElement("div");
+    group.id = `group-2`;
+    group.classList.add("input-group");
+
+    const pages = document.createElement("h2");
+    pages.innerHTML = `Pagina 1`;
+
+    const textInputLabel = document.createElement("label");
+    textInputLabel.htmlFor = `textInput2`;
+    textInputLabel.textContent = "Texto:";
+
+    const textInput = document.createElement("textarea");
+    textInput.id = `textInput2`;
+    textInput.name = `textInput2`;
+
+    const imageUploadLabel = document.createElement("label");
+    imageUploadLabel.htmlFor = `imageUpload2`;
+    imageUploadLabel.textContent = "Imagem:";
+
+    const imageUpload = document.createElement("input");
+    imageUpload.type = "file";
+    imageUpload.id = `imageUpload2`;
+    imageUpload.name = `imageUpload2`;
+
+    const dropdownLabel = document.createElement("label");
+    dropdownLabel.htmlFor = `dropdown2`;
+    dropdownLabel.textContent = "Dropdown:";
+
+    const dropdown = document.createElement("select");
+    dropdown.id = `dropdown2`;
+    dropdown.name = `dropdown2`;
+
+    const dropdownOption0 = document.createElement("option");
+    dropdownOption0.value = ``;
+    dropdownOption0.textContent = "Selecione uma opção"; 
+
+    const dropdownOption1 = document.createElement("option");
+    dropdownOption1.value = `alimentação`;
+    dropdownOption1.textContent = "alimentação";
+
+    const dropdownOption2 = document.createElement("option");
+    dropdownOption2.value = `habitat`;
+    dropdownOption2.textContent = "habitat";
+
+    const dropdownOption3 = document.createElement("option");
+    dropdownOption3.value = `curiosidades`;
+    dropdownOption3.textContent = "curiosidades";
+
+    const dropdownOption4 = document.createElement("option");
+    dropdownOption4.value = `comportamento`;
+    dropdownOption4.textContent = "comportamento";
+
+
+    dropdown.appendChild(dropdownOption0);
+    dropdown.appendChild(dropdownOption1);
+    dropdown.appendChild(dropdownOption2);
+    dropdown.appendChild(dropdownOption3);
+    dropdown.appendChild(dropdownOption4);
+
+    group.appendChild(pages);
+    group.appendChild(dropdownLabel);
+    group.appendChild(dropdown);
+    group.appendChild(textInputLabel);
+    group.appendChild(textInput);
+    group.appendChild(imageUploadLabel);
+    group.appendChild(imageUpload);
+
+    form.appendChild(group);
+
+
+    for (let i = 3; i <= 5; i++) {
         const group = document.createElement("div");
         group.id = `group-${i}`;
-        group.className = "input-group";
+        group.classList.add("opacity0", "input-group");
+
+        const pages = document.createElement("h2");
+        pages.innerHTML = `Pagina ${i - 1}`;
 
         const textInputLabel = document.createElement("label");
         textInputLabel.htmlFor = `textInput${i}`;
@@ -105,6 +184,10 @@ export default function form() {
         dropdown.id = `dropdown${i}`;
         dropdown.name = `dropdown${i}`;
 
+        const dropdownOption0 = document.createElement("option");
+        dropdownOption0.value = ``;
+        dropdownOption0.textContent = "Selecione uma opção"; 
+
         const dropdownOption1 = document.createElement("option");
         dropdownOption1.value = `alimentação`;
         dropdownOption1.textContent = "alimentação";
@@ -121,17 +204,19 @@ export default function form() {
         dropdownOption4.value = `comportamento`;
         dropdownOption4.textContent = "comportamento";
 
+        dropdown.appendChild(dropdownOption0);
         dropdown.appendChild(dropdownOption1);
         dropdown.appendChild(dropdownOption2);
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
+        group.appendChild(pages);
+        group.appendChild(dropdownLabel);
+        group.appendChild(dropdown);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
-        group.appendChild(dropdownLabel);
-        group.appendChild(dropdown);
 
         form.appendChild(group);
     }
@@ -140,8 +225,12 @@ export default function form() {
     submitButton.setAttribute('class', 'submit-btn');
     submitButton.setAttribute('type', 'submit');
     submitButton.textContent = 'Upload';
+
     form.appendChild(submitButton)
+    form.appendChild(btnFormBook);
 
     root.appendChild(form);
-    document.querySelector("body").appendChild(root);
+
+
+    document.querySelector(".bookWrapper").appendChild(root);
 }

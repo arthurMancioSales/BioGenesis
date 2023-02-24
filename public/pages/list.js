@@ -1,10 +1,28 @@
 import SPA from "../modules/spa.js";
+import form from "./froms.js";
+
 const spa = SPA();
 
 import collapsableMenu from "./collapsableMenu.js";
-import form from "./froms.js";
 
 export default function list() {
+
+    const body = document.querySelector("body");
+
+
+
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("bookWrapper");
+    wrapper.style.overflowY = "scroll";
+
+
+    wrapper.onclick = (e) => {
+        if (e.target == wrapper) {
+            body.removeChild(wrapper);
+        }
+    };
+
+
     const outDiv = document.createElement("div")
     outDiv.classList.add("flexColumNoncenter", "listBg");
 
@@ -40,7 +58,19 @@ export default function list() {
     const inputdivMain = document.createElement('div');
     inputdivMain.classList.add('input-box');
 
-    
+    const buttonDiv = document.createElement('button');
+    buttonDiv.type = 'button';
+    buttonDiv.id = 'cadastrar';
+    buttonDiv.textContent = "Cadastrar";
+    buttonDiv.onclick = async () => {
+        body.appendChild(wrapper);
+        console.log("a");
+
+        form()
+    }
+    buttonDiv.classList.add('button');
+
+    inputdivMain.appendChild(buttonDiv);
 
     main.appendChild(inputdivMain);
 
@@ -55,15 +85,15 @@ export default function list() {
     h2Section.textContent = 'LIVROS CADASTRADOS';
 
 
-    //Adicionar animação de expandir
-    const buttonDiv = document.createElement('i');
-    buttonDiv.classList.add('listBtn', "fa-solid", "fa-plus");
-    buttonDiv.onclick = async () => {
-        form()
-    }
+    // //Adicionar animação de expandir
+    // const buttonDiv = document.createElement('i');
+    // buttonDiv.classList.add('listBtn', "fa-solid", "fa-plus");
+    // buttonDiv.onclick = async () => {
+    //     form()
+    // }
 
     inputdivMain.appendChild(h2Section);
-    inputdivMain.appendChild(buttonDiv);
+    // inputdivMain.appendChild(buttonDiv);
 
     sectionMain.appendChild(divSection);
 
@@ -115,8 +145,11 @@ export default function list() {
     sectionMain.appendChild(table);
     main.appendChild(sectionMain);
 
+
+
     // adiciona o main ao body
     outDiv.appendChild(main);
+
 
 
     //Criação da tabela, todas as tres funções abaixo são necessarias para a criação da mesma.
