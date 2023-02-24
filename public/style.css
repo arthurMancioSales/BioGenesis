@@ -106,12 +106,10 @@
 .gallery-wrapper::-webkit-scrollbar {
     display: none;
 }
-
 .gallery-wrapper {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
-
 .form {
     display: flex;
     flex-direction: column;
@@ -231,7 +229,6 @@ textarea {
 .input-container textarea:focus {
     background: #e0e0f8;
 }
-
 .prateleira {
     background-image: url("./images/prateleira.png");
     background-repeat: no-repeat;
@@ -241,7 +238,6 @@ textarea {
     display: flex;
     justify-content: center;
 }
-
 .shelf {
     display: flex;
     gap: 5px;
@@ -254,12 +250,13 @@ textarea {
 .submit-btn {
     width: auto;
     height: auto;
-    cursor: pointer; 
-    background-color: #4CAF50;
-    border: none; 
-    color: white; 
+    cursor: pointer;
+    background-color: #4caf50;
+    border: none;
+    color: white;
     padding: 15px 32px;
     text-align: center;
+
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px; 
@@ -464,9 +461,9 @@ select {
     bottom: 5%;
     right: 45%;
 }
+
 #shelf {
     width: 700px;
-    
 }
 
 /* @author {Arthur}*/
@@ -861,6 +858,7 @@ td {
 tr:nth-child(odd) {
     background: rgba(211, 235, 209, 1);
 }
+
 tr:nth-child(even) {
     background: rgba(248, 248, 248, 1);
 }
@@ -907,7 +905,7 @@ tr:nth-child(even) {
     /* 400px */
     height: 80px;
 
-    background-image: url('/images/colMenuBg.png');
+    background-image: url("/images/colMenuBg.png");
     background-size: 100% 100%;
 
     transition: all 500ms ease;
@@ -949,9 +947,10 @@ tr:nth-child(even) {
 .listBtn {
     margin-right: auto;
     font-size: 25px;
+
     background-color: #8be67e;
     padding: 10px;
-    font-weight: 500;
+
 }
 
 .listTitle {
@@ -966,26 +965,39 @@ tr:nth-child(even) {
     text-decoration: none;
 }
 
-.listBtn {
-    margin-right: auto;
-    font-size: 25px;
-    background-color: #8be67e;
-    padding: 10px;
-    font-weight: 500;
-}
-
-.listTitle {
-    font-size: 40px;
-}
-
-.listIcon {
-    font-size: 28px;
-}
-
-.listIcon:hover {
+#btnFormBook {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
     text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
 }
 
+.submit-btn {
+    width: auto;
+    height: auto;
+    cursor: pointer;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
 
 #fadeModal {
     position: fixed;
@@ -995,8 +1007,7 @@ tr:nth-child(even) {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
-} 
-
+}
 
 #form {
     position: fixed;
@@ -1031,13 +1042,11 @@ tr:nth-child(even) {
 
 .opacity0 {
     display: none;
-
 }
 
 #form {
     margin-bottom: 1em;
     overflow-y: scroll;
-
 }
 #form label {
     margin-bottom: 0.2em;
@@ -1052,13 +1061,10 @@ tr:nth-child(even) {
     margin-left: 10px;
 }
 
-
 #form .input-group {
     background-color: #d4d4d4;
     margin: 30px;
-        border-radius: 5px;
-
-
+    border-radius: 5px;
 }
 
 #form .input-group label {
@@ -1068,14 +1074,13 @@ tr:nth-child(even) {
 }
 
 #form .input-group h2 {
-    text-align:end;
+    text-align: end;
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 10px;
     font-size: 24px;
     font-family: sans-serif;
     background-color: #b2b1b1;
-
 }
 
 .listBtn {
@@ -1084,7 +1089,7 @@ tr:nth-child(even) {
     background-color: #8be67e;
     border-radius: 50%;
     padding: 10px;
-
+    font-weight: 500;
 }
 
 .listTitle {
@@ -1099,33 +1104,36 @@ tr:nth-child(even) {
     text-decoration: none;
 }
 
-#btnFormBook{
+#btnFormBook {
     width: auto;
     height: auto;
-    cursor: pointer; 
-    background-color: #4CAF50;
-    border: none; 
-    color: white; 
+    cursor: pointer;
+    background-color: #4caf50;
+    border: none;
+    color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none; 
-    display: inline-block; 
-    font-size: 16px; 
-    margin: 4px 2px; 
-    cursor: pointer; 
-    border-radius: 8px; 
-
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
 }
+
+
+
 
 .submit-btn {
     width: auto;
     height: auto;
-    cursor: pointer; 
-    background-color: #4CAF50;
-    border: none; 
-    color: white; 
+    cursor: pointer;
+    background-color: #4caf50;
+    border: none;
+    color: white;
     padding: 15px 32px;
     text-align: center;
+
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px; 
@@ -1147,6 +1155,7 @@ tr:nth-child(even) {
 }
 
 @keyframes tremer {
+
     0% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
     50% { transform: translateX(5px); }

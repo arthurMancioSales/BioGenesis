@@ -38,6 +38,7 @@ export default function register() {
     inputUserName.type = "name"
     inputUserName.required = true
     inputUserName.placeholder = "Usuário";
+
     inputUserName.classList.add("userInput");
 
     const inputUserMail = document.createElement("input");
@@ -52,6 +53,7 @@ export default function register() {
     inputUserMailConfirm.type = "email"
     inputUserMailConfirm.required = true
     inputUserMailConfirm.placeholder = "Confirme seu e-mail";
+
     inputUserMailConfirm.classList.add("userInput");
 
     const inputUserPass = document.createElement("input");
@@ -66,6 +68,7 @@ export default function register() {
     inputUserPassConf.type = "password"
     inputUserPassConf.required = true
     inputUserPassConf.placeholder = "Confirme sua Senha";
+
     inputUserPassConf.classList.add("userInput");
 
     // Crie um elemento <button> com o ID "createUser" e o texto "Cadastrar"
