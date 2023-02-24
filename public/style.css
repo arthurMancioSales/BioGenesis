@@ -234,22 +234,67 @@ textarea {
     padding-left: 2%;
     flex-wrap: wrap;
 }
+
 .submit-btn {
     width: auto;
     height: auto;
-    cursor: pointer; 
+    cursor: pointer;
     background-color: #4CAF50;
-    border: none; 
-    color: white; 
+    border: none;
+    color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none; 
-    display: inline-block; 
-    font-size: 16px; 
-    margin: 4px 2px; 
-    cursor: pointer; 
-    border-radius: 8px; 
-};
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+alert {
+    padding: 19px 60px;
+    position: fixed;
+    top: 20px;
+    right: 105px;
+    background-color: chocolate;
+    border-radius: 3px;
+    color: #fff;
+    animation: slidein 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+}
+
+@keyframes slidein {
+    0% {
+        transform: translateX(1000px);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+alert::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 0;
+    height: 5px;
+    background-color: rgba(0, 0, 0, 0.5);
+    animation: time 3s forwards;
+}
+
+@keyframes time {
+    0% {
+        width: 0;
+    }
+
+    100% {
+        width: 100%;
+    }
+}
 
 /* @Autor: Davi */
 .bodyHome {
@@ -437,9 +482,10 @@ select {
     bottom: 5%;
     right: 45%;
 }
+
 #shelf {
     width: 700px;
-    
+
 }
 
 /* @author {Arthur}*/
@@ -856,6 +902,7 @@ td {
 tr:nth-child(odd) {
     background: rgba(211, 235, 209, 1);
 }
+
 tr:nth-child(even) {
     background: rgba(248, 248, 248, 1);
 }
@@ -968,7 +1015,7 @@ tr:nth-child(even) {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6);
     z-index: 10;
-} 
+}
 
 
 #form {
@@ -1012,6 +1059,7 @@ tr:nth-child(even) {
     overflow-y: scroll;
 
 }
+
 #form label {
     margin-bottom: 0.2em;
     color: #000000;
@@ -1029,7 +1077,7 @@ tr:nth-child(even) {
 #form .input-group {
     background-color: #d4d4d4;
     margin: 30px;
-        border-radius: 5px;
+    border-radius: 5px;
 
 
 }
@@ -1041,7 +1089,7 @@ tr:nth-child(even) {
 }
 
 #form .input-group h2 {
-    text-align:end;
+    text-align: end;
     border-radius: 5px;
     margin-bottom: 20px;
     padding: 10px;
@@ -1072,39 +1120,39 @@ tr:nth-child(even) {
     text-decoration: none;
 }
 
-#btnFormBook{
+#btnFormBook {
     width: auto;
     height: auto;
-    cursor: pointer; 
+    cursor: pointer;
     background-color: #4CAF50;
-    border: none; 
-    color: white; 
+    border: none;
+    color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none; 
-    display: inline-block; 
-    font-size: 16px; 
-    margin: 4px 2px; 
-    cursor: pointer; 
-    border-radius: 8px; 
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
 
-};
+}
+
 
 .submit-btn {
     width: auto;
     height: auto;
-    cursor: pointer; 
+    cursor: pointer;
     background-color: #4CAF50;
-    border: none; 
-    color: white; 
+    border: none;
+    color: white;
     padding: 15px 32px;
     text-align: center;
-    text-decoration: none; 
-    display: inline-block; 
-    font-size: 16px; 
-    margin: 4px 2px; 
-    cursor: pointer; 
-    border-radius: 8px; 
-};
-
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+}
 

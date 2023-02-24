@@ -104,6 +104,8 @@ export default function form() {
     imageUpload.type = "file";
     imageUpload.id = `imageUpload2`;
     imageUpload.name = `imageUpload2`;
+    imageUpload.accept = `image/*`
+
 
     const dropdownLabel = document.createElement("label");
     dropdownLabel.htmlFor = `dropdown2`;
@@ -170,11 +172,13 @@ export default function form() {
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${i}`;
         imageUploadLabel.textContent = "Imagem:";
+    
 
         const imageUpload = document.createElement("input");
         imageUpload.type = "file";
         imageUpload.id = `imageUpload${i}`;
         imageUpload.name = `imageUpload${i}`;
+        imageUpload.accept = `image/*`
 
         const dropdownLabel = document.createElement("label");
         dropdownLabel.htmlFor = `dropdown${i}`;
