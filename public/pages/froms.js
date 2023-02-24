@@ -2,13 +2,11 @@ import submitForm  from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 import { editPages } from "../modules/editPages.js";
 
-export default function form(bookPages = 0, bookCape = 0) {
-    console.log(bookPages, bookCape)
+export default function form() {
     const root = document.createElement("div");
 
     const form = document.createElement("form");
     form.id = "form";
-    form.classList.add("ride");
     form.classList.add("ride");
     form.onsubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +33,6 @@ export default function form(bookPages = 0, bookCape = 0) {
     textInput1.name = "bookTitle";
     textInput1.required = true;
 
-   
     const imageUpload1Label = document.createElement("label");
     imageUpload1Label.htmlFor = "coverImage";
     imageUpload1Label.textContent = "Imagem:";
@@ -205,7 +202,7 @@ function createIput() {
 
         textInput.id = `textInput${counter}`;
         textInput.name = `textInput${counter}`;
-     
+
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
         imageUploadLabel.textContent = "Imagem:";
@@ -255,10 +252,6 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
-        if(bookPages !== 0){
-            dropdown.value = bookPages[i-2].topic_name
-        }
-
         group.appendChild(pages);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
@@ -296,9 +289,9 @@ function validateInputSelect() {
     });
 };
 
-    form.appendChild(btnFormBook);
+//     form.appendChild(btnFormBook);
 
-    root.appendChild(form);
+//     root.appendChild(form);
 
-    document.querySelector(".bookWrapper").appendChild(root);
-}
+//     document.querySelector(".bookWrapper").appendChild(root);
+// }

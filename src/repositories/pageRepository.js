@@ -27,7 +27,7 @@ export async function createPage(
         if (duplicate.rows[0].count == 1) {
             throw "Já existe uma página com esse tópico no livro especificado";
         }
-
+        
         const createPageQuery = `
         INSERT INTO pages (
             book_id,
@@ -79,7 +79,8 @@ export async function getAllPagesFromBook(bookID) {
         JOIN
             books ON pages.book_id = books.book_id
         WHERE
-            pages.book_id = $1`;
+            pages.book_id = $1
+        ORDER BY page_id ASC`;
 
         const response = await pool.query(getPagesQuery, [bookID]);
         return response.rows;

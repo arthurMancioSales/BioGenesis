@@ -5,10 +5,6 @@ import auth from "../modules/checkAuthentication.js";
 
 export default function collapsableMenu(destroy=false) {
     //menu colapsável
-    if (destroy) {
-        document.body.removeChild(document.querySelector(".collapsible"))
-        return
-    }
 
     const colMenuDiv = document.createElement('div');
     colMenuDiv.classList.add('collapsible');
@@ -80,6 +76,9 @@ export default function collapsableMenu(destroy=false) {
     logOut.classList.add('colImg', 'link');
     logOut.setAttribute('src', '/images/logOut.png');
     logOut.setAttribute('alt', 'Sair');
+    logOut.onclick = () => {
+        // Rota para deslogar o usuário
+    }
 
     if(!auth()){
         colMenuIconDiv.appendChild(homePage);

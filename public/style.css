@@ -256,7 +256,6 @@ textarea {
     color: white;
     padding: 15px 32px;
     text-align: center;
-
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px; 
@@ -501,6 +500,7 @@ select {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .bookChapter {
@@ -899,7 +899,7 @@ tr:nth-child(even) {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 9998;
+    z-index: 100;
 
     width: 150px;
     /* 400px */
@@ -947,10 +947,9 @@ tr:nth-child(even) {
 .listBtn {
     margin-right: auto;
     font-size: 25px;
-
     background-color: #8be67e;
     padding: 10px;
-
+    font-weight: 500;
 }
 
 .listTitle {
@@ -1083,15 +1082,6 @@ tr:nth-child(even) {
     background-color: #b2b1b1;
 }
 
-.listBtn {
-    margin-right: auto;
-    font-size: 30px;
-    background-color: #8be67e;
-    border-radius: 50%;
-    padding: 10px;
-    font-weight: 500;
-}
-
 .listTitle {
     font-size: 40px;
 }
@@ -1133,7 +1123,6 @@ tr:nth-child(even) {
     color: white;
     padding: 15px 32px;
     text-align: center;
-
     text-decoration: none; 
     display: inline-block; 
     font-size: 16px; 
@@ -1155,7 +1144,6 @@ tr:nth-child(even) {
 }
 
 @keyframes tremer {
-
     0% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
     50% { transform: translateX(5px); }

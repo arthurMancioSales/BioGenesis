@@ -23,7 +23,6 @@ export default async function newUser() {
     }
 
     if (passwordInput.value != passwordConfirmInput.value) {
-        console.log(passwordInput.className);
         passwordInput.classList.remove("campoInvalido");
         passwordConfirmInput.classList.remove("campoInvalido");
 
@@ -32,7 +31,6 @@ export default async function newUser() {
 
         passwordInput.classList.add("campoInvalido");
         passwordConfirmInput.classList.add("campoInvalido");
-        console.log(passwordInput.className);
 
         document.querySelector("#loginResult").innerText = "Senhas divergentes"
     }

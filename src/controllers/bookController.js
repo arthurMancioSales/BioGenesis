@@ -11,11 +11,12 @@ const response = {
 };
 
 // Cria um livro novo -> @author {Arthur}
-export async function createBook(req, res, next, client = pool) {
+export async function createBook(req, res, next) {
+    
     console.log(TAG);
     console.time("createBook()");
 
-    const { bookTitle, bookshelfName, userName } = req.body;
+    const { bookTitle, bookshelfName, userName, pageCount } = req.body;
     const coverImage = req.files["coverImage"][0].filename;
 
     if (bookTitle.length == 0 || typeof bookTitle != "string") {
@@ -54,8 +55,11 @@ export async function createBook(req, res, next, client = pool) {
         return;
     }
 
+    const client = await pool.connect()
     try {
+
         client.query("BEGIN");
+        
         const serviceResponse = await bookService.createBook(
             bookTitle,
             bookshelfName,
@@ -63,58 +67,21 @@ export async function createBook(req, res, next, client = pool) {
             coverImage,
             client
         );
-        if (req.files) {
-            for (const key in req.files) {
-                const filename = req.files[key][0].filename;
-                const bookID = serviceResponse[0]["book_id"];
-                switch (key) {
-                    case "imageUpload2":
-                        const { textInput2, dropdown2 } = req.body;
-                        await pageService.createPage(
-                            bookID,
-                            dropdown2,
-                            textInput2,
-                            filename,
-                            userName,
-                            client
-                        );
-                        break;
-                    case "imageUpload3":
-                        const { textInput3, dropdown3 } = req.body;
-                        await pageService.createPage(
-                            bookID,
-                            dropdown3,
-                            textInput3,
-                            filename,
-                            userName,
-                            client
-                        );
-                        break;
-                    case "imageUpload4":
-                        const { textInput4, dropdown4 } = req.body;
-                        await pageService.createPage(
-                            bookID,
-                            dropdown4,
-                            textInput4,
-                            filename,
-                            userName,
-                            client
-                        );
-                        break;
-                    case "imageUpload5":
-                        const { textInput5, dropdown5 } = req.body;
-                        await pageService.createPage(
-                            bookID,
-                            dropdown5,
-                            textInput5,
-                            filename,
-                            userName,
-                            client
-                        );
-                        break;
-                }
-            }
+
+        const bookID = serviceResponse[0]["book_id"];
+
+        for (let i = 2; i <= pageCount; i++) {
+            const filename = req.files[`imageUpload${i}`][0].filename;
+            await pageService.createPage(
+                bookID,
+                req.body[`dropdown${i}`],
+                req.body[`textInput${i}`],
+                filename,
+                userName,
+                client
+            );
         }
+
         response.message = "Livro criado com sucesso";
         response.data = serviceResponse;
 

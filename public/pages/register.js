@@ -28,7 +28,6 @@ export default function register() {
             document.querySelector("#loginResult").innerText = "Usuário criado com sucesso"
             spa.redirect("/")
         } else {
-            console.log(createUser);
             document.querySelector("#loginResult").innerText = createUser.error
         }
     }
