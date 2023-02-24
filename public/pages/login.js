@@ -1,4 +1,5 @@
 import SPA from "../modules/spa.js";
+import submitLogin from "../modules/submitLogin.js";
 const spa = SPA();
 
 import collapsableMenu from "./collapsableMenu.js";
@@ -15,6 +16,16 @@ export default function login() {
     // Crie um elemento <form> com vários elementos <input> e seus atributos
     const formMain = document.createElement("form");
     formMain.classList.add("flexColumn");
+    formMain.onsubmit = async (e) => {
+        e.preventDefault()
+        const login = await submitLogin()
+        if (login.status == 200) {
+            document.querySelector("#loginStatus").innerText = "Usuário logado com sucesso"
+            spa.redirect('/')
+        } else {
+            document.querySelector("#loginStatus").innerText = "Usuário ou senha incorreto"
+        }
+    }
 
     const inputLogin = document.createElement("input");
     inputLogin.id = "login";
@@ -38,19 +49,24 @@ export default function login() {
     // Crie um elemento <button> com o ID "login" e o texto "Entrar"
     const buttonMain = document.createElement("button");
     buttonMain.classList.add("button");
-    buttonMain.type = "button";
+    buttonMain.type = "submit";
     buttonMain.id = "login";
     buttonMain.textContent = "Entrar";
 
-    //buttonMain.onclick = () => {spa.redirect("/...");}
-    
+    // Crie um elemento <p> para mostrar o status do login -> @author {Arthur}
+    const loginStatus = document.createElement("p");
+    loginStatus.classList.add("bodyText");
+    loginStatus.textContent = "";
+    loginStatus.id = "loginStatus"
+
     // Crie um elemento <main> e adicione todos os elementos criados a ele
     const main = document.createElement("main");
-    main.classList.add("mainSize", "flexColumn");
+    main.classList.add("mainSize", "flexColumn", "loginPage");
     main.appendChild(h1Main);
     main.appendChild(formMain);
-    main.appendChild(pMain);
-    main.appendChild(buttonMain);
+    main.appendChild(loginStatus);
+    formMain.appendChild(pMain);
+    formMain.appendChild(buttonMain);
     
     // Adicione o elemento <main> ao corpo do documento
     outDiv.appendChild(main);

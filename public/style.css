@@ -400,8 +400,7 @@ select {
     height: 50px;
     width: auto;
 }
-
-.beginBtn {
+.button {
     background-color: #8be67e;
     border: none;
     color: black;
@@ -421,13 +420,11 @@ select {
     justify-content: center;
     align-items: center;
 }
-
-.beginBtn:hover {
+.button:hover {
     background-color: #68b05f;
     cursor: pointer;
 }
-
-.beginBtn:active {
+.button:active {
     background-color: #3e8e41;
     box-shadow: 0 1px #666;
     transform: translateY(4px);
@@ -818,28 +815,6 @@ select {
     color: #827f7f;
 }
 
-.button {
-    width: 20%;
-    height: 50px;
-    margin-top: 7px;
-    background: #14bc39;
-    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25);
-    border-radius: 5px;
-    font-weight: 400;
-    font-size: 22px;
-    line-height: 26px;
-    color: #fffcfc;
-}
-
-.button:hover {
-    /* background-color: #108d2b; */
-    cursor: pointer;
-}
-
-.button:active {
-    background-color: #1a712d;
-}
-
 table {
     width: 100%;
     margin-top: 10px;
@@ -921,7 +896,7 @@ tr:nth-child(even) {
     display: flex;
     align-items: center;
     justify-content: right;
-    overflow: none;
+    overflow: hidden;
 
     position: absolute;
     top: 0;
@@ -946,6 +921,9 @@ tr:nth-child(even) {
     position: relative;
 
     transition: all 500ms ease;
+
+    color: white;
+    font-size: 25px;
 }
 
 #menu {
@@ -1155,3 +1133,23 @@ tr:nth-child(even) {
     cursor: pointer; 
     border-radius: 8px; 
 }
+.loginPage {
+    justify-content: space-evenly;
+}
+
+.campoInvalido {
+    animation: tremer 0.5s;
+    border: crimson 1px solid;
+}
+
+.campoValido {
+    border: lime 1px solid;
+}
+
+@keyframes tremer {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    50% { transform: translateX(5px); }
+    75% { transform: translateX(-5px); }
+    100% { transform: translateX(0); }
+  }

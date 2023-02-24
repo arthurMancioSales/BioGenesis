@@ -57,7 +57,7 @@ export default function homeUser() {
     // cria o botão da seção
     const buttonSection = document.createElement('button');
     buttonSection.setAttribute('type', 'button');
-    buttonSection.setAttribute('class', 'beginBtn');
+    buttonSection.setAttribute('class', 'button');
     buttonSection.textContent = 'COMEÇAR';
     buttonSection.onclick = () => spa.redirect("/bookshelves");
 
