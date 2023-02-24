@@ -86,14 +86,7 @@ export default function list() {
 
 
     //Adicionar animação de expandir
-    const buttonDiv = document.createElement('input');
-    buttonDiv.setAttribute('type', 'button');
-    buttonDiv.classList.add('listBtn', "beginBtn");
-    buttonDiv.value = "Cadastrar"
-    buttonDiv.onclick = async () => {
-        console.log("a");
-        form()
-    }
+
 
     inputdivMain.appendChild(h2Section);
     // inputdivMain.appendChild(buttonDiv);
