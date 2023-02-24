@@ -85,12 +85,15 @@ export default function list() {
     h2Section.textContent = 'LIVROS CADASTRADOS';
 
 
-    // //Adicionar animação de expandir
-    // const buttonDiv = document.createElement('i');
-    // buttonDiv.classList.add('listBtn', "fa-solid", "fa-plus");
-    // buttonDiv.onclick = async () => {
-    //     form()
-    // }
+    //Adicionar animação de expandir
+    const buttonDiv = document.createElement('input');
+    buttonDiv.setAttribute('type', 'button');
+    buttonDiv.classList.add('listBtn', "beginBtn");
+    buttonDiv.value = "Cadastrar"
+    buttonDiv.onclick = async () => {
+        console.log("a");
+        form()
+    }
 
     inputdivMain.appendChild(h2Section);
     // inputdivMain.appendChild(buttonDiv);
