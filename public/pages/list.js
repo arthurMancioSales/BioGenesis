@@ -9,12 +9,9 @@ export default function list() {
 
     const body = document.querySelector("body");
 
-
-
     const wrapper = document.createElement("div");
     wrapper.classList.add("bookWrapper");
     wrapper.style.overflowY = "scroll";
-
 
     wrapper.onclick = (e) => {
         if (e.target == wrapper) {
@@ -26,33 +23,12 @@ export default function list() {
     const outDiv = document.createElement("div")
     outDiv.classList.add("flexColumNoncenter", "listBg");
 
-   // cria o header
-    // const header = document.createElement('header');
-    // header.id= "headerList"
-
-    // const h1Header = document.createElement('h1');
-    // h1Header.classList.add("h1List")
-    // h1Header.textContent = 'LIVROS CADASTRADOS';
-    // header.appendChild(h1Header);
-
     // cria o main
     const main = document.createElement('main');
     main.classList.add("mainSectionList")
 
     const divMain = document.createElement('div');
-    // divMain.classList.add('containerList');
-
-    // const h2Div = document.createElement('h2');
-    // h2Div.classList.add("h2List")
-    // h2Div.textContent = 'CADASTRAR NOVO LIVRO';
-
-    // const pDiv = document.createElement('p');
-    // pDiv.classList.add("pList")
-    // pDiv.textContent = 'Para inserir um novo livro, preencha os dados abaixo:';
-
-    // divMain.appendChild(h2Div);
-    // divMain.appendChild(pDiv);
-
+    
     main.appendChild(divMain);
 
     const inputdivMain = document.createElement('div');
@@ -65,8 +41,9 @@ export default function list() {
     buttonDiv.onclick = async () => {
         body.appendChild(wrapper);
         console.log("a");
-
-        form()
+        
+        wrapper.innerHTML = ""
+        wrapper.appendChild(form())
     }
     buttonDiv.classList.add('button');
 

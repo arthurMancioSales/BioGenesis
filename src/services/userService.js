@@ -24,6 +24,10 @@ export async function createUser(username, email, password) {
 export async function logUser(username, email, password) {
     try {
         const dbResponse = await userRepository.logUser(username, email);
+        if (dbResponse.length == 0) {
+            return false
+        }
+
         const login = await bcrypt.compare(password, dbResponse[0].password);
         return login;
     } catch (error) {

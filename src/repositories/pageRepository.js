@@ -44,7 +44,6 @@ export async function createPage(
             (SELECT user_id FROM users WHERE username = $5)
         )
         RETURNING *`;
-        console.log("repository", topicName);
         const response = await client.query(createPageQuery, [
             bookID,
             topicName,
@@ -64,6 +63,7 @@ export async function getAllPagesFromBook(bookID) {
     try {
         const getPagesQuery = `        
         SELECT 
+            pages.page_id,
             pages.content,
             pages.image,
             users.username,

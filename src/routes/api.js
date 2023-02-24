@@ -21,13 +21,13 @@ router.get("/books/:id", pageController.getAllPagesFromBook);
 router.get("/books", bookController.getAllBooks);
 
 // Cria uma estante nova -> @author {Arthur}
-router.post("/bookshelves", bookshelfController.createBookshelf);
+router.post("/bookshelves", authenticateUser, bookshelfController.createBookshelf);
 // {
 //     'name': 'nome da estante' -> String
 // }
 
 // Cria um livro novo -> @author {Arthur}
-router.post("/book", (req, res, next) => {
+router.post("/book", authenticateUser, (req, res, next) => {
     bookController.createBook(req, res, next);
 });
 // {
@@ -37,8 +37,8 @@ router.post("/book", (req, res, next) => {
 //     'coverImage': 'nome da imagem' -> String
 // }
 
-//Criar uma pagina nova
-router.post("/book/page", pageController.createPage);
+//Criar uma pagina nova -> @author {Arthur}
+router.post("/book/page", authenticateUser, pageController.createPage);
 // {
 //     bookID: id do livro, -> Int
 //     topicName: id do topico, -> String
@@ -47,8 +47,8 @@ router.post("/book/page", pageController.createPage);
 //     authorName: nome do autor -> String
 // }
 
-// Apaga uma estante
-// router.delete()
+// Apaga uma estante -> @author {Arthur}
+router.delete("/bookshelves/:id", authenticateUser, bookshelfController.deleteBookshelf)
 
 // Apaga um livro
 // router.delete()
@@ -56,8 +56,12 @@ router.post("/book/page", pageController.createPage);
 // Apaga uma pagina
 // router.delete()
 
-// Atualiza um livro
-// router.put()
+// Atualiza uma estante -> @author {Arthur}
+router.put("/bookshelves/", authenticateUser, bookshelfController.updateBookshelf)
+// {
+//     bookshelfID: "ID da estante",
+//     newName: "novo nome da estante"
+// }
 
 // Atualiza um livro
 // router.put()
@@ -67,3 +71,12 @@ router.post("/book/page", pageController.createPage);
 
 // Cria um usuário novo -> @author {Arthur}
 router.post("/createUser", authenticateUser, userController.createUser);
+// {
+//     username: "nome do usuario",
+//     email, "email do usuario",
+//     password: "senha do usuario"
+// }
+
+// Atualiza um usuário -> @author {Arthur}
+
+// Apaga um usuário -> @author {Arthur}
