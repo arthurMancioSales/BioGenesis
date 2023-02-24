@@ -1,6 +1,9 @@
 // @author {Thiago}
 
-import createBookShelvesPage from "../modules/modal.js";
+import modal from "../modules/modal.js";
+import createBookShelvesPage from "../modules/modalCreateShelf.js";
+import deleteBookShelvesPage from "../modules/modalDeleteShelf.js";
+import editBookShelvesPage from "../modules/modalEditShelf.js";
 import collapsableMenu from "./collapsableMenu.js";
 
 export default function listShelves() {
@@ -35,7 +38,7 @@ export default function listShelves() {
   buttonDiv.classList.add("listBtn", "beginBtn");
   buttonDiv.value = "Cadastrar";
   buttonDiv.onclick = async () => {
-    createBookShelvesPage();
+    modal(createBookShelvesPage);
   };
 
   inputdivMain.appendChild(h2Section);
@@ -112,11 +115,18 @@ function createTable(userList) {
 
 function addRow(userList, cont) {
   let line = document.createElement("tr");
+  let i = cont - 1;
 
   let col1 = document.createElement("td");
   let col2 = document.createElement("td");
   let col3 = document.createElement("td");
+  col3.onclick = async () => {
+    modal(editBookShelvesPage, userList[i].name, userList[i].id);
+  };
   let col4 = document.createElement("td");
+  col4.onclick = async () => {
+    modal(deleteBookShelvesPage, userList[i].id);
+  };
 
   line.appendChild(col1);
   line.appendChild(col2);
@@ -125,8 +135,6 @@ function addRow(userList, cont) {
 
   const tbody = document.querySelector("#table");
   tbody.appendChild(line);
-
-  let i = cont - 1;
 
   col1.innerHTML = `<span>${userList[i].id}</span>`;
   col2.innerHTML = `<span>${userList[i].name}</span>`;
