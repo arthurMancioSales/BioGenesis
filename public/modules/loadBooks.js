@@ -1,5 +1,6 @@
 // @author {Thiago}
 
+import collapsableMenu from "../pages/collapsableMenu.js";
 import loadSingleBook from "./bookLoader.js";
 
 export default async function loadBooks(id) {
@@ -36,6 +37,7 @@ function createBookSpine(item) {
     Book.alt = "Book";
     Book.onclick = () => {
         loadSingleBook(item.book_id, item.book_name, color, item.username);
+        collapsableMenu(true)
     };
     Book.onmouseover = (e) => {
         const subtitle = document.querySelector("#subtitle");

@@ -27,31 +27,31 @@ export default function list() {
     outDiv.classList.add("flexColumNoncenter", "listBg");
 
    // cria o header
-    const header = document.createElement('header');
-    header.id= "headerList"
+    // const header = document.createElement('header');
+    // header.id= "headerList"
 
-    const h1Header = document.createElement('h1');
-    h1Header.classList.add("h1List")
-    h1Header.textContent = 'LIVROS CADASTRADOS';
-    header.appendChild(h1Header);
+    // const h1Header = document.createElement('h1');
+    // h1Header.classList.add("h1List")
+    // h1Header.textContent = 'LIVROS CADASTRADOS';
+    // header.appendChild(h1Header);
 
     // cria o main
     const main = document.createElement('main');
     main.classList.add("mainSectionList")
 
     const divMain = document.createElement('div');
-    divMain.classList.add('containerList');
+    // divMain.classList.add('containerList');
 
-    const h2Div = document.createElement('h2');
-    h2Div.classList.add("h2List")
-    h2Div.textContent = 'CADASTRAR NOVO LIVRO';
+    // const h2Div = document.createElement('h2');
+    // h2Div.classList.add("h2List")
+    // h2Div.textContent = 'CADASTRAR NOVO LIVRO';
 
-    const pDiv = document.createElement('p');
-    pDiv.classList.add("pList")
-    pDiv.textContent = 'Para inserir um novo livro, preencha os dados abaixo:';
+    // const pDiv = document.createElement('p');
+    // pDiv.classList.add("pList")
+    // pDiv.textContent = 'Para inserir um novo livro, preencha os dados abaixo:';
 
-    divMain.appendChild(h2Div);
-    divMain.appendChild(pDiv);
+    // divMain.appendChild(h2Div);
+    // divMain.appendChild(pDiv);
 
     main.appendChild(divMain);
 
@@ -81,9 +81,19 @@ export default function list() {
     divSection.classList.add('containerList');
 
     const h2Section = document.createElement('h2');
-    h2Section.textContent = 'LISTA DE LIVROS CADASTRADOS';
+    h2Section.classList.add('listTitle');
+    h2Section.textContent = 'LIVROS CADASTRADOS';
 
-    divSection.appendChild(h2Section);
+
+    // //Adicionar animação de expandir
+    // const buttonDiv = document.createElement('i');
+    // buttonDiv.classList.add('listBtn', "fa-solid", "fa-plus");
+    // buttonDiv.onclick = async () => {
+    //     form()
+    // }
+
+    inputdivMain.appendChild(h2Section);
+    // inputdivMain.appendChild(buttonDiv);
 
     sectionMain.appendChild(divSection);
 
@@ -138,7 +148,6 @@ export default function list() {
 
 
     // adiciona o main ao body
-    outDiv.appendChild(header);
     outDiv.appendChild(main);
 
 
@@ -204,6 +213,6 @@ function addRow(userList, cont) {
     bookTheme.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
     bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
     /* bookLastEdit.innerHTML = `<span>${userList[i].bookshelf_name}<span>`; */
-    BookEdit.innerHTML = `<img src="../images/lapis.png" class="link tableImg" alt="edit">`;
-    bookDelete.innerHTML = `<img src="../images/excluir.png" class="link" alt="del">`;
+    BookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
+    bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
 };

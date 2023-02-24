@@ -234,6 +234,22 @@ textarea {
     padding-left: 2%;
     flex-wrap: wrap;
 }
+.submit-btn {
+    width: auto;
+    height: auto;
+    cursor: pointer; 
+    background-color: #4CAF50;
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+};
 
 /* @Autor: Davi */
 .bodyHome {
@@ -359,7 +375,7 @@ select {
     width: auto;
 }
 
-#beginBtn {
+.beginBtn {
     background-color: #8be67e;
     border: none;
     color: black;
@@ -376,12 +392,12 @@ select {
     transition: all 600ms;
 }
 
-#beginBtn:hover {
+.beginBtn:hover {
     background-color: #68b05f;
     cursor: pointer;
 }
 
-#beginBtn:active {
+.beginBtn:active {
     background-color: #3e8e41;
     box-shadow: 0 1px #666;
     transform: translateY(4px);
@@ -421,13 +437,9 @@ select {
     bottom: 5%;
     right: 45%;
 }
-
-*/ #shelf {
-    width: 700px;
-}
-
 #shelf {
     width: 700px;
+    
 }
 
 /* @author {Arthur}*/
@@ -749,9 +761,11 @@ select {
 
 .input-box {
     width: 100%;
-    height: 80px;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    flex-direction: column;
 }
 
 .input-field {
@@ -786,11 +800,6 @@ select {
     color: #fffcfc;
 }
 
-/* #cadastrar:hover {
-    background-color: #108d2b;
-    cursor: pointer;
-} */
-
 .button:hover {
     /* background-color: #108d2b; */
     cursor: pointer;
@@ -807,8 +816,9 @@ table {
 }
 
 #table-heading {
-    background-color: #14bc39;
+    background-color: rgba(50, 170, 62, 1);
     color: #ffffff;
+    font-weight: 600;
 }
 
 tr {
@@ -843,8 +853,11 @@ td {
     border-right: 0px;
 }
 
+tr:nth-child(odd) {
+    background: rgba(211, 235, 209, 1);
+}
 tr:nth-child(even) {
-    background: #bde3c6;
+    background: rgba(248, 248, 248, 1);
 }
 
 .listBg {
@@ -867,17 +880,15 @@ tr:nth-child(even) {
 
 .imgScale {
     width: 100%;
-    /* height: auto; */
 }
 
 .homeAside {
     width: 55%;
-    height: 100%;
+    display: flex;
 }
 
 .collapsible {
     display: flex;
-    /* flex-direction: row; */
     align-items: center;
     justify-content: right;
     overflow: none;
@@ -895,13 +906,6 @@ tr:nth-child(even) {
     background-size: 100% 100%;
 
     transition: all 500ms ease;
-    /* background-color: rgba(112, 192, 75, 0.9); */
-
-
-    /* transition: all 10ms ease; */
-
-    /* transition: width 5s; */
-    /* transition: width 1s ease-out; */
 }
 
 .colImg {
@@ -932,6 +936,27 @@ tr:nth-child(even) {
 #homePageImg {
     color: white;
     font-size: 25px;
+}
+
+.listBtn {
+    margin-right: auto;
+    font-size: 30px;
+    background-color: #8be67e;
+    border-radius: 50%;
+    padding: 10px;
+
+}
+
+.listTitle {
+    font-size: 40px;
+}
+
+.listIcon {
+    font-size: 28px;
+}
+
+.listIcon:hover {
+    text-decoration: none;
 }
 
 
@@ -977,6 +1002,11 @@ tr:nth-child(even) {
     top: 0;
 }
 
+.opacity0 {
+    display: none;
+
+}
+
 #form {
     margin-bottom: 1em;
     overflow-y: scroll;
@@ -999,7 +1029,7 @@ tr:nth-child(even) {
 #form .input-group {
     background-color: #d4d4d4;
     margin: 30px;
-    border-radius: 5px;
+        border-radius: 5px;
 
 
 }
@@ -1020,3 +1050,61 @@ tr:nth-child(even) {
     background-color: #b2b1b1;
 
 }
+
+.listBtn {
+    margin-right: auto;
+    font-size: 30px;
+    background-color: #8be67e;
+    border-radius: 50%;
+    padding: 10px;
+
+}
+
+.listTitle {
+    font-size: 40px;
+}
+
+.listIcon {
+    font-size: 28px;
+}
+
+.listIcon:hover {
+    text-decoration: none;
+}
+
+#btnFormBook{
+    width: auto;
+    height: auto;
+    cursor: pointer; 
+    background-color: #4CAF50;
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+
+};
+
+.submit-btn {
+    width: auto;
+    height: auto;
+    cursor: pointer; 
+    background-color: #4CAF50;
+    border: none; 
+    color: white; 
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin: 4px 2px; 
+    cursor: pointer; 
+    border-radius: 8px; 
+};
+
+
