@@ -19,7 +19,6 @@ export default function list() {
         }
     };
 
-
     const outDiv = document.createElement("div")
     outDiv.classList.add("flexColumNoncenter", "listBg");
 
@@ -49,6 +48,7 @@ export default function list() {
 
     inputdivMain.appendChild(buttonDiv);
 
+
     main.appendChild(inputdivMain);
 
     const sectionMain = document.createElement('section');
@@ -60,13 +60,15 @@ export default function list() {
     const h2Section = document.createElement('h2');
     h2Section.classList.add('listTitle');
     h2Section.textContent = 'LIVROS CADASTRADOS';
-
+    
+    inputdivMain.appendChild(h2Section);
 
     //Adicionar animação de expandir
+    
+    inputdivMain.appendChild(buttonDiv);
 
-
+    //Adicionar animação de expandir
     inputdivMain.appendChild(h2Section);
-    // inputdivMain.appendChild(buttonDiv);
 
     sectionMain.appendChild(divSection);
 
@@ -118,16 +120,11 @@ export default function list() {
     sectionMain.appendChild(table);
     main.appendChild(sectionMain);
 
-
-
     // adiciona o main ao body
     outDiv.appendChild(main);
 
-
-
     //Criação da tabela, todas as tres funções abaixo são necessarias para a criação da mesma.
     
-
     printTable();
 
     collapsableMenu();
@@ -165,7 +162,7 @@ function addRow(userList, cont) {
     const bookTheme = document.createElement("td");
     const bookAuthor = document.createElement("td");
     /* let bookLastEdit = document.createElement("td"); */
-    const BookEdit = document.createElement("td");
+    const bookEdit = document.createElement("td");
     const bookDelete = document.createElement("td");
     
     line.appendChild(bookID);
@@ -173,7 +170,7 @@ function addRow(userList, cont) {
     line.appendChild(bookTheme);
     line.appendChild(bookAuthor);
     /* line.appendChild(bookLastEdit); */
-    line.appendChild(BookEdit);
+    line.appendChild(bookEdit);
     line.appendChild(bookDelete);
 
     const tbody = document.querySelector("#table")
@@ -186,6 +183,35 @@ function addRow(userList, cont) {
     bookTheme.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
     bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
     /* bookLastEdit.innerHTML = `<span>${userList[i].bookshelf_name}<span>`; */
-    BookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
+    bookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
     bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
+
+    bookEdit.onclick = async () => {
+
+        const body = document.querySelector("body");
+
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("bookWrapper");
+        wrapper.style.overflowY = "scroll";
+
+        wrapper.onclick = (e) => {
+            if (e.target == wrapper) {
+                body.removeChild(wrapper);
+            }
+        };
+
+        body.appendChild(wrapper);
+
+        await fetch(`http://localhost:5000/api/books/${userList[i].book_id}`)//
+        .then((response) => {
+            return response.json();
+         })
+        .then((data) => {
+            //console.log(data)
+            
+            form(data, userList[i])
+        })
+    }
 };
+
+//router.get("/books/:id", pageController.getAllPagesFromBook);

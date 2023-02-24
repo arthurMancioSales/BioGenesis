@@ -7,17 +7,8 @@ import editBookShelvesPage from "../modules/modalEditShelf.js";
 import collapsableMenu from "./collapsableMenu.js";
 
 export default function listShelves() {
-    const outDiv = document.createElement("div");
-    outDiv.classList.add("flexColumNoncenter", "listBg");
-
-    // cria o header
-    const header = document.createElement("header");
-    header.id = "headerList";
-
-    const h1Header = document.createElement("h1");
-    h1Header.classList.add("h1List");
-    h1Header.textContent = "ESTANTES CADASTRADAS";
-    header.appendChild(h1Header);
+  const outDiv = document.createElement("div");
+  outDiv.classList.add("flexColumNoncenter", "listBg");
 
   // cria o main
   const main = document.createElement("main");
@@ -28,12 +19,14 @@ export default function listShelves() {
   const inputdivMain = document.createElement("div");
   inputdivMain.classList.add("input-box");
 
-    main.appendChild(divMain);
+  main.appendChild(divMain);
 
   main.appendChild(inputdivMain);
 
-    const sectionMain = document.createElement("section");
-    sectionMain.id = "section-lista";
+  const sectionMain = document.createElement("section");
+  sectionMain.id = "section-lista";
+
+
 
   const divSection = document.createElement("div");
   divSection.classList.add("containerList");
@@ -53,44 +46,45 @@ export default function listShelves() {
   inputdivMain.appendChild(h2Section);
   inputdivMain.appendChild(buttonDiv);
 
-    sectionMain.appendChild(divSection);
+  sectionMain.appendChild(divSection);
 
-    const table = document.createElement("table");
-    const thead = document.createElement("thead");
 
-    const tr = document.createElement("tr");
-    tr.id = "table-heading";
+  const table = document.createElement("table");
+  const thead = document.createElement("thead");
 
-    const tdID = document.createElement("td");
-    tdID.classList.add("id-number");
-    tdID.textContent = "#ID";
+  const tr = document.createElement("tr");
+  tr.id = "table-heading";
 
-    const tdTitle = document.createElement("td");
-    tdTitle.classList.add("title");
-    tdTitle.textContent = "TEMA DA ESTANTE";
+  const tdID = document.createElement("td");
+  tdID.classList.add("id-number");
+  tdID.textContent = "#ID";
 
-    const tdEdit = document.createElement("td");
-    tdEdit.classList.add("edit");
-    tdEdit.textContent = "EDITAR";
+  const tdTitle = document.createElement("td");
+  tdTitle.classList.add("title");
+  tdTitle.textContent = "TEMA DA ESTANTE";
 
-    const tdDelete = document.createElement("td");
-    tdDelete.classList.add("delete");
-    tdDelete.textContent = "EXCLUIR";
+  const tdEdit = document.createElement("td");
+  tdEdit.classList.add("edit");
+  tdEdit.textContent = "EDITAR";
 
-    tr.appendChild(tdID);
-    tr.appendChild(tdTitle);
-    tr.appendChild(tdEdit);
-    tr.appendChild(tdDelete);
+  const tdDelete = document.createElement("td");
+  tdDelete.classList.add("delete");
+  tdDelete.textContent = "EXCLUIR";
 
-    thead.appendChild(tr);
-    table.appendChild(thead);
+  tr.appendChild(tdID);
+  tr.appendChild(tdTitle);
+  tr.appendChild(tdEdit);
+  tr.appendChild(tdDelete);
 
-    const tbody = document.createElement("tbody");
-    tbody.id = "table";
-    table.appendChild(tbody);
+  thead.appendChild(tr);
+  table.appendChild(thead);
 
-    sectionMain.appendChild(table);
-    main.appendChild(sectionMain);
+  const tbody = document.createElement("tbody");
+  tbody.id = "table";
+  table.appendChild(tbody);
+
+  sectionMain.appendChild(table);
+  main.appendChild(sectionMain);
 
   outDiv.appendChild(main);
 
@@ -101,6 +95,7 @@ export default function listShelves() {
   return outDiv;
 }
 
+
 export async function printTable() {
   await fetch("http://localhost:5000/api/bookshelves")
     .then((response) => {
@@ -109,6 +104,7 @@ export async function printTable() {
     .then((data) => {
       createTable(data.data);
     });
+
 }
 
 function createTable(userList) {
