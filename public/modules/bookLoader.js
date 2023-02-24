@@ -175,7 +175,7 @@ export default async function loadSingleBook(bookID, title, color, author) {
         if (e.target == wrapper) {
             document.querySelector("#root").removeChild(wrapper);
             pageFlip.destroy();
-            collapsableMenu()
+            // collapsableMenu()
         }
     };
 }

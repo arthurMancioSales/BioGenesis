@@ -473,6 +473,7 @@ select {
     justify-content: center;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
 }
 
 .bookChapter {
@@ -889,7 +890,7 @@ tr:nth-child(even) {
     position: absolute;
     top: 0;
     right: 0;
-    z-index: 9998;
+    z-index: 100;
 
     width: 150px;
     /* 400px */
@@ -1257,3 +1258,5 @@ tr:nth-child(even) {
         transform: translateX(0);
     }
 }
+
+

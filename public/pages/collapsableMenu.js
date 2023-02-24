@@ -3,10 +3,6 @@ const spa = SPA();
 
 export default function collapsableMenu(destroy=false) {
     //menu colapsável
-    if (destroy) {
-        document.body.removeChild(document.querySelector(".collapsible"))
-        return
-    }
 
     const colMenuDiv = document.createElement('div');
     colMenuDiv.classList.add('collapsible');
