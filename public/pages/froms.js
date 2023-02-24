@@ -80,8 +80,6 @@ export default function form(bookPages = 0, bookCape = 0) {
         })
     });
 
-    
-
     group1.appendChild(page1);
     group1.appendChild(textInput1Label);
     group1.appendChild(textInput1);

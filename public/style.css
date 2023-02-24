@@ -155,7 +155,6 @@
     cursor: pointer;
 }
 
-input,
 select,
 textarea {
     font-family: sans-serif;
@@ -165,6 +164,22 @@ textarea {
     width: 500px;
     height: 100px;
     margin: 10px;
+}
+
+.userInput{
+    font-family: sans-serif;
+    font-size: 1em;
+    color: #0b041f;
+    border-radius: 5px;
+    width: 400px;
+    margin: 10px;
+    background: #fafafa;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 18px;
+    color: rgb(0, 0, 0);
+    margin: 10px 0px 10px 10px;
+    height: 50px;
 }
 
 .input-container {
@@ -251,7 +266,7 @@ textarea {
     margin: 4px 2px; 
     cursor: pointer; 
     border-radius: 8px; 
-};
+}
 
 /* @Autor: Davi */
 .bodyHome {
@@ -275,6 +290,15 @@ textarea {
 
 .homeBg {
     background-image: url("../images/home.png");
+
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-size: 100% 100%;
+    height: 100vh;
+    width: 100vw; */
 }
 
 .mainSize {
@@ -1113,7 +1137,7 @@ tr:nth-child(even) {
     cursor: pointer; 
     border-radius: 8px; 
 
-};
+}
 
 .submit-btn {
     width: auto;
@@ -1130,6 +1154,4 @@ tr:nth-child(even) {
     margin: 4px 2px; 
     cursor: pointer; 
     border-radius: 8px; 
-};
-
-
+}

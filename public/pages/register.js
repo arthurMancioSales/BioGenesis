@@ -24,22 +24,27 @@ export default function register() {
     const inputUserName = document.createElement("input");
     inputUserName.id = "userName";
     inputUserName.placeholder = "Nome Completo";
+    inputUserName.classList.add("userInput");
 
     const inputUserMail = document.createElement("input");
     inputUserMail.id = "userMail";
     inputUserMail.placeholder = "E-mail";
+    inputUserMail.classList.add("userInput");
 
     const inputUserNick = document.createElement("input");
     inputUserNick.id = "userNick";
     inputUserNick.placeholder = "Nome de Usuário";
+    inputUserNick.classList.add("userInput");
 
     const inputUserPass = document.createElement("input");
     inputUserPass.id = "userPass";
     inputUserPass.placeholder = "Senha";
+    inputUserPass.classList.add("userInput");
 
     const inputUserPassConf = document.createElement("input");
     inputUserPassConf.id = "userPassConf";
     inputUserPassConf.placeholder = "Confirme sua Senha";
+    inputUserPassConf.classList.add("userInput");
 
     formMain.appendChild(inputUserName);
     formMain.appendChild(inputUserMail);

@@ -54,20 +54,6 @@ export default function list() {
     const inputdivMain = document.createElement('div');
     inputdivMain.classList.add('input-box');
 
-   /*  const buttonDiv = document.createElement('button');
-    buttonDiv.type = 'button';
-    buttonDiv.id = 'cadastrar';
-    buttonDiv.textContent = "Cadastrar";
-    buttonDiv.onclick = async () => {
-        body.appendChild(wrapper);
-        console.log("a");
-
-        form()
-    }
-    buttonDiv.classList.add('button');
-
-    inputdivMain.appendChild(buttonDiv); */
-
     main.appendChild(inputdivMain);
 
     const sectionMain = document.createElement('section');
@@ -79,20 +65,21 @@ export default function list() {
     const h2Section = document.createElement('h2');
     h2Section.classList.add('listTitle');
     h2Section.textContent = 'LIVROS CADASTRADOS';
-
+    
+    inputdivMain.appendChild(h2Section);
 
     //Adicionar animação de expandir
     const buttonDiv = document.createElement('input');
     buttonDiv.setAttribute('type', 'button');
-    buttonDiv.classList.add('listBtn', "beginBtn");
+    buttonDiv.classList.add('button'); //'listBtn', "beginBtn"
     buttonDiv.value = "Cadastrar"
     buttonDiv.onclick = async () => {
         body.appendChild(wrapper);
         /* console.log("a"); */
         form()
     }
+    inputdivMain.appendChild(buttonDiv);
 
-    inputdivMain.appendChild(h2Section);
     // inputdivMain.appendChild(buttonDiv);
 
     sectionMain.appendChild(divSection);
