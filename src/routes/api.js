@@ -21,14 +21,18 @@ router.get("/books/:id", pageController.getAllPagesFromBook);
 router.get("/books", bookController.getAllBooks);
 
 // Cria uma estante nova -> @author {Arthur}
-router.post("/bookshelves", authenticateUser, bookshelfController.createBookshelf);
+router.post(
+  "/bookshelves",
+  authenticateUser,
+  bookshelfController.createBookshelf
+);
 // {
 //     'name': 'nome da estante' -> String
 // }
 
 // Cria um livro novo -> @author {Arthur}
 router.post("/book", authenticateUser, (req, res, next) => {
-    bookController.createBook(req, res, next);
+  bookController.createBook(req, res, next);
 });
 // {
 //     'bookTitle': 'nome do livro', -> String
@@ -48,16 +52,24 @@ router.post("/book/page", authenticateUser, pageController.createPage);
 // }
 
 // Apaga uma estante -> @author {Arthur}
-router.delete("/bookshelves/:id", authenticateUser, bookshelfController.deleteBookshelf)
+router.delete(
+  "/bookshelves/:id",
+  authenticateUser,
+  bookshelfController.deleteBookshelf
+);
 
 // Apaga um livro
-// router.delete()
+router.delete("/book/:id", authenticateUser, bookController.deleteBook);
 
 // Apaga uma pagina
-// router.delete()
+router.delete("/book/page/:id", authenticateUser, pageController.deletePage);
 
 // Atualiza uma estante -> @author {Arthur}
-router.put("/bookshelves/", authenticateUser, bookshelfController.updateBookshelf)
+router.put(
+  "/bookshelves/",
+  authenticateUser,
+  bookshelfController.updateBookshelf
+);
 // {
 //     bookshelfID: "ID da estante",
 //     newName: "novo nome da estante"
