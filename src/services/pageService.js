@@ -48,3 +48,19 @@ export async function deletePage(pageID) {
     throw error;
   }
 }
+
+export async function updatePage(topic, content, image, editor, pageID) {
+  try {
+    const dbResponse = await pageRepository.updatePage(
+      topic,
+      content,
+      image,
+      editor,
+      pageID
+    );
+    return dbResponse;
+  } catch (error) {
+    console.log(TAG, "error caught at updatePage()");
+    throw error;
+  }
+}

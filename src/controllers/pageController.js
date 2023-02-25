@@ -144,3 +144,43 @@ export async function deletePage(req, res) {
     console.timeEnd("deletePage()");
   }
 }
+
+export async function updatePage(req, res) {
+  console.log(TAG);
+  console.time("updatePage()");
+
+  const { topic, content, image, editor, pageID } = req.body;
+
+  if (pageID < 0 || typeof pageID != "int") {
+    response.message = "Não foi possível atualizar a pagina";
+    response.data = null;
+    response.error = "Informe um ID válido";
+  }
+
+  try {
+    const serviceResponse = await pageService.updatePage(
+      topic,
+      content,
+      image,
+      editor,
+      pageID
+    );
+
+    response.message = "Pagina atualizada com sucesso";
+    response.data = serviceResponse;
+    response.error = null;
+
+    res.status(200).json(response);
+    console.timeEnd("updatePage()");
+  } catch (error) {
+    console.log(TAG);
+    console.log(error);
+
+    response.message = "Não foi possível atualizar a pagina";
+    response.data = null;
+    response.error = "Erro interno do servidor";
+
+    res.status(500).json(response);
+    console.timeEnd("updatePage()");
+  }
+}

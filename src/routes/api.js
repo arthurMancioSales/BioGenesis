@@ -83,7 +83,14 @@ router.put("/book", authenticateUser, bookController.updateBook);
 // }
 
 // Atualiza uma pagina
-// router.put()
+router.put("/book/page", authenticateUser, pageController.updatePage);
+// {
+//   topicId: 'nome do topico',
+//   content: 'novo conteudo',
+//   image: 'nova imagem',
+//   editor: 'nome do editor',
+//   pageID: 'id da pagina;
+// }
 
 // Cria um usuário novo -> @author {Arthur}
 router.post("/createUser", authenticateUser, userController.createUser);

@@ -104,3 +104,29 @@ export async function deletePage(pageID) {
     throw error;
   }
 }
+
+export async function updatePage(topic, content, image, editor, pageID) {
+  try {
+    const updateQuery = `
+        UPDATE pages
+        SET 
+            topic_id = (SELECT topic_id FROM topic WHERE name = $1),
+            content = $2,
+            image = $3,
+            editor = (SELECT user_id FROM users WHERE username = $4)
+        WHERE
+            pages.page_id = $5`;
+
+    const response = await pool.query(updateQuery, [
+      topic,
+      content,
+      image,
+      editor,
+      pageID,
+    ]);
+    return response.rows;
+  } catch (error) {
+    console.log(TAG, "error caught at updatePage()");
+    throw error;
+  }
+}
