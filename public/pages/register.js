@@ -8,11 +8,6 @@ export default function register() {
     const outDiv = document.createElement("div")
     outDiv.classList.add("cadastroBg", "bodyHome");
 
-    // Crie um elemento <img> com a classe "backImg" e o atributo src definido como "./Vector.png"
-    const imgMain = document.createElement("img");
-    imgMain.classList.add("backImg", "link");
-    imgMain.src = "../images/Vector.png";
-
     // Crie um elemento <h1> com o texto "Cadastrar Novo Usuário"
     const h1Main = document.createElement("h1");
     h1Main.classList.add("titleText");

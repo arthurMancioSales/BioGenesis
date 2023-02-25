@@ -114,7 +114,7 @@ export async function logUser(req, res) {
                 process.env.JWT_SECRET,
                 { expiresIn: "336h" }
             );
-            res.cookie("session", sessionJWT);
+            res.cookie("session", sessionJWT, { maxAge: 14 * 24 * 60 * 60 * 1000 });
 
             response.message = "Usuário logado com sucesso";
             response.data = null;

@@ -12,6 +12,6 @@ export default function authenticateUser(req, res, next) {
         );
         next();
     } catch (error) {
-        res.status(403).json({ Status: "Acesso negado" });
+        res.status(403).redirect("/")
     }
 }

@@ -13,4 +13,11 @@ router.post("/", userController.logUser);
 // }
 
 // Termina a sessão de um usuário -> @author {Arthur}
-router.delete("/")
+router.delete("/", (req, res) => {
+    try {
+        res.clearCookie("session")
+        res.status(200).send("Sessão terminada com sucesso")
+    } catch (error) {
+        console.log(error);
+    }
+})

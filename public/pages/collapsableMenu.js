@@ -3,8 +3,13 @@ const spa = SPA();
 
 import auth from "../modules/checkAuthentication.js";
 
-export default function collapsableMenu(destroy=false) {
+export default function collapsableMenu() {
     //menu colapsável
+    const menu = document.querySelector(".collapsible")
+    if (menu) {
+        console.log("dois menus");
+        menu.remove()
+    }
 
     const colMenuDiv = document.createElement('div');
     colMenuDiv.classList.add('collapsible');
@@ -76,8 +81,11 @@ export default function collapsableMenu(destroy=false) {
     logOut.classList.add('colImg', 'link');
     logOut.setAttribute('src', '/images/logOut.png');
     logOut.setAttribute('alt', 'Sair');
-    logOut.onclick = () => {
-        // Rota para deslogar o usuário
+    logOut.onclick = async () => {
+        await fetch("http://localhost:5000/session/", {
+            method: "DELETE"
+        })
+        spa.redirect("/")
     }
 
     if(!auth()){
