@@ -76,7 +76,11 @@ router.put(
 // }
 
 // Atualiza um livro
-// router.put()
+router.put("/book", authenticateUser, bookController.updateBook);
+// {
+//     bookID: "ID do livro",
+//     newName: "novo nome do livro"
+// }
 
 // Atualiza uma pagina
 // router.put()

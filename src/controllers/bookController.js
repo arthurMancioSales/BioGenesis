@@ -192,3 +192,37 @@ export async function deleteBook(req, res) {
     console.timeEnd("deleteBook()");
   }
 }
+
+export async function updateBook(req, res) {
+  console.log(TAG);
+  console.time("updateBook()");
+
+  const { bookID, newName } = req.body;
+
+  if (bookID < 0 || typeof bookID != "int") {
+    response.message = "Não foi possível atualizar o livro";
+    response.data = null;
+    response.error = "Informe um ID válido";
+  }
+
+  try {
+    const serviceResponse = await bookService.updateBook(newName, bookID);
+
+    response.message = "Livro atualizado com sucesso";
+    response.data = serviceResponse;
+    response.error = null;
+
+    res.status(200).json(response);
+    console.timeEnd("updateBook()");
+  } catch (error) {
+    console.log(TAG);
+    console.log(error);
+
+    response.message = "Não foi possível atualizar o livro";
+    response.data = null;
+    response.error = "Erro interno do servidor";
+
+    res.status(500).json(response);
+    console.timeEnd("updateBook()");
+  }
+}

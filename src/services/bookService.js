@@ -56,3 +56,13 @@ export async function deleteBook(bookID) {
     throw error;
   }
 }
+
+export async function updateBook(newName, bookID) {
+  try {
+    const dbResponse = await bookRepository.updateBook(newName, bookID);
+    return dbResponse;
+  } catch (error) {
+    console.log(TAG, "error caught at updateBook()");
+    throw error;
+  }
+}

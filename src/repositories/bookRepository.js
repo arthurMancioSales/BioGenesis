@@ -125,3 +125,21 @@ export async function deleteBook(bookID) {
     throw error;
   }
 }
+
+export async function updateBook(newName, bookID) {
+  try {
+    const updateQuery = `
+        UPDATE 	
+            books
+        SET
+            book_name = $1
+        WHERE
+            books.book_id = $2`;
+
+    const response = await pool.query(updateQuery, [newName, bookID]);
+    return response.rows;
+  } catch (error) {
+    console.log(TAG, "error caught at updateBook()");
+    throw error;
+  }
+}
