@@ -23,4 +23,5 @@ router.delete("/", authenticateUser, (req, res) => {
     }
 })
 
+// Retorna as informações presententes no cookie de sessão do usuário -> @author {Arthur}
 router.get("/", authenticateUser, userController.getUserInfo)

@@ -29,7 +29,7 @@ export async function logUser(username, email, password) {
     try {
         const dbResponse = await userRepository.logUser(username, email);
         if (dbResponse.length == 0) {
-            return false
+            return false;
         }
 
         const login = await bcrypt.compare(password, dbResponse[0].password);
@@ -42,21 +42,42 @@ export async function logUser(username, email, password) {
             );
             return sessionJWT;
         } else {
-            return false
+            return false;
         }
-
     } catch (error) {
         console.log(TAG, "error caught at logUser()");
         throw error;
     }
 }
 
+// Retorna as informações presententes no cookie de sessão do usuário -> @author {Arthur}
 export function getUserInfo(sessionCookie) {
     try {
-        const userInfo = JWT.decode(sessionCookie)
-        return userInfo
+        const userInfo = JWT.decode(sessionCookie);
+        return userInfo;
     } catch (error) {
         console.log(TAG, "error caught at getUserInfo()");
+        throw error;
+    }
+}
+
+// Atualiza um usuário -> @author {Arthur}
+export async function updateUser(newUsername, newEmail, newPassword, sessionCookie) {
+    try {
+        const passwordHash = await bcrypt.hash(newPassword, 10);
+        const oldName = JWT.decode(sessionCookie).username
+
+        await userRepository.updateUser(newUsername, newEmail, passwordHash, oldName);
+
+        const sessionJWT = JWT.sign(
+            { username: newUsername, email: newEmail },
+            process.env.JWT_SECRET,
+            { expiresIn: "336h" }
+        );
+
+        return sessionJWT;
+    } catch (error) {
+        console.log(TAG, "error caught at updateUser()");
         throw error
     }
 }

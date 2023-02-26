@@ -134,29 +134,65 @@ export async function logUser(req, res) {
     }
 }
 
+// Retorna as informações presententes no cookie de sessão do usuário -> @author {Arthur}
 export async function getUserInfo(req, res) {
     console.log(TAG);
-	console.time("getUserInfo()")
+    console.time("getUserInfo()");
 
-	const sessionCookie = req.cookies.session
+    const sessionCookie = req.cookies.session;
 
-	try {
-		const userinfo = userService.getUserInfo(sessionCookie)
+    try {
+        const userinfo = userService.getUserInfo(sessionCookie);
 
-		response.message = "Informações obtidas com sucesso"
-		response.data = userinfo
-		response.error = null
+        response.message = "Informações obtidas com sucesso";
+        response.data = userinfo;
+        response.error = null;
 
-		res.status(200).json(response)
-		console.timeEnd("getUserInfo")
-	} catch (error) {
-		console.log(TAG);
-		console.log(error);
+        res.status(200).json(response);
+        console.timeEnd("getUserInfo");
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
 
-		response.message = "Não foi possivel obter as informações do usuário"
-		response.data = null
-		response.error = "Erro interno do servidor"
+        response.message = "Não foi possivel obter as informações do usuário";
+        response.data = null;
+        response.error = "Erro interno do servidor";
 
-		res.status(500).json(response)
-	}
+        res.status(500).json(response);
+    }
+}
+
+// Atualiza um usuário -> @author {Arthur}
+export async function updateUser(req, res) {
+    console.log(TAG);
+    console.time("updateUser()");
+
+    const { newUsername, newEmail, newPassword } = req.body;
+    const sessionCookie = req.cookies.session;
+
+    try {
+        const serviceResponse = userService.updateUser(
+            newUsername,
+            newEmail,
+            newPassword,
+            sessionCookie
+        );
+        
+        response.message = "Informações atualizadas com sucesso";
+        response.data = serviceResponse;
+        response.error = null;
+        
+        res.status(200).json(response)
+        console.timeEnd("updateUser()")
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+        
+        response.message = "Não foi possivel atualizar as informações do usuário";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+        
+        res.status(500).json(response)
+        console.timeEnd("updateUser()")
+    }
 }
