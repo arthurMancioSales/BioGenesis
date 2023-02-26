@@ -7,7 +7,6 @@ export default function collapsableMenu() {
     //menu colapsável
     const menu = document.querySelector(".collapsible")
     if (menu) {
-        console.log("dois menus");
         menu.remove()
     }
 

@@ -134,7 +134,7 @@ export async function logUser(req, res) {
     }
 }
 
-// Retorna as informações presententes no cookie de sessão do usuário -> @author {Arthur}
+// Retorna as informações presententes no cookie de sessão do usuário -> @author {Arthur} @coauthor {Thiago}
 export async function getUserInfo(req, res) {
     console.log(TAG);
     console.time("getUserInfo()");
@@ -143,7 +143,6 @@ export async function getUserInfo(req, res) {
 
     try {
         const userinfo = userService.getUserInfo(sessionCookie);
-
         response.message = "Informações obtidas com sucesso";
         response.data = userinfo;
         response.error = null;
@@ -171,7 +170,7 @@ export async function updateUser(req, res) {
     const sessionCookie = req.cookies.session;
 
     try {
-        const serviceResponse = userService.updateUser(
+        const serviceResponse = await userService.updateUser(
             newUsername,
             newEmail,
             newPassword,
@@ -182,6 +181,11 @@ export async function updateUser(req, res) {
         response.data = serviceResponse;
         response.error = null;
         
+        res.clearCookie("session")
+        res.cookie("session", serviceResponse, {
+            maxAge: 14 * 24 * 60 * 60 * 1000,
+        });
+
         res.status(200).json(response)
         console.timeEnd("updateUser()")
     } catch (error) {
@@ -194,5 +198,34 @@ export async function updateUser(req, res) {
         
         res.status(500).json(response)
         console.timeEnd("updateUser()")
+    }
+}
+
+// Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
+export async function deleteUser(req, res) {
+    console.log(TAG);
+    console.time("deleteUser()")
+
+    const sessionCookie = req.cookies.session
+
+    try {
+        const serviceResponse = await userService.deleteUser(sessionCookie)
+       
+        response.message = "Usuário deletado com sucesso";
+        response.data = serviceResponse.rows;
+        response.error = null;
+        
+        res.status(200).json(response)
+        console.timeEnd("deleteUser()")
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+        
+        response.message = "Não foi possivel deletar o usuário";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+        
+        res.status(500).json(response)
+        console.timeEnd("deleteUser()")
     }
 }

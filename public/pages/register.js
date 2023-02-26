@@ -5,7 +5,6 @@ const spa = SPA();
 import collapsableMenu from "./collapsableMenu.js";
 
 export default function register() {
-    console.log("a");
     const outDiv = document.createElement("div")
     outDiv.classList.add("cadastroBg", "bodyHome");
 

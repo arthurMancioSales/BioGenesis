@@ -64,12 +64,12 @@ export async function createUser(username, email, passwordHash) {
 export async function logUser(username, email) {
     try {
         const passwordQuery = `
-				SELECT
-						*
-				FROM
-						users
-				WHERE 
-						users.username = $1 OR users.email = $2`;
+        SELECT
+            *
+        FROM
+            users
+        WHERE 
+            users.username = $1 AND users.deleted = false OR users.email = $2 AND users.deleted = false`;
 
         const response = await pool.query(passwordQuery, [username, email]);
         return response.rows;
@@ -79,7 +79,7 @@ export async function logUser(username, email) {
     }
 }
 
-// Atualiza um usuário -> @author {Arthur}
+// Atualiza um usuário -> @author {Arthur} @coauthor {Thiago}
 export async function updateUser(newUsername, newEmail, passwordHash, oldName) {
     try {
         const updateUserQuery = `
@@ -103,5 +103,20 @@ export async function updateUser(newUsername, newEmail, passwordHash, oldName) {
     } catch (error) {
         console.log(TAG, "error caught at updateUser()");
         throw error;
+    }
+}
+
+// Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
+export async function deleteUser(username) {
+    try {
+        const deleteUserQuery = `
+        UPDATE users
+        SET deleted = false
+        WHERE username = $1`;
+        const response = await pool.query(deleteUserQuery, [username]);
+        return response
+    } catch (error) {
+        console.log(TAG, "error caught at deleteUser()");
+        throw error
     }
 }

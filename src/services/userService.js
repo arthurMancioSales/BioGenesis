@@ -36,7 +36,7 @@ export async function logUser(username, email, password) {
 
         if (login) {
             const sessionJWT = JWT.sign(
-                { username: username, email: email },
+                { username: dbResponse[0].username, email: dbResponse[0].email },
                 process.env.JWT_SECRET,
                 { expiresIn: "336h" }
             );
@@ -61,7 +61,7 @@ export function getUserInfo(sessionCookie) {
     }
 }
 
-// Atualiza um usuário -> @author {Arthur}
+// Atualiza um usuário -> @author {Arthur} @coauthor {Thiago}
 export async function updateUser(newUsername, newEmail, newPassword, sessionCookie) {
     try {
         const passwordHash = await bcrypt.hash(newPassword, 10);
@@ -78,6 +78,19 @@ export async function updateUser(newUsername, newEmail, newPassword, sessionCook
         return sessionJWT;
     } catch (error) {
         console.log(TAG, "error caught at updateUser()");
+        throw error
+    }
+}
+
+// Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
+export async function deleteUser(sessionCookie) {
+    try {
+        const username = JWT.decode(sessionCookie).username
+
+        const dbReponse = await userRepository.deleteUser(username)
+        return dbReponse
+    } catch (error) {
+        console.log(TAG, "error caught at deleteUser()");
         throw error
     }
 }

@@ -267,9 +267,7 @@ function createIput() {
 
 function validateInputSelect() {
     const mySelects = document.querySelectorAll('.selectDropdown');
-    console.log(mySelects.length);
     mySelects.forEach(select => {
-        console.log(select.value);
         if (select.value !== "") {
             const selectedId = select.id;
             for (let i = 2; i <= mySelects.length+1; i++) {
