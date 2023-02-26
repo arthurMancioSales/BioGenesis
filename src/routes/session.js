@@ -22,3 +22,5 @@ router.delete("/", authenticateUser, (req, res) => {
         console.log(error);
     }
 })
+
+router.get("/", authenticateUser, userController.getUserInfo)

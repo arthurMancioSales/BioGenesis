@@ -50,3 +50,13 @@ export async function logUser(username, email, password) {
         throw error;
     }
 }
+
+export function getUserInfo(sessionCookie) {
+    try {
+        const userInfo = JWT.decode(sessionCookie)
+        return userInfo
+    } catch (error) {
+        console.log(TAG, "error caught at getUserInfo()");
+        throw error
+    }
+}
