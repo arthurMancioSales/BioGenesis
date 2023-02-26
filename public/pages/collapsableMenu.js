@@ -73,7 +73,6 @@ export default function collapsableMenu() {
     addUser.setAttribute('src', '/images/addUserPage.png');
     addUser.setAttribute('alt', 'Adicionar Novo Usuário');
     addUser.onclick = () => {
-        document.body.removeChild(colMenuDiv);
         spa.redirect("/register");
     }
 

@@ -5,6 +5,7 @@ const spa = SPA();
 import collapsableMenu from "./collapsableMenu.js";
 
 export default function register() {
+    console.log("a");
     const outDiv = document.createElement("div")
     outDiv.classList.add("cadastroBg", "bodyHome");
 
@@ -86,7 +87,6 @@ export default function register() {
     // Crie um elemento <main> e adicione todos os elementos criados a ele
     const main = document.createElement("main");
     main.classList.add("mainSize", "flexColumn");
-    main.appendChild(imgMain);
     main.appendChild(h1Main);
     main.appendChild(formMain);
     main.appendChild(result);

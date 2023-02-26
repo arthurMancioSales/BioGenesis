@@ -1,6 +1,7 @@
 // @author: {Arthur}
 import { Router } from "express";
 import * as userController from "../controllers/userController.js";
+import authenticateUser from "../lib/authenticateUser.js";
 
 export const router = Router();
 
@@ -13,7 +14,7 @@ router.post("/", userController.logUser);
 // }
 
 // Termina a sessão de um usuário -> @author {Arthur}
-router.delete("/", (req, res) => {
+router.delete("/", authenticateUser, (req, res) => {
     try {
         res.clearCookie("session")
         res.status(200).send("Sessão terminada com sucesso")

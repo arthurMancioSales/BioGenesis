@@ -1,5 +1,9 @@
 import bcrypt from "bcrypt";
 import * as userRepository from "../repositories/userRepository.js";
+import JWT from "jsonwebtoken";
+import { config } from "dotenv";
+
+config();
 
 const TAG = "userService";
 
@@ -29,7 +33,18 @@ export async function logUser(username, email, password) {
         }
 
         const login = await bcrypt.compare(password, dbResponse[0].password);
-        return login;
+
+        if (login) {
+            const sessionJWT = JWT.sign(
+                { username: username, email: email },
+                process.env.JWT_SECRET,
+                { expiresIn: "336h" }
+            );
+            return sessionJWT;
+        } else {
+            return false
+        }
+
     } catch (error) {
         console.log(TAG, "error caught at logUser()");
         throw error;

@@ -1,8 +1,4 @@
 import * as userService from "../services/userService.js";
-import JWT from "jsonwebtoken";
-import { config } from "dotenv";
-
-config();
 const TAG = "userController";
 
 const response = {
@@ -109,12 +105,8 @@ export async function logUser(req, res) {
         );
 
         if (serviceResponse) {
-            const sessionJWT = JWT.sign(
-                { username: username, email: email },
-                process.env.JWT_SECRET,
-                { expiresIn: "336h" }
-            );
-            res.cookie("session", sessionJWT, { maxAge: 14 * 24 * 60 * 60 * 1000 });
+            
+            res.cookie("session", serviceResponse, { maxAge: 14 * 24 * 60 * 60 * 1000 });
 
             response.message = "Usuário logado com sucesso";
             response.data = null;
