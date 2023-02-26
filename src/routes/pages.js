@@ -26,3 +26,7 @@ router.get(`/list`, (req, res) => {
 router.get(`/listShelves`, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
+
+router.get(`/passwordRecover`, (req, res) => {
+    res.sendFile("/public/index.html", { root: "./" });
+});

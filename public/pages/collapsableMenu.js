@@ -16,9 +16,8 @@ export default function collapsableMenu(destroy=false) {
     openMenu.setAttribute('id', 'menu');
 
     const colMenuIconDiv = document.createElement("div");
-    colMenuIconDiv.style.display = "flex";
+    colMenuIconDiv.style.display = "none";
     colMenuIconDiv.style.left = "350px";
-    colMenuIconDiv.style.opacity = "0";
     colMenuIconDiv.style.userSelect = "none";
 
     const homePage = document.createElement("i");
@@ -37,13 +36,12 @@ export default function collapsableMenu(destroy=false) {
         spa.redirect("/bookshelves");
     }
 
-    const login = document.createElement('img');
-    login.classList.add('colImg', 'link');
-    login.setAttribute('src', '/images/userProfile.png');
-    login.setAttribute('alt', 'Perfil');
+    const login = document.createElement("i");
+    login.classList.add('colImg', 'link', "fa-solid", "fa-user");
+    login.id = "loginPageImg";
     login.onclick = () => {
         document.body.removeChild(colMenuDiv);
-    spa.redirect("/login");
+        spa.redirect("/login");
     }
 
     const editBook = document.createElement('img');
@@ -77,6 +75,7 @@ export default function collapsableMenu(destroy=false) {
     logOut.setAttribute('src', '/images/logOut.png');
     logOut.setAttribute('alt', 'Sair');
     logOut.onclick = () => {
+        //document.body.removeChild(colMenuDiv);
         // Rota para deslogar o usuário
     }
 
@@ -101,8 +100,8 @@ export default function collapsableMenu(destroy=false) {
             openMenu.style.transform = "rotate(0deg)";
 
             colMenuIconDiv.style.left = "350px";
-            colMenuIconDiv.style.opacity = "0";
             colMenuIconDiv.style.userSelect = "none";
+            colMenuIconDiv.style.display = "none";
         } else{
 
             if(!auth()){
@@ -115,8 +114,8 @@ export default function collapsableMenu(destroy=false) {
             openMenu.style.transform = "rotate(90deg)";
 
             colMenuIconDiv.style.left = "0";
-            colMenuIconDiv.style.opacity = "100";
             colMenuIconDiv.style.userSelect = "all";
+            colMenuIconDiv.style.display = "flex";
         }
     }
     
