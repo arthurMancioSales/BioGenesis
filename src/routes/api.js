@@ -21,14 +21,18 @@ router.get("/books/:id", pageController.getAllPagesFromBook);
 router.get("/books", bookController.getAllBooks);
 
 // Cria uma estante nova -> @author {Arthur}
-router.post("/bookshelves", authenticateUser, bookshelfController.createBookshelf);
+router.post(
+  "/bookshelves",
+  authenticateUser,
+  bookshelfController.createBookshelf
+);
 // {
 //     'name': 'nome da estante' -> String
 // }
 
 // Cria um livro novo -> @author {Arthur}
 router.post("/book", authenticateUser, (req, res, next) => {
-    bookController.createBook(req, res, next);
+  bookController.createBook(req, res, next);
 });
 // {
 //     'bookTitle': 'nome do livro', -> String
@@ -48,26 +52,45 @@ router.post("/book/page", authenticateUser, pageController.createPage);
 // }
 
 // Apaga uma estante -> @author {Arthur}
-router.delete("/bookshelves/:id", authenticateUser, bookshelfController.deleteBookshelf)
+router.delete(
+  "/bookshelves/:id",
+  authenticateUser,
+  bookshelfController.deleteBookshelf
+);
 
 // Apaga um livro
-// router.delete()
+router.delete("/book/:id", authenticateUser, bookController.deleteBook);
 
 // Apaga uma pagina
-// router.delete()
+router.delete("/book/page/:id", authenticateUser, pageController.deletePage);
 
 // Atualiza uma estante -> @author {Arthur}
-router.put("/bookshelves/", authenticateUser, bookshelfController.updateBookshelf)
+router.put(
+  "/bookshelves/",
+  authenticateUser,
+  bookshelfController.updateBookshelf
+);
 // {
 //     bookshelfID: "ID da estante",
 //     newName: "novo nome da estante"
 // }
 
 // Atualiza um livro
-// router.put()
+router.put("/book", authenticateUser, bookController.updateBook);
+// {
+//     bookID: "ID do livro",
+//     newName: "novo nome do livro"
+// }
 
 // Atualiza uma pagina
-// router.put()
+router.put("/book/page", authenticateUser, pageController.updatePage);
+// {
+//   topicId: 'nome do topico',
+//   content: 'novo conteudo',
+//   image: 'nova imagem',
+//   editor: 'nome do editor',
+//   pageID: 'id da pagina;
+// }
 
 // Cria um usuário novo -> @author {Arthur}
 router.post("/createUser", authenticateUser, userController.createUser);
