@@ -101,5 +101,12 @@ router.post("/createUser", authenticateUser, userController.createUser);
 // }
 
 // Atualiza um usuário -> @author {Arthur}
+router.post("/updateUser", authenticateUser, userController.updateUser)
+// {
+//     newUsername: "nome do usuario",
+//     newEmail, "email do usuario",
+//     newPassword: "senha do usuario"
+// }
 
-// Apaga um usuário -> @author {Arthur}
+// Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
+router.delete("/deleteUser", authenticateUser, userController.deleteUser)

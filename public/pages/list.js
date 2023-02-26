@@ -205,8 +205,6 @@ function addRow(userList, cont) {
             return response.json();
          })
         .then((data) => {
-            //console.log(data)
-            
             form(data, userList[i])
         })
     }
