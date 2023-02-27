@@ -46,7 +46,6 @@ export default function listShelves() {
 
   sectionMain.appendChild(divSection);
 
-
   const table = document.createElement("table");
   const thead = document.createElement("thead");
 
@@ -93,7 +92,6 @@ export default function listShelves() {
   return outDiv;
 }
 
-
 export async function printTable() {
   await fetch("http://149.28.100.51:5000/api/bookshelves")
     .then((response) => {
@@ -102,7 +100,6 @@ export async function printTable() {
     .then((data) => {
       createTable(data.data);
     });
-
 }
 
 function createTable(userList) {

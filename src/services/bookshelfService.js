@@ -28,6 +28,7 @@ export async function getAllBookshelves() {
 export async function deleteBookshelf(bookshelfID) {
   try {
     const dbResponse = await bookshelfRepository.deleteBookshelf(bookshelfID);
+
     return dbResponse;
   } catch (error) {
     console.log(TAG, "error caught at deleteBookshelf()");

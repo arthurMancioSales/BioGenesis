@@ -9,53 +9,51 @@ export default function editProfile() {
   const outDiv = document.createElement("div");
   outDiv.classList.add("cadastroBg", "bodyHome");
 
-    const profilePic = document.createElement("i");
-    profilePic.classList.add("fa-solid", "fa-user-tie");
-    profilePic.style.fontSize = "150px"
-    profilePic.style.marginBottom = "15px"
-    
-    const infoDiv = document.createElement("div");
-    infoDiv.classList.add("flexColumn");
+  const profilePic = document.createElement("i");
+  profilePic.classList.add("fa-solid", "fa-user-tie");
+  profilePic.style.fontSize = "150px";
+  profilePic.style.marginBottom = "15px";
 
-    fetch("http://149.28.100.51:5000/session/")
-        .then((json) => {
-            return json.json()
-        })
-        .then ((data) => {
-            const userInfo = data.data
+  const infoDiv = document.createElement("div");
+  infoDiv.classList.add("flexColumn");
 
-            const name = document.createElement("p");
-            name.classList.add("bodyText", "profileText");
-            name.textContent = `Nome: ${userInfo.username}`;
+  fetch("http://149.28.100.51:5000/session/")
+    .then((json) => {
+      return json.json();
+    })
+    .then((data) => {
+      const userInfo = data.data;
 
-            const email = document.createElement("p");
-            email.classList.add("bodyText", "profileText");
-            email.textContent = `Email: ${userInfo.email}`
+      const name = document.createElement("p");
+      name.classList.add("bodyText", "profileText");
+      name.textContent = `Nome: ${userInfo.username}`;
 
-            const userDate = new Date(userInfo.created_at)
+      const email = document.createElement("p");
+      email.classList.add("bodyText", "profileText");
+      email.textContent = `Email: ${userInfo.email}`;
 
-            const date = document.createElement("p");
-            date.classList.add("bodyText", "profileText");
-            date.textContent = `Autor desde: ${userDate.toLocaleDateString()}`
+      const userDate = new Date(userInfo.created_at);
 
-            infoDiv.appendChild(name);
-            infoDiv.appendChild(email);
-            infoDiv.appendChild(date);
-        })
+      const date = document.createElement("p");
+      date.classList.add("bodyText", "profileText");
+      date.textContent = `Autor desde: ${userDate.toLocaleDateString()}`;
 
-    fetch("http://149.28.100.51:5000/api/userBooks")
-        .then((json) => {
-            return json.json()
-        })
-        .then ((data) => {
-            const quant = document.createElement("p");
-            quant.classList.add("bodyText", "profileText");
-            quant.textContent = `Autor de ${data.data[0].count} livros`
-            
-            infoDiv.appendChild(quant);
-        })
+      infoDiv.appendChild(name);
+      infoDiv.appendChild(email);
+      infoDiv.appendChild(date);
+    });
 
-    
+  fetch("http://149.28.100.51:5000/api/userBooks")
+    .then((json) => {
+      return json.json();
+    })
+    .then((data) => {
+      const quant = document.createElement("p");
+      quant.classList.add("bodyText", "profileText");
+      quant.textContent = `Autor de ${data.data[0].count} livros`;
+
+      infoDiv.appendChild(quant);
+    });
 
   const editProfile = document.createElement("input");
   editProfile.setAttribute("type", "submit");
