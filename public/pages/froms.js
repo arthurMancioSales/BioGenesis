@@ -4,6 +4,8 @@ import { editPages } from "../modules/editPages.js";
 
 export default function form(bookPages = 0, bookCape = 0) {
     console.log(bookPages, bookCape)
+export default function form(bookPages = 0, bookCape = 0) {
+    console.log(bookPages, bookCape)
     const root = document.createElement("div");
 
     const form = document.createElement("form");

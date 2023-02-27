@@ -232,3 +232,5 @@ function addRow(userList, cont) {
     //     })
     // }
 };
+
+//router.get("/books/:id", pageController.getAllPagesFromBook);

@@ -39,11 +39,14 @@ export default function register() {
     inputUserName.required = true
     inputUserName.placeholder = "Usuário";
 
+    inputUserName.classList.add("userInput");
+
     const inputUserMail = document.createElement("input");
     inputUserMail.id = "userEmail";
     inputUserMail.type = "email"
     inputUserMail.required = true
     inputUserMail.placeholder = "E-mail";
+    inputUserMail.classList.add("userInput");
 
     const inputUserMailConfirm = document.createElement("input");
     inputUserMailConfirm.id = "userEmailConfirm";
@@ -51,17 +54,22 @@ export default function register() {
     inputUserMailConfirm.required = true
     inputUserMailConfirm.placeholder = "Confirme seu e-mail";
 
+    inputUserMailConfirm.classList.add("userInput");
+
     const inputUserPass = document.createElement("input");
     inputUserPass.id = "userPass";
     inputUserPass.type = "password"
     inputUserPass.required = true
     inputUserPass.placeholder = "Senha";
+    inputUserPass.classList.add("userInput");
 
     const inputUserPassConf = document.createElement("input");
     inputUserPassConf.id = "userPassConf";
     inputUserPassConf.type = "password"
     inputUserPassConf.required = true
     inputUserPassConf.placeholder = "Confirme sua Senha";
+
+    inputUserPassConf.classList.add("userInput");
 
     // Crie um elemento <button> com o ID "createUser" e o texto "Cadastrar"
     const buttonMain = document.createElement("button");

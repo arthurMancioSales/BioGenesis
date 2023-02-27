@@ -8,6 +8,7 @@ export default function homeUser() {
     const divInitial = document.createElement("div");
     divInitial.classList.add("homeBg", "bodyHome");
 
+
     // cria o cabeçalho
     const header = document.createElement('header');
     header.classList.add('flexRowSpace');
