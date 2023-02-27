@@ -2,11 +2,13 @@ import submitForm  from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 import { editPages } from "../modules/editPages.js";
 
-export default function form() {
+export default function form(bookPages = 0, bookCape = 0) {
+    console.log(bookPages, bookCape)
     const root = document.createElement("div");
 
     const form = document.createElement("form");
     form.id = "form";
+    form.classList.add("ride");
     form.classList.add("ride");
     form.onsubmit = async (e) => {
         e.preventDefault();
@@ -33,6 +35,7 @@ export default function form() {
     textInput1.name = "bookTitle";
     textInput1.required = true;
 
+   
     const imageUpload1Label = document.createElement("label");
     imageUpload1Label.htmlFor = "coverImage";
     imageUpload1Label.textContent = "Imagem:";
@@ -166,7 +169,6 @@ export default function form() {
 
     form.appendChild(group);
 
-    for (let i = 3; i <= 5; i++) {}
 
     const submitButton = document.createElement("button");
     submitButton.setAttribute("class", "submit-btn");
@@ -202,7 +204,7 @@ function createIput() {
 
         textInput.id = `textInput${counter}`;
         textInput.name = `textInput${counter}`;
-
+     
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
         imageUploadLabel.textContent = "Imagem:";
@@ -252,11 +254,15 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
+        if(bookPages !== 0){
+            dropdown.value = bookPages[i-2].topic_name
+        }
+
         group.appendChild(pages);
-        group.appendChild(dropdownLabel);
-        group.appendChild(dropdown);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
+        group.appendChild(dropdownLabel);
+        group.appendChild(dropdown);
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
 
@@ -264,7 +270,6 @@ function createIput() {
         form.insertBefore(group, document.querySelector(".submit-btn"));
     }
 }
-
 
 function validateInputSelect() {
     const mySelects = document.querySelectorAll('.selectDropdown');
@@ -289,3 +294,5 @@ function validateInputSelect() {
         };
     });
 };
+
+
