@@ -109,9 +109,8 @@ router.post("/updateUser", authenticateUser, userController.updateUser);
 // }
 
 // Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
-
 router.delete("/deleteUser", authenticateUser, userController.deleteUser)
 
-
+// Retorna quantos livros um usuário criou -> @author {Arthur} @coauthor {Thiago}
 router.get("/userBooks", authenticateUser, bookController.getUserBooks)
 
