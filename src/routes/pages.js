@@ -1,5 +1,7 @@
 // @author {Thiago}
+// @coauthor {Arthur}
 import { Router } from "express";
+import authenticateUser from "../lib/authenticateUser.js";
 
 export const router = Router();
 
@@ -11,19 +13,19 @@ router.get(`/bookshelves`, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
 
-router.get(`/login`, (req, res) => {
+router.get(`/login`, authenticateUser, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
 
-router.get(`/register`, (req, res) => {
+router.get(`/register`, authenticateUser, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
 
-router.get(`/list`, (req, res) => {
+router.get(`/list`, authenticateUser, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
 
-router.get(`/listShelves`, (req, res) => {
+router.get(`/listShelves`, authenticateUser, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
 

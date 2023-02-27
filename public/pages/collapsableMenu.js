@@ -3,7 +3,13 @@ const spa = SPA();
 
 import auth from "../modules/checkAuthentication.js";
 
-export default function collapsableMenu(destroy=false) {
+
+export default function collapsableMenu() {
+    //menu colapsável
+    const menu = document.querySelector(".collapsible")
+    if (menu) {
+        menu.remove()
+    }
 
     const colMenuDiv = document.createElement('div');
     colMenuDiv.classList.add('collapsible');
@@ -72,7 +78,6 @@ export default function collapsableMenu(destroy=false) {
     addUser.setAttribute('src', '/images/addUserPage.png');
     addUser.setAttribute('alt', 'Adicionar Novo Usuário');
     addUser.onclick = () => {
-        document.body.removeChild(colMenuDiv);
         spa.redirect("/register");
     }
 
@@ -80,9 +85,11 @@ export default function collapsableMenu(destroy=false) {
     logOut.classList.add('colImg', 'link');
     logOut.setAttribute('src', '/images/logOut.png');
     logOut.setAttribute('alt', 'Sair');
-    logOut.onclick = () => {
-        //document.body.removeChild(colMenuDiv);
-        // Rota para deslogar o usuário
+    logOut.onclick = async () => {
+        await fetch("http://localhost:5000/session/", {
+            method: "DELETE"
+        })
+        spa.redirect("/")
     }
 
     if(!auth()){

@@ -58,7 +58,6 @@ export default async function editBookShelvesPage(val, id) {
 }
 
 async function editBookshelf(name, id) {
-  console.log(name, id);
   await fetch("http://localhost:5000/api/bookshelves", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },

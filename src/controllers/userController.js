@@ -1,8 +1,4 @@
 import * as userService from "../services/userService.js";
-import JWT from "jsonwebtoken";
-import { config } from "dotenv";
-
-config();
 const TAG = "userController";
 
 const response = {
@@ -63,7 +59,7 @@ export async function createUser(req, res) {
         response.data = null;
         response.error = error;
 
-        res.status(500)
+        res.status(500);
         res.json(JSON.stringify(response));
         console.timeEnd("createUser()");
     }
@@ -109,12 +105,9 @@ export async function logUser(req, res) {
         );
 
         if (serviceResponse) {
-            const sessionJWT = JWT.sign(
-                { username: username, email: email },
-                process.env.JWT_SECRET,
-                { expiresIn: "336h" }
-            );
-            res.cookie("session", sessionJWT);
+            res.cookie("session", serviceResponse, {
+                maxAge: 14 * 24 * 60 * 60 * 1000,
+            });
 
             response.message = "Usuário logado com sucesso";
             response.data = null;
@@ -138,5 +131,101 @@ export async function logUser(req, res) {
 
         res.status(500).json(response);
         console.timeEnd("logUser()");
+    }
+}
+
+// Retorna as informações presententes no cookie de sessão do usuário -> @author {Arthur} @coauthor {Thiago}
+export async function getUserInfo(req, res) {
+    console.log(TAG);
+    console.time("getUserInfo()");
+
+    const sessionCookie = req.cookies.session;
+
+    try {
+        const userinfo = userService.getUserInfo(sessionCookie);
+        response.message = "Informações obtidas com sucesso";
+        response.data = userinfo;
+        response.error = null;
+
+        res.status(200).json(response);
+        console.timeEnd("getUserInfo");
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+
+        response.message = "Não foi possivel obter as informações do usuário";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+
+        res.status(500).json(response);
+    }
+}
+
+// Atualiza um usuário -> @author {Arthur}
+export async function updateUser(req, res) {
+    console.log(TAG);
+    console.time("updateUser()");
+
+    const { newUsername, newEmail, newPassword } = req.body;
+    const sessionCookie = req.cookies.session;
+
+    try {
+        const serviceResponse = await userService.updateUser(
+            newUsername,
+            newEmail,
+            newPassword,
+            sessionCookie
+        );
+        
+        response.message = "Informações atualizadas com sucesso";
+        response.data = serviceResponse;
+        response.error = null;
+        
+        res.clearCookie("session")
+        res.cookie("session", serviceResponse, {
+            maxAge: 14 * 24 * 60 * 60 * 1000,
+        });
+
+        res.status(200).json(response)
+        console.timeEnd("updateUser()")
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+        
+        response.message = "Não foi possivel atualizar as informações do usuário";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+        
+        res.status(500).json(response)
+        console.timeEnd("updateUser()")
+    }
+}
+
+// Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
+export async function deleteUser(req, res) {
+    console.log(TAG);
+    console.time("deleteUser()")
+
+    const sessionCookie = req.cookies.session
+
+    try {
+        const serviceResponse = await userService.deleteUser(sessionCookie)
+       
+        response.message = "Usuário deletado com sucesso";
+        response.data = serviceResponse.rows;
+        response.error = null;
+        
+        res.status(200).json(response)
+        console.timeEnd("deleteUser()")
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+        
+        response.message = "Não foi possivel deletar o usuário";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+        
+        res.status(500).json(response)
+        console.timeEnd("deleteUser()")
     }
 }
