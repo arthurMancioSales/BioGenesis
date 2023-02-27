@@ -26,8 +26,6 @@ export default function listShelves() {
   const sectionMain = document.createElement("section");
   sectionMain.id = "section-lista";
 
-
-
   const divSection = document.createElement("div");
   divSection.classList.add("containerList");
 

@@ -8,7 +8,7 @@ export default async function deleteBookShelvesPage(val) {
   container.style.width = "30vw";
 
   const title = document.createElement("h1");
-  title.innerHTML = "Deletar estante";
+  title.innerHTML = "Deletar Estante";
   title.style.textAlign = "center";
 
   const subTitle = document.createElement("h2");
@@ -25,6 +25,7 @@ export default async function deleteBookShelvesPage(val) {
   confirmDelete.setAttribute("type", "submit");
   confirmDelete.setAttribute("name", "confirmDelete");
   confirmDelete.setAttribute("value", "Deletar");
+  confirmDelete.classList.add("confirmDeleteButton");
   confirmDelete.style.backgroundColor = "red";
   confirmDelete.style.color = "white";
   confirmDelete.onclick = async () => {
@@ -44,6 +45,7 @@ export default async function deleteBookShelvesPage(val) {
   cancelDelete.setAttribute("name", "cancelDelete");
   cancelDelete.setAttribute("value", "Cancelar");
   cancelDelete.style.textAlign = "center";
+  cancelDelete.classList.add("confirmDeleteButton");
   cancelDelete.onclick = async () => {
     const wrapper = document.querySelector(".modalWrapper");
     document.querySelector("#root").removeChild(wrapper);

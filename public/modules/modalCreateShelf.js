@@ -7,7 +7,7 @@ export default async function createBookShelvesPage() {
   container.classList.add("modal-background");
 
   const title = document.createElement("h1");
-  title.innerHTML = "Criação de estante";
+  title.innerHTML = "Criação de Estante";
   title.style.textAlign = "center";
 
   const divContainer = document.createElement("div");
@@ -25,6 +25,7 @@ export default async function createBookShelvesPage() {
   newShelf.setAttribute("type", "submit");
   newShelf.setAttribute("name", "newShelf");
   newShelf.setAttribute("value", "Nova Estante");
+  newShelf.classList.add("button");
   newShelf.style.alignSelf = "center";
   newShelf.onclick = async () => {
     const shelfName = document.querySelector("#shelf-name").value;

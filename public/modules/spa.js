@@ -9,6 +9,10 @@ import register from "../pages/register.js";
 import list from "../pages/list.js";
 import listShelves from "../pages/listShelves.js";
 import edit from "../pages/edit.js";
+import passwordRecover from "../pages/passwordRecover.js";
+import aboutUs from "../pages/aboutUs.js";
+import editProfile from "../pages/editProfile.js";
+import profile from "../pages/profile.js";
 
 export default function SPA() {
   return {
@@ -19,6 +23,10 @@ export default function SPA() {
     "/list": list,
     "/listShelves": listShelves,
     "/edit": edit,
+    "/passwordRecover": passwordRecover,
+    "/aboutUs": aboutUs,
+    "/editProfile": editProfile,
+    "/profile": profile,
 
         getPage: function (url) {
             if (url == "/index.html") {

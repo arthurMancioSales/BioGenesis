@@ -28,3 +28,19 @@ router.get(`/list`, authenticateUser, (req, res) => {
 router.get(`/listShelves`, authenticateUser, (req, res) => {
     res.sendFile("/public/index.html", { root: "./" });
 });
+
+router.get(`/passwordRecover`, (req, res) => {
+    res.sendFile("/public/index.html", { root: "./" });
+});
+
+router.get(`/aboutUs`, (req, res) => {
+    res.sendFile("/public/index.html", { root: "./" });
+});
+
+router.get(`/editProfile`, (req, res) => {
+    res.sendFile("/public/index.html", { root: "./" });
+});
+
+router.get(`/profile`, (req, res) => {
+    res.sendFile("/public/index.html", { root: "./" });
+});
