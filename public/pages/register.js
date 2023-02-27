@@ -8,11 +8,6 @@ export default function register() {
     const outDiv = document.createElement("div")
     outDiv.classList.add("cadastroBg", "bodyHome");
 
-    // Crie um elemento <img> com a classe "backImg" e o atributo src definido como "./Vector.png"
-    const imgMain = document.createElement("img");
-    imgMain.classList.add("backImg", "link");
-    imgMain.src = "../images/Vector.png";
-
     // Crie um elemento <h1> com o texto "Cadastrar Novo Usuário"
     const h1Main = document.createElement("h1");
     h1Main.classList.add("titleText");
@@ -28,7 +23,6 @@ export default function register() {
             document.querySelector("#loginResult").innerText = "Usuário criado com sucesso"
             spa.redirect("/")
         } else {
-            console.log(createUser);
             document.querySelector("#loginResult").innerText = createUser.error
         }
     }
@@ -92,7 +86,6 @@ export default function register() {
     // Crie um elemento <main> e adicione todos os elementos criados a ele
     const main = document.createElement("main");
     main.classList.add("mainSize", "flexColumn");
-    main.appendChild(imgMain);
     main.appendChild(h1Main);
     main.appendChild(formMain);
     main.appendChild(result);

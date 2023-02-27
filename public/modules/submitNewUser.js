@@ -20,10 +20,11 @@ export default async function newUser() {
         emailConfirmInput.classList.add("campoInvalido");
         
         document.querySelector("#loginResult").innerText = "Emails divergentes"
+
+        return
     }
 
     if (passwordInput.value != passwordConfirmInput.value) {
-        console.log(passwordInput.className);
         passwordInput.classList.remove("campoInvalido");
         passwordConfirmInput.classList.remove("campoInvalido");
 
@@ -32,9 +33,10 @@ export default async function newUser() {
 
         passwordInput.classList.add("campoInvalido");
         passwordConfirmInput.classList.add("campoInvalido");
-        console.log(passwordInput.className);
 
         document.querySelector("#loginResult").innerText = "Senhas divergentes"
+
+        return
     }
 
     const response = await fetch("http://localhost:5000/api/createUser", {

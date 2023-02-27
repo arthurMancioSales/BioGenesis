@@ -43,12 +43,10 @@ export default function list() {
     buttonDiv.textContent = "Cadastrar";
     buttonDiv.onclick = async () => {
         body.appendChild(wrapper);
-        console.log("a");
-        
         wrapper.innerHTML = ""
         wrapper.appendChild(form())
     }
-    buttonDiv.classList.add('button');
+    buttonDiv.classList.add('listBtn', 'button');
 
     inputdivMain.appendChild(buttonDiv);
 
@@ -67,12 +65,8 @@ export default function list() {
     
     inputdivMain.appendChild(h2Section);
 
-    //Adicionar animação de expandir
-    
-    inputdivMain.appendChild(buttonDiv);
-
-    //Adicionar animação de expandir
     inputdivMain.appendChild(h2Section);
+    inputdivMain.appendChild(buttonDiv);
 
     sectionMain.appendChild(divSection);
 

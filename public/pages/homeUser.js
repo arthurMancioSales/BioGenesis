@@ -8,7 +8,6 @@ export default function homeUser() {
     const divInitial = document.createElement("div");
     divInitial.classList.add("homeBg", "bodyHome");
 
-
     // cria o cabeçalho
     const header = document.createElement('header');
     header.classList.add('flexRowSpace');
@@ -22,13 +21,14 @@ export default function homeUser() {
     p1Div1.classList.add('link', 'headerText');
     p1Div1.setAttribute('id', 'about');
     p1Div1.textContent = 'SOBRE NÓS';
+    p1Div1.onclick = () => spa.redirect("/aboutUs");
     div1.appendChild(p1Div1);
 
     // cria o segundo link do cabeçalho
     const p2Div1 = document.createElement('p');
     p2Div1.classList.add('link', 'headerText');
     p2Div1.setAttribute('id', 'anotherLink');
-    p2Div1.textContent = 'OUTRO LINK';
+    p2Div1.textContent = 'CÓDIGO FONTE';
     div1.appendChild(p2Div1);
 
     header.appendChild(div1);

@@ -26,8 +26,6 @@ export default function listShelves() {
   const sectionMain = document.createElement("section");
   sectionMain.id = "section-lista";
 
-
-
   const divSection = document.createElement("div");
   divSection.classList.add("containerList");
 
@@ -37,7 +35,7 @@ export default function listShelves() {
 
   const buttonDiv = document.createElement("input");
   buttonDiv.setAttribute("type", "button");
-  buttonDiv.classList.add("listBtn", "beginBtn");
+  buttonDiv.classList.add("listBtn", "button");
   buttonDiv.value = "Cadastrar";
   buttonDiv.onclick = async () => {
     modal(createBookShelvesPage);

@@ -1,6 +1,6 @@
 // @author: {Arthur}
 import { Router } from "express";
-import { logUser } from "./controllers/userController.js";
+import { router as sessionRouter } from "./routes/session.js";
 import { router as apiRouter } from "./routes/api.js";
 import { router as pageRouter } from "./routes/pages.js";
 
@@ -13,6 +13,6 @@ router.use("/", pageRouter);
 router.use("/api", apiRouter);
 
 // @author: {Arthur}
-router.post("/session", logUser);
+router.use("/session", sessionRouter);
 
 export default router;

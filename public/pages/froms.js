@@ -2,13 +2,11 @@ import submitForm  from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 import { editPages } from "../modules/editPages.js";
 
-export default function form(bookPages = 0, bookCape = 0) {
-    console.log(bookPages, bookCape)
+export default function form() {
     const root = document.createElement("div");
 
     const form = document.createElement("form");
     form.id = "form";
-    form.classList.add("ride");
     form.classList.add("ride");
     form.onsubmit = async (e) => {
         e.preventDefault();
@@ -35,7 +33,6 @@ export default function form(bookPages = 0, bookCape = 0) {
     textInput1.name = "bookTitle";
     textInput1.required = true;
 
-   
     const imageUpload1Label = document.createElement("label");
     imageUpload1Label.htmlFor = "coverImage";
     imageUpload1Label.textContent = "Imagem:";
@@ -204,7 +201,7 @@ function createIput() {
 
         textInput.id = `textInput${counter}`;
         textInput.name = `textInput${counter}`;
-     
+
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
         imageUploadLabel.textContent = "Imagem:";
@@ -254,10 +251,6 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
-        if(bookPages !== 0){
-            dropdown.value = bookPages[i-2].topic_name
-        }
-
         group.appendChild(pages);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
@@ -273,9 +266,7 @@ function createIput() {
 
 function validateInputSelect() {
     const mySelects = document.querySelectorAll('.selectDropdown');
-    console.log(mySelects.length);
     mySelects.forEach(select => {
-        console.log(select.value);
         if (select.value !== "") {
             const selectedId = select.id;
             for (let i = 2; i <= mySelects.length+1; i++) {
@@ -295,4 +286,7 @@ function validateInputSelect() {
     });
 };
 
+//     form.appendChild(btnFormBook);
+
+//     root.appendChild(form);
 

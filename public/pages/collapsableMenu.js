@@ -3,11 +3,12 @@ const spa = SPA();
 
 import auth from "../modules/checkAuthentication.js";
 
-export default function collapsableMenu(destroy=false) {
+
+export default function collapsableMenu() {
     //menu colapsável
-    if (destroy) {
-        document.body.removeChild(document.querySelector(".collapsible"))
-        return
+    const menu = document.querySelector(".collapsible")
+    if (menu) {
+        menu.remove()
     }
 
     const colMenuDiv = document.createElement('div');
@@ -20,9 +21,8 @@ export default function collapsableMenu(destroy=false) {
     openMenu.setAttribute('id', 'menu');
 
     const colMenuIconDiv = document.createElement("div");
-    colMenuIconDiv.style.display = "flex";
+    colMenuIconDiv.style.display = "none";
     colMenuIconDiv.style.left = "350px";
-    colMenuIconDiv.style.opacity = "0";
     colMenuIconDiv.style.userSelect = "none";
 
     const homePage = document.createElement("i");
@@ -30,7 +30,7 @@ export default function collapsableMenu(destroy=false) {
     homePage.id = "homePageImg";
     homePage.onclick = () => {
         document.body.removeChild(colMenuDiv)
-    spa.redirect("/");
+        spa.redirect("/");
     }
 
     const bookPage = document.createElement("i");
@@ -41,13 +41,18 @@ export default function collapsableMenu(destroy=false) {
         spa.redirect("/bookshelves");
     }
 
-    const login = document.createElement('img');
-    login.classList.add('colImg', 'link');
-    login.setAttribute('src', '/images/userProfile.png');
-    login.setAttribute('alt', 'Perfil');
+    const login = document.createElement("i");
+    login.classList.add('colImg', 'link', "fa-solid", "fa-user");
+    login.id = "loginPageImg";
     login.onclick = () => {
         document.body.removeChild(colMenuDiv);
-    spa.redirect("/login");
+
+        if(!auth()){
+            spa.redirect("/login");
+    
+        } else{
+            spa.redirect("/profile");
+        }
     }
 
     const editBook = document.createElement('img');
@@ -58,6 +63,7 @@ export default function collapsableMenu(destroy=false) {
         document.body.removeChild(colMenuDiv)
         spa.redirect("/list");
     }
+
 
     const editShelf = document.createElement("i");
     editShelf.classList.add("fa-regular", "fa-calendar-days", "link", 'colImg');
@@ -72,7 +78,6 @@ export default function collapsableMenu(destroy=false) {
     addUser.setAttribute('src', '/images/addUserPage.png');
     addUser.setAttribute('alt', 'Adicionar Novo Usuário');
     addUser.onclick = () => {
-        document.body.removeChild(colMenuDiv);
         spa.redirect("/register");
     }
 
@@ -80,6 +85,12 @@ export default function collapsableMenu(destroy=false) {
     logOut.classList.add('colImg', 'link');
     logOut.setAttribute('src', '/images/logOut.png');
     logOut.setAttribute('alt', 'Sair');
+    logOut.onclick = async () => {
+        await fetch("http://localhost:5000/session/", {
+            method: "DELETE"
+        })
+        spa.redirect("/")
+    }
 
     if(!auth()){
         colMenuIconDiv.appendChild(homePage);
@@ -89,35 +100,31 @@ export default function collapsableMenu(destroy=false) {
     } else{
         colMenuIconDiv.appendChild(homePage);
         colMenuIconDiv.appendChild(editBook);
-        colMenuIconDiv.appendChild(addUser);
-        colMenuIconDiv.appendChild(logOut);
         colMenuIconDiv.appendChild(editShelf);
+        colMenuIconDiv.appendChild(addUser);
+        colMenuIconDiv.appendChild(login);
+        colMenuIconDiv.appendChild(logOut);
     }
 
     openMenu.onclick = () => {
         if (openMenu.style.transform === "rotate(90deg)"){
 
             colMenuDiv.style.width= "150px";
-
             openMenu.style.transform = "rotate(0deg)";
-
             colMenuIconDiv.style.left = "350px";
-            colMenuIconDiv.style.opacity = "0";
-            colMenuIconDiv.style.userSelect = "none";
+            colMenuIconDiv.style.display = "none";
         } else{
 
             if(!auth()){
                 colMenuDiv.style.width= "350px";
         
             } else{
-                colMenuDiv.style.width= "520px";
+                colMenuDiv.style.width= "600px";
             }
             
             openMenu.style.transform = "rotate(90deg)";
-
             colMenuIconDiv.style.left = "0";
-            colMenuIconDiv.style.opacity = "100";
-            colMenuIconDiv.style.userSelect = "all";
+            colMenuIconDiv.style.display = "flex";
         }
     }
     

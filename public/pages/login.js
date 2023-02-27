@@ -45,6 +45,10 @@ export default function login() {
     const pMain = document.createElement("p");
     pMain.classList.add("link", "pPosition", "bodyText");
     pMain.textContent = "Esqueci minha senha";
+    pMain.onclick = () => {
+        spa.redirect("/passwordRecover");
+    }
+
     
     // Crie um elemento <button> com o ID "login" e o texto "Entrar"
     const buttonMain = document.createElement("button");
@@ -52,6 +56,7 @@ export default function login() {
     buttonMain.type = "submit";
     buttonMain.id = "login";
     buttonMain.textContent = "Entrar";
+    
 
     // Crie um elemento <p> para mostrar o status do login -> @author {Arthur}
     const loginStatus = document.createElement("p");
