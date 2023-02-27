@@ -947,6 +947,9 @@ tr:nth-child(even) {
     padding: 1.2rem;
     border-radius: 0.5rem;
     z-index: 10;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 #form,
@@ -1013,6 +1016,12 @@ tr:nth-child(even) {
     justify-content: space-evenly;
 }
 
+/* @author {Arthur} */
+
+.input-group {
+    width: 90%;
+}
+
 .campoInvalido {
     animation: tremer 0.5s;
     border: crimson 1px solid;
@@ -1039,6 +1048,8 @@ tr:nth-child(even) {
         transform: translateX(0);
     }
 }
+
+/* @author {?} */
 
 span {
     font-size: 18px;
@@ -1072,6 +1083,8 @@ span {
     margin-bottom: 2px;
     color: #000000;
 }
+
+/* @author {Arthur} */
 
 a:visited {
     color: rgb(0, 0, 0);
