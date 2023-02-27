@@ -4,7 +4,7 @@ import collapsableMenu from "../pages/collapsableMenu.js";
 import loadSingleBook from "./bookLoader.js";
 
 export default async function loadBooks(id) {
-    await fetch(`http://149.28.100.51:5000/api/bookshelves/${id}/books`)
+    await fetch(`/api/bookshelves/${id}/books`)
         .then((response) => {
             return response.json();
         })
