@@ -28,7 +28,7 @@ export default async function deleteUsersPage() {
   confirmDelete.onclick = async () => {
     const wrapper = document.querySelector(".modalWrapper");
     try {
-      deleteUser(val);
+      deleteUser();
       document.querySelector("#root").removeChild(wrapper);
     } catch (error) {
       console.log("error:", error);
