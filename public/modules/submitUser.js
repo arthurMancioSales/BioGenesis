@@ -64,15 +64,10 @@ export default async function newUser(update=false) {
                 newEmail: emailInput.value,
                 newPassword: passwordInput.value,
             }),
-        });
+        })
     }
     
-    const result = await response.json()
-    if (response.status == 200) {
-        return response
-    } else {
-        return JSON.parse(result)
-    }
+    return response
 }
 
 function validateInput(field) {

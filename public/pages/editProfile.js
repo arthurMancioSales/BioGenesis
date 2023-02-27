@@ -17,38 +17,16 @@ export default function editProfile() {
     formMain.onsubmit = async (e) => {
         e.preventDefault();
         const updateUser = await newUser(true);
+
         if (updateUser.status == 200) {
             document.querySelector("#loginResult").innerText =
                 "Usuário atualizado com sucesso";
-            spa.redirect("/");
+            spa.redirect("/profile");
         } else {
-            document.querySelector("#loginResult").innerText = createUser.error;
+            const error = await updateUser.json();
+            document.querySelector("#loginResult").innerText = error.message;
         }
     };
-
-    const inputUserName = document.createElement("input");
-    inputUserName.id = "userName";
-    inputUserName.type = "name";
-    inputUserName.required = true;
-    inputUserName.placeholder = "Usuário";
-    inputUserName.classList.add("userInput");
-    //inputUserName.value = ""
-
-    const inputUserMail = document.createElement("input");
-    inputUserMail.id = "userEmail";
-    inputUserMail.type = "email";
-    inputUserMail.required = true;
-    inputUserMail.placeholder = "E-mail";
-    inputUserMail.classList.add("userInput");
-    //inputUserMail.value = ""
-
-    const inputUserMailConfirm = document.createElement("input");
-    inputUserMailConfirm.id = "userEmailConfirm";
-    inputUserMailConfirm.type = "email";
-    inputUserMailConfirm.required = true;
-    inputUserMailConfirm.placeholder = "Confirme seu e-mail";
-    inputUserMailConfirm.classList.add("userInput");
-    //inputUserMailConfirm.value = ""
 
     const inputUserPass = document.createElement("input");
     inputUserPass.id = "userPass";
@@ -90,13 +68,48 @@ export default function editProfile() {
 
     buttonContainer.appendChild(editBtn);
     buttonContainer.appendChild(cancelBtn);
+    
+    const inputUserName = document.createElement("input");
+    inputUserName.id = "userName";
+    inputUserName.type = "name";
+    inputUserName.required = true;
+    inputUserName.placeholder = "Usuário";
+    inputUserName.classList.add("userInput");
+    
+    const inputUserMail = document.createElement("input");
+    inputUserMail.id = "userEmail";
+    inputUserMail.type = "email";
+    inputUserMail.required = true;
+    inputUserMail.placeholder = "E-mail";
+    inputUserMail.classList.add("userInput");
 
-    formMain.appendChild(inputUserName);
-    formMain.appendChild(inputUserMail);
-    formMain.appendChild(inputUserMailConfirm);
-    formMain.appendChild(inputUserPass);
-    formMain.appendChild(inputUserPassConf);
-    formMain.appendChild(buttonContainer);
+    const inputUserMailConfirm = document.createElement("input");
+    inputUserMailConfirm.id = "userEmailConfirm";
+    inputUserMailConfirm.type = "email";
+    inputUserMailConfirm.required = true;
+    inputUserMailConfirm.placeholder = "Confirme seu e-mail";
+    inputUserMailConfirm.classList.add("userInput");
+    
+    fetch("http://localhost:5000/session/")
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            const userInfo = json.data;
+
+            inputUserName.value = userInfo.username;
+
+            inputUserMail.value = userInfo.email;
+
+            inputUserMailConfirm.value = userInfo.email;
+
+            formMain.appendChild(inputUserName);
+            formMain.appendChild(inputUserMail);
+            formMain.appendChild(inputUserMailConfirm);
+            formMain.appendChild(inputUserPass);
+            formMain.appendChild(inputUserPassConf);
+            formMain.appendChild(buttonContainer);
+        });
 
     const result = document.createElement("p");
     result.innerText = "";

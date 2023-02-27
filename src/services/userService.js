@@ -67,7 +67,7 @@ export async function updateUser(newUsername, newEmail, newPassword, sessionCook
         const passwordHash = await bcrypt.hash(newPassword, 10);
         const userInfo = JWT.decode(sessionCookie)
 
-        await userRepository.updateUser(newUsername, newEmail, passwordHash, userInfo.oldName);
+        await userRepository.updateUser(newUsername, newEmail, passwordHash, userInfo.userID);
 
         const sessionJWT = JWT.sign(
             { username: newUsername, email: newEmail, created_at: userInfo.created_at, userID: userInfo.userID },

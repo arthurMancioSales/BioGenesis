@@ -1,11 +1,13 @@
+import modal from "../modules/modal.js";
+import deleteUsersPage from "../modules/modalDeleteUser.js";
 import SPA from "../modules/spa.js";
 const spa = SPA();
 
 import collapsableMenu from "./collapsableMenu.js";
 
 export default function editProfile() {
-    const outDiv = document.createElement("div")
-    outDiv.classList.add("cadastroBg", "bodyHome");
+  const outDiv = document.createElement("div");
+  outDiv.classList.add("cadastroBg", "bodyHome");
 
     const profilePic = document.createElement("i");
     profilePic.classList.add("fa-solid", "fa-user-tie");
@@ -55,47 +57,44 @@ export default function editProfile() {
 
     
 
-    const editProfile = document.createElement("input");
-    editProfile.setAttribute("type", "submit");
-    editProfile.setAttribute("name", "cancelDelete");
-    editProfile.setAttribute("value", "Atualizar Conta");
-    editProfile.classList.add("confirmDeleteButton");
-    editProfile.style.backgroundColor = "rgba(50, 170, 62, 1)";
-    editProfile.style.width = "250px"
-    editProfile.onclick = async () => {
-        spa.redirect("/editProfile");
-    };
-  
-    const deleteProfile = document.createElement("input");
-    deleteProfile.setAttribute("type", "submit");
-    deleteProfile.setAttribute("name", "confirmDelete");
-    deleteProfile.setAttribute("value", "Deletar Conta");
-    deleteProfile.classList.add("confirmDeleteButton");
-    deleteProfile.style.backgroundColor = "red";
-    deleteProfile.style.width = "250px"
-    deleteProfile.onclick = async () => {
+  const editProfile = document.createElement("input");
+  editProfile.setAttribute("type", "submit");
+  editProfile.setAttribute("name", "cancelDelete");
+  editProfile.setAttribute("value", "Atualizar Conta");
+  editProfile.classList.add("confirmDeleteButton");
+  editProfile.style.backgroundColor = "rgba(50, 170, 62, 1)";
+  editProfile.style.width = "250px";
+  editProfile.onclick = async () => {
+    spa.redirect("/editProfile");
+  };
 
-    };
-  
-    
-    const buttonDiv = document.createElement("div");
-    buttonDiv.classList.add("flexColumn");
-    
-    buttonDiv.appendChild(editProfile);
-    buttonDiv.appendChild(deleteProfile);
+  const deleteProfile = document.createElement("input");
+  deleteProfile.setAttribute("type", "submit");
+  deleteProfile.setAttribute("name", "confirmDelete");
+  deleteProfile.setAttribute("value", "Deletar Conta");
+  deleteProfile.classList.add("confirmDeleteButton");
+  deleteProfile.style.backgroundColor = "red";
+  deleteProfile.style.width = "250px";
+  deleteProfile.onclick = async () => {
+    modal(deleteUsersPage);
+  };
 
-    const main = document.createElement("main")
-    main.classList.add("mainSize", "flexColumn");
-    
-    main.appendChild(profilePic);
-    main.appendChild(infoDiv);
-    main.appendChild(buttonDiv);
+  const buttonDiv = document.createElement("div");
+  buttonDiv.classList.add("flexColumn");
 
-    outDiv.appendChild(main);
+  buttonDiv.appendChild(editProfile);
+  buttonDiv.appendChild(deleteProfile);
 
-    collapsableMenu();
+  const main = document.createElement("main");
+  main.classList.add("mainSize", "flexColumn");
 
-    return outDiv;
+  main.appendChild(profilePic);
+  main.appendChild(infoDiv);
+  main.appendChild(buttonDiv);
+
+  outDiv.appendChild(main);
+
+  collapsableMenu();
+
+  return outDiv;
 }
-
-
