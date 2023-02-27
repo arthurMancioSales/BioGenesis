@@ -1,8 +1,5 @@
-import submitForm  from "../modules/submitForm.js";
-import { printTable } from "./list.js";
-import { editPages } from "../modules/editPages.js";
+export default function formEdit(user, cont) {
 
-export default function form() {
     const root = document.createElement("div");
 
     const form = document.createElement("form");
@@ -66,11 +63,10 @@ export default function form() {
             return response.json();
         })
         .then((response) => {
-            response.data.forEach((name, index) => {
+            response.data.forEach((name) => {
                 const dropdown1Option = document.createElement("option");
                 dropdown1Option.value = `${name.name}`;
                 dropdown1Option.textContent = `${name.name}`;
-
                 dropdown1.appendChild(dropdown1Option);
             });
         });
@@ -85,6 +81,8 @@ export default function form() {
 
     form.appendChild(group1);
 
+      
+    
     // Cria os outros grupos de campos
     const group = document.createElement("div");
     group.id = `group-2`;
@@ -103,7 +101,6 @@ export default function form() {
     textInput.name = `textInput2`;
     textInput.required = true;
 
-
     const imageUploadLabel = document.createElement("label");
     imageUploadLabel.htmlFor = `imageUpload2`;
     imageUploadLabel.textContent = "Imagem:";
@@ -114,7 +111,6 @@ export default function form() {
     imageUpload.name = `imageUpload2`;
     imageUpload.accept = "image/*";
     imageUpload.required = true;
-
 
     const dropdownLabel = document.createElement("label");
     dropdownLabel.htmlFor = `dropdown2`;
@@ -128,7 +124,6 @@ export default function form() {
     dropdown.onclick = () => {
         validateInputSelect()
     }; 
-
 
     const dropdownOption0 = document.createElement("option");
     dropdownOption0.value = ``;
@@ -150,6 +145,9 @@ export default function form() {
     dropdownOption4.value = `comportamento`;
     dropdownOption4.textContent = "comportamento";
 
+
+    showPages(user,cont);
+
     dropdown.appendChild(dropdownOption0);
     dropdown.appendChild(dropdownOption1);
     dropdown.appendChild(dropdownOption2);
@@ -166,7 +164,6 @@ export default function form() {
 
     form.appendChild(group);
 
-
     const submitButton = document.createElement("button");
     submitButton.setAttribute("class", "submit-btn");
     submitButton.setAttribute("type", "submit");
@@ -179,6 +176,7 @@ export default function form() {
 
     return form
 }
+
 
 function createIput() {
     const counter = document.querySelectorAll(".input-group").length + 1;
@@ -252,10 +250,10 @@ function createIput() {
         dropdown.appendChild(dropdownOption4);
 
         group.appendChild(pages);
-        group.appendChild(textInputLabel);
-        group.appendChild(textInput);
         group.appendChild(dropdownLabel);
         group.appendChild(dropdown);
+        group.appendChild(textInputLabel);
+        group.appendChild(textInput);
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
 
@@ -264,9 +262,12 @@ function createIput() {
     }
 }
 
+
 function validateInputSelect() {
     const mySelects = document.querySelectorAll('.selectDropdown');
+    console.log(mySelects.length);
     mySelects.forEach(select => {
+        console.log(select.value);
         if (select.value !== "") {
             const selectedId = select.id;
             for (let i = 2; i <= mySelects.length+1; i++) {
@@ -286,7 +287,21 @@ function validateInputSelect() {
     });
 };
 
-//     form.appendChild(btnFormBook);
 
-//     root.appendChild(form);
+async function showPages(user,cont) {
+    const jsonBook = await fetch(`http://localhost:5000/api/books/${user[cont-1].book_id}`);
+    const jsonpage = await jsonBook.json();
+    jsonpage.forEach((pages,index)=>{
+        if (index > 0) {
+            createIput()
+        }
+        console.log(pages);
 
+        document.querySelector(`#textInput${index+2}`).innerText = pages.content;
+
+        const select = document.querySelector(`#dropdown${index+2}`);
+        const option = select.querySelector(`option[value=${pages.topic_name}]`);
+        option.selected = true;
+   
+    })   
+}
