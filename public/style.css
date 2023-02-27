@@ -1055,6 +1055,10 @@ span {
 
 .confirmDeleteButton:hover{
     cursor: pointer;
+}
+
+.confirmDeleteButton:active{
+    cursor: pointer;
     filter: brightness(85%);
 }
 
