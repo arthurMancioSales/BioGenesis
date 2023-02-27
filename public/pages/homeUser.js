@@ -25,10 +25,12 @@ export default function homeUser() {
     div1.appendChild(p1Div1);
 
     // cria o segundo link do cabeçalho
-    const p2Div1 = document.createElement('p');
+    const p2Div1 = document.createElement('a');
     p2Div1.classList.add('link', 'headerText');
     p2Div1.setAttribute('id', 'anotherLink');
     p2Div1.textContent = 'CÓDIGO FONTE';
+    p2Div1.href = "https://linktr.ee/arandukahopper"
+    p2Div1.target = "_blank"
     div1.appendChild(p2Div1);
 
     header.appendChild(div1);

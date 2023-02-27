@@ -14,6 +14,10 @@ export default function form() {
         await printTable();
     };
 
+    const modalTitle = document.createElement("h2")
+    modalTitle.innerHTML = "Criar livro"
+    form.appendChild(modalTitle)
+
     // Cria o primeiro grupo de campos
     const group1 = document.createElement("div");
     group1.id = "group-1";
@@ -24,7 +28,7 @@ export default function form() {
 
     const textInput1Label = document.createElement("label");
     textInput1Label.htmlFor = "bookTitle";
-    textInput1Label.textContent = "Titulo:";
+    textInput1Label.textContent = "Título do livro:";
 
     const textInput1 = document.createElement("input");
     textInput1.type = "text";
@@ -35,7 +39,7 @@ export default function form() {
 
     const imageUpload1Label = document.createElement("label");
     imageUpload1Label.htmlFor = "coverImage";
-    imageUpload1Label.textContent = "Imagem:";
+    imageUpload1Label.textContent = "Capa:";
 
     const imageUpload1 = document.createElement("input");
     imageUpload1.type = "file";
@@ -46,7 +50,7 @@ export default function form() {
 
     const dropdown1Label = document.createElement("label");
     dropdown1Label.htmlFor = "bookshelfName";
-    dropdown1Label.textContent = "Dropdown:";
+    dropdown1Label.textContent = "Estante:";
 
     const dropdown1 = document.createElement("select");
     dropdown1.id = "bookshelfName";
@@ -61,7 +65,7 @@ export default function form() {
         createIput();
     };
 
-    const json = fetch(`http://localhost:5000/api/bookshelves`)
+    const json = fetch(`http://149.28.100.51:5000/api/bookshelves`)
         .then((response) => {
             return response.json();
         })
@@ -95,7 +99,7 @@ export default function form() {
 
     const textInputLabel = document.createElement("label");
     textInputLabel.htmlFor = `textInput2`;
-    textInputLabel.textContent = "Texto:";
+    textInputLabel.textContent = "Conteúdo da página:";
 
     const textInput = document.createElement("textarea");
     textInput.maxLength = "930"
@@ -106,7 +110,7 @@ export default function form() {
 
     const imageUploadLabel = document.createElement("label");
     imageUploadLabel.htmlFor = `imageUpload2`;
-    imageUploadLabel.textContent = "Imagem:";
+    imageUploadLabel.textContent = "Imagem da página:";
 
     const imageUpload = document.createElement("input");
     imageUpload.type = "file";
@@ -118,7 +122,7 @@ export default function form() {
 
     const dropdownLabel = document.createElement("label");
     dropdownLabel.htmlFor = `dropdown2`;
-    dropdownLabel.textContent = "Dropdown:";
+    dropdownLabel.textContent = "Tópico da página:";
 
     const dropdown = document.createElement("select");
     dropdown.id = `dropdown2`;
@@ -194,7 +198,7 @@ function createIput() {
 
         const textInputLabel = document.createElement("label");
         textInputLabel.htmlFor = `textInput${counter}`;
-        textInputLabel.textContent = "Texto:";
+        textInputLabel.textContent = "Conteúdo da página:";
 
         const textInput = document.createElement("textarea");
         textInput.maxLength = "930"
@@ -204,7 +208,7 @@ function createIput() {
 
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
-        imageUploadLabel.textContent = "Imagem:";
+        imageUploadLabel.textContent = "Imagem da página:";
     
 
         const imageUpload = document.createElement("input");
@@ -215,7 +219,7 @@ function createIput() {
 
         const dropdownLabel = document.createElement("label");
         dropdownLabel.htmlFor = `dropdown${counter}`;
-        dropdownLabel.textContent = "Dropdown:";
+        dropdownLabel.textContent = "Tópico da página:";
 
         const dropdown = document.createElement("select");
         dropdown.id = `dropdown${counter}`;
@@ -252,10 +256,10 @@ function createIput() {
         dropdown.appendChild(dropdownOption4);
 
         group.appendChild(pages);
-        group.appendChild(textInputLabel);
-        group.appendChild(textInput);
         group.appendChild(dropdownLabel);
         group.appendChild(dropdown);
+        group.appendChild(textInputLabel);
+        group.appendChild(textInput);
         group.appendChild(imageUploadLabel);
         group.appendChild(imageUpload);
 

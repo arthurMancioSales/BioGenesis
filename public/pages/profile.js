@@ -17,7 +17,7 @@ export default function editProfile() {
     const infoDiv = document.createElement("div");
     infoDiv.classList.add("flexColumn");
 
-    fetch("http://localhost:5000/session/")
+    fetch("http://149.28.100.51:5000/session/")
         .then((json) => {
             return json.json()
         })
@@ -43,7 +43,7 @@ export default function editProfile() {
             infoDiv.appendChild(date);
         })
 
-    fetch("http://localhost:5000/api/userBooks")
+    fetch("http://149.28.100.51:5000/api/userBooks")
         .then((json) => {
             return json.json()
         })
