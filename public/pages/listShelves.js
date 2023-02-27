@@ -95,7 +95,7 @@ export default function listShelves() {
 
 
 export async function printTable() {
-  await fetch("http://localhost:5000/api/bookshelves")
+  await fetch("/api/bookshelves")
     .then((response) => {
       return response.json();
     })

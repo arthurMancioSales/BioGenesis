@@ -67,11 +67,11 @@ export async function readAllBooksOnShelf(bookshelfID) {
     try {
         const readBooksQuery = `
         SELECT 
-            book_id,
-            book_name,
-            username,
-            created_at,
-            updated_at
+            books.book_id,
+            books.book_name,
+            users.username,
+            books.created_at,
+            books.updated_at
         FROM 
             books
         JOIN
@@ -108,5 +108,55 @@ export async function getAllBooks() {
     } catch (error) {
         console.log(TAG, "error caught at getAllBooks()");
         throw error;
+    }
+}
+
+export async function deleteBook(bookID) {
+    try {
+        const deleteBookQuery = `
+        DELETE FROM books 
+        WHERE books.book_id = $1
+        `;
+
+        const response = await pool.query(deleteBookQuery, [bookID]);
+        return response.rows;
+    } catch (error) {
+        console.log(TAG, "error caught at deleteBook()");
+        throw error;
+    }
+}
+
+export async function updateBook(newName, bookID) {
+    try {
+        const updateQuery = `
+        UPDATE 	
+            books
+        SET
+            book_name = $1
+        WHERE
+            books.book_id = $2`;
+
+        const response = await pool.query(updateQuery, [newName, bookID]);
+        return response.rows;
+    } catch (error) {
+        console.log(TAG, "error caught at updateBook()");
+        throw error;
+    }
+}
+
+export async function getUserBooks(userID) {
+    try {
+        const getBooksQuery = `
+        SELECT
+            count(book_id)
+        FROM
+            books
+        WHERE
+            author_id = $1;`
+        const response = await pool.query(getBooksQuery, [userID])
+        return response.rows
+    } catch (error) {
+        console.log(TAG, "error caught at getUserBooks()");
+        throw error
     }
 }

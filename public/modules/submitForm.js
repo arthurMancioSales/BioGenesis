@@ -11,6 +11,9 @@ export default async function submitForm() {
     const dropdown2 = document.querySelector(`#dropdown2`);
     const firstImageInput = document.querySelector(`#imageUpload2`);
 
+    const userInfoResponse = await fetch("/session")
+    const userInfo = await userInfoResponse.json()
+
     const formData = new FormData();
 
     formData.append("pageCount", inputs);
@@ -18,7 +21,7 @@ export default async function submitForm() {
     formData.append("bookshelfName", bookshelfName.value);
     formData.append("coverImage", coverImage.files[0]);
 
-    formData.append("userName", 'usuarioTeste');
+    formData.append("userName", userInfo.data.username);
 
     formData.append("textInput2", textInput2.value);
     formData.append("dropdown2", dropdown2.value);
@@ -34,7 +37,7 @@ export default async function submitForm() {
         formData.append(`imageUpload${i}`, ImageInput.files[0]);
     }
     
-    await fetch("http://localhost:5000/upload",{
+    await fetch("/upload",{
         method: "POST",
         body: formData,
     });

@@ -12,7 +12,6 @@ const response = {
 
 // Cria um livro novo -> @author {Arthur}
 export async function createBook(req, res, next) {
-    
     console.log(TAG);
     console.time("createBook()");
 
@@ -55,11 +54,10 @@ export async function createBook(req, res, next) {
         return;
     }
 
-    const client = await pool.connect()
+    const client = await pool.connect();
     try {
-
         client.query("BEGIN");
-        
+
         const serviceResponse = await bookService.createBook(
             bookTitle,
             bookshelfName,
@@ -162,3 +160,100 @@ export async function getAllBooks(req, res) {
         console.timeEnd("getAllBooks()");
     }
 }
+
+export async function deleteBook(req, res) {
+    console.log(TAG);
+    console.time("deleteBook()");
+
+    const bookID = req.params.id;
+
+    if (bookID < 0 || typeof bookID != "int") {
+        response.message = "Não foi possível apagar o livro";
+        response.data = null;
+        response.error = "Informe um ID válido";
+    }
+
+    try {
+        const serviceResponse = await bookService.deleteBook(bookID);
+
+        response.message = "Livro apagado com sucesso";
+        response.data = serviceResponse;
+        response.error = null;
+
+        res.status(200).json(response);
+        console.timeEnd("deleteBook()");
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+
+        response.message = "Não foi possível apagar o livro";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+
+        res.status(500).json(response);
+        console.timeEnd("deleteBook()");
+    }
+}
+
+export async function updateBook(req, res) {
+    console.log(TAG);
+    console.time("updateBook()");
+
+    const { bookID, newName } = req.body;
+
+    if (bookID < 0 || typeof bookID != "int") {
+        response.message = "Não foi possível atualizar o livro";
+        response.data = null;
+        response.error = "Informe um ID válido";
+    }
+
+    try {
+        const serviceResponse = await bookService.updateBook(newName, bookID);
+
+        response.message = "Livro atualizado com sucesso";
+        response.data = serviceResponse;
+        response.error = null;
+
+        res.status(200).json(response);
+        console.timeEnd("updateBook()");
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+
+        response.message = "Não foi possível atualizar o livro";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+
+        res.status(500).json(response);
+        console.timeEnd("updateBook()");
+    }
+}
+
+export async function getUserBooks(req, res) {
+    console.log(TAG);
+    console.time("getUserBooks()")
+
+    const sessionCookie = req.cookies.session
+
+    try {
+        const serviceResponse = await bookService.getUserBooks(sessionCookie)
+
+        response.message = "Operação concluída com sucesso";
+        response.data = serviceResponse;
+        response.error = null;
+
+        res.status(200).json(response);
+        console.timeEnd("getUserBooks()");
+    } catch (error) {
+        console.log(TAG);
+        console.log(error);
+        
+        response.message = "Não foi possível completar a operação";
+        response.data = null;
+        response.error = "Erro interno do servidor";
+
+        res.status(500).json(response);
+        console.timeEnd("getUserBooks()");
+    }
+}
+

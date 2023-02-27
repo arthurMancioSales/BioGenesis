@@ -1,5 +1,10 @@
 import SPA from "../modules/spa.js";
 import form from "./froms.js";
+import formEdit from "./formsEdit.js";
+import deleteBook from "./deleteBook.js";
+
+import { editPages } from "../modules/editPages.js";
+
 
 const spa = SPA();
 
@@ -127,7 +132,7 @@ export default function list() {
 }
 
 export async function printTable(){
-    await fetch("http://localhost:5000/api/books/")
+    await fetch("/api/books/")
     .then((response) => {
         return response.json();
     })
@@ -148,6 +153,16 @@ function createTable(userList){
 };
 
 function addRow(userList, cont) {
+    const body = document.querySelector("body");
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("bookWrapper");
+    wrapper.style.overflowY = "scroll";
+
+    wrapper.onclick = (e) => {
+        if (e.target == wrapper) {
+            body.removeChild(wrapper);
+        }
+    };
 
     const line = document.createElement("tr");
 
@@ -155,7 +170,6 @@ function addRow(userList, cont) {
     const bookTitle = document.createElement("td");
     const bookTheme = document.createElement("td");
     const bookAuthor = document.createElement("td");
-    /* let bookLastEdit = document.createElement("td"); */
     const bookEdit = document.createElement("td");
     const bookDelete = document.createElement("td");
     
@@ -163,7 +177,6 @@ function addRow(userList, cont) {
     line.appendChild(bookTitle);
     line.appendChild(bookTheme);
     line.appendChild(bookAuthor);
-    /* line.appendChild(bookLastEdit); */
     line.appendChild(bookEdit);
     line.appendChild(bookDelete);
 
@@ -171,41 +184,23 @@ function addRow(userList, cont) {
     tbody.appendChild(line);
 
     let i = cont - 1;
+
   
     bookID.innerHTML = `<span>${userList[i].book_id}</span>`;
     bookTitle.innerHTML = `<span>${userList[i].book_name}</span>`;
     bookTheme.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
     bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
-    /* bookLastEdit.innerHTML = `<span>${userList[i].bookshelf_name}<span>`; */
     bookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
-    bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
-
-    bookEdit.onclick = async () => {
-
-        const body = document.querySelector("body");
-
-        const wrapper = document.createElement("div");
-        wrapper.classList.add("bookWrapper");
-        wrapper.style.overflowY = "scroll";
-
-        wrapper.onclick = (e) => {
-            if (e.target == wrapper) {
-                body.removeChild(wrapper);
-            }
-        };
-
+    bookEdit.onclick = async (e) => {
         body.appendChild(wrapper);
-
-        await fetch(`http://localhost:5000/api/books/${userList[i].book_id}`)//
-        .then((response) => {
-            return response.json();
-         })
-        .then((data) => {
-            //console.log(data)
-            
-            form(data, userList[i])
-        })
+        wrapper.innerHTML = ""
+        wrapper.appendChild(formEdit(userList, cont, e));
     }
-};
-
-//router.get("/books/:id", pageController.getAllPagesFromBook);
+    bookEdit.dataset.bookTitle = userList[i].book_name
+    bookEdit.children[0].dataset.bookTitle = userList[i].book_name
+    bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
+    bookDelete.onclick = async () => {
+        await deleteBook(userList[i].book_id, userList[i].author);
+        printTable();
+    }
+}

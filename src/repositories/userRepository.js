@@ -5,12 +5,12 @@ const TAG = "userRepository";
 export async function createUser(username, email, passwordHash) {
     try {
         const usernameDuplicateCheck = `
-        SELECT
-            count(username)
-        FROM
-            users
-        WHERE 
-            users.username = $1`;
+				SELECT
+						count(username)
+				FROM
+						users
+				WHERE 
+						users.username = $1`;
         const userNameDuplicate = await pool.query(usernameDuplicateCheck, [
             username,
         ]);
@@ -20,12 +20,12 @@ export async function createUser(username, email, passwordHash) {
         }
 
         const emailDuplicateCheck = `
-        SELECT
-            count(users.username)
-        FROM
-            users
-        WHERE 
-            users.email = $1`;
+				SELECT
+						count(users.username)
+				FROM
+						users
+				WHERE 
+						users.email = $1`;
 
         const emailDuplicate = await pool.query(emailDuplicateCheck, [email]);
 
@@ -34,19 +34,19 @@ export async function createUser(username, email, passwordHash) {
         }
 
         const createUserQuery = `
-        INSERT INTO users (
-            username,
-            email,
-            password
-        )
-        VALUES (
-            $1,
-            $2,
-            $3
-        )
-        RETURNING
-            username,
-            email`;
+				INSERT INTO users (
+						username,
+						email,
+						password
+				)
+				VALUES (
+						$1,
+						$2,
+						$3
+				)
+				RETURNING
+						username,
+						email`;
 
         const response = await pool.query(createUserQuery, [
             username,
@@ -65,16 +65,65 @@ export async function logUser(username, email) {
     try {
         const passwordQuery = `
         SELECT
-            password
+            *
         FROM
             users
         WHERE 
-            users.username = $1 OR users.email = $2`;
+            users.username = $1 AND users.deleted = false OR users.email = $2 AND users.deleted = false`;
 
         const response = await pool.query(passwordQuery, [username, email]);
         return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at logUser()");
         throw error;
+    }
+}
+
+// Atualiza um usuário -> @author {Arthur} @coauthor {Thiago}
+export async function updateUser(newUsername, newEmail, passwordHash, userID) {
+    try {
+        const updateUserQuery = `
+			UPDATE 
+				users
+			SET
+				username = $1,
+				email = $2,
+				password = $3
+			WHERE 
+				users.user_id = $4`;
+
+        console.log(newUsername,
+            newEmail,
+            passwordHash,
+            userID);
+
+        const response = await pool.query(updateUserQuery, [
+            newUsername,
+            newEmail,
+            passwordHash,
+            userID,
+        ]);
+        console.log(response.rows);
+        
+
+        return response;
+    } catch (error) {
+        console.log(TAG, "error caught at updateUser()");
+        throw error;
+    }
+}
+
+// Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
+export async function deleteUser(username) {
+    try {
+        const deleteUserQuery = `
+        UPDATE users
+        SET deleted = true
+        WHERE username = $1`;
+        const response = await pool.query(deleteUserQuery, [username]);
+        return response
+    } catch (error) {
+        console.log(TAG, "error caught at deleteUser()");
+        throw error
     }
 }

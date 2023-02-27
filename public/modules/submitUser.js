@@ -1,4 +1,4 @@
-export default async function newUser() {
+export default async function newUser(update=false) {
     const usernameInput = document.querySelector("#userName");
     const emailInput = document.querySelector("#userEmail");
     const emailConfirmInput = document.querySelector("#userEmailConfirm");
@@ -20,6 +20,8 @@ export default async function newUser() {
         emailConfirmInput.classList.add("campoInvalido");
         
         document.querySelector("#loginResult").innerText = "Emails divergentes"
+
+        return
     }
 
     if (passwordInput.value != passwordConfirmInput.value) {
@@ -33,26 +35,39 @@ export default async function newUser() {
         passwordConfirmInput.classList.add("campoInvalido");
 
         document.querySelector("#loginResult").innerText = "Senhas divergentes"
+
+        return
     }
 
-    const response = await fetch("http://localhost:5000/api/createUser", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-            username: usernameInput.value,
-            email: emailInput.value,
-            password: passwordInput.value,
-        }),
-    });
-    const result = await response.json()
+    let response
 
-    if (response.status == 200) {
-        return response
+    if (!update) {
+        response = await fetch("/api/createUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                username: usernameInput.value,
+                email: emailInput.value,
+                password: passwordInput.value,
+            }),
+        });
     } else {
-        return JSON.parse(result)
+        response = await fetch("/api/updateUser", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                newUsername: usernameInput.value,
+                newEmail: emailInput.value,
+                newPassword: passwordInput.value,
+            }),
+        })
     }
+    
+    return response
 }
 
 function validateInput(field) {

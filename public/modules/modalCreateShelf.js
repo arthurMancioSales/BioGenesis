@@ -31,7 +31,7 @@ export default async function createBookShelvesPage() {
     const shelfName = document.querySelector("#shelf-name").value;
     const wrapper = document.querySelector(".modalWrapper");
     try {
-      createBookshelf(shelfName);
+      await createBookshelf(shelfName);
       document.querySelector("#root").removeChild(wrapper);
       document.querySelector("#table").innerHTML = "";
       await printTable();
@@ -57,7 +57,7 @@ export default async function createBookShelvesPage() {
 }
 
 async function createBookshelf(name) {
-  await fetch("http://localhost:5000/api/bookshelves", {
+  await fetch("/api/bookshelves", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

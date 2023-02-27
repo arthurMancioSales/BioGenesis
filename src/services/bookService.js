@@ -1,6 +1,7 @@
 //  @author {Arthur}
 import * as bookRepository from "../repositories/bookRepository.js";
 const TAG = "Bookshelf Service";
+import JWT from "jsonwebtoken";
 
 // Cria um livro novo -> @author {Arthur}
 export async function createBook(
@@ -47,4 +48,38 @@ export async function getAllBooks() {
         console.log(TAG, "error caught at getAllBooks()");
         throw error;
     }
+}
+
+export async function deleteBook(bookID) {
+    try {
+        const dbResponse = await bookRepository.deleteBook(bookID);
+        return dbResponse;
+    } catch (error) {
+        console.log(TAG, "error caught at deleteBook()");
+        throw error;
+    }
+}
+
+export async function updateBook(newName, bookID) {
+    try {
+        const dbResponse = await bookRepository.updateBook(newName, bookID);
+        return dbResponse;
+    } catch (error) {
+        console.log(TAG, "error caught at updateBook()");
+        throw error;
+    }
+}
+
+export async function getUserBooks(sessionCookie) {
+	try {
+
+		const userID = JWT.decode(sessionCookie).userID
+
+		const dbResponse = await bookRepository.getUserBooks(userID)
+		
+		return dbResponse
+	} catch (error) {
+		console.log(TAG, "error caught at getUserBooks()");
+		throw error
+	}
 }

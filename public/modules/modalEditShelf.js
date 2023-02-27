@@ -37,7 +37,7 @@ export default async function editBookShelvesPage(val, id) {
     const shelfName = document.querySelector("#shelf-name").value;
     const wrapper = document.querySelector(".modalWrapper");
     try {
-      editBookshelf(shelfName, id);
+      await editBookshelf(shelfName, id);
       document.querySelector("#root").removeChild(wrapper);
       document.querySelector("#table").innerHTML = "";
       await printTable();
@@ -58,8 +58,7 @@ export default async function editBookShelvesPage(val, id) {
 }
 
 async function editBookshelf(name, id) {
-  console.log(name, id);
-  await fetch("http://localhost:5000/api/bookshelves", {
+  await fetch("/api/bookshelves", {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
