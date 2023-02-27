@@ -1,6 +1,7 @@
 import SPA from "../modules/spa.js";
 import form from "./froms.js";
 import formEdit from "./formsEdit.js";
+import deleteBook from "./deleteBook.js";
 
 import { editPages } from "../modules/editPages.js";
 
@@ -200,31 +201,8 @@ function addRow(userList, cont) {
     }
     bookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
     bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
-
-    // bookEdit.onclick = async () => {
-    //     const body = document.querySelector("body");
-    //     wrapper.classList.add("bookWrapper");
-    
-    //     wrapper.style.overflowY = "scroll";
-
-    //     wrapper.onclick = (e) => {
-    //         if (e.target == wrapper) {
-    //             body.removeChild(wrapper);
-    //         }
-    //     };
-
-    //     body.appendChild(wrapper);
-
-    //     await fetch(`http://localhost:5000/api/books/${userList[i].book_id}`)//
-    //     .then((response) => {
-    //         return response.json();
-    //      })
-    //     .then((data) => {
-    //         //console.log(data)
-            
-    //         form(data, userList[i])
-    //     })
-    // }
-};
-
-//router.get("/books/:id", pageController.getAllPagesFromBook);
+    bookDelete.onclick = async () => {
+        await deleteBook(userList[i].book_id, userList[i].author);
+        printTable();
+    }
+}
