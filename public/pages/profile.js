@@ -63,7 +63,6 @@ export default function editProfile() {
     editProfile.style.backgroundColor = "rgba(50, 170, 62, 1)";
     editProfile.style.width = "250px"
     editProfile.onclick = async () => {
-        document.querySelector(".collapsible").remove();
         spa.redirect("/editProfile");
     };
   
