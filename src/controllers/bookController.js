@@ -199,7 +199,7 @@ export async function updateBook(req, res) {
     console.log(TAG);
     console.time("updateBook()");
 
-    const { bookID, newName } = req.body;
+    const { bookID, bookshelfName, newName } = req.body;
 
     if (bookID < 0 || typeof bookID != "int") {
         response.message = "Não foi possível atualizar o livro";
@@ -208,7 +208,7 @@ export async function updateBook(req, res) {
     }
 
     try {
-        const serviceResponse = await bookService.updateBook(newName, bookID);
+        const serviceResponse = await bookService.updateBook(newName, bookshelfName, bookID);
 
         response.message = "Livro atualizado com sucesso";
         response.data = serviceResponse;

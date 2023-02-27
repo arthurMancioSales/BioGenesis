@@ -79,6 +79,7 @@ router.put(
 router.put("/book", authenticateUser, bookController.updateBook);
 // {
 //     bookID: "ID do livro",
+//     bookshelfName: "nome da estante",
 //     newName: "novo nome do livro"
 // }
 

@@ -250,23 +250,6 @@ textarea {
     align-content: flex-start;
 }
 
-.submit-btn {
-    width: auto;
-    height: auto;
-    cursor: pointer;
-    background-color: #4caf50;
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 8px;
-}
-
 /* @Autor: Davi */
 .bodyHome {
     display: flex;
@@ -409,7 +392,7 @@ select {
     margin: 1.5rem 0px 5px 0;
     width: 270px;
     height: 60px;
-    /* transition: all 600ms; */
+    transition: all 600ms;
     text-transform: uppercase;
     display: flex;
     justify-content: center;
@@ -992,7 +975,7 @@ tr:nth-child(even) {
 
 #form .input-group {
     background-color: #d4d4d4;
-    margin: 30px;
+    margin: 30px 30px 0 30px;
     border-radius: 5px;
 }
 
@@ -1020,6 +1003,31 @@ tr:nth-child(even) {
 
 .input-group {
     width: 90%;
+}
+
+.modalButton {
+    width: 40%;
+    height: fit-content;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    background-color: #4caf50;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 8px;
+    transition: all 600ms;
+}
+
+.modalButton:hover {
+    background-color: #2f6e31;
+}
+
+.modalButtonDisabled {
+    opacity: 0.6;
+    cursor: not-allowed;
 }
 
 .campoInvalido {

@@ -1,5 +1,5 @@
 // @author {Arthur}
-export default async function submitForm() {
+export default async function submitForm(update=false) {
 
     const inputs = document.querySelectorAll(".input-group").length
     
@@ -37,10 +37,12 @@ export default async function submitForm() {
         formData.append(`imageUpload${i}`, ImageInput.files[0]);
     }
     
-    await fetch("/upload",{
+    const result = await fetch("/upload",{
         method: "POST",
         body: formData,
     });
+
+    return result
 }
 
 

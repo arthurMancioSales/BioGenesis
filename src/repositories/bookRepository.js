@@ -126,17 +126,18 @@ export async function deleteBook(bookID) {
     }
 }
 
-export async function updateBook(newName, bookID) {
+export async function updateBook(newName, bookshelfName, bookID) {
     try {
         const updateQuery = `
         UPDATE 	
             books
         SET
-            book_name = $1
+            book_name = $1,
+            bookshelf_id = (SELECT bookshelf_id FROM bookshelves WHERE name = $2)
         WHERE
-            books.book_id = $2`;
+            books.book_id = $3`;
 
-        const response = await pool.query(updateQuery, [newName, bookID]);
+        const response = await pool.query(updateQuery, [newName, bookshelfName, bookID]);
         return response.rows;
     } catch (error) {
         console.log(TAG, "error caught at updateBook()");

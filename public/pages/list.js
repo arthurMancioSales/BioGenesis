@@ -1,5 +1,5 @@
 import SPA from "../modules/spa.js";
-import form from "./froms.js";
+import form from "./forms.js";
 import formEdit from "./formsEdit.js";
 import deleteBook from "./deleteBook.js";
 

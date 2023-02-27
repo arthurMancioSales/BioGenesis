@@ -1,6 +1,5 @@
 import submitForm  from "../modules/submitForm.js";
 import { printTable } from "./list.js";
-import { editPages } from "../modules/editPages.js";
 
 export default function form() {
     const root = document.createElement("div");
@@ -9,9 +8,22 @@ export default function form() {
     form.id = "form";
     form.classList.add("ride");
     form.onsubmit = async (e) => {
+        const uploadButton = document.querySelector("#uploadButton")
+        uploadButton.classList.add("modalButtonDisabled")
         e.preventDefault();
-        await submitForm();
-        await printTable();
+        const submitResult = await submitForm();
+        console.log(submitResult);
+        if (submitResult.status == 200) {
+            await printTable();
+            uploadButton.classList.remove("modalButtonDisabled")
+            alert("Livro criado com sucesso")
+            document.querySelector(".bookWrapper").remove()
+        } else {
+            uploadButton.classList.remove("modalButtonDisabled")
+            const error = await submitResult.json()
+            console.log(error);
+            alert(error.error)
+        }
     };
 
     const modalTitle = document.createElement("h2")
@@ -57,13 +69,7 @@ export default function form() {
     dropdown1.name = "bookshelfName";
     dropdown1.required = true;
 
-    const btnFormBook = document.createElement("button");
-    btnFormBook.id = "btnFormBook";
-    btnFormBook.innerText = "adicionar Pagina";
-    btnFormBook.setAttribute("type", "button");
-    btnFormBook.onclick = () => {
-        createIput();
-    };
+    
 
     const json = fetch(`/api/bookshelves`)
         .then((response) => {
@@ -170,14 +176,33 @@ export default function form() {
 
     form.appendChild(group);
 
+    const buttonDiv = document.createElement("div")
+    buttonDiv.style.display = 'flex'
+    buttonDiv.style.margin = '15px 0 0 0'
+    buttonDiv.style.width = '80%'
+    buttonDiv.style.justifyContent = "space-around"
+    buttonDiv.id = "buttonDiv"
 
     const submitButton = document.createElement("button");
-    submitButton.setAttribute("class", "submit-btn");
+    submitButton.classList.add("modalButton")
     submitButton.setAttribute("type", "submit");
     submitButton.textContent = "Upload";
+    submitButton.id = "uploadButton";
 
-    form.appendChild(submitButton);
-    form.appendChild(btnFormBook);
+    const newPageButton = document.createElement("button");
+    newPageButton.classList.add("modalButton")
+    newPageButton.id = "btnFormBook";
+    newPageButton.innerText = "adicionar Pagina";
+    newPageButton.setAttribute("type", "button");
+    newPageButton.onclick = () => {
+        newPageButton.classList.add("modalButtonDisabled")
+        createIput();
+        newPageButton.classList.remove("modalButtonDisabled")
+    };
+
+    buttonDiv.appendChild(submitButton);
+    buttonDiv.appendChild(newPageButton);
+    form.appendChild(buttonDiv);
 
     root.appendChild(form);
 
@@ -264,7 +289,7 @@ function createIput() {
         group.appendChild(imageUpload);
 
         // form.appendChild(group);
-        form.insertBefore(group, document.querySelector(".submit-btn"));
+        form.insertBefore(group, document.querySelector("#buttonDiv"));
     }
 }
 
@@ -289,8 +314,3 @@ function validateInputSelect() {
         };
     });
 };
-
-//     form.appendChild(btnFormBook);
-
-//     root.appendChild(form);
-

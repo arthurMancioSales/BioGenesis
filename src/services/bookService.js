@@ -60,9 +60,9 @@ export async function deleteBook(bookID) {
     }
 }
 
-export async function updateBook(newName, bookID) {
+export async function updateBook(newName, bookshelfName, bookID) {
     try {
-        const dbResponse = await bookRepository.updateBook(newName, bookID);
+        const dbResponse = await bookRepository.updateBook(newName, bookshelfName, bookID);
         return dbResponse;
     } catch (error) {
         console.log(TAG, "error caught at updateBook()");
