@@ -80,7 +80,7 @@ export async function logUser(username, email) {
 }
 
 // Atualiza um usuário -> @author {Arthur} @coauthor {Thiago}
-export async function updateUser(newUsername, newEmail, passwordHash, oldName) {
+export async function updateUser(newUsername, newEmail, passwordHash, userID) {
     try {
         const updateUserQuery = `
 			UPDATE 
@@ -90,14 +90,21 @@ export async function updateUser(newUsername, newEmail, passwordHash, oldName) {
 				email = $2,
 				password = $3
 			WHERE 
-				users.user_id = (SELECT user_id FROM users WHERE username = $4)`;
+				users.user_id = $4`;
+
+        console.log(newUsername,
+            newEmail,
+            passwordHash,
+            userID);
 
         const response = await pool.query(updateUserQuery, [
             newUsername,
             newEmail,
             passwordHash,
-            oldName,
+            userID,
         ]);
+        console.log(response.rows);
+        
 
         return response;
     } catch (error) {
@@ -111,7 +118,7 @@ export async function deleteUser(username) {
     try {
         const deleteUserQuery = `
         UPDATE users
-        SET deleted = false
+        SET deleted = true
         WHERE username = $1`;
         const response = await pool.query(deleteUserQuery, [username]);
         return response

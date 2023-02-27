@@ -36,7 +36,7 @@ export async function logUser(username, email, password) {
 
         if (login) {
             const sessionJWT = JWT.sign(
-                { username: dbResponse[0].username, email: dbResponse[0].email },
+                { username: dbResponse[0].username, email: dbResponse[0].email, created_at: dbResponse[0].created_at, userID: dbResponse[0].user_id},
                 process.env.JWT_SECRET,
                 { expiresIn: "336h" }
             );
@@ -65,12 +65,12 @@ export function getUserInfo(sessionCookie) {
 export async function updateUser(newUsername, newEmail, newPassword, sessionCookie) {
     try {
         const passwordHash = await bcrypt.hash(newPassword, 10);
-        const oldName = JWT.decode(sessionCookie).username
+        const userInfo = JWT.decode(sessionCookie)
 
-        await userRepository.updateUser(newUsername, newEmail, passwordHash, oldName);
+        await userRepository.updateUser(newUsername, newEmail, passwordHash, userInfo.userID);
 
         const sessionJWT = JWT.sign(
-            { username: newUsername, email: newEmail },
+            { username: newUsername, email: newEmail, created_at: userInfo.created_at, userID: userInfo.userID },
             process.env.JWT_SECRET,
             { expiresIn: "336h" }
         );

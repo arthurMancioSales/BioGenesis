@@ -1,5 +1,5 @@
 import SPA from "../modules/spa.js";
-import newUser from "../modules/submitNewUser.js";
+import newUser from "../modules/submitUser.js";
 const spa = SPA();
 
 import collapsableMenu from "./collapsableMenu.js";
