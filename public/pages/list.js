@@ -1,5 +1,9 @@
 import SPA from "../modules/spa.js";
 import form from "./froms.js";
+import formEdit from "./formsEdit.js";
+
+import { editPages } from "../modules/editPages.js";
+
 
 const spa = SPA();
 
@@ -18,7 +22,6 @@ export default function list() {
             body.removeChild(wrapper);
         }
     };
-
 
     const outDiv = document.createElement("div")
     outDiv.classList.add("flexColumNoncenter", "listBg");
@@ -49,6 +52,7 @@ export default function list() {
 
     inputdivMain.appendChild(buttonDiv);
 
+
     main.appendChild(inputdivMain);
 
     const sectionMain = document.createElement('section');
@@ -60,13 +64,15 @@ export default function list() {
     const h2Section = document.createElement('h2');
     h2Section.classList.add('listTitle');
     h2Section.textContent = 'LIVROS CADASTRADOS';
-
+    
+    inputdivMain.appendChild(h2Section);
 
     //Adicionar animação de expandir
+    
+    inputdivMain.appendChild(buttonDiv);
 
-
+    //Adicionar animação de expandir
     inputdivMain.appendChild(h2Section);
-    // inputdivMain.appendChild(buttonDiv);
 
     sectionMain.appendChild(divSection);
 
@@ -118,16 +124,11 @@ export default function list() {
     sectionMain.appendChild(table);
     main.appendChild(sectionMain);
 
-
-
     // adiciona o main ao body
     outDiv.appendChild(main);
 
-
-
     //Criação da tabela, todas as tres funções abaixo são necessarias para a criação da mesma.
     
-
     printTable();
 
     collapsableMenu();
@@ -157,6 +158,17 @@ function createTable(userList){
 };
 
 function addRow(userList, cont) {
+    const body = document.querySelector("body");
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("bookWrapper");
+    wrapper.style.overflowY = "scroll";
+
+    wrapper.onclick = (e) => {
+        if (e.target == wrapper) {
+            body.removeChild(wrapper);
+        }
+    };
+
 
     const line = document.createElement("tr");
 
@@ -164,16 +176,16 @@ function addRow(userList, cont) {
     const bookTitle = document.createElement("td");
     const bookTheme = document.createElement("td");
     const bookAuthor = document.createElement("td");
-    /* let bookLastEdit = document.createElement("td"); */
-    const BookEdit = document.createElement("td");
+    let bookLastEdit = document.createElement("td"); 
+    const bookEdit = document.createElement("td");
     const bookDelete = document.createElement("td");
     
     line.appendChild(bookID);
     line.appendChild(bookTitle);
     line.appendChild(bookTheme);
     line.appendChild(bookAuthor);
-    /* line.appendChild(bookLastEdit); */
-    line.appendChild(BookEdit);
+    line.appendChild(bookLastEdit); 
+    line.appendChild(bookEdit);
     line.appendChild(bookDelete);
 
     const tbody = document.querySelector("#table")
@@ -185,7 +197,94 @@ function addRow(userList, cont) {
     bookTitle.innerHTML = `<span>${userList[i].book_name}</span>`;
     bookTheme.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
     bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
-    /* bookLastEdit.innerHTML = `<span>${userList[i].bookshelf_name}<span>`; */
+    bookLastEdit.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
     BookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
+    BookEdit.onclick = () => FormsEdit(userList,cont)
+    BookEdit.onclick = async () => {
+        body.appendChild(wrapper);
+        console.log("BookEdit");
+        
+        wrapper.innerHTML = ""
+        wrapper.appendChild(formEdit(userList,cont));
+    }
+    bookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
     bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
+
+    bookEdit.onclick = async () => {
+
+        const body = document.querySelector("body");
+
+        const wrapper = document.createElement("div");
+        wrapper.classList.add("bookWrapper");
+        wrapper.style.overflowY = "scroll";
+
+        wrapper.onclick = (e) => {
+            if (e.target == wrapper) {
+                body.removeChild(wrapper);
+            }
+        };
+
+        body.appendChild(wrapper);
+
+        await fetch(`http://localhost:5000/api/books/${userList[i].book_id}`)//
+        .then((response) => {
+            return response.json();
+         })
+        .then((data) => {
+            //console.log(data)
+            
+            form(data, userList[i])
+        })
+    }
 };
+
+// async function FormsEdit(user, cont) {
+//     const json = await fetch(`http://localhost:5000/api/books/${user[cont-1].book_id}`);
+//     const pages = await json.json();
+//     console.log(pages);
+//     showPages(pages);
+
+// }
+
+
+
+
+
+        // const group1 = document.createElement("div");
+    // group1.id = "group-1";
+    // group1.classList = "input-group";
+
+    // const page1 = document.createElement("h2");
+    // page1.innerHTML = "Capa";
+
+    // const textInput1Label = document.createElement("label");
+    // textInput1Label.htmlFor = "bookTitle";
+    // textInput1Label.textContent = "Titulo:";
+
+    // const textInput1 = document.createElement("input");
+    // textInput1.type = "text";
+    // textInput1.maxLength = "15"
+    // textInput1.id = "bookTitle";
+    // textInput1.name = "bookTitle";
+    // textInput1.required = true;
+
+    // const imageUpload1Label = document.createElement("label");
+    // imageUpload1Label.htmlFor = "coverImage";
+    // imageUpload1Label.textContent = "Imagem:";
+
+    // const imageUpload1 = document.createElement("input");
+    // imageUpload1.type = "file";
+    // imageUpload1.id = "coverImage";
+    // imageUpload1.name = "coverImage";
+    // imageUpload1.accept = "image/*";
+    // imageUpload1.required = true;
+
+    // const dropdown1Label = document.createElement("label");
+    // dropdown1Label.htmlFor = "bookshelfName";
+    // dropdown1Label.textContent = "Dropdown:";
+
+    // const dropdown1 = document.createElement("select");
+    // dropdown1.id = "bookshelfName";
+    // dropdown1.name = "bookshelfName";
+    // dropdown1.required = true;
+    
