@@ -3,7 +3,6 @@ import { printTable } from "./list.js";
 import { editPages } from "../modules/editPages.js";
 
 export default function form() {
-    
     const root = document.createElement("div");
 
     const form = document.createElement("form");
@@ -290,9 +289,3 @@ function validateInputSelect() {
         };
     });
 };
-
-
-
-
-
-
