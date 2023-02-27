@@ -1,5 +1,9 @@
 import SPA from "../modules/spa.js";
 import form from "./froms.js";
+import formEdit from "./formsEdit.js";
+
+import { editPages } from "../modules/editPages.js";
+
 
 const spa = SPA();
 
@@ -157,6 +161,17 @@ function createTable(userList){
 };
 
 function addRow(userList, cont) {
+    const body = document.querySelector("body");
+    const wrapper = document.createElement("div");
+    wrapper.classList.add("bookWrapper");
+    wrapper.style.overflowY = "scroll";
+
+    wrapper.onclick = (e) => {
+        if (e.target == wrapper) {
+            body.removeChild(wrapper);
+        }
+    };
+
 
     const line = document.createElement("tr");
 
@@ -187,5 +202,64 @@ function addRow(userList, cont) {
     bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
     /* bookLastEdit.innerHTML = `<span>${userList[i].bookshelf_name}<span>`; */
     BookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
+    // BookEdit.onclick = () => FormsEdit(userList,cont)
+    BookEdit.onclick = async () => {
+        body.appendChild(wrapper);
+        console.log("BookEdit");
+        
+        wrapper.innerHTML = ""
+        wrapper.appendChild(formEdit(userList,cont));
+    }
     bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
 };
+
+// async function FormsEdit(user, cont) {
+//     const json = await fetch(`http://localhost:5000/api/books/${user[cont-1].book_id}`);
+//     const pages = await json.json();
+//     console.log(pages);
+//     showPages(pages);
+
+// }
+
+
+
+
+
+        // const group1 = document.createElement("div");
+    // group1.id = "group-1";
+    // group1.classList = "input-group";
+
+    // const page1 = document.createElement("h2");
+    // page1.innerHTML = "Capa";
+
+    // const textInput1Label = document.createElement("label");
+    // textInput1Label.htmlFor = "bookTitle";
+    // textInput1Label.textContent = "Titulo:";
+
+    // const textInput1 = document.createElement("input");
+    // textInput1.type = "text";
+    // textInput1.maxLength = "15"
+    // textInput1.id = "bookTitle";
+    // textInput1.name = "bookTitle";
+    // textInput1.required = true;
+
+    // const imageUpload1Label = document.createElement("label");
+    // imageUpload1Label.htmlFor = "coverImage";
+    // imageUpload1Label.textContent = "Imagem:";
+
+    // const imageUpload1 = document.createElement("input");
+    // imageUpload1.type = "file";
+    // imageUpload1.id = "coverImage";
+    // imageUpload1.name = "coverImage";
+    // imageUpload1.accept = "image/*";
+    // imageUpload1.required = true;
+
+    // const dropdown1Label = document.createElement("label");
+    // dropdown1Label.htmlFor = "bookshelfName";
+    // dropdown1Label.textContent = "Dropdown:";
+
+    // const dropdown1 = document.createElement("select");
+    // dropdown1.id = "bookshelfName";
+    // dropdown1.name = "bookshelfName";
+    // dropdown1.required = true;
+    
