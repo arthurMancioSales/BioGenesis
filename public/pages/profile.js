@@ -12,29 +12,48 @@ export default function editProfile() {
     profilePic.style.fontSize = "150px"
     profilePic.style.marginBottom = "15px"
     
-    const name = document.createElement("p");
-    name.classList.add("bodyText", "profileText");
-    name.textContent = "NOME";
-
-    const email = document.createElement("p");
-    email.classList.add("bodyText", "profileText");
-    email.textContent = "EMAIL"
-
-    const date = document.createElement("p");
-    date.classList.add("bodyText", "profileText");
-    date.textContent = `Autor à XX dias`
-
-    const quant = document.createElement("p");
-    quant.classList.add("bodyText", "profileText");
-    quant.textContent = `Autor de XX livros`
-
     const infoDiv = document.createElement("div");
     infoDiv.classList.add("flexColumn");
 
-    infoDiv.appendChild(name);
-    infoDiv.appendChild(email);
-    infoDiv.appendChild(date);
-    infoDiv.appendChild(quant);
+    fetch("http://localhost:5000/session/")
+        .then((json) => {
+            return json.json()
+        })
+        .then ((data) => {
+            const userInfo = data.data
+
+            const name = document.createElement("p");
+            name.classList.add("bodyText", "profileText");
+            name.textContent = `Nome: ${userInfo.username}`;
+
+            const email = document.createElement("p");
+            email.classList.add("bodyText", "profileText");
+            email.textContent = `Email: ${userInfo.email}`
+
+            const userDate = new Date(userInfo.created_at)
+
+            const date = document.createElement("p");
+            date.classList.add("bodyText", "profileText");
+            date.textContent = `Autor desde: ${userDate.toLocaleDateString()}`
+
+            infoDiv.appendChild(name);
+            infoDiv.appendChild(email);
+            infoDiv.appendChild(date);
+        })
+
+    fetch("http://localhost:5000/api/userBooks")
+        .then((json) => {
+            return json.json()
+        })
+        .then ((data) => {
+            const quant = document.createElement("p");
+            quant.classList.add("bodyText", "profileText");
+            quant.textContent = `Autor de ${data.data[0].count} livros`
+            
+            infoDiv.appendChild(quant);
+        })
+
+    
 
     const editProfile = document.createElement("input");
     editProfile.setAttribute("type", "submit");
