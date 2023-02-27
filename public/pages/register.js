@@ -2,7 +2,7 @@ import SPA from "../modules/spa.js";
 import newUser from "../modules/submitNewUser.js";
 const spa = SPA();
 
-import collapsableMenu from "../modules/collapsableMenu.js";
+import collapsableMenu from "./collapsableMenu.js";
 
 export default function register() {
     const outDiv = document.createElement("div")

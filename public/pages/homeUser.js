@@ -2,7 +2,7 @@
 import SPA from "../modules/spa.js";
 const spa = SPA();
 
-import collapsableMenu from "../modules/collapsableMenu.js";
+import collapsableMenu from "./collapsableMenu.js";
 
 export default function homeUser() {
     const divInitial = document.createElement("div");

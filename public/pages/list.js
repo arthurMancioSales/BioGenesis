@@ -3,7 +3,7 @@ import form from "./froms.js";
 
 const spa = SPA();
 
-import collapsableMenu from "../modules/collapsableMenu.js";
+import collapsableMenu from "./collapsableMenu.js";
 
 export default function list() {
 

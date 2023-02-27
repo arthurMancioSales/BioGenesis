@@ -1,6 +1,6 @@
 // @author {Thiago}
 
-import collapsableMenu from "./collapsableMenu.js";
+import collapsableMenu from "../pages/collapsableMenu.js";
 import loadSingleBook from "./bookLoader.js";
 
 export default async function loadBooks(id) {

@@ -4,7 +4,7 @@
 import { isLeft, isRight } from "../modules/carrossel.js";
 import loadBooks from "../modules/loadBooks.js";
 import { createPage } from "../modules/createPage.js";
-import collapsableMenu from "../modules/collapsableMenu.js";
+import collapsableMenu from "./collapsableMenu.js";
 
 export default function bookshelf() {
     const container = document.createElement("div");

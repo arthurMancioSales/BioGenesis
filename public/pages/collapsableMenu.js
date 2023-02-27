@@ -1,7 +1,7 @@
-import SPA from "./spa.js";
+import SPA from "../modules/spa.js";
 const spa = SPA();
 
-import auth from "./checkAuthentication.js";
+import auth from "../modules/checkAuthentication.js";
 
 export default function collapsableMenu(destroy=false) {
 
