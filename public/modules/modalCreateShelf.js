@@ -31,7 +31,7 @@ export default async function createBookShelvesPage() {
     const shelfName = document.querySelector("#shelf-name").value;
     const wrapper = document.querySelector(".modalWrapper");
     try {
-      createBookshelf(shelfName);
+      await createBookshelf(shelfName);
       document.querySelector("#root").removeChild(wrapper);
       document.querySelector("#table").innerHTML = "";
       await printTable();

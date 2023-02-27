@@ -31,7 +31,7 @@ export default async function deleteBookShelvesPage(val) {
   confirmDelete.onclick = async () => {
     const wrapper = document.querySelector(".modalWrapper");
     try {
-      deleteBookshelf(val);
+      await deleteBookshelf(val);
       document.querySelector("#root").removeChild(wrapper);
       document.querySelector("#table").innerHTML = "";
       await printTable();

@@ -37,7 +37,7 @@ export default async function editBookShelvesPage(val, id) {
     const shelfName = document.querySelector("#shelf-name").value;
     const wrapper = document.querySelector(".modalWrapper");
     try {
-      editBookshelf(shelfName, id);
+      await editBookshelf(shelfName, id);
       document.querySelector("#root").removeChild(wrapper);
       document.querySelector("#table").innerHTML = "";
       await printTable();
