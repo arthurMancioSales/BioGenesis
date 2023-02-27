@@ -292,6 +292,10 @@ textarea {
     background-image: url("../images/home.png");
 }
 
+.aboutUsBg {
+    background-image: url("../images/aboutUs.png");
+}
+
 .mainSize {
     height: 90%;
     width: 90%;
@@ -630,7 +634,9 @@ select {
 }
 
 .modal-background {
-    background-color: white;
+    background-color: rgb(224, 235, 224);
+    /* background-color: rgba(248, 248, 248, 1);
+    background-color: white; */
     padding: 15px;
     border-radius: 15px;
     width: 40vw;
@@ -646,7 +652,7 @@ select {
     justify-content: center;
     align-self: center;
     border-radius: 10px;
-    background-color: rgb(201, 252, 235);
+    background-color: #9ce992;
     padding: 15px 10px;
     margin: 10px;
     box-shadow: rgba(0, 0, 0, 0.5);
@@ -760,6 +766,7 @@ table {
     background-color: rgba(50, 170, 62, 1);
     color: #ffffff;
     font-weight: 600;
+    font: 30px;
 }
 
 tr {
@@ -1026,4 +1033,33 @@ tr:nth-child(even) {
 
 span {
     font-size: 18px;
+}
+
+.button-container {
+    width: 100%;
+    display: flex;
+}
+
+.confirmDeleteButton {
+    width: 50%;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+    background-color: rgba(50, 170, 62, 1);
+    /* background-color: rgba(248, 248, 248, 1); */
+    /* background-color: rgba(211, 235, 209, 1); */
+    /* background-color: rgb(201, 252, 235); */
+}
+
+.confirmDeleteButton:hover{
+    cursor: pointer;
+    filter: brightness(85%);
+}
+
+.profileText {
+    margin-top: 7px;
+    margin-bottom: 2px;
+    color: #000000;
 }

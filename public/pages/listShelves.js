@@ -4,7 +4,7 @@ import modal from "../modules/modal.js";
 import createBookShelvesPage from "../modules/modalCreateShelf.js";
 import deleteBookShelvesPage from "../modules/modalDeleteShelf.js";
 import editBookShelvesPage from "../modules/modalEditShelf.js";
-import collapsableMenu from "./collapsableMenu.js";
+import collapsableMenu from "../modules/collapsableMenu.js";
 
 export default function listShelves() {
   const outDiv = document.createElement("div");
@@ -25,8 +25,6 @@ export default function listShelves() {
 
   const sectionMain = document.createElement("section");
   sectionMain.id = "section-lista";
-
-
 
   const divSection = document.createElement("div");
   divSection.classList.add("containerList");

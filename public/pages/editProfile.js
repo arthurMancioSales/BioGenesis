@@ -4,19 +4,18 @@ const spa = SPA();
 
 import collapsableMenu from "../modules/collapsableMenu.js";
 
-export default function register() {
+export default function editProfile() {
+
     const outDiv = document.createElement("div")
     outDiv.classList.add("cadastroBg", "bodyHome");
 
-    // Crie um elemento <h1> com o texto "Cadastrar Novo Usuário"
     const h1Main = document.createElement("h1");
     h1Main.classList.add("titleText");
-    h1Main.textContent = "Cadastrar Novo Usuário";
+    h1Main.textContent = "Atualizar Cadastro";
 
-    // Crie um elemento <form> com vários elementos <input> e seus atributos
     const formMain = document.createElement("form");
     formMain.classList.add("flexColumn");
-    formMain.onsubmit = async (e) => {
+/*     formMain.onsubmit = async (e) => {
         e.preventDefault()
         const createUser = await newUser()
         if (createUser.status == 200) {
@@ -25,15 +24,15 @@ export default function register() {
         } else {
             document.querySelector("#loginResult").innerText = createUser.error
         }
-    }
+    } */
 
     const inputUserName = document.createElement("input");
     inputUserName.id = "userName";
     inputUserName.type = "name"
     inputUserName.required = true
     inputUserName.placeholder = "Usuário";
-
     inputUserName.classList.add("userInput");
+    //inputUserName.value = ""
 
     const inputUserMail = document.createElement("input");
     inputUserMail.id = "userEmail";
@@ -41,14 +40,15 @@ export default function register() {
     inputUserMail.required = true
     inputUserMail.placeholder = "E-mail";
     inputUserMail.classList.add("userInput");
+    //inputUserMail.value = ""
 
     const inputUserMailConfirm = document.createElement("input");
     inputUserMailConfirm.id = "userEmailConfirm";
     inputUserMailConfirm.type = "email"
     inputUserMailConfirm.required = true
     inputUserMailConfirm.placeholder = "Confirme seu e-mail";
-
     inputUserMailConfirm.classList.add("userInput");
+    //inputUserMailConfirm.value = ""
 
     const inputUserPass = document.createElement("input");
     inputUserPass.id = "userPass";
@@ -56,41 +56,63 @@ export default function register() {
     inputUserPass.required = true
     inputUserPass.placeholder = "Senha";
     inputUserPass.classList.add("userInput");
+    //inputUserPass.value = ""
 
     const inputUserPassConf = document.createElement("input");
     inputUserPassConf.id = "userPassConf";
     inputUserPassConf.type = "password"
     inputUserPassConf.required = true
     inputUserPassConf.placeholder = "Confirme sua Senha";
-
     inputUserPassConf.classList.add("userInput");
+    //inputUserPassConf.value = ""
 
-    // Crie um elemento <button> com o ID "createUser" e o texto "Cadastrar"
-    const buttonMain = document.createElement("button");
-    buttonMain.classList.add("button");
-    buttonMain.type = "submit";
-    buttonMain.id = "createUser";
-    buttonMain.textContent = "Cadastrar";
- 
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
+
+    const editBtn = document.createElement("input");
+    editBtn.setAttribute("type", "submit");
+    editBtn.setAttribute("name", "cancelDelete");
+    editBtn.setAttribute("value", "Atualizar");
+    editBtn.classList.add("confirmDeleteButton");
+    //editBtn.style.backgroundColor = "rgba(50, 170, 62, 1)";
+    editBtn.onclick = async () => {
+
+    };
+  
+    const cancelBtn = document.createElement("input");
+    cancelBtn.setAttribute("type", "submit");
+    cancelBtn.setAttribute("name", "confirmDelete");
+    cancelBtn.setAttribute("value", "Cancelar");
+    cancelBtn.classList.add("confirmDeleteButton");
+    cancelBtn.style.backgroundColor = "red";
+    cancelBtn.onclick = async () => {
+        document.querySelector(".collapsible").remove();
+        spa.redirect("/profile");
+    };
+  
+    buttonContainer.appendChild(editBtn);
+    buttonContainer.appendChild(cancelBtn);
+    
     formMain.appendChild(inputUserName);
     formMain.appendChild(inputUserMail);
     formMain.appendChild(inputUserMailConfirm);
     formMain.appendChild(inputUserPass);
     formMain.appendChild(inputUserPassConf);
-    formMain.appendChild(buttonMain);
+    formMain.appendChild(buttonContainer);
 
     const result = document.createElement("p")
     result.innerText = ""
     result.id = "loginResult"
+    result.classList.add("bodyText");
+    result.style.color = "black"
 
-    // Crie um elemento <main> e adicione todos os elementos criados a ele
     const main = document.createElement("main");
     main.classList.add("mainSize", "flexColumn");
+
     main.appendChild(h1Main);
     main.appendChild(formMain);
     main.appendChild(result);
 
-    // Adicione o elemento <main> ao corpo do documento
     outDiv.appendChild(main);
 
     collapsableMenu();

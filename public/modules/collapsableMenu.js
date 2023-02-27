@@ -1,10 +1,9 @@
-import SPA from "../modules/spa.js";
+import SPA from "./spa.js";
 const spa = SPA();
 
-import auth from "../modules/checkAuthentication.js";
+import auth from "./checkAuthentication.js";
 
 export default function collapsableMenu(destroy=false) {
-    //menu colapsável
 
     const colMenuDiv = document.createElement('div');
     colMenuDiv.classList.add('collapsible');
@@ -25,7 +24,7 @@ export default function collapsableMenu(destroy=false) {
     homePage.id = "homePageImg";
     homePage.onclick = () => {
         document.body.removeChild(colMenuDiv)
-    spa.redirect("/");
+        spa.redirect("/");
     }
 
     const bookPage = document.createElement("i");
@@ -41,7 +40,13 @@ export default function collapsableMenu(destroy=false) {
     login.id = "loginPageImg";
     login.onclick = () => {
         document.body.removeChild(colMenuDiv);
-        spa.redirect("/login");
+
+        if(!auth()){
+            spa.redirect("/login");
+    
+        } else{
+            spa.redirect("/profile");
+        }
     }
 
     const editBook = document.createElement('img');
@@ -52,6 +57,7 @@ export default function collapsableMenu(destroy=false) {
         document.body.removeChild(colMenuDiv)
         spa.redirect("/list");
     }
+
 
     const editShelf = document.createElement("i");
     editShelf.classList.add("fa-regular", "fa-calendar-days", "link", 'colImg');
@@ -87,20 +93,18 @@ export default function collapsableMenu(destroy=false) {
     } else{
         colMenuIconDiv.appendChild(homePage);
         colMenuIconDiv.appendChild(editBook);
-        colMenuIconDiv.appendChild(addUser);
-        colMenuIconDiv.appendChild(logOut);
         colMenuIconDiv.appendChild(editShelf);
+        colMenuIconDiv.appendChild(addUser);
+        colMenuIconDiv.appendChild(login);
+        colMenuIconDiv.appendChild(logOut);
     }
 
     openMenu.onclick = () => {
         if (openMenu.style.transform === "rotate(90deg)"){
 
             colMenuDiv.style.width= "150px";
-
             openMenu.style.transform = "rotate(0deg)";
-
             colMenuIconDiv.style.left = "350px";
-            colMenuIconDiv.style.userSelect = "none";
             colMenuIconDiv.style.display = "none";
         } else{
 
@@ -108,13 +112,11 @@ export default function collapsableMenu(destroy=false) {
                 colMenuDiv.style.width= "350px";
         
             } else{
-                colMenuDiv.style.width= "520px";
+                colMenuDiv.style.width= "600px";
             }
             
             openMenu.style.transform = "rotate(90deg)";
-
             colMenuIconDiv.style.left = "0";
-            colMenuIconDiv.style.userSelect = "all";
             colMenuIconDiv.style.display = "flex";
         }
     }

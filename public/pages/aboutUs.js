@@ -4,9 +4,9 @@ const spa = SPA();
 
 import collapsableMenu from "../modules/collapsableMenu.js";
 
-export default function homeUser() {
+export default function aboutUs() {
     const divInitial = document.createElement("div");
-    divInitial.classList.add("homeBg", "bodyHome");
+    divInitial.classList.add("aboutUsBg", "bodyHome");
 
     // cria o cabeçalho
     const header = document.createElement('header');
@@ -15,21 +15,6 @@ export default function homeUser() {
     // cria a primeira div do cabeçalho
     const div1 = document.createElement('div');
     div1.classList.add('flexRowSpaceEven', 'boxSize');
-
-    // cria o primeiro link do cabeçalho
-    const p1Div1 = document.createElement('p');
-    p1Div1.classList.add('link', 'headerText');
-    p1Div1.setAttribute('id', 'about');
-    p1Div1.textContent = 'SOBRE NÓS';
-    p1Div1.onclick = () => spa.redirect("/aboutUs");
-    div1.appendChild(p1Div1);
-
-    // cria o segundo link do cabeçalho
-    const p2Div1 = document.createElement('p');
-    p2Div1.classList.add('link', 'headerText');
-    p2Div1.setAttribute('id', 'anotherLink');
-    p2Div1.textContent = 'CÓDIGO FONTE';
-    div1.appendChild(p2Div1);
 
     header.appendChild(div1);
 
@@ -46,7 +31,7 @@ export default function homeUser() {
     // cria o título da seção
     const h1Section = document.createElement('h1');
     h1Section.classList.add('titleText');
-    h1Section.textContent = 'Bem vindo ao BioGenesis';
+    h1Section.textContent = 'SOBRE NÓS';
     section.appendChild(h1Section);
 
     // cria o parágrafo da seção
