@@ -66,7 +66,7 @@ router.delete("/book/page/:id", authenticateUser, pageController.deletePage);
 
 // Atualiza uma estante -> @author {Arthur}
 router.put(
-  "/bookshelves/",
+  "/bookshelves",
   authenticateUser,
   bookshelfController.updateBookshelf
 );
@@ -101,7 +101,7 @@ router.post("/createUser", authenticateUser, userController.createUser);
 // }
 
 // Atualiza um usuário -> @author {Arthur}
-router.post("/updateUser", authenticateUser, userController.updateUser)
+router.post("/updateUser", authenticateUser, userController.updateUser);
 // {
 //     newUsername: "nome do usuario",
 //     newEmail, "email do usuario",
@@ -109,4 +109,4 @@ router.post("/updateUser", authenticateUser, userController.updateUser)
 // }
 
 // Apaga um usuário (soft delete) -> @author {Arthur} @coauthor {Thiago}
-router.delete("/deleteUser", authenticateUser, userController.deleteUser)
+router.delete("/deleteUser", authenticateUser, userController.deleteUser);
