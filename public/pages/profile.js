@@ -3,7 +3,7 @@ import deleteUsersPage from "../modules/modalDeleteUser.js";
 import SPA from "../modules/spa.js";
 const spa = SPA();
 
-import collapsableMenu from "./collapsableMenu.js";
+import collapsableMenu from "../modules/collapsableMenu.js";
 
 export default function editProfile() {
   const outDiv = document.createElement("div");
