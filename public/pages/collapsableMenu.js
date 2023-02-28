@@ -24,21 +24,24 @@ export default function collapsableMenu() {
   colMenuIconDiv.style.left = "350px";
   colMenuIconDiv.style.userSelect = "none";
 
-  const homePage = document.createElement("i");
-  homePage.classList.add("fa-solid", "fa-house", "link", "colImg");
-  homePage.id = "homePageImg";
-  homePage.onclick = () => {
-    document.body.removeChild(colMenuDiv);
-    spa.redirect("/");
-  };
+    const homePage = document.createElement("i");
+    homePage.classList.add("fa-solid", "fa-house", "link", 'colImg');
+    homePage.id = "homePageImg";
+    homePage.title = "Página Inicial"
+    homePage.onclick = () => {
+        document.body.removeChild(colMenuDiv)
+        spa.redirect("/");
+    }
+    
 
-  const bookPage = document.createElement("i");
-  bookPage.classList.add("fa-solid", "fa-book", "link", "colImg");
-  bookPage.id = "bookPageImg";
-  bookPage.onclick = () => {
-    document.body.removeChild(colMenuDiv);
-    spa.redirect("/bookshelves");
-  };
+    const bookPage = document.createElement("i");
+    bookPage.classList.add("fa-solid", "fa-book", "link", 'colImg');
+    bookPage.id = "bookPageImg";
+    bookPage.title = "Nosso Acervo"
+    bookPage.onclick = () => {
+        document.body.removeChild(colMenuDiv)
+        spa.redirect("/bookshelves");
+    }
 
   const login = document.createElement("i");
   login.classList.add("colImg", "link", "fa-solid", "fa-user");
@@ -53,54 +56,64 @@ export default function collapsableMenu() {
     }
   };
 
-  const editBook = document.createElement("img");
-  editBook.classList.add("colImg", "link");
-  editBook.setAttribute("src", "/images/editBookPage.png");
-  editBook.setAttribute("alt", "Editar/Criar Livros");
-  editBook.onclick = () => {
-    document.body.removeChild(colMenuDiv);
-    spa.redirect("/list");
-  };
+    const editBook = document.createElement('img');
+    editBook.classList.add('colImg', 'link');
+    editBook.setAttribute('src', '/images/editBookPage.png');
+    editBook.setAttribute('alt', 'Editar/Criar Livros');
+    editBook.title = "Criar/Editar Livros"
+    editBook.onclick = () => {
+        document.body.removeChild(colMenuDiv)
+        spa.redirect("/list");
+    }
 
-  const editShelf = document.createElement("i");
-  editShelf.classList.add("fa-regular", "fa-calendar-days", "link", "colImg");
-  editShelf.id = "shelfPageImg";
-  editShelf.onclick = () => {
-    document.body.removeChild(colMenuDiv);
-    spa.redirect("/listShelves");
-  };
 
-  const addUser = document.createElement("img");
-  addUser.classList.add("colImg", "link");
-  addUser.setAttribute("src", "/images/addUserPage.png");
-  addUser.setAttribute("alt", "Adicionar Novo Usuário");
-  addUser.onclick = () => {
-    spa.redirect("/register");
-  };
+    const editShelf = document.createElement("i");
+    editShelf.classList.add("fa-regular", "fa-calendar-days", "link", 'colImg');
+    editShelf.id = "shelfPageImg";
+    editShelf.title = "Criar/Editar Prateleiras"
+    editShelf.onclick = () => {
+        document.body.removeChild(colMenuDiv)
+        spa.redirect("/listShelves");
+    }
 
-  const logOut = document.createElement("img");
-  logOut.classList.add("colImg", "link");
-  logOut.setAttribute("src", "/images/logOut.png");
-  logOut.setAttribute("alt", "Sair");
-  logOut.onclick = async () => {
-    await fetch("/session/", {
-      method: "DELETE",
-    });
-    spa.redirect("/");
-  };
+    const addUser = document.createElement('img');
+    addUser.classList.add('colImg', 'link');
+    addUser.setAttribute('src', '/images/addUserPage.png');
+    addUser.setAttribute('alt', 'Adicionar Novo Usuário');
+    addUser.title = "Adicionar Usuário"
+    addUser.onclick = () => {
+        spa.redirect("/register");
+    }
 
-  if (!auth()) {
-    colMenuIconDiv.appendChild(homePage);
-    colMenuIconDiv.appendChild(bookPage);
-    colMenuIconDiv.appendChild(login);
-  } else {
-    colMenuIconDiv.appendChild(homePage);
-    colMenuIconDiv.appendChild(editBook);
-    colMenuIconDiv.appendChild(editShelf);
-    colMenuIconDiv.appendChild(addUser);
-    colMenuIconDiv.appendChild(login);
-    colMenuIconDiv.appendChild(logOut);
-  }
+    const logOut = document.createElement('img');
+    logOut.classList.add('colImg', 'link');
+    logOut.setAttribute('src', '/images/logOut.png');
+    logOut.setAttribute('alt', 'Sair');
+    logOut.title = "Sair"
+    logOut.onclick = async () => {
+        await fetch("/session/", {
+            method: "DELETE"
+        })
+        spa.redirect("/")
+    }
+
+    if(!auth()){
+        login.title = "Login"
+
+        colMenuIconDiv.appendChild(homePage);
+        colMenuIconDiv.appendChild(bookPage);
+        colMenuIconDiv.appendChild(login);
+
+    } else{
+        login.title = "Conta"
+
+        colMenuIconDiv.appendChild(homePage);
+        colMenuIconDiv.appendChild(editBook);
+        colMenuIconDiv.appendChild(editShelf);
+        colMenuIconDiv.appendChild(addUser);
+        colMenuIconDiv.appendChild(login);
+        colMenuIconDiv.appendChild(logOut);
+    }
 
   openMenu.onclick = () => {
     if (openMenu.style.transform === "rotate(90deg)") {

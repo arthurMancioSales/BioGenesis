@@ -8,63 +8,69 @@ export default function aboutUs() {
     const divInitial = document.createElement("div");
     divInitial.classList.add("aboutUsBg", "bodyHome");
 
-    // cria o cabeçalho
     const header = document.createElement('header');
-    header.classList.add('flexRowSpace');
+    header.classList.add('flexColumn', "mainSectionList");
 
-    // cria a primeira div do cabeçalho
-    const div1 = document.createElement('div');
-    div1.classList.add('flexRowSpaceEven', 'boxSize');
+    const title = document.createElement('h1');
+    title.classList.add('listTitle');
+    title.textContent = 'SOBRE NÓS - Grupo Aranduka';
 
-    header.appendChild(div1);
-
-    divInitial.appendChild(header); 
-
-    // cria o conteúdo principal
+    header.appendChild(title);
+ 
     const main = document.createElement('main');
-    main.classList.add('flexRowSpaceEven', 'mainSize');
+    main.classList.add('flexRowSpaceAround', 'mainSize');//flexColumn
 
-    // cria a seção principal
-    const section = document.createElement('section');
-    section.classList.add('sectionBox', "flexColumn");
+    const us = [
+        { name: "Arthur Mancio", age: "XX", job: "Desenvolvedor Back-End", picture: "logo.png",  link:"http://" },
+        { name: "Davi Severino", age: 27, job: "Desenvolvedor Front-End", picture: "logo.png", link:"http://" },
+        { name: "Pedro Rubens", age: "XX", job: "Desenvolvedor Front-End", picture: "logo.png", link:"http://" },
+        { name: "Thiago Silva", age: "XX", job: "Desenvolvedor Back-End", picture: "logo.png", link:"http://" }
+    ];
 
-    // cria o título da seção
-    const h1Section = document.createElement('h1');
-    h1Section.classList.add('titleText');
-    h1Section.textContent = 'SOBRE NÓS';
-    section.appendChild(h1Section);
+    for (let i = 0; i < 4; i++){
+        const creator = document.createElement('div');
+        creator.classList.add('flexColumn', "modalForms");
+        creator.style.backgroundColor = "#bdebb7"
 
-    // cria o parágrafo da seção
-    const pSection = document.createElement('p');
-    pSection.classList.add('bodyText');
-    pSection.textContent = 'Lorem ipsum dolor sit amet consectetur. Aenean eget nulla ac elementum non tellus risus. Ullamcorper volutpat aliquam neque mauris turpis interdum dolor. Nulla turpis porttitor magna tortor etiam nunc sed dis vitae.';
-    section.appendChild(pSection);
+        const img = document.createElement("img");
+        img.setAttribute('src', `/images/${us[i].picture}`); //
+        img.classList.add('aboutUsImg');
 
-    // cria o botão da seção
-    const buttonSection = document.createElement('button');
-    buttonSection.setAttribute('type', 'button');
-    buttonSection.setAttribute('class', 'button');
-    buttonSection.textContent = 'COMEÇAR';
-    buttonSection.onclick = () => spa.redirect("/bookshelves");
+        const pName = document.createElement("p");
+        pName.textContent = us[i].name
+        pName.classList.add('aboutUsText');
 
-    section.appendChild(buttonSection);
-    main.appendChild(section);
+        const pAge = document.createElement("p");
+        pAge.textContent = `${us[i].age} anos`
+        pAge.classList.add('aboutUsText');
 
-    // cria o aside
-    const aside = document.createElement('aside');
-    aside.classList.add('homeAside');
+        const pFunction = document.createElement("p");
+        pFunction.textContent = us[i].job
+        pFunction.classList.add('aboutUsText');
 
-    // cria a imagem do aside
-    const imgAside = document.createElement('img');
-    imgAside.classList.add('link');
-    imgAside.setAttribute('src', '/images/estante.png');
-    imgAside.setAttribute('id', 'shelf');
-    imgAside.onclick = () => spa.redirect("/bookshelves");
+        /* if(i > 1){
+            pName.style.color = "black";
+            pAge.style.color = "black";
+            pFunction.style.color = "black";
+        } */
 
-    aside.appendChild(imgAside);
-    main.appendChild(aside);
+        const button = document.createElement('button');
+        button.setAttribute('type', 'button');
+        button.setAttribute('class', 'aboutUsButton');
+        button.textContent = 'Contato';
+        button.onclick = () => {
+            location.href = us[i].link
+        }
 
-    // adiciona tudo ao body da página
+        creator.appendChild(img)
+        creator.appendChild(pName)
+        creator.appendChild(pAge)
+        creator.appendChild(pFunction)
+        creator.appendChild(button)
+
+        main.appendChild(creator)
+    }
+
     divInitial.appendChild(header);
     divInitial.appendChild(main);
 

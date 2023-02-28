@@ -21,9 +21,10 @@ export default function register() {
     const createUser = await newUser();
 
     if (createUser.status == 200) {
-      document.querySelector("#loginResult").innerText =
-        "Usuário criado com sucesso";
-      spa.redirect("/");
+      document.querySelector("#loginResult").innerText = "Usuário criado com sucesso";
+      setTimeout(function(){
+        spa.redirect("/")
+      }, 1000);
     } else {
       const resolved = JSON.parse(await createUser.json());
       document.querySelector("#loginResult").innerText = resolved.error;
@@ -68,30 +69,35 @@ export default function register() {
 
   inputUserPassConf.classList.add("userInput");
 
-  // Crie um elemento <button> com o ID "createUser" e o texto "Cadastrar"
-  const buttonMain = document.createElement("button");
-  buttonMain.classList.add("button");
-  buttonMain.type = "submit";
-  buttonMain.id = "createUser";
-  buttonMain.textContent = "Cadastrar";
+    // Crie um elemento <button> com o ID "createUser" e o texto "Cadastrar"
+    const buttonMain = document.createElement("button");
+    buttonMain.classList.add("button");
+    buttonMain.type = "submit";
+    buttonMain.id = "createUser";
+    buttonMain.textContent = "Cadastrar";
 
-  formMain.appendChild(inputUserName);
-  formMain.appendChild(inputUserMail);
-  formMain.appendChild(inputUserMailConfirm);
-  formMain.appendChild(inputUserPass);
-  formMain.appendChild(inputUserPassConf);
-  formMain.appendChild(buttonMain);
+    const result = document.createElement("p")
+    result.innerText = ""
+    result.id = "loginResult"
+    result.classList.add("aboutUsText");
+    
+ 
+    formMain.appendChild(inputUserName);
+    formMain.appendChild(inputUserMail);
+    formMain.appendChild(inputUserMailConfirm);
+    formMain.appendChild(inputUserPass);
+    formMain.appendChild(inputUserPassConf);
+    formMain.appendChild(result);
+    formMain.appendChild(buttonMain);
 
-  const result = document.createElement("p");
-  result.innerText = "";
-  result.id = "loginResult";
+    
 
-  // Crie um elemento <main> e adicione todos os elementos criados a ele
-  const main = document.createElement("main");
-  main.classList.add("mainSize", "flexColumn");
-  main.appendChild(h1Main);
-  main.appendChild(formMain);
-  main.appendChild(result);
+    // Crie um elemento <main> e adicione todos os elementos criados a ele
+    const main = document.createElement("main");
+    main.classList.add("mainSize", "flexColumn");
+    main.appendChild(h1Main);
+    main.appendChild(formMain);
+    //main.appendChild(result);
 
   // Adicione o elemento <main> ao corpo do documento
   outDiv.appendChild(main);

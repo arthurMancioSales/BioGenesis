@@ -361,6 +361,7 @@ header {
     font-size: 20px;
     color: #207a29;
     overflow-wrap: break-word;
+    line-height: 28px;
 }
 
 input,
@@ -1141,6 +1142,10 @@ span {
 
 .confirmDeleteButton:hover {
     cursor: pointer;
+}
+
+.confirmDeleteButton:active{
+    cursor: pointer;
     filter: brightness(85%);
 }
 
@@ -1160,4 +1165,40 @@ a:visited {
 a:link, a:visited {
     color: rgb(0, 0, 0);
     text-decoration: none;
+}
+
+.aboutUsText {
+    font-family: Roboto, Helvetica, sans-serif;
+    font-size: 20px;
+    color: #000000;
+    /* color: #207a29; */
+    overflow-wrap: break-word;
+    margin-top: 10px;
+    margin-bottom: 5px;
+}
+
+.aboutUsButton {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    font-size: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+    color: white;
+    background-color: rgba(50, 170, 62, 1);
+
+    margin-top: 10px;
+}
+
+.aboutUsButton:hover {
+    cursor: pointer;
+}
+
+.aboutUsButton:active{
+    cursor: pointer;
+    filter: brightness(85%);
+}
+
+.aboutUsImg{
+    width: 200px;
 }
