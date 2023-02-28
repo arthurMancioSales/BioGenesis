@@ -25,7 +25,11 @@ export default function form() {
     };
 
     const modalTitle = document.createElement("h2")
-    modalTitle.innerHTML = "Criar livro"
+    modalTitle.innerHTML = "CRIAR LIVRO"
+    modalTitle.classList.add("headerText");
+    modalTitle.style.fontSize = "24px"
+
+    
     form.appendChild(modalTitle)
 
     // Cria o primeiro grupo de campos
@@ -173,7 +177,6 @@ export default function form() {
         firstImagePreview.src = url;
     }
 
-
     const dropdownLabel = document.createElement("label");
     dropdownLabel.classList.add("required")
     dropdownLabel.htmlFor = `dropdown2`;
@@ -187,7 +190,6 @@ export default function form() {
     dropdown.onclick = () => {
         validateInputSelect()
     }; 
-
 
     const dropdownOption0 = document.createElement("option");
     dropdownOption0.value = ``;
@@ -244,7 +246,7 @@ export default function form() {
     const newPageButton = document.createElement("button");
     newPageButton.classList.add("modalButton")
     newPageButton.id = "addPageButton"
-    newPageButton.innerText = "adicionar Pagina";
+    newPageButton.innerText = "Adicionar Página";
     newPageButton.setAttribute("type", "button");
     newPageButton.onclick = (e) => {
         e.target.classList.add("modalButtonDisabled")

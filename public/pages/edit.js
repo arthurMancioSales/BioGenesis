@@ -86,7 +86,6 @@ export default function edit() {
     selectTopic.appendChild(optionAlimentacao);
     selectTopic.appendChild(optionCuriosidades);
 
-
     labelTopic.appendChild(selectTopic);
     labelarea.appendChild(inputConteudo);
     labelImg.appendChild(inputImg);

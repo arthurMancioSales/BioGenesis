@@ -2,7 +2,7 @@
 import SPA from "../modules/spa.js";
 const spa = SPA();
 
-import collapsableMenu from "./collapsableMenu.js";
+import collapsableMenu from "../modules/collapsableMenu.js";
 
 export default function homeUser() {
     const divInitial = document.createElement("div");
@@ -37,41 +37,48 @@ export default function homeUser() {
 
     divInitial.appendChild(header); 
 
-    // cria o conteúdo principal
     const main = document.createElement('main');
     main.classList.add('flexRowSpaceEven', 'mainSize');
 
-    // cria a seção principal
     const section = document.createElement('section');
     section.classList.add('sectionBox', "flexColumn");
 
-    // cria o título da seção
     const h1Section = document.createElement('h1');
     h1Section.classList.add('titleText');
     h1Section.textContent = 'Bem vindo ao BioGenesis!';
-    section.appendChild(h1Section);
-
-    // cria o parágrafo da seção
+    
     const pSection = document.createElement('p');
     pSection.classList.add('bodyText');
-    pSection.textContent = 'Aqui, no nosso acervo, você encontrará ';
-    section.appendChild(pSection);
+    pSection.textContent = 'Aqui, no nosso acervo, você encontrará informações diversas sobre as mais diferentes criaturas. Informações trazidas por pesquisadores oficializados de forma resumida e de facil entendimento!';
+    
+    const pSection2 = document.createElement('p');
+    pSection2.classList.add('bodyText');
+    pSection2.textContent = 'Você, pesquisador, tambem pode fazer parte do nosso grupo, entre em ';
+    pSection2.style.marginTop = "15px"
 
-    // cria o botão da seção
+    const link = document.createElement('a');
+    link.textContent = "contato conosco!"
+    link.classList.add('bodyText', "link");
+    link.onclick = () => spa.redirect("/aboutUs");
+
+    pSection2.appendChild(link)
+
     const buttonSection = document.createElement('button');
     buttonSection.setAttribute('type', 'button');
     buttonSection.setAttribute('class', 'button');
     buttonSection.textContent = 'COMEÇAR';
     buttonSection.onclick = () => spa.redirect("/bookshelves");
 
+    section.appendChild(h1Section);
+    section.appendChild(pSection);
+    section.appendChild(pSection2);
+
     section.appendChild(buttonSection);
     main.appendChild(section);
 
-    // cria o aside
     const aside = document.createElement('aside');
     aside.classList.add('homeAside');
 
-    // cria a imagem do aside
     const imgAside = document.createElement('img');
     imgAside.classList.add('link');
     imgAside.setAttribute('src', '/images/estante.png');
@@ -81,7 +88,6 @@ export default function homeUser() {
     aside.appendChild(imgAside);
     main.appendChild(aside);
 
-    // adiciona tudo ao body da página
     divInitial.appendChild(header);
     divInitial.appendChild(main);
 

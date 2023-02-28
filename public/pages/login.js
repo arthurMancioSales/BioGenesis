@@ -2,7 +2,7 @@ import SPA from "../modules/spa.js";
 import submitLogin from "../modules/submitLogin.js";
 const spa = SPA();
 
-import collapsableMenu from "./collapsableMenu.js";
+import collapsableMenu from "../modules/collapsableMenu.js";
 
 export default function login() {
     const outDiv = document.createElement("div")
