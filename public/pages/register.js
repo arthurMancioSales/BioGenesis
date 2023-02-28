@@ -20,8 +20,11 @@ export default function register() {
         e.preventDefault()
         const createUser = await newUser()
         if (createUser.status == 200) {
-            document.querySelector("#loginResult").innerText = "Usuário criado com sucesso"
-            spa.redirect("/")
+            document.querySelector("#loginResult").innerText = "Novo usuário criado com sucesso!"
+            setTimeout(function(){
+                spa.redirect("/")
+            }, 1000);
+            
         } else {
             document.querySelector("#loginResult").innerText = createUser.error
         }
@@ -71,24 +74,29 @@ export default function register() {
     buttonMain.type = "submit";
     buttonMain.id = "createUser";
     buttonMain.textContent = "Cadastrar";
+
+    const result = document.createElement("p")
+    result.innerText = ""
+    result.id = "loginResult"
+    result.classList.add("aboutUsText");
+    
  
     formMain.appendChild(inputUserName);
     formMain.appendChild(inputUserMail);
     formMain.appendChild(inputUserMailConfirm);
     formMain.appendChild(inputUserPass);
     formMain.appendChild(inputUserPassConf);
+    formMain.appendChild(result);
     formMain.appendChild(buttonMain);
 
-    const result = document.createElement("p")
-    result.innerText = ""
-    result.id = "loginResult"
+    
 
     // Crie um elemento <main> e adicione todos os elementos criados a ele
     const main = document.createElement("main");
     main.classList.add("mainSize", "flexColumn");
     main.appendChild(h1Main);
     main.appendChild(formMain);
-    main.appendChild(result);
+    //main.appendChild(result);
 
     // Adicione o elemento <main> ao corpo do documento
     outDiv.appendChild(main);
