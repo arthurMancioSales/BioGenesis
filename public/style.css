@@ -333,7 +333,7 @@ header {
 }
 
 .sectionBox {
-    width: 30%;
+    width: 40%;
     margin-right: auto;
     align-items: start;
 }
@@ -417,9 +417,9 @@ select {
     height: 40px;
     position: relative;
     cursor: pointer;
-  }
+}
   
-  .btnX::before, .btnX::after {
+.btnX::before, .btnX::after {
     content: '';
     position: absolute;
     top: 20px;
@@ -428,18 +428,15 @@ select {
     height: 2px;
     background-color: black;
     transform-origin: center;
-  }
+}
   
-  .btnX::before {
+.btnX::before {
     transform: rotate(45deg);
-  }
+}
   
-  .btnX::after {
+.btnX::after {
     transform: rotate(-45deg);
-  }
-
-
-
+}
 
 #p {
     font-family: Roboto, Helvetica, sans-serif;
@@ -1008,13 +1005,15 @@ tr:nth-child(even) {
 }
 
 #form .input-group {
-    background-color: #d4d4d4;
+    /* background-color: #d4d4d4; */
+    /* background-color: rgba(50, 170, 62, 1); */
+    background: rgba(211, 235, 209, 1);
     margin: 30px 30px 0 30px;
     border-radius: 5px;
 }
 
 #form .input-group label {
-    font-size: 24px;
+    font-size: 22px;
     font-family: sans-serif;
     margin: 10px 0px 0px 15px;
 }
@@ -1026,7 +1025,8 @@ tr:nth-child(even) {
     padding: 10px;
     font-size: 24px;
     font-family: sans-serif;
-    background-color: #b2b1b1;
+    /* background-color: #b2b1b1; */
+    background-color: rgba(50, 170, 62, 1);
 }
 
 .loginPage {
@@ -1040,7 +1040,7 @@ tr:nth-child(even) {
 }
 
 .modalButton {
-    width: 40%;
+    width: 45%;
     height: fit-content;
     padding: 1rem 2rem;
     cursor: pointer;
@@ -1050,7 +1050,7 @@ tr:nth-child(even) {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 16px;
+    font-size: 20px;
     border-radius: 8px;
     transition: all 600ms;
 }
@@ -1201,4 +1201,13 @@ a:link, a:visited {
 
 .aboutUsImg{
     width: 200px;
+}
+
+.socialImg {
+    height: 25px;
+    margin-left: 15px;
+    margin-right: 20px;
+
+    color: rgb(0, 0, 0);
+    font-size: 50px;
 }
