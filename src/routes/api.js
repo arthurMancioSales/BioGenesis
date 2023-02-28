@@ -5,6 +5,7 @@ import * as bookController from "../controllers/bookController.js";
 import * as pageController from "../controllers/pageController.js";
 import * as userController from "../controllers/userController.js";
 import authenticateUser from "../lib/authenticateUser.js";
+import files from "../lib/upload.js";
 
 export const router = Router();
 
@@ -31,9 +32,7 @@ router.post(
 // }
 
 // Cria um livro novo -> @author {Arthur}
-router.post("/book", authenticateUser, (req, res, next) => {
-  bookController.createBook(req, res, next);
-});
+router.post("/book", authenticateUser, bookController.createBook);
 // {
 //     'bookTitle': 'nome do livro', -> String
 //     'bookshelfName': 'nome da estante', -> String
@@ -42,7 +41,7 @@ router.post("/book", authenticateUser, (req, res, next) => {
 // }
 
 //Criar uma pagina nova -> @author {Arthur}
-router.post("/book/page", authenticateUser, pageController.createPage);
+// router.post("/book/page", authenticateUser, pageController.createPage);
 // {
 //     bookID: id do livro, -> Int
 //     topicName: id do topico, -> String
@@ -75,16 +74,8 @@ router.put(
 //     newName: "novo nome da estante"
 // }
 
-// Atualiza um livro
-router.put("/book", authenticateUser, bookController.updateBook);
-// {
-//     bookID: "ID do livro",
-//     bookshelfName: "nome da estante",
-//     newName: "novo nome do livro"
-// }
-
 // Atualiza uma pagina
-router.put("/book/page", authenticateUser, pageController.updatePage);
+// router.put("/book/page", authenticateUser, pageController.updatePage);
 // {
 //   topicId: 'nome do topico',
 //   content: 'novo conteudo',
@@ -115,3 +106,8 @@ router.delete("/deleteUser", authenticateUser, userController.deleteUser)
 // Retorna quantos livros um usuário criou -> @author {Arthur} @coauthor {Thiago}
 router.get("/userBooks", authenticateUser, bookController.getUserBooks)
 
+// Rota para upload de de livro
+router.post("/upload", authenticateUser, files, bookController.createBook);
+
+// Atualiza um livro
+router.put("/updateBook", authenticateUser, files, bookController.updateBook)

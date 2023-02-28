@@ -27,7 +27,6 @@ export async function createPage(
     if (duplicate.rows[0].count == 1) {
       throw "Já existe uma página com esse tópico no livro especificado";
     }
-
     const createPageQuery = `
         INSERT INTO pages (
             book_id,
@@ -53,6 +52,7 @@ export async function createPage(
     ]);
     return response.rows;
   } catch (error) {
+    console.log(error);
     console.log(TAG, "error caught at createPage()");
     throw error;
   }
@@ -105,7 +105,7 @@ export async function deletePage(pageID) {
   }
 }
 
-export async function updatePage(topic, content, image, editor, pageID) {
+export async function updatePage(topic, content, image, editor, pageID, client) {
   try {
     const updateQuery = `
         UPDATE pages
@@ -117,7 +117,7 @@ export async function updatePage(topic, content, image, editor, pageID) {
         WHERE
             pages.page_id = $5`;
 
-    const response = await pool.query(updateQuery, [
+    const response = await client.query(updateQuery, [
       topic,
       content,
       image,

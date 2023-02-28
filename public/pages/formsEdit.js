@@ -1,3 +1,6 @@
+import submitForm from "../modules/submitForm.js";
+import { printTable } from "./list.js";
+
 export default function formEdit(user, cont, editEvent) {
 
     const root = document.createElement("div");
@@ -9,11 +12,12 @@ export default function formEdit(user, cont, editEvent) {
         const submitButton = document.querySelector("#updateButton")
         submitButton.classList.add("modalButtonDisabled")
         e.preventDefault();
-        const editResult = await submitForm();
+        const editResult = await submitForm(true);
+        console.log("resultado submit", editResult);
         if (editResult.status == 200) {
             await printTable();
             submitButton.classList.remove("modalButtonDisabled")
-            alert("Livro criado com sucesso")
+            alert("Livro atualizado com sucesso")
             document.querySelector(".bookWrapper").remove()
         } else {
             submitButton.classList.remove("modalButtonDisabled")
@@ -25,6 +29,8 @@ export default function formEdit(user, cont, editEvent) {
 
     const modalTitle = document.createElement("h2")
     modalTitle.innerHTML = "Editar livro"
+    modalTitle.id = "modalTitle"
+    modalTitle.dataset.book_id = editEvent.target.dataset.book_id;
     form.appendChild(modalTitle)
 
     // Cria o primeiro grupo de campos
@@ -46,7 +52,21 @@ export default function formEdit(user, cont, editEvent) {
     textInput1.name = "bookTitle";
     textInput1.required = true;
     textInput1.value = editEvent.target.dataset.bookTitle;
-    console.log(editEvent.target);
+
+    const coverImageDiv = document.createElement("div")
+    coverImageDiv.classList.add("imagePreviewDiv")
+
+    const coverImageFigure = document.createElement("figure")
+
+    const coverImagePreview = document.createElement("img")
+    coverImagePreview.classList.add("imagePreview")
+    coverImagePreview.id = "coverImagePreview"
+
+    coverImageFigure.appendChild(coverImagePreview)
+
+    const coverImageCaption = document.createElement("figcaption")
+    coverImageCaption.textContent = "Imagem selecionada"
+    coverImageFigure.appendChild(coverImageCaption)
 
     const imageUpload1Label = document.createElement("label");
     imageUpload1Label.htmlFor = "coverImage";
@@ -57,7 +77,6 @@ export default function formEdit(user, cont, editEvent) {
     imageUpload1.id = "coverImage";
     imageUpload1.name = "coverImage";
     imageUpload1.accept = "image/*";
-    imageUpload1.required = true;
 
     const dropdown1Label = document.createElement("label");
     dropdown1Label.htmlFor = "bookshelfName";
@@ -83,11 +102,14 @@ export default function formEdit(user, cont, editEvent) {
             });
         });
 
+    coverImageDiv.appendChild(imageUpload1)
+    coverImageDiv.appendChild(coverImageFigure)
+    
     group1.appendChild(page1);
     group1.appendChild(textInput1Label);
     group1.appendChild(textInput1);
     group1.appendChild(imageUpload1Label);
-    group1.appendChild(imageUpload1);
+    group1.appendChild(coverImageDiv);
     group1.appendChild(dropdown1Label);
     group1.appendChild(dropdown1);
 
@@ -113,6 +135,20 @@ export default function formEdit(user, cont, editEvent) {
     textInput.name = `textInput2`;
     textInput.required = true;
 
+    const firstImageDiv = document.createElement("div")
+    firstImageDiv.classList.add("imagePreviewDiv")
+
+    const firstImageFigure = document.createElement("figure")
+
+    const firstImagePreview = document.createElement("img")
+    firstImagePreview.classList.add("imagePreview")
+    firstImagePreview.id = "imagePreview2"
+    firstImageFigure.appendChild(firstImagePreview)
+
+    const firstImageCaption = document.createElement("figcaption")
+    firstImageCaption.textContent = "Imagem selecionada"
+    firstImageFigure.appendChild(firstImageCaption)
+
     const imageUploadLabel = document.createElement("label");
     imageUploadLabel.htmlFor = `imageUpload2`;
     imageUploadLabel.textContent = "Imagem da página:";
@@ -122,7 +158,6 @@ export default function formEdit(user, cont, editEvent) {
     imageUpload.id = `imageUpload2`;
     imageUpload.name = `imageUpload2`;
     imageUpload.accept = "image/*";
-    imageUpload.required = true;
 
     const dropdownLabel = document.createElement("label");
     dropdownLabel.htmlFor = `dropdown2`;
@@ -132,7 +167,6 @@ export default function formEdit(user, cont, editEvent) {
     dropdown.id = `dropdown2`;
     dropdown.name = `dropdown2`;
     dropdown.className = "selectDropdown";
-    dropdown.required = true;
     dropdown.onclick = () => {
         validateInputSelect()
     }; 
@@ -166,13 +200,16 @@ export default function formEdit(user, cont, editEvent) {
     dropdown.appendChild(dropdownOption3);
     dropdown.appendChild(dropdownOption4);
 
+    firstImageDiv.appendChild(imageUpload)
+    firstImageDiv.appendChild(firstImageFigure)
+    
     group.appendChild(pages);
     group.appendChild(dropdownLabel);
     group.appendChild(dropdown);
     group.appendChild(textInputLabel);
     group.appendChild(textInput);
     group.appendChild(imageUploadLabel);
-    group.appendChild(imageUpload);
+    group.appendChild(firstImageDiv);
 
     form.appendChild(group);
 
@@ -232,10 +269,25 @@ function createIput() {
         textInput.id = `textInput${counter}`;
         textInput.name = `textInput${counter}`;
 
+
+        const ImageDiv = document.createElement("div")
+        ImageDiv.classList.add("imagePreviewDiv")
+
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
         imageUploadLabel.textContent = "Imagem da página:"
     
+        const ImageFigure = document.createElement("figure")
+
+        const ImagePreview = document.createElement("img")
+        ImagePreview.classList.add("imagePreview")
+        ImagePreview.id = `imagePreview${counter}`
+
+        ImageFigure.appendChild(ImagePreview)
+
+        const ImageCaption = document.createElement("figcaption")
+        ImageCaption.textContent = "Imagem selecionada"
+        ImageFigure.appendChild(ImageCaption)
 
         const imageUpload = document.createElement("input");
         imageUpload.type = "file";
@@ -281,13 +333,16 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
+        ImageDiv.appendChild(imageUpload)
+        ImageDiv.appendChild(ImageFigure)
+
         group.appendChild(pages);
         group.appendChild(dropdownLabel);
         group.appendChild(dropdown);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
         group.appendChild(imageUploadLabel);
-        group.appendChild(imageUpload);
+        group.appendChild(ImageDiv);
 
         // form.appendChild(group);
         form.insertBefore(group, document.querySelector("#buttonDiv"));
@@ -299,7 +354,6 @@ function validateInputSelect() {
     const mySelects = document.querySelectorAll('.selectDropdown');
     console.log(mySelects.length);
     mySelects.forEach(select => {
-        console.log(select.value);
         if (select.value !== "") {
             const selectedId = select.id;
             for (let i = 2; i <= mySelects.length+1; i++) {
@@ -323,13 +377,20 @@ function validateInputSelect() {
 async function showPages(user,cont) {
     const jsonBook = await fetch(`/api/books/${user[cont-1].book_id}`);
     const jsonpage = await jsonBook.json();
-
+    console.log(jsonpage);
     jsonpage.forEach((pages,index)=>{
+        console.log(pages);
         if (index > 0) {
             createIput()
         }
+        if (index == 0) {
+            const coverImagePreview = document.querySelector("#coverImagePreview")
+            coverImagePreview.src = `/uploads/${pages.cover_image}`
+        }
 
         document.querySelector(`#textInput${index+2}`).innerText = pages.content;
+        document.querySelector(`#textInput${index+2}`).dataset.page_id = pages.page_id;
+        document.querySelector(`#imagePreview${index+2}`).src = `/uploads/${pages.image}`
 
         const select = document.querySelector(`#dropdown${index+2}`);
         const option = select.querySelector(`option[value=${pages.topic_name}]`);

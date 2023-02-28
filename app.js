@@ -2,8 +2,6 @@
 import express from "express";
 import dotenv from "dotenv";
 import router from "./src/router.js";
-import files from "./src/lib/upload.js";
-import { createBook } from "./src/controllers/bookController.js";
 import cookieParser from "cookie-parser";
 
 // Carrega variáveis de ambiente
@@ -20,11 +18,6 @@ app.use(cookieParser());
 // Rotas
 app.use("/", express.static("./public"));
 app.use("/", router);
-
-// Rota para upload de arquivos
-app.post("/upload", files, async (req, res, next) => {
-    createBook(req, res, next);
-});
 
 // Redirecionamento de página não encontrada
 app.use(function (req, res) {

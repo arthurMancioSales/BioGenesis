@@ -49,14 +49,15 @@ export async function deletePage(pageID) {
   }
 }
 
-export async function updatePage(topic, content, image, editor, pageID) {
+export async function updatePage(topic, content, image, editor, pageID, client) {
   try {
     const dbResponse = await pageRepository.updatePage(
       topic,
       content,
       image,
       editor,
-      pageID
+      pageID,
+      client
     );
     return dbResponse;
   } catch (error) {
