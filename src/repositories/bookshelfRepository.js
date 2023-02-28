@@ -68,13 +68,26 @@ export async function getBookshelfBooks(bookshelfID) {
 // Apaga uma estante -> @author {Arthur}
 export async function deleteBookshelf(bookshelfID) {
   try {
-    const deleteBookshelfQuery = `
-        DELETE FROM bookshelves 
-        WHERE bookshelves.bookshelf_id = $1
-`;
+    const getBooksQuery = `
+    SELECT
+        count(book_id)
+    FROM
+        books
+    WHERE
+        bookshelf_id = $1;`;
+    const bookNumber = await pool.query(getBooksQuery, [bookshelfID]);
 
-    const response = await pool.query(deleteBookshelfQuery, [bookshelfID]);
-    return response.rows;
+    if (bookNumber.rows[0].count === "0") {
+      const deleteBookshelfQuery = `
+                DELETE FROM bookshelves
+                WHERE bookshelves.bookshelf_id = $1
+        `;
+
+      const response = await pool.query(deleteBookshelfQuery, [bookshelfID]);
+      return response.rows;
+    } else {
+      return false;
+    }
   } catch (error) {
     console.log(TAG, "error caught at deleteBookshelf()");
     throw error;

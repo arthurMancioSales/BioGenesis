@@ -42,13 +42,13 @@ export default async function formEdit(user, cont, editEvent) {
     modalTitle.dataset.book_id = editEvent.target.dataset.book_id;
     form.appendChild(modalTitle)
 
-    // Cria o primeiro grupo de campos
-    const group1 = document.createElement("div");
-    group1.id = "group-1";
-    group1.classList = "input-group";
+  // Cria o primeiro grupo de campos
+  const group1 = document.createElement("div");
+  group1.id = "group-1";
+  group1.classList = "input-group";
 
-    const page1 = document.createElement("h2");
-    page1.innerHTML = "Capa";
+  const page1 = document.createElement("h2");
+  page1.innerHTML = "Capa";
 
     const textInput1Label = document.createElement("label");
     textInput1Label.classList.add("required")
@@ -78,9 +78,9 @@ export default async function formEdit(user, cont, editEvent) {
     coverImageCaption.textContent = "Imagem selecionada"
     coverImageFigure.appendChild(coverImageCaption)
 
-    const imageUpload1Label = document.createElement("label");
-    imageUpload1Label.htmlFor = "coverImage";
-    imageUpload1Label.textContent = "Capa:";
+  const imageUpload1Label = document.createElement("label");
+  imageUpload1Label.htmlFor = "coverImage";
+  imageUpload1Label.textContent = "Capa:";
 
     const imageUpload1 = document.createElement("input");
     imageUpload1.type = "file";
@@ -100,25 +100,25 @@ export default async function formEdit(user, cont, editEvent) {
     dropdown1Label.htmlFor = "bookshelfName";
     dropdown1Label.textContent = "Estante:";
 
-    const dropdown1 = document.createElement("select");
-    dropdown1.id = "bookshelfName";
-    dropdown1.name = "bookshelfName";
-    dropdown1.required = true;
+  const dropdown1 = document.createElement("select");
+  dropdown1.id = "bookshelfName";
+  dropdown1.name = "bookshelfName";
+  dropdown1.required = true;
 
     
 
-    fetch(`/api/bookshelves`)
-        .then((response) => {
-            return response.json();
-        })
-        .then((response) => {
-            response.data.forEach((name) => {
-                const dropdown1Option = document.createElement("option");
-                dropdown1Option.value = `${name.name}`;
-                dropdown1Option.textContent = `${name.name}`;
-                dropdown1.appendChild(dropdown1Option);
-            });
-        });
+  fetch(`/api/bookshelves`)
+    .then((response) => {
+      return response.json();
+    })
+    .then((response) => {
+      response.data.forEach((name) => {
+        const dropdown1Option = document.createElement("option");
+        dropdown1Option.value = `${name.name}`;
+        dropdown1Option.textContent = `${name.name}`;
+        dropdown1.appendChild(dropdown1Option);
+      });
+    });
 
     coverImageDiv.appendChild(imageUpload1)
     coverImageDiv.appendChild(coverImageFigure)
@@ -131,17 +131,15 @@ export default async function formEdit(user, cont, editEvent) {
     group1.appendChild(dropdown1Label);
     group1.appendChild(dropdown1);
 
-    form.appendChild(group1);
+  form.appendChild(group1);
 
-      
-    
-    // Cria os outros grupos de campos
-    const group = document.createElement("div");
-    group.id = `group-2`;
-    group.classList.add("input-group");
+  // Cria os outros grupos de campos
+  const group = document.createElement("div");
+  group.id = `group-2`;
+  group.classList.add("input-group");
 
-    const pages = document.createElement("h2");
-    pages.innerHTML = `Pagina 1`;
+  const pages = document.createElement("h2");
+  pages.innerHTML = `Pagina 1`;
 
     const textInputLabel = document.createElement("label");
     textInputLabel.classList.add("required")
@@ -168,9 +166,9 @@ export default async function formEdit(user, cont, editEvent) {
     firstImageCaption.textContent = "Imagem selecionada"
     firstImageFigure.appendChild(firstImageCaption)
 
-    const imageUploadLabel = document.createElement("label");
-    imageUploadLabel.htmlFor = `imageUpload2`;
-    imageUploadLabel.textContent = "Imagem da página:";
+  const imageUploadLabel = document.createElement("label");
+  imageUploadLabel.htmlFor = `imageUpload2`;
+  imageUploadLabel.textContent = "Imagem da página:";
 
     const imageUpload = document.createElement("input");
     imageUpload.type = "file";
@@ -190,36 +188,36 @@ export default async function formEdit(user, cont, editEvent) {
     dropdownLabel.htmlFor = `dropdown2`;
     dropdownLabel.textContent = "Tópico da página:";
 
-    const dropdown = document.createElement("select");
-    dropdown.id = `dropdown2`;
-    dropdown.name = `dropdown2`;
-    dropdown.className = "selectDropdown";
-    dropdown.onclick = () => {
-        validateInputSelect()
-    }; 
+  const dropdown = document.createElement("select");
+  dropdown.id = `dropdown2`;
+  dropdown.name = `dropdown2`;
+  dropdown.className = "selectDropdown";
+  dropdown.required = true;
+  dropdown.onclick = () => {
+    validateInputSelect();
+  };
 
-    const dropdownOption0 = document.createElement("option");
-    dropdownOption0.value = ``;
-    dropdownOption0.textContent = "Selecione uma opção";
+  const dropdownOption0 = document.createElement("option");
+  dropdownOption0.value = ``;
+  dropdownOption0.textContent = "Selecione uma opção";
 
-    const dropdownOption1 = document.createElement("option");
-    dropdownOption1.value = `alimentação`;
-    dropdownOption1.textContent = "alimentação";
+  const dropdownOption1 = document.createElement("option");
+  dropdownOption1.value = `alimentação`;
+  dropdownOption1.textContent = "alimentação";
 
-    const dropdownOption2 = document.createElement("option");
-    dropdownOption2.value = `habitat`;
-    dropdownOption2.textContent = "habitat";
+  const dropdownOption2 = document.createElement("option");
+  dropdownOption2.value = `habitat`;
+  dropdownOption2.textContent = "habitat";
 
-    const dropdownOption3 = document.createElement("option");
-    dropdownOption3.value = `curiosidades`;
-    dropdownOption3.textContent = "curiosidades";
+  const dropdownOption3 = document.createElement("option");
+  dropdownOption3.value = `curiosidades`;
+  dropdownOption3.textContent = "curiosidades";
 
-    const dropdownOption4 = document.createElement("option");
-    dropdownOption4.value = `comportamento`;
-    dropdownOption4.textContent = "comportamento";
+  const dropdownOption4 = document.createElement("option");
+  dropdownOption4.value = `comportamento`;
+  dropdownOption4.textContent = "comportamento";
 
-
-    showPages(user,cont);
+  showPages(user, cont);
 
     dropdown.appendChild(dropdownOption0);
     dropdown.appendChild(dropdownOption1);
@@ -276,34 +274,38 @@ export default async function formEdit(user, cont, editEvent) {
 
     form.appendChild(requiredExplanation);
 
-    root.appendChild(form);
+  root.appendChild(form);
 
-    return form
+  return form;
 }
 
-
 function createIput() {
-    const counter = document.querySelectorAll(".input-group").length + 1;
-    if (counter <= 5) {
-        const form = document.querySelector("#form");
+  const counter = document.querySelectorAll(".input-group").length + 1;
+  if (counter <= 5) {
+    const form = document.querySelector("#form");
+    const btnX = document.createElement("div");
+    btnX.classList = "btnX";
+    btnX.onclick = () => {
+      removePage(counter);
+    };
 
-        const group = document.createElement("div");
-        group.id = `group-${counter}`;
-        group.classList.add("input-group");
+    const group = document.createElement("div");
+    group.id = `group-${counter}`;
+    group.classList.add("input-group");
 
-        const pages = document.createElement("h2");
-        pages.innerHTML = `Pagina ${counter - 1}`;
+    const pages = document.createElement("h2");
+    pages.innerHTML = `Pagina ${counter - 1}`;
 
         const textInputLabel = document.createElement("label");
         textInputLabel.classList.add("required")
         textInputLabel.htmlFor = `textInput${counter}`;
         textInputLabel.textContent = "Conteúdo da página:";
 
-        const textInput = document.createElement("textarea");
-        textInput.maxLength = "930"
+    const textInput = document.createElement("textarea");
+    textInput.maxLength = "930";
 
-        textInput.id = `textInput${counter}`;
-        textInput.name = `textInput${counter}`;
+    textInput.id = `textInput${counter}`;
+    textInput.name = `textInput${counter}`;
 
 
         const ImageDiv = document.createElement("div")
@@ -343,33 +345,33 @@ function createIput() {
         dropdownLabel.htmlFor = `dropdown${counter}`;
         dropdownLabel.textContent = "Tópico da página:";
 
-        const dropdown = document.createElement("select");
-        dropdown.id = `dropdown${counter}`;
-        dropdown.className = "selectDropdown";
-        dropdown.name = `dropdown${counter}`;
-        dropdown.onclick = () => {
-            validateInputSelect()
-        }; 
+    const dropdown = document.createElement("select");
+    dropdown.id = `dropdown${counter}`;
+    dropdown.className = "selectDropdown";
+    dropdown.name = `dropdown${counter}`;
+    dropdown.onclick = () => {
+      validateInputSelect();
+    };
 
-        const dropdownOption0 = document.createElement("option");
-        dropdownOption0.value = ``;
-        dropdownOption0.textContent = "Selecione uma opção";
+    const dropdownOption0 = document.createElement("option");
+    dropdownOption0.value = ``;
+    dropdownOption0.textContent = "Selecione uma opção";
 
-        const dropdownOption1 = document.createElement("option");
-        dropdownOption1.value = `alimentação`;
-        dropdownOption1.textContent = "alimentação";
+    const dropdownOption1 = document.createElement("option");
+    dropdownOption1.value = `alimentação`;
+    dropdownOption1.textContent = "alimentação";
 
-        const dropdownOption2 = document.createElement("option");
-        dropdownOption2.value = `habitat`;
-        dropdownOption2.textContent = "habitat";
+    const dropdownOption2 = document.createElement("option");
+    dropdownOption2.value = `habitat`;
+    dropdownOption2.textContent = "habitat";
 
-        const dropdownOption3 = document.createElement("option");
-        dropdownOption3.value = `curiosidades`;
-        dropdownOption3.textContent = "curiosidades";
+    const dropdownOption3 = document.createElement("option");
+    dropdownOption3.value = `curiosidades`;
+    dropdownOption3.textContent = "curiosidades";
 
-        const dropdownOption4 = document.createElement("option");
-        dropdownOption4.value = `comportamento`;
-        dropdownOption4.textContent = "comportamento";
+    const dropdownOption4 = document.createElement("option");
+    dropdownOption4.value = `comportamento`;
+    dropdownOption4.textContent = "comportamento";
 
         dropdown.appendChild(dropdownOption0);
         dropdown.appendChild(dropdownOption1);
@@ -380,13 +382,14 @@ function createIput() {
         ImageDiv.appendChild(imageUpload)
         ImageDiv.appendChild(ImageFigure)
 
-        group.appendChild(pages);
-        group.appendChild(dropdownLabel);
-        group.appendChild(dropdown);
-        group.appendChild(textInputLabel);
-        group.appendChild(textInput);
-        group.appendChild(imageUploadLabel);
-        group.appendChild(ImageDiv);
+    group.appendChild(btnX);
+    group.appendChild(pages);
+    group.appendChild(dropdownLabel);
+    group.appendChild(dropdown);
+    group.appendChild(textInputLabel);
+    group.appendChild(textInput);
+    group.appendChild(imageUploadLabel);
+    group.appendChild(ImageDiv);
 
         // form.appendChild(group);
         form.insertBefore(group, document.querySelector("#buttonDiv"));
@@ -402,7 +405,6 @@ function createIput() {
     }
 }
 
-
 function validateInputSelect() {
     const mySelects = document.querySelectorAll('.selectDropdown');
     mySelects.forEach(select => {
@@ -415,9 +417,6 @@ function validateInputSelect() {
                         if (option.value == select.value) {
                         option.disabled = true;
                         }
-                        //  else {
-                        // option.disabled = false;
-                        // }
                     });
                 };
             };
@@ -442,9 +441,24 @@ async function showPages(user,cont) {
         document.querySelector(`#textInput${index+2}`).dataset.page_id = pages.page_id;
         document.querySelector(`#imagePreview${index+2}`).src = `/uploads/${pages.image}`
 
-        const select = document.querySelector(`#dropdown${index+2}`);
-        const option = select.querySelector(`option[value=${pages.topic_name}]`);
-        option.selected = true;
-   
-    })   
+    const select = document.querySelector(`#dropdown${index + 2}`);
+    const option = select.querySelector(`option[value=${pages.topic_name}]`);
+    option.selected = true;
+  });
+}
+
+function removePage(pageGroup) {
+  const group = document.querySelector(`#group-${pageGroup}`);
+  group.remove();
+
+  const groups = document.querySelectorAll(".input-group");
+  groups.forEach((group, index) => {
+    if (index > 0) {
+      group.id = `group-${index + 1}`;
+      const titlePage = group.querySelector("h2");
+
+      titlePage.innerText = `Pagina ${index}`;
+      console.log(titlePage);
+    }
+  });
 }

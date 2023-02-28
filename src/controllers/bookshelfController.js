@@ -87,6 +87,15 @@ export async function deleteBookshelf(req, res) {
   try {
     const serviceResponse = await bookshelfService.deleteBookshelf(bookshelfID);
 
+    if (serviceResponse === false) {
+      response.message = "Estante não pode ser deletada pois contem livros";
+      response.data = false;
+      response.error = "Operação não permitida";
+
+      res.status(403).json(response);
+      return;
+    }
+
     response.message = "Estante apagada com sucesso";
     response.data = serviceResponse;
     response.error = null;

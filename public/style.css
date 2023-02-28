@@ -410,6 +410,36 @@ select {
     cursor: pointer;
 }
 
+
+.btnX {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .btnX::before, .btnX::after {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: black;
+    transform-origin: center;
+  }
+  
+  .btnX::before {
+    transform: rotate(45deg);
+  }
+  
+  .btnX::after {
+    transform: rotate(-45deg);
+  }
+
+
+
+
 #p {
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 16px;
@@ -522,8 +552,12 @@ select {
 }
 
 .bookImage {
-    width: 410px;
-    margin-top: auto;
+
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+margin-bottom: 0;
+    align-self: flex-end;
 }
 
 .pageRight {
@@ -568,7 +602,8 @@ select {
 }
 
 .bookCoverImage {
-    width: 90%;
+    max-height: 90%;
+    max-width: 90%;
 }
 
 .bookAuthor {
@@ -585,7 +620,7 @@ select {
     writing-mode: vertical-rl;
     text-orientation: sideways;
     border: 1px solid black;
-    font-size: larger;
+    font-size: 0.8vw;
     font-weight: 600;
     text-transform: capitalize;
     height: 30%;

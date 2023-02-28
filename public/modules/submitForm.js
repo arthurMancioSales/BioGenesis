@@ -30,8 +30,8 @@ export default async function submitForm(update=false) {
         formData.append("imageUpload2", firstImageInput.files[0]);
     }
 
-    const userInfoResponse = await fetch("/session")
-    const userInfo = await userInfoResponse.json()
+  const userInfoResponse = await fetch("/session");
+  const userInfo = await userInfoResponse.json();
 
 
     formData.append("bookID", bookID);
@@ -39,7 +39,7 @@ export default async function submitForm(update=false) {
     formData.append("bookTitle", bookTitle.value);
     formData.append("bookshelfName", bookshelfName.value);
 
-    formData.append("userName", userInfo.data.username);
+  formData.append("userName", userInfo.data.username);
 
     formData.append("textInput2", textInput2.value);
     formData.append("page_id2", textInput2.dataset.page_id);
@@ -80,5 +80,3 @@ export default async function submitForm(update=false) {
 
     return result
 }
-
-
