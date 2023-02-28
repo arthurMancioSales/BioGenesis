@@ -194,12 +194,15 @@ function addRow(userList, cont) {
     bookEdit.onclick = async (e) => {
         body.appendChild(wrapper);
         wrapper.innerHTML = ""
-        wrapper.appendChild(formEdit(userList, cont, e));
+        const modal = await formEdit(userList, cont, e)
+        wrapper.appendChild(modal);
     }
     bookEdit.dataset.bookTitle = userList[i].book_name
     bookEdit.dataset.book_id = userList[i].book_id
+    bookEdit.dataset.owner = userList[i].author
     bookEdit.children[0].dataset.bookTitle = userList[i].book_name
     bookEdit.children[0].dataset.book_id = userList[i].book_id
+    bookEdit.children[0].dataset.owner = userList[i].author
     bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
     bookDelete.onclick = async () => {
         await deleteBook(userList[i].book_id, userList[i].author);

@@ -1,7 +1,18 @@
 import submitForm from "../modules/submitForm.js";
 import { printTable } from "./list.js";
 
-export default function formEdit(user, cont, editEvent) {
+export default async function formEdit(user, cont, editEvent) {
+
+    const userInfoRequest = await fetch("/session")
+    const userInfo = await userInfoRequest.json()     
+    const owner = editEvent.target.dataset.owner
+
+    if (userInfo.data.username != owner) {
+        alert("Você não tem permissão para editar esse livro")
+        const wrapper = document.querySelector(".bookWrapper")
+        document.body.removeChild(wrapper);
+        return
+    }
 
     const root = document.createElement("div");
 
