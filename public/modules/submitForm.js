@@ -2,7 +2,7 @@
 export default async function submitForm(update=false) {
 
     const inputs = document.querySelectorAll(".input-group").length
-    const bookID = document.querySelector("#modalTitle").dataset.book_id
+    
     
     const bookTitle = document.getElementById("bookTitle");
     const bookshelfName = document.querySelector(`#bookshelfName`);
@@ -34,7 +34,6 @@ export default async function submitForm(update=false) {
   const userInfo = await userInfoResponse.json();
 
 
-    formData.append("bookID", bookID);
     formData.append("pageCount", inputs);
     formData.append("bookTitle", bookTitle.value);
     formData.append("bookshelfName", bookshelfName.value);
@@ -72,6 +71,9 @@ export default async function submitForm(update=false) {
             body: formData,
         });
     } else {
+        const bookID = document.querySelector("#modalTitle").dataset.book_id
+
+        formData.append("bookID", bookID);
         result = await fetch("api/updateBook",{
             method: "PUT",
             body: formData,

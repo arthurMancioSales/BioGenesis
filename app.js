@@ -26,5 +26,5 @@ app.use(function (req, res) {
 
 //  Roda o servidor
 app.listen(port, () => {
-  console.log(`Server running on http://149.28.100.51:${port}`);
+  console.log(`Server running on http://localhost:${port}`);
 });

@@ -13,7 +13,7 @@ export default async function deleteBook(book_id, author) {
             alert("Livro deletado");
           });
       } else {
-        alert("Você não é o autor desse libro");
+        alert("Você não tem permissão para apagar esse livro");
       }
       console.log(data);
     });

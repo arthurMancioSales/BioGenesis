@@ -202,6 +202,7 @@ function addRow(userList, cont) {
     bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
     bookDelete.onclick = async () => {
         await deleteBook(userList[i].book_id, userList[i].author);
+        console.log("a");
         printTable();
     }
 }
