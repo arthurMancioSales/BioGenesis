@@ -199,7 +199,14 @@ export async function updateBook(req, res) {
     console.log(TAG);
     console.time("updateBook()");
 
-    const { bookID, newName } = req.body;
+    const { bookID, bookTitle, bookshelfName, userName, pageCount } = req.body;
+    let coverImage = req.files["coverImage"]
+    
+    if (coverImage) {
+        coverImage = req.files["coverImage"][0].filename
+    } else {
+        coverImage = req.body.coverImage
+    }
 
     if (bookID < 0 || typeof bookID != "int") {
         response.message = "Não foi possível atualizar o livro";
@@ -207,13 +214,39 @@ export async function updateBook(req, res) {
         response.error = "Informe um ID válido";
     }
 
+    const client = await pool.connect()
     try {
-        const serviceResponse = await bookService.updateBook(newName, bookID);
+
+        client.query("BEGIN")
+
+        const serviceResponse = await bookService.updateBook(bookTitle, bookshelfName, bookID, coverImage, client);
+
+        for (let i = 2; i <= pageCount; i++) {
+            let image = req.files[`imageUpload${i}`]
+    
+            if (image) {
+                image = req.files[`imageUpload${i}`][0].filename
+            } else {
+                image = req.body[`imageUpload${i}`]
+            }
+
+            const page_id = req.body[`page_id${i}`]
+
+            await pageService.updatePage(
+                req.body[`dropdown${i}`],
+                req.body[`textInput${i}`],
+                image,
+                userName,
+                page_id,
+                client
+            )
+        }
 
         response.message = "Livro atualizado com sucesso";
         response.data = serviceResponse;
         response.error = null;
 
+        client.query("COMMIT")
         res.status(200).json(response);
         console.timeEnd("updateBook()");
     } catch (error) {
@@ -224,6 +257,7 @@ export async function updateBook(req, res) {
         response.data = null;
         response.error = "Erro interno do servidor";
 
+        client.query("ROLLBACK")
         res.status(500).json(response);
         console.timeEnd("updateBook()");
     }

@@ -1,5 +1,5 @@
 import SPA from "../modules/spa.js";
-import form from "./froms.js";
+import form from "./forms.js";
 import formEdit from "./formsEdit.js";
 import deleteBook from "./deleteBook.js";
 
@@ -179,23 +179,30 @@ function addRow(userList, cont) {
   const tbody = document.querySelector("#table");
   tbody.appendChild(line);
 
-  let i = cont - 1;
+    let i = cont - 1;
 
-  bookID.innerHTML = `<span>${userList[i].book_id}</span>`;
-  bookTitle.innerHTML = `<span>${userList[i].book_name}</span>`;
-  bookTheme.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
-  bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
-  bookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
-  bookEdit.onclick = async (e) => {
-    body.appendChild(wrapper);
-    wrapper.innerHTML = "";
-    wrapper.appendChild(formEdit(userList, cont, e));
-  };
-  bookEdit.dataset.bookTitle = userList[i].book_name;
-  bookEdit.children[0].dataset.bookTitle = userList[i].book_name;
-  bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
-  bookDelete.onclick = async () => {
-    await deleteBook(userList[i].book_id, userList[i].author);
-    printTable();
-  };
+  
+    bookID.innerHTML = `<span>${userList[i].book_id}</span>`;
+    bookTitle.innerHTML = `<span>${userList[i].book_name}</span>`;
+    bookTheme.innerHTML = `<span>${userList[i].bookshelf_name}<span>`;
+    bookAuthor.innerHTML = `<span>${userList[i].author}<span>`;
+    bookEdit.innerHTML = `<i class="fa-solid fa-pencil listIcon link"></i>`;
+    bookEdit.onclick = async (e) => {
+        body.appendChild(wrapper);
+        wrapper.innerHTML = ""
+        const modal = await formEdit(userList, cont, e)
+        wrapper.appendChild(modal);
+    }
+    bookEdit.dataset.bookTitle = userList[i].book_name
+    bookEdit.dataset.book_id = userList[i].book_id
+    bookEdit.dataset.owner = userList[i].author
+    bookEdit.children[0].dataset.bookTitle = userList[i].book_name
+    bookEdit.children[0].dataset.book_id = userList[i].book_id
+    bookEdit.children[0].dataset.owner = userList[i].author
+    bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
+    bookDelete.onclick = async () => {
+        await deleteBook(userList[i].book_id, userList[i].author);
+        console.log("a");
+        printTable();
+    }
 }

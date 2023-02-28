@@ -2,14 +2,12 @@
 // @coauthor {Arthur}
 
 import bookshelf from "../pages/bookShelf.js";
-import form from "../pages/froms.js";
 import homeUser from "../pages/homeUser.js";
 import login from "../pages/login.js";
 import register from "../pages/register.js";
 import list from "../pages/list.js";
 import listShelves from "../pages/listShelves.js";
 import edit from "../pages/edit.js";
-import passwordRecover from "../pages/passwordRecover.js";
 import aboutUs from "../pages/aboutUs.js";
 import editProfile from "../pages/editProfile.js";
 import profile from "../pages/profile.js";
@@ -23,7 +21,6 @@ export default function SPA() {
     "/list": list,
     "/listShelves": listShelves,
     "/edit": edit,
-    "/passwordRecover": passwordRecover,
     "/aboutUs": aboutUs,
     "/editProfile": editProfile,
     "/profile": profile,
