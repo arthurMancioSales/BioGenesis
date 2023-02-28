@@ -20,7 +20,6 @@ export default async function deleteBook (book_id, author) {
             alert("Você não é o autor desse libro");
 
         }
-        console.log(data);
     })
 
 

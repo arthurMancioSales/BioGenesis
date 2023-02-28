@@ -13,7 +13,6 @@ export default function formEdit(user, cont, editEvent) {
         submitButton.classList.add("modalButtonDisabled")
         e.preventDefault();
         const editResult = await submitForm(true);
-        console.log("resultado submit", editResult);
         if (editResult.status == 200) {
             await printTable();
             submitButton.classList.remove("modalButtonDisabled")
@@ -22,7 +21,6 @@ export default function formEdit(user, cont, editEvent) {
         } else {
             submitButton.classList.remove("modalButtonDisabled")
             const error = await editResult.json()
-            console.log(error);
             alert(error.error)
         }
     };
@@ -223,12 +221,12 @@ export default function formEdit(user, cont, editEvent) {
 
     const btnFormBook = document.createElement("button");
     btnFormBook.classList.add("modalButton")
+    btnFormBook.id = "addPageButton"
     btnFormBook.innerText = "adicionar Pagina";
     btnFormBook.setAttribute("type", "button");
     btnFormBook.onclick = () => {
         btnFormBook.classList.add("modalButtonDisabled")
         createIput();
-        btnFormBook.classList.remove("modalButtonDisabled")
     };
 
     const submitButton = document.createElement("button");
@@ -346,13 +344,21 @@ function createIput() {
 
         // form.appendChild(group);
         form.insertBefore(group, document.querySelector("#buttonDiv"));
+
+        const addPageButton = document.querySelector("#addPageButton")
+        addPageButton.classList.remove("modalButtonDisabled")
+
+        if (counter === 5) {
+            console.log(addPageButton);
+            addPageButton.classList.add("modalButtonDisabled")
+            addPageButton.disabled = true
+        }
     }
 }
 
 
 function validateInputSelect() {
     const mySelects = document.querySelectorAll('.selectDropdown');
-    console.log(mySelects.length);
     mySelects.forEach(select => {
         if (select.value !== "") {
             const selectedId = select.id;
@@ -377,9 +383,7 @@ function validateInputSelect() {
 async function showPages(user,cont) {
     const jsonBook = await fetch(`/api/books/${user[cont-1].book_id}`);
     const jsonpage = await jsonBook.json();
-    console.log(jsonpage);
     jsonpage.forEach((pages,index)=>{
-        console.log(pages);
         if (index > 0) {
             createIput()
         }

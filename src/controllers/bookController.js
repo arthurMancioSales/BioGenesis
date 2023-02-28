@@ -199,8 +199,6 @@ export async function updateBook(req, res) {
     console.log(TAG);
     console.time("updateBook()");
 
-    console.log(req.body, req.files);
-    
     const { bookID, bookTitle, bookshelfName, userName, pageCount } = req.body;
     let coverImage = req.files["coverImage"]
     
@@ -242,7 +240,6 @@ export async function updateBook(req, res) {
                 page_id,
                 client
             )
-            console.log("página criada");
         }
 
         response.message = "Livro atualizado com sucesso";

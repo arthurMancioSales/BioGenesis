@@ -92,18 +92,12 @@ export async function updateUser(newUsername, newEmail, passwordHash, userID) {
 			WHERE 
 				users.user_id = $4`;
 
-        console.log(newUsername,
-            newEmail,
-            passwordHash,
-            userID);
-
         const response = await pool.query(updateUserQuery, [
             newUsername,
             newEmail,
             passwordHash,
             userID,
         ]);
-        console.log(response.rows);
         
 
         return response;

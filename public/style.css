@@ -932,6 +932,9 @@ tr:nth-child(even) {
     display: flex;
     align-items: center;
     flex-direction: column;
+    margin-bottom: 1em;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #form,
@@ -955,10 +958,6 @@ tr:nth-child(even) {
     display: none;
 }
 
-#form {
-    margin-bottom: 1em;
-    overflow-y: scroll;
-}
 #form label {
     margin-bottom: 0.2em;
     color: #000000;

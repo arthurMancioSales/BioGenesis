@@ -12,7 +12,6 @@ export default function form() {
         uploadButton.classList.add("modalButtonDisabled")
         e.preventDefault();
         const submitResult = await submitForm();
-        console.log(submitResult);
         if (submitResult.status == 200) {
             await printTable();
             uploadButton.classList.remove("modalButtonDisabled")
@@ -21,7 +20,6 @@ export default function form() {
         } else {
             uploadButton.classList.remove("modalButtonDisabled")
             const error = await submitResult.json()
-            console.log(error);
             alert(error.error)
         }
     };
@@ -48,6 +46,21 @@ export default function form() {
     textInput1.id = "bookTitle";
     textInput1.name = "bookTitle";
     textInput1.required = true;
+
+    const coverImageDiv = document.createElement("div")
+    coverImageDiv.classList.add("imagePreviewDiv")
+
+    const coverImageFigure = document.createElement("figure")
+
+    const coverImagePreview = document.createElement("img")
+    coverImagePreview.classList.add("imagePreview")
+    coverImagePreview.id = "coverImagePreview"
+
+    coverImageFigure.appendChild(coverImagePreview)
+
+    const coverImageCaption = document.createElement("figcaption")
+    coverImageCaption.textContent = "Imagem selecionada"
+    coverImageFigure.appendChild(coverImageCaption)
 
     const imageUpload1Label = document.createElement("label");
     imageUpload1Label.htmlFor = "coverImage";
@@ -85,11 +98,14 @@ export default function form() {
             });
         });
 
+    coverImageDiv.appendChild(imageUpload1)
+    coverImageDiv.appendChild(coverImageFigure)
+
     group1.appendChild(page1);
     group1.appendChild(textInput1Label);
     group1.appendChild(textInput1);
     group1.appendChild(imageUpload1Label);
-    group1.appendChild(imageUpload1);
+    group1.appendChild(coverImageDiv);
     group1.appendChild(dropdown1Label);
     group1.appendChild(dropdown1);
 
@@ -113,6 +129,19 @@ export default function form() {
     textInput.name = `textInput2`;
     textInput.required = true;
 
+    const firstImageDiv = document.createElement("div")
+    firstImageDiv.classList.add("imagePreviewDiv")
+
+    const firstImageFigure = document.createElement("figure")
+
+    const firstImagePreview = document.createElement("img")
+    firstImagePreview.classList.add("imagePreview")
+    firstImagePreview.id = "imagePreview2"
+    firstImageFigure.appendChild(firstImagePreview)
+
+    const firstImageCaption = document.createElement("figcaption")
+    firstImageCaption.textContent = "Imagem selecionada"
+    firstImageFigure.appendChild(firstImageCaption)
 
     const imageUploadLabel = document.createElement("label");
     imageUploadLabel.htmlFor = `imageUpload2`;
@@ -166,13 +195,16 @@ export default function form() {
     dropdown.appendChild(dropdownOption3);
     dropdown.appendChild(dropdownOption4);
 
+    firstImageDiv.appendChild(imageUpload)
+    firstImageDiv.appendChild(firstImageFigure)
+    
     group.appendChild(pages);
     group.appendChild(dropdownLabel);
     group.appendChild(dropdown);
     group.appendChild(textInputLabel);
     group.appendChild(textInput);
     group.appendChild(imageUploadLabel);
-    group.appendChild(imageUpload);
+    group.appendChild(firstImageDiv);
 
     form.appendChild(group);
 
@@ -191,13 +223,12 @@ export default function form() {
 
     const newPageButton = document.createElement("button");
     newPageButton.classList.add("modalButton")
-    newPageButton.id = "btnFormBook";
+    newPageButton.id = "addPageButton"
     newPageButton.innerText = "adicionar Pagina";
     newPageButton.setAttribute("type", "button");
-    newPageButton.onclick = () => {
-        newPageButton.classList.add("modalButtonDisabled")
+    newPageButton.onclick = (e) => {
+        e.target.classList.add("modalButtonDisabled")
         createIput();
-        newPageButton.classList.remove("modalButtonDisabled")
     };
 
     buttonDiv.appendChild(submitButton);
@@ -234,7 +265,21 @@ function createIput() {
         const imageUploadLabel = document.createElement("label");
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
         imageUploadLabel.textContent = "Imagem da página:";
+
+        const ImageDiv = document.createElement("div")
+        ImageDiv.classList.add("imagePreviewDiv")
     
+        const ImageFigure = document.createElement("figure")
+
+        const ImagePreview = document.createElement("img")
+        ImagePreview.classList.add("imagePreview")
+        ImagePreview.id = `imagePreview${counter}`
+
+        ImageFigure.appendChild(ImagePreview)
+
+        const ImageCaption = document.createElement("figcaption")
+        ImageCaption.textContent = "Imagem selecionada"
+        ImageFigure.appendChild(ImageCaption)
 
         const imageUpload = document.createElement("input");
         imageUpload.type = "file";
@@ -280,17 +325,29 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
+        ImageDiv.appendChild(imageUpload)
+        ImageDiv.appendChild(ImageFigure)
+
         group.appendChild(pages);
         group.appendChild(dropdownLabel);
         group.appendChild(dropdown);
         group.appendChild(textInputLabel);
         group.appendChild(textInput);
         group.appendChild(imageUploadLabel);
-        group.appendChild(imageUpload);
+        group.appendChild(ImageDiv);
 
         // form.appendChild(group);
         form.insertBefore(group, document.querySelector("#buttonDiv"));
-    }
+
+        const addPageButton = document.querySelector("#addPageButton")
+        addPageButton.classList.remove("modalButtonDisabled")
+
+        if (counter === 5) {
+            console.log(addPageButton);
+            addPageButton.classList.add("modalButtonDisabled")
+            addPageButton.disabled = true
+        }
+    } 
 }
 
 function validateInputSelect() {
