@@ -31,7 +31,13 @@ export default async function deleteBookShelvesPage(val) {
   confirmDelete.onclick = async () => {
     const wrapper = document.querySelector(".modalWrapper");
     try {
-      await deleteBookshelf(val);
+      const response = await deleteBookshelf(val);
+      const resolved = await response.json();
+      if (resolved.data === false) {
+        alert(resolved.message);
+        document.querySelector("#root").removeChild(wrapper);
+        throw { error: resolved.message };
+      }
       document.querySelector("#root").removeChild(wrapper);
       document.querySelector("#table").innerHTML = "";
       await printTable();
@@ -66,4 +72,5 @@ async function deleteBookshelf(id) {
   await fetch(`/api/bookshelves/${id}`, {
     method: "DELETE",
   });
+  return res;
 }

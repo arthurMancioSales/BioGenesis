@@ -570,8 +570,12 @@ select {
 }
 
 .bookImage {
-    width: 410px;
-    margin-top: auto;
+
+    max-width: 90%;
+    max-height: 90%;
+    margin: auto;
+margin-bottom: 0;
+    align-self: flex-end;
 }
 
 .pageRight {
@@ -616,7 +620,8 @@ select {
 }
 
 .bookCoverImage {
-    width: 90%;
+    max-height: 90%;
+    max-width: 90%;
 }
 
 .bookAuthor {
@@ -633,7 +638,7 @@ select {
     writing-mode: vertical-rl;
     text-orientation: sideways;
     border: 1px solid black;
-    font-size: larger;
+    font-size: 0.8vw;
     font-weight: 600;
     text-transform: capitalize;
     height: 30%;
