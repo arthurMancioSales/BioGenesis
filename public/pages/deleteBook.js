@@ -15,6 +15,5 @@ export default async function deleteBook(book_id, author) {
       } else {
         alert("Você não tem permissão para apagar esse livro");
       }
-      console.log(data);
     });
 }
