@@ -48,13 +48,13 @@ export default function homeUser() {
     // cria o título da seção
     const h1Section = document.createElement('h1');
     h1Section.classList.add('titleText');
-    h1Section.textContent = 'Bem vindo ao BioGenesis';
+    h1Section.textContent = 'Bem vindo ao BioGenesis!';
     section.appendChild(h1Section);
 
     // cria o parágrafo da seção
     const pSection = document.createElement('p');
     pSection.classList.add('bodyText');
-    pSection.textContent = 'Lorem ipsum dolor sit amet consectetur. Aenean eget nulla ac elementum non tellus risus. Ullamcorper volutpat aliquam neque mauris turpis interdum dolor. Nulla turpis porttitor magna tortor etiam nunc sed dis vitae.';
+    pSection.textContent = 'Aqui, no nosso acervo, você encontrará ';
     section.appendChild(pSection);
 
     // cria o botão da seção
