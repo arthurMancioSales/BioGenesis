@@ -37,6 +37,7 @@ export default function form() {
     page1.innerHTML = "Capa";
 
     const textInput1Label = document.createElement("label");
+    textInput1Label.classList.add("required")
     textInput1Label.htmlFor = "bookTitle";
     textInput1Label.textContent = "Título do livro:";
 
@@ -63,6 +64,7 @@ export default function form() {
     coverImageFigure.appendChild(coverImageCaption)
 
     const imageUpload1Label = document.createElement("label");
+    imageUpload1Label.classList.add("required")
     imageUpload1Label.htmlFor = "coverImage";
     imageUpload1Label.textContent = "Capa:";
 
@@ -72,8 +74,16 @@ export default function form() {
     imageUpload1.name = "coverImage";
     imageUpload1.accept = "image/*";
     imageUpload1.required = true;
+    imageUpload1.onchange = (e) => {
+        const file = e.target.files[0];
+
+        const url = URL.createObjectURL(file);
+
+        coverImagePreview.src = url;
+    }
 
     const dropdown1Label = document.createElement("label");
+    dropdown1Label.classList.add("required")
     dropdown1Label.htmlFor = "bookshelfName";
     dropdown1Label.textContent = "Estante:";
 
@@ -120,6 +130,7 @@ export default function form() {
     pages.innerHTML = `Pagina 1`;
 
     const textInputLabel = document.createElement("label");
+    textInputLabel.classList.add("required")
     textInputLabel.htmlFor = `textInput2`;
     textInputLabel.textContent = "Conteúdo da página:";
 
@@ -144,6 +155,7 @@ export default function form() {
     firstImageFigure.appendChild(firstImageCaption)
 
     const imageUploadLabel = document.createElement("label");
+    imageUploadLabel.classList.add("required")
     imageUploadLabel.htmlFor = `imageUpload2`;
     imageUploadLabel.textContent = "Imagem da página:";
 
@@ -153,9 +165,17 @@ export default function form() {
     imageUpload.name = `imageUpload2`;
     imageUpload.accept = "image/*";
     imageUpload.required = true;
+    imageUpload.onchange = (e) => {
+        const file = e.target.files[0];
+
+        const url = URL.createObjectURL(file);
+
+        firstImagePreview.src = url;
+    }
 
 
     const dropdownLabel = document.createElement("label");
+    dropdownLabel.classList.add("required")
     dropdownLabel.htmlFor = `dropdown2`;
     dropdownLabel.textContent = "Tópico da página:";
 
@@ -235,6 +255,14 @@ export default function form() {
     buttonDiv.appendChild(newPageButton);
     form.appendChild(buttonDiv);
 
+    const requiredExplanation = document.createElement("p")
+    requiredExplanation.style.color = "red"
+    requiredExplanation.style.paddingTop = "10px"
+    requiredExplanation.style.fontWeight = "500"
+    requiredExplanation.innerText = "* obrigatório"
+
+    form.appendChild(requiredExplanation);
+
     root.appendChild(form);
 
     return form
@@ -253,6 +281,7 @@ function createIput() {
         pages.innerHTML = `Pagina ${counter - 1}`;
 
         const textInputLabel = document.createElement("label");
+        textInputLabel.classList.add("required")
         textInputLabel.htmlFor = `textInput${counter}`;
         textInputLabel.textContent = "Conteúdo da página:";
 
@@ -263,6 +292,7 @@ function createIput() {
         textInput.name = `textInput${counter}`;
 
         const imageUploadLabel = document.createElement("label");
+        imageUploadLabel.classList.add("required")
         imageUploadLabel.htmlFor = `imageUpload${counter}`;
         imageUploadLabel.textContent = "Imagem da página:";
 
@@ -286,8 +316,16 @@ function createIput() {
         imageUpload.id = `imageUpload${counter}`;
         imageUpload.name = `imageUpload${counter}`;
         imageUpload.accept = "image/*";
+        imageUpload.onchange = (e) => {
+            const file = e.target.files[0];
+    
+            const url = URL.createObjectURL(file);
+    
+            ImagePreview.src = url;
+        }
 
         const dropdownLabel = document.createElement("label");
+        dropdownLabel.classList.add("required")
         dropdownLabel.htmlFor = `dropdown${counter}`;
         dropdownLabel.textContent = "Tópico da página:";
 

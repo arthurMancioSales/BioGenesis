@@ -1029,7 +1029,9 @@ tr:nth-child(even) {
 }
 
 .imagePreview {
-    width: 50%;
+    max-height: 230px;
+    padding: 5px;
+    margin-left: 5px;
 }
 
 .imagePreviewDiv {
@@ -1045,6 +1047,11 @@ figcaption {
     padding: 0 0 10px 5px;
     margin-top: 10px;
 }
+
+.required:after {
+    content:" *";
+    color: red;
+  }
 
 .campoInvalido {
     animation: tremer 0.5s;

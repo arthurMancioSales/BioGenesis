@@ -40,6 +40,7 @@ export default function formEdit(user, cont, editEvent) {
     page1.innerHTML = "Capa";
 
     const textInput1Label = document.createElement("label");
+    textInput1Label.classList.add("required")
     textInput1Label.htmlFor = "bookTitle";
     textInput1Label.textContent = "Título do livro:";
 
@@ -75,8 +76,16 @@ export default function formEdit(user, cont, editEvent) {
     imageUpload1.id = "coverImage";
     imageUpload1.name = "coverImage";
     imageUpload1.accept = "image/*";
+    imageUpload1.onchange = (e) => {
+        const file = e.target.files[0];
+
+        const url = URL.createObjectURL(file);
+
+        coverImagePreview.src = url;
+    }
 
     const dropdown1Label = document.createElement("label");
+    dropdown1Label.classList.add("required")
     dropdown1Label.htmlFor = "bookshelfName";
     dropdown1Label.textContent = "Estante:";
 
@@ -124,6 +133,7 @@ export default function formEdit(user, cont, editEvent) {
     pages.innerHTML = `Pagina 1`;
 
     const textInputLabel = document.createElement("label");
+    textInputLabel.classList.add("required")
     textInputLabel.htmlFor = `textInput2`;
     textInputLabel.textContent = "Conteúdo da página:";
 
@@ -156,8 +166,16 @@ export default function formEdit(user, cont, editEvent) {
     imageUpload.id = `imageUpload2`;
     imageUpload.name = `imageUpload2`;
     imageUpload.accept = "image/*";
+    imageUpload.onchange = (e) => {
+        const file = e.target.files[0];
+
+        const url = URL.createObjectURL(file);
+
+        firstImagePreview.src = url;
+    }
 
     const dropdownLabel = document.createElement("label");
+    dropdownLabel.classList.add("required")
     dropdownLabel.htmlFor = `dropdown2`;
     dropdownLabel.textContent = "Tópico da página:";
 
@@ -239,6 +257,14 @@ export default function formEdit(user, cont, editEvent) {
     buttonDiv.appendChild(btnFormBook);
     form.appendChild(buttonDiv)
 
+    const requiredExplanation = document.createElement("p")
+    requiredExplanation.style.color = "red"
+    requiredExplanation.style.paddingTop = "10px"
+    requiredExplanation.style.fontWeight = "500"
+    requiredExplanation.innerText = "* obrigatório"
+
+    form.appendChild(requiredExplanation);
+
     root.appendChild(form);
 
     return form
@@ -258,6 +284,7 @@ function createIput() {
         pages.innerHTML = `Pagina ${counter - 1}`;
 
         const textInputLabel = document.createElement("label");
+        textInputLabel.classList.add("required")
         textInputLabel.htmlFor = `textInput${counter}`;
         textInputLabel.textContent = "Conteúdo da página:";
 
@@ -292,8 +319,16 @@ function createIput() {
         imageUpload.id = `imageUpload${counter}`;
         imageUpload.name = `imageUpload${counter}`;
         imageUpload.accept = "image/*";
+        imageUpload.onchange = (e) => {
+            const file = e.target.files[0];
+    
+            const url = URL.createObjectURL(file);
+    
+            ImagePreview.src = url;
+        }
 
         const dropdownLabel = document.createElement("label");
+        dropdownLabel.classList.add("required")
         dropdownLabel.htmlFor = `dropdown${counter}`;
         dropdownLabel.textContent = "Tópico da página:";
 
