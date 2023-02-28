@@ -65,7 +65,7 @@ export default function form() {
     createIput();
   };
 
-  const json = fetch(`http://149.28.100.51:5000/api/bookshelves`)
+  const json = fetch(`/api/bookshelves`)
     .then((response) => {
       return response.json();
     })
