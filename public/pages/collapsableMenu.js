@@ -83,7 +83,7 @@ export default function collapsableMenu() {
   logOut.setAttribute("src", "/images/logOut.png");
   logOut.setAttribute("alt", "Sair");
   logOut.onclick = async () => {
-    await fetch("http://localhost:5000/session/", {
+    await fetch("http://149.28.100.51:5000/session/", {
       method: "DELETE",
     });
     spa.redirect("/");

@@ -5,7 +5,7 @@ import collapsableMenu from "../pages/collapsableMenu.js";
 import { PageFlip } from "/vendor/page-flip.module.js";
 
 export default async function loadSingleBook(bookID, title, color, author) {
-  const json = await fetch(`http://localhost:5000/api/books/${bookID}`);
+  const json = await fetch(`http://149.28.100.51:5000/api/books/${bookID}`);
   const pages = await json.json();
   let pageCount = 1;
 

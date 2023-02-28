@@ -42,7 +42,7 @@ export default async function newUser(update = false) {
   let response;
 
   if (!update) {
-    response = await fetch("http://localhost:5000/api/createUser", {
+    response = await fetch("http://149.28.100.51:5000/api/createUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default async function newUser(update = false) {
       }),
     });
   } else {
-    response = await fetch("http://localhost:5000/api/updateUser", {
+    response = await fetch("http://149.28.100.51:5000/api/updateUser", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
