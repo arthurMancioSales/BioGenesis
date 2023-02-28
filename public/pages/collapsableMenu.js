@@ -3,27 +3,26 @@ const spa = SPA();
 
 import auth from "../modules/checkAuthentication.js";
 
-
 export default function collapsableMenu() {
-    //menu colapsável
-    const menu = document.querySelector(".collapsible")
-    if (menu) {
-        menu.remove()
-    }
+  //menu colapsável
+  const menu = document.querySelector(".collapsible");
+  if (menu) {
+    menu.remove();
+  }
 
-    const colMenuDiv = document.createElement('div');
-    colMenuDiv.classList.add('collapsible');
-    document.body.appendChild(colMenuDiv);
+  const colMenuDiv = document.createElement("div");
+  colMenuDiv.classList.add("collapsible");
+  document.body.appendChild(colMenuDiv);
 
-    const openMenu = document.createElement('img');
-    openMenu.classList.add('colImg', 'link');
-    openMenu.setAttribute('src', '/images/links.png');
-    openMenu.setAttribute('id', 'menu');
+  const openMenu = document.createElement("img");
+  openMenu.classList.add("colImg", "link");
+  openMenu.setAttribute("src", "/images/links.png");
+  openMenu.setAttribute("id", "menu");
 
-    const colMenuIconDiv = document.createElement("div");
-    colMenuIconDiv.style.display = "none";
-    colMenuIconDiv.style.left = "350px";
-    colMenuIconDiv.style.userSelect = "none";
+  const colMenuIconDiv = document.createElement("div");
+  colMenuIconDiv.style.display = "none";
+  colMenuIconDiv.style.left = "350px";
+  colMenuIconDiv.style.userSelect = "none";
 
     const homePage = document.createElement("i");
     homePage.classList.add("fa-solid", "fa-house", "link", 'colImg');
@@ -44,19 +43,18 @@ export default function collapsableMenu() {
         spa.redirect("/bookshelves");
     }
 
-    const login = document.createElement("i");
-    login.classList.add('colImg', 'link', "fa-solid", "fa-user");
-    login.id = "loginPageImg";
-    login.onclick = () => {
-        document.body.removeChild(colMenuDiv);
+  const login = document.createElement("i");
+  login.classList.add("colImg", "link", "fa-solid", "fa-user");
+  login.id = "loginPageImg";
+  login.onclick = () => {
+    document.body.removeChild(colMenuDiv);
 
-        if(!auth()){
-            spa.redirect("/login");
-    
-        } else{
-            spa.redirect("/profile");
-        }
+    if (!auth()) {
+      spa.redirect("/login");
+    } else {
+      spa.redirect("/profile");
     }
+  };
 
     const editBook = document.createElement('img');
     editBook.classList.add('colImg', 'link');
@@ -117,30 +115,27 @@ export default function collapsableMenu() {
         colMenuIconDiv.appendChild(logOut);
     }
 
-    openMenu.onclick = () => {
-        if (openMenu.style.transform === "rotate(90deg)"){
+  openMenu.onclick = () => {
+    if (openMenu.style.transform === "rotate(90deg)") {
+      colMenuDiv.style.width = "150px";
+      openMenu.style.transform = "rotate(0deg)";
+      colMenuIconDiv.style.left = "350px";
+      colMenuIconDiv.style.display = "none";
+    } else {
+      if (!auth()) {
+        colMenuDiv.style.width = "350px";
+      } else {
+        colMenuDiv.style.width = "600px";
+      }
 
-            colMenuDiv.style.width= "150px";
-            openMenu.style.transform = "rotate(0deg)";
-            colMenuIconDiv.style.left = "350px";
-            colMenuIconDiv.style.display = "none";
-        } else{
-
-            if(!auth()){
-                colMenuDiv.style.width= "350px";
-        
-            } else{
-                colMenuDiv.style.width= "600px";
-            }
-            
-            openMenu.style.transform = "rotate(90deg)";
-            colMenuIconDiv.style.left = "0";
-            colMenuIconDiv.style.display = "flex";
-        }
+      openMenu.style.transform = "rotate(90deg)";
+      colMenuIconDiv.style.left = "0";
+      colMenuIconDiv.style.display = "flex";
     }
-    
-    colMenuDiv.appendChild(colMenuIconDiv)
-    colMenuDiv.appendChild(openMenu);
+  };
 
-    return colMenuDiv
+  colMenuDiv.appendChild(colMenuIconDiv);
+  colMenuDiv.appendChild(openMenu);
+
+  return colMenuDiv;
 }
