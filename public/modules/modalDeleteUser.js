@@ -58,7 +58,7 @@ export default async function deleteUsersPage() {
 }
 
 async function deleteUser() {
-  await fetch(`http://149.28.100.51:5000/api/deleteUser`, {
+  await fetch(`http://localhost:5000/api/deleteUser`, {
     method: "DELETE",
   });
 }

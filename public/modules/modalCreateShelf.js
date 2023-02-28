@@ -57,7 +57,7 @@ export default async function createBookShelvesPage() {
 }
 
 async function createBookshelf(name) {
-  await fetch("http://149.28.100.51:5000/api/bookshelves", {
+  await fetch("http://localhost:5000/api/bookshelves", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({

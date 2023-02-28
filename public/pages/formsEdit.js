@@ -63,7 +63,7 @@ export default function formEdit(user, cont, editEvent) {
     createIput();
   };
 
-  fetch(`http://149.28.100.51:5000/api/bookshelves`)
+  fetch(`http://localhost:5000/api/bookshelves`)
     .then((response) => {
       return response.json();
     })
@@ -288,7 +288,7 @@ function validateInputSelect() {
 
 async function showPages(user, cont) {
   const jsonBook = await fetch(
-    `http://149.28.100.51:5000/api/books/${user[cont - 1].book_id}`
+    `http://localhost:5000/api/books/${user[cont - 1].book_id}`
   );
   const jsonpage = await jsonBook.json();
 

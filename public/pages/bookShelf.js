@@ -36,7 +36,7 @@ export default function bookshelf() {
   nextImage.classList.add("arrow-right", "control");
   nextImage.onclick = () => isRight();
 
-  const json = fetch(`http://149.28.100.51:5000/api/bookshelves`)
+  const json = fetch(`http://localhost:5000/api/bookshelves`)
     .then((response) => {
       return response.json();
     })

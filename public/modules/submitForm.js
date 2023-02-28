@@ -10,7 +10,7 @@ export default async function submitForm() {
   const dropdown2 = document.querySelector(`#dropdown2`);
   const firstImageInput = document.querySelector(`#imageUpload2`);
 
-  const userInfoResponse = await fetch("http://149.28.100.51:5000/session");
+  const userInfoResponse = await fetch("http://localhost:5000/session");
   const userInfo = await userInfoResponse.json();
 
   const formData = new FormData();
@@ -36,7 +36,7 @@ export default async function submitForm() {
     formData.append(`imageUpload${i}`, ImageInput.files[0]);
   }
 
-  await fetch("http://149.28.100.51:5000/upload", {
+  await fetch("http://localhost:5000/upload", {
     method: "POST",
     body: formData,
   });

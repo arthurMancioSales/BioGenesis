@@ -128,7 +128,7 @@ export default function list() {
 }
 
 export async function printTable() {
-  await fetch("http://149.28.100.51:5000/api/books/")
+  await fetch("http://localhost:5000/api/books/")
     .then((response) => {
       return response.json();
     })

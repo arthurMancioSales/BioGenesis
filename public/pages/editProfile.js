@@ -90,7 +90,7 @@ export default function editProfile() {
   inputUserMailConfirm.placeholder = "Confirme seu e-mail";
   inputUserMailConfirm.classList.add("userInput");
 
-  fetch("http://149.28.100.51:5000/session/")
+  fetch("http://localhost:5000/session/")
     .then((response) => {
       return response.json();
     })
