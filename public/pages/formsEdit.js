@@ -78,6 +78,7 @@ export default function formEdit(user, cont, editEvent) {
         });
 
     group1.appendChild(page1);
+
     group1.appendChild(textInput1Label);
     group1.appendChild(textInput1);
     group1.appendChild(imageUpload1Label);
@@ -188,6 +189,11 @@ function createIput() {
     const counter = document.querySelectorAll(".input-group").length + 1;
     if (counter <= 5) {
         const form = document.querySelector("#form");
+        const btnX = document.createElement("div");
+        btnX.classList = "btnX";
+        btnX.onclick = () => {
+            removePage(counter);
+        };
 
         const group = document.createElement("div");
         group.id = `group-${counter}`;
@@ -255,6 +261,7 @@ function createIput() {
         dropdown.appendChild(dropdownOption3);
         dropdown.appendChild(dropdownOption4);
 
+        group.appendChild(btnX);
         group.appendChild(pages);
         group.appendChild(dropdownLabel);
         group.appendChild(dropdown);
@@ -311,3 +318,23 @@ async function showPages(user,cont) {
    
     })   
 }
+
+
+function removePage(pageGroup) {
+    const group = document.querySelector(`#group-${pageGroup}`);
+    group.remove();
+
+    const groups = document.querySelectorAll(".input-group");
+    groups.forEach((group, index) => {
+
+        if (index > 0) {
+            group.id = `group-${index + 1}`;
+            const titlePage = group.querySelector("h2");
+
+            titlePage.innerText = `Pagina ${index}`;
+            console.log(titlePage);
+        };
+        
+    });
+
+};
