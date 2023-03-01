@@ -386,7 +386,6 @@ function createIput() {
     group.appendChild(imageUploadLabel);
     group.appendChild(ImageDiv);
 
-    // form.appendChild(group);
     form.insertBefore(group, document.querySelector("#buttonDiv"));
 
     const addPageButton = document.querySelector("#addPageButton");
@@ -444,6 +443,11 @@ async function showPages(user, cont) {
 }
 
 function removePage(pageGroup) {
+
+  const addPageButton = document.querySelector("#addPageButton");
+  addPageButton.classList.remove("modalButtonDisabled");
+  addPageButton.disabled = false;
+
   const group = document.querySelector(`#group-${pageGroup}`);
   group.remove();
 
@@ -456,4 +460,5 @@ function removePage(pageGroup) {
       titlePage.innerText = `Pagina ${index}`;
     }
   });
+
 }
