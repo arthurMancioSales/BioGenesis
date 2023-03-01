@@ -5,8 +5,10 @@ export default async function formEdit(user, cont, editEvent) {
     const userInfoRequest = await fetch("/session");
     const userInfo = await userInfoRequest.json();
     const owner = editEvent.target.dataset.owner;
+    const bookshelfName = editEvent.target.dataset.bookshelfName
 
     if (userInfo.data.username != owner) {
+        console.log(owner, userInfo.data.username);
         alert("Você não tem permissão para editar esse livro");
         const wrapper = document.querySelector(".bookWrapper");
         document.body.removeChild(wrapper);
@@ -113,6 +115,9 @@ export default async function formEdit(user, cont, editEvent) {
                 const dropdown1Option = document.createElement("option");
                 dropdown1Option.value = `${name.name}`;
                 dropdown1Option.textContent = `${name.name}`;
+                if (name.name == bookshelfName) {
+                    dropdown1Option.selected = true;
+                }
                 dropdown1.appendChild(dropdown1Option);
             });
         });
