@@ -284,11 +284,16 @@ function createIput() {
         group.id = `group-${counter}`;
         group.classList.add("input-group");
 
-        const pageHeader = document.createElement("div")
-        pageHeader.classList.add("pageHeader")
-        
+        const pageHeader = document.createElement("div");
+        pageHeader.classList.add("pageHeader");
+
         const btnX = document.createElement("i");
-        btnX.classList.add("fa-regular", "fa-circle-xmark", "link", "pageRemove")
+        btnX.classList.add(
+            "fa-regular",
+            "fa-circle-xmark",
+            "link",
+            "pageRemove"
+        );
         btnX.onclick = () => {
             removePage(counter);
         };
@@ -296,8 +301,8 @@ function createIput() {
         const pages = document.createElement("h2");
         pages.innerText = `Pagina ${counter - 1}`;
 
-        pageHeader.appendChild(btnX)
-        pageHeader.appendChild(pages)
+        pageHeader.appendChild(btnX);
+        pageHeader.appendChild(pages);
 
         const textInputLabel = document.createElement("label");
         textInputLabel.classList.add("required");
@@ -392,14 +397,12 @@ function createIput() {
         group.appendChild(imageUploadLabel);
         group.appendChild(ImageDiv);
 
-        // form.appendChild(group);
         form.insertBefore(group, document.querySelector("#buttonDiv"));
 
         const addPageButton = document.querySelector("#addPageButton");
         addPageButton.classList.remove("modalButtonDisabled");
 
         if (counter === 5) {
-            console.log(addPageButton);
             addPageButton.classList.add("modalButtonDisabled");
             addPageButton.disabled = true;
         }
@@ -455,7 +458,11 @@ async function showPages(user, cont) {
 }
 
 function removePage(pageGroup) {
-    const group = document.querySelector(`#group-${pageGroup-1}`);
+    const addPageButton = document.querySelector("#addPageButton");
+    addPageButton.classList.remove("modalButtonDisabled");
+    addPageButton.disabled = false;
+
+    const group = document.querySelector(`#group-${pageGroup}`);
     group.remove();
 
     const groups = document.querySelectorAll(".input-group");
@@ -465,7 +472,6 @@ function removePage(pageGroup) {
             const titlePage = group.querySelector("h2");
 
             titlePage.innerText = `Pagina ${index}`;
-            console.log(titlePage);
         }
     });
 }

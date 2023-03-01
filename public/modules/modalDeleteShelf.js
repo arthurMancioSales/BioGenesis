@@ -69,7 +69,7 @@ export default async function deleteBookShelvesPage(val) {
 }
 
 async function deleteBookshelf(id) {
-  await fetch(`/api/bookshelves/${id}`, {
+  const res = await fetch(`/api/bookshelves/${id}`, {
     method: "DELETE",
   });
   return res;

@@ -1,7 +1,7 @@
 // @author {Arthur}
 // @coauthor {Thiago}
 
-import collapsableMenu from "../pages/collapsableMenu.js";
+import collapsableMenu from "./collapsableMenu.js";
 import { PageFlip } from "/vendor/page-flip.module.js";
 
 export default async function loadSingleBook(bookID, title, color, author) {
