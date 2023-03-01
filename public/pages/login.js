@@ -43,14 +43,6 @@ export default function login() {
     formMain.appendChild(inputLogin);
     formMain.appendChild(inputPassword);
 
-    // Crie um elemento <p> com a classe "link" e o texto "Esqueci minha senha"
-    const pMain = document.createElement("p");
-    pMain.classList.add("link", "pPosition", "bodyText");
-    pMain.textContent = "Esqueci minha senha";
-    pMain.onclick = () => {
-        spa.redirect("/passwordRecover");
-    };
-
     // Crie um elemento <button> com o ID "login" e o texto "Entrar"
     const buttonMain = document.createElement("button");
     buttonMain.classList.add("button");
@@ -70,7 +62,6 @@ export default function login() {
     main.appendChild(h1Main);
     main.appendChild(formMain);
     main.appendChild(loginStatus);
-    formMain.appendChild(pMain);
     formMain.appendChild(buttonMain);
 
     // Adicione o elemento <main> ao corpo do documento

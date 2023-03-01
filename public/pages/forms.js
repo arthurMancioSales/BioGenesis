@@ -284,7 +284,8 @@ function createIput() {
             "fa-regular",
             "fa-circle-xmark",
             "link",
-            "pageRemove"
+            "pageRemove",
+            "btnX"
         );
         btnX.onclick = () => {
             removePage(counter);
@@ -301,9 +302,12 @@ function createIput() {
         textInputLabel.htmlFor = `textInput${counter}`;
         textInputLabel.textContent = "Conteúdo da página:";
 
+        
         const textInput = document.createElement("textarea");
         textInput.maxLength = "930";
 
+        textInput.id = `textInput${counter}`;
+        textInput.name = `textInput${counter}`;
         textInput.id = `textInput${counter}`;
         textInput.name = `textInput${counter}`;
 
@@ -426,16 +430,26 @@ function validateInputSelect() {
 }
 
 function removePage(pageGroup) {
+    const addPageButton = document.querySelector("#addPageButton");
+    addPageButton.classList.remove("modalButtonDisabled");
+    addPageButton.disabled = false;
+
     const group = document.querySelector(`#group-${pageGroup}`);
     group.remove();
 
     const groups = document.querySelectorAll(".input-group");
     groups.forEach((group, index) => {
-        if (index > 0) {
+        if (index > 1) {
             group.id = `group-${index + 1}`;
             const titlePage = group.querySelector("h2");
-
             titlePage.innerText = `Pagina ${index}`;
+
+            const btnX = group.querySelector(`.btnX`);
+            btnX.id = `#btnX-${index + 1}`;
+
+            btnX.onclick = () => {
+                removePage(index + 1);
+            };
         }
     });
 }

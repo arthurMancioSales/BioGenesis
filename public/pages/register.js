@@ -19,7 +19,6 @@ export default function register() {
     formMain.onsubmit = async (e) => {
         e.preventDefault();
         const createUser = await newUser();
-        console.log(createUser);
 
         if (createUser.status == 200) {
             document.querySelector("#loginResult").innerText =

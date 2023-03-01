@@ -23,7 +23,7 @@ export default function aboutUs() {
     const us = [
         { name: "Arthur Mancio", age: 19, job: "Desenvolvedor Back-End", picture: "arthur.jpg",  instagram:"https://www.instagram.com/mancioarthur/", github:"https://github.com/arthurMancioSales", linkedin:"https://www.linkedin.com/in/arthur-mancio-sales-5446301b8/"},
         { name: "Davi Severino", age: 27, job: "Desenvolvedor Front-End", picture: "davi.jpeg",  instagram:"https://www.instagram.com/araujoseverino96/", github:"https://github.com/Severo-96", linkedin:"https://www.linkedin.com/in/davi-severino-738146268/"},
-        { name: "Pedro Rubens", age: "XX", job: "Desenvolvedor Front-End", picture: "logo.png",  instagram:"", github:"", linkedin:""},
+        { name: "Pedro Rubens", age: 22, job: "Desenvolvedor Front-End", picture: "pedro.jpeg",  instagram:"https://www.instagram.com/pp_rubens_/", github:"https://github.com/PedroRubens", linkedin:"https://www.linkedin.com/in/pedro-rubens-166332202/"},
         { name: "Thiago Silva", age: 29, job: "Desenvolvedor Back-End", picture: "thiago.jpg",  instagram:"", github:"https://github.com/ThiagoOitaven", linkedin:"https://www.linkedin.com/in/thiago-oitaven/"}
     ];
 
@@ -56,7 +56,6 @@ export default function aboutUs() {
         insta.classList.add('fa-brands', 'fa-instagram', "link", 'socialImg');
         insta.title = "Instagram"
         if (us[i].instagram == "") {
-            console.log("a");
             insta.style.cursor = "not-allowed"
         } else {
             insta.onclick = () => {
