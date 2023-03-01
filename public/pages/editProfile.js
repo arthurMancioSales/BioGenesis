@@ -34,14 +34,14 @@ export default function editProfile() {
     inputUserPass.id = "userPass";
     inputUserPass.type = "password";
     inputUserPass.required = true;
-    inputUserPass.placeholder = "Senha";
+    inputUserPass.placeholder = "Nova Senha";
     inputUserPass.classList.add("userInput");
 
     const inputUserPassConf = document.createElement("input");
     inputUserPassConf.id = "userPassConf";
     inputUserPassConf.type = "password";
     inputUserPassConf.required = true;
-    inputUserPassConf.placeholder = "Confirme sua Senha";
+    inputUserPassConf.placeholder = "Confirme sua Nova Senha";
     inputUserPassConf.classList.add("userInput");
 
     const buttonContainer = document.createElement("div");
@@ -93,6 +93,7 @@ export default function editProfile() {
     result.innerText = "";
     result.id = "loginResult";
     result.classList.add("aboutUsText");
+    result.style.webkitTextStroke = "1px red"
 
     fetch("/session/")
         .then((response) => {
