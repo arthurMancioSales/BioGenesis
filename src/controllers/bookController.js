@@ -231,15 +231,25 @@ export async function updateBook(req, res) {
             }
 
             const page_id = req.body[`page_id${i}`]
-
-            await pageService.updatePage(
-                req.body[`dropdown${i}`],
-                req.body[`textInput${i}`],
-                image,
-                userName,
-                page_id,
-                client
-            )
+            if (page_id != 'undefined') {
+                await pageService.updatePage(
+                    req.body[`dropdown${i}`],
+                    req.body[`textInput${i}`],
+                    image,
+                    userName,
+                    page_id,
+                    client
+                )
+            } else {
+                await pageService.createPage(
+                    bookID,
+                    req.body[`dropdown${i}`],
+                    req.body[`textInput${i}`],
+                    image,
+                    userName,
+                    client
+                )
+            }
         }
 
         response.message = "Livro atualizado com sucesso";
