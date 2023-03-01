@@ -271,7 +271,7 @@ function createIput() {
     const counter = document.querySelectorAll(".input-group").length + 1;
     if (counter <= 5) {
         const form = document.querySelector("#form");
-        
+
         const group = document.createElement("div");
         group.id = `group-${counter}`;
         group.classList.add("input-group");
@@ -302,7 +302,7 @@ function createIput() {
         textInputLabel.htmlFor = `textInput${counter}`;
         textInputLabel.textContent = "Conteúdo da página:";
 
-        
+
         const textInput = document.createElement("textarea");
         textInput.maxLength = "930";
 
@@ -361,27 +361,15 @@ function createIput() {
         dropdownOption0.value = ``;
         dropdownOption0.textContent = "Selecione uma opção";
 
-        const dropdownOption1 = document.createElement("option");
-        dropdownOption1.value = `alimentação`;
-        dropdownOption1.textContent = "alimentação";
-
-        const dropdownOption2 = document.createElement("option");
-        dropdownOption2.value = `habitat`;
-        dropdownOption2.textContent = "habitat";
-
-        const dropdownOption3 = document.createElement("option");
-        dropdownOption3.value = `curiosidades`;
-        dropdownOption3.textContent = "curiosidades";
-
-        const dropdownOption4 = document.createElement("option");
-        dropdownOption4.value = `comportamento`;
-        dropdownOption4.textContent = "comportamento";
-
         dropdown.appendChild(dropdownOption0);
-        dropdown.appendChild(dropdownOption1);
-        dropdown.appendChild(dropdownOption2);
-        dropdown.appendChild(dropdownOption3);
-        dropdown.appendChild(dropdownOption4);
+
+        ["alimentação", "habitat", "curiosidade", "comportamento"].forEach((opt) => {
+            const optElement = document.createElement("option");
+            optElement.value = opt;
+            optElement.textContent = opt;
+            optElement.classList = "optTopico";
+            dropdown.appendChild(optElement);
+        });
 
         ImageDiv.appendChild(imageUpload);
         ImageDiv.appendChild(ImageFigure);
@@ -394,7 +382,6 @@ function createIput() {
         group.appendChild(imageUploadLabel);
         group.appendChild(ImageDiv);
 
-        // form.appendChild(group);
         form.insertBefore(group, document.querySelector("#buttonDiv"));
 
         const addPageButton = document.querySelector("#addPageButton");
@@ -408,24 +395,17 @@ function createIput() {
 }
 
 function validateInputSelect() {
-    const mySelects = document.querySelectorAll(".selectDropdown");
-    mySelects.forEach((select) => {
-        if (select.value !== "") {
-            const selectedId = select.id;
-            for (let i = 2; i <= mySelects.length + 1; i++) {
-                const nextSelect = document.getElementById(`dropdown${i}`);
-                if (selectedId !== nextSelect.id) {
-                    nextSelect.querySelectorAll("option").forEach((option) => {
-                        if (option.value == select.value) {
-                            option.disabled = true;
-                        }
-                        //  else {
-                        // option.disabled = false;
-                        // }
-                    });
-                }
-            }
-        }
+    document.querySelectorAll(".optTopico").forEach((opt) => {
+        opt.disabled = false;
+    });
+
+    const selectedValues = [];
+    document.querySelectorAll(".selectDropdown").forEach(select => {
+        selectedValues.push(select.value);
+    })
+
+    document.querySelectorAll(".optTopico").forEach((opt) => {
+        if (selectedValues.includes(opt.value)) opt.disabled = true;
     });
 }
 
@@ -452,4 +432,5 @@ function removePage(pageGroup) {
             };
         }
     });
+
 }
