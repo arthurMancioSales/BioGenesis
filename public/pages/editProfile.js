@@ -5,29 +5,30 @@ const spa = SPA();
 import collapsableMenu from "../modules/collapsableMenu.js";
 
 export default function editProfile() {
-  const outDiv = document.createElement("div");
-  outDiv.classList.add("cadastroBg", "bodyHome");
+    const outDiv = document.createElement("div");
+    outDiv.classList.add("cadastroBg", "bodyHome");
 
-  const h1Main = document.createElement("h1");
-  h1Main.classList.add("titleText");
-  h1Main.textContent = "Atualizar Cadastro";
+    const h1Main = document.createElement("h1");
+    h1Main.classList.add("titleText");
+    h1Main.textContent = "Atualizar Cadastro";
 
-  const formMain = document.createElement("form");
-  formMain.classList.add("flexColumn");
-  formMain.onsubmit = async (e) => {
-    e.preventDefault();
-    const updateUser = await newUser(true);
+    const formMain = document.createElement("form");
+    formMain.classList.add("flexColumn");
+    formMain.onsubmit = async (e) => {
+        e.preventDefault();
+        const updateUser = await newUser(true);
 
-    if (updateUser.status == 200) {
-      document.querySelector("#loginResult").innerText = "Usuário atualizado com sucesso";
-      setTimeout(function(){
-        spa.redirect("/profile")
-      }, 1000);
-    } else {
-      const resolved = await updateUser.json();
-      document.querySelector("#loginResult").innerText = resolved.error;
-    }
-  };
+        if (updateUser.status == 200) {
+            document.querySelector("#loginResult").innerText =
+                "Usuário atualizado com sucesso";
+            setTimeout(function () {
+                spa.redirect("/profile");
+            }, 1000);
+        } else {
+            const resolved = await updateUser.json();
+            document.querySelector("#loginResult").innerText = resolved.error;
+        }
+    };
 
     const inputUserPass = document.createElement("input");
     inputUserPass.id = "userPass";
@@ -43,8 +44,8 @@ export default function editProfile() {
     inputUserPassConf.placeholder = "Confirme sua Senha";
     inputUserPassConf.classList.add("userInput");
 
-  const buttonContainer = document.createElement("div");
-  buttonContainer.classList.add("button-container");
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("button-container");
 
     const editBtn = document.createElement("input");
     editBtn.setAttribute("type", "submit");
@@ -53,33 +54,33 @@ export default function editProfile() {
     editBtn.classList.add("confirmDeleteButton");
     editBtn.onclick = async () => {};
 
-  const cancelBtn = document.createElement("input");
-  cancelBtn.setAttribute("type", "submit");
-  cancelBtn.setAttribute("name", "confirmDelete");
-  cancelBtn.setAttribute("value", "Cancelar");
-  cancelBtn.classList.add("confirmDeleteButton");
-  cancelBtn.style.backgroundColor = "red";
-  cancelBtn.onclick = async () => {
-    document.querySelector(".collapsible").remove();
-    spa.redirect("/profile");
-  };
+    const cancelBtn = document.createElement("input");
+    cancelBtn.setAttribute("type", "submit");
+    cancelBtn.setAttribute("name", "confirmDelete");
+    cancelBtn.setAttribute("value", "Cancelar");
+    cancelBtn.classList.add("confirmDeleteButton");
+    cancelBtn.style.backgroundColor = "red";
+    cancelBtn.onclick = async () => {
+        document.querySelector(".collapsible").remove();
+        spa.redirect("/profile");
+    };
 
-  buttonContainer.appendChild(editBtn);
-  buttonContainer.appendChild(cancelBtn);
+    buttonContainer.appendChild(editBtn);
+    buttonContainer.appendChild(cancelBtn);
 
-  const inputUserName = document.createElement("input");
-  inputUserName.id = "userName";
-  inputUserName.type = "name";
-  inputUserName.required = true;
-  inputUserName.placeholder = "Usuário";
-  inputUserName.classList.add("userInput");
+    const inputUserName = document.createElement("input");
+    inputUserName.id = "userName";
+    inputUserName.type = "name";
+    inputUserName.required = true;
+    inputUserName.placeholder = "Usuário";
+    inputUserName.classList.add("userInput");
 
-  const inputUserMail = document.createElement("input");
-  inputUserMail.id = "userEmail";
-  inputUserMail.type = "email";
-  inputUserMail.required = true;
-  inputUserMail.placeholder = "E-mail";
-  inputUserMail.classList.add("userInput");
+    const inputUserMail = document.createElement("input");
+    inputUserMail.id = "userEmail";
+    inputUserMail.type = "email";
+    inputUserMail.required = true;
+    inputUserMail.placeholder = "E-mail";
+    inputUserMail.classList.add("userInput");
 
     const inputUserMailConfirm = document.createElement("input");
     inputUserMailConfirm.id = "userEmailConfirm";
@@ -92,40 +93,38 @@ export default function editProfile() {
     result.innerText = "";
     result.id = "loginResult";
     result.classList.add("aboutUsText");
-    
+
     fetch("/session/")
-    .then((response) => {
-        return response.json();
-    })
-    .then((json) => {
-        const userInfo = json.data;
+        .then((response) => {
+            return response.json();
+        })
+        .then((json) => {
+            const userInfo = json.data;
 
-        inputUserName.value = userInfo.username;
+            inputUserName.value = userInfo.username;
 
-        inputUserMail.value = userInfo.email;
+            inputUserMail.value = userInfo.email;
 
-        inputUserMailConfirm.value = userInfo.email;
+            inputUserMailConfirm.value = userInfo.email;
 
-        formMain.appendChild(inputUserName);
-        formMain.appendChild(inputUserMail);
-        formMain.appendChild(inputUserMailConfirm);
-        formMain.appendChild(inputUserPass);
-        formMain.appendChild(inputUserPassConf);
-        formMain.appendChild(result);
-        formMain.appendChild(buttonContainer);
-    });
+            formMain.appendChild(inputUserName);
+            formMain.appendChild(inputUserMail);
+            formMain.appendChild(inputUserMailConfirm);
+            formMain.appendChild(inputUserPass);
+            formMain.appendChild(inputUserPassConf);
+            formMain.appendChild(result);
+            formMain.appendChild(buttonContainer);
+        });
 
-    
-
-  const main = document.createElement("main");
-  main.classList.add("mainSize", "flexColumn");
+    const main = document.createElement("main");
+    main.classList.add("mainSize", "flexColumn");
 
     main.appendChild(h1Main);
     main.appendChild(formMain);
 
-  outDiv.appendChild(main);
+    outDiv.appendChild(main);
 
-  collapsableMenu();
+    collapsableMenu();
 
-  return outDiv;
+    return outDiv;
 }

@@ -7,11 +7,11 @@ import { createPage } from "../modules/createPage.js";
 
 export default function edit() {
     const container = document.createElement("div");
-    container.classList.add('containerPages');
+    container.classList.add("containerPages");
     container.id = "containerPages";
 
     const divbtn = document.createElement("div");
-    divbtn.classList.add('divbtn');
+    divbtn.classList.add("divbtn");
 
     const divInputConteudo = document.createElement("div");
     divInputConteudo.classList.add("input-container");
@@ -27,7 +27,7 @@ export default function edit() {
     title.innerHTML = "Edição de livro";
 
     const divContainer = document.createElement("div");
-    divContainer.classList.add('containerForms');
+    divContainer.classList.add("containerForms");
     divContainer.id = "containerForms";
 
     const form = document.createElement("form");
