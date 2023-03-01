@@ -21,7 +21,11 @@ export default async function newUser(update = false) {
 
     document.querySelector("#loginResult").innerText = "Emails divergentes";
 
-    return;
+    const response = {
+      inputError: "Emails divergentes"
+    }
+
+    return response;
   }
 
   if (passwordInput.value != passwordConfirmInput.value) {
@@ -36,7 +40,11 @@ export default async function newUser(update = false) {
 
     document.querySelector("#loginResult").innerText = "Senhas divergentes";
 
-    return;
+    const response = {
+      inputError: "senhas divergentes"
+    }
+
+    return response
   }
 
   let response;
