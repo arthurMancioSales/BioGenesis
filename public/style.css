@@ -411,36 +411,6 @@ select {
     cursor: pointer;
 }
 
-
-.btnX {
-    width: 40px;
-    height: 40px;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .btnX::before, .btnX::after {
-    content: '';
-    position: absolute;
-    top: 20px;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background-color: black;
-    transform-origin: center;
-  }
-  
-  .btnX::before {
-    transform: rotate(45deg);
-  }
-  
-  .btnX::after {
-    transform: rotate(-45deg);
-  }
-
-
-
-
 #p {
     font-family: Roboto, Helvetica, sans-serif;
     font-size: 16px;
@@ -553,11 +523,10 @@ select {
 }
 
 .bookImage {
-
     max-width: 90%;
     max-height: 90%;
     margin: auto;
-margin-bottom: 0;
+    margin-bottom: 0;
     align-self: flex-end;
 }
 
@@ -1022,11 +991,10 @@ tr:nth-child(even) {
 #form .input-group h2 {
     text-align: end;
     border-radius: 5px;
-    margin-bottom: 20px;
-    padding: 10px;
+    padding: 15px 10px;
     font-size: 24px;
     font-family: sans-serif;
-    background-color: #b2b1b1;
+    background-color: rgba(50, 170, 62, 1);
 }
 
 .loginPage {
@@ -1084,10 +1052,38 @@ figcaption {
     margin-top: 10px;
 }
 
+i.link:hover {
+    text-decoration: none;
+}
+
 .required:after {
-    content:" *";
+    content: " *";
     color: red;
-  }
+}
+
+.pageHeader {
+    width: 100%;
+    height: fit-content;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(50, 170, 62, 1);
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.pageRemove {
+    padding: 10px;
+    height: fit-content;
+    font-size: 35px;
+    color: black;
+    transition: all 700ms ease;
+}
+
+.pageRemove:hover {
+    color: white;
+}
 
 .campoInvalido {
     animation: tremer 0.5s;
@@ -1144,7 +1140,7 @@ span {
     cursor: pointer;
 }
 
-.confirmDeleteButton:active{
+.confirmDeleteButton:active {
     cursor: pointer;
     filter: brightness(85%);
 }
@@ -1162,7 +1158,8 @@ a:visited {
     text-decoration: none;
 }
 
-a:link, a:visited {
+a:link,
+a:visited {
     color: rgb(0, 0, 0);
     text-decoration: none;
 }
@@ -1194,11 +1191,26 @@ a:link, a:visited {
     cursor: pointer;
 }
 
-.aboutUsButton:active{
+.aboutUsButton:active {
     cursor: pointer;
     filter: brightness(85%);
 }
 
-.aboutUsImg{
+.aboutUsImg {
     width: 200px;
+    border-radius: 50%;
+}
+
+.socialImg {
+    font-size: 50px;
+    margin-left: 15px;
+    margin-right: 20px;
+
+    color: rgb(0, 0, 0);
+    transition: all 600ms;
+}
+
+.socialImg:hover {
+    font-size: 55px;
+    color: rgb(0, 0, 0);
 }

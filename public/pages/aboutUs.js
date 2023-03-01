@@ -21,10 +21,10 @@ export default function aboutUs() {
     main.classList.add('flexRowSpaceAround', 'mainSize');//flexColumn
 
     const us = [
-        { name: "Arthur Mancio", age: "XX", job: "Desenvolvedor Back-End", picture: "logo.png",  link:"http://" },
-        { name: "Davi Severino", age: 27, job: "Desenvolvedor Front-End", picture: "logo.png", link:"http://" },
-        { name: "Pedro Rubens", age: "XX", job: "Desenvolvedor Front-End", picture: "logo.png", link:"http://" },
-        { name: "Thiago Silva", age: "XX", job: "Desenvolvedor Back-End", picture: "logo.png", link:"http://" }
+        { name: "Arthur Mancio", age: 19, job: "Desenvolvedor Back-End", picture: "arthur.jpg",  instagram:"https://www.instagram.com/mancioarthur/", github:"https://github.com/arthurMancioSales", linkedin:"https://www.linkedin.com/in/arthur-mancio-sales-5446301b8/"},
+        { name: "Davi Severino", age: 27, job: "Desenvolvedor Front-End", picture: "davi.jpeg",  instagram:"https://www.instagram.com/araujoseverino96/", github:"https://github.com/Severo-96", linkedin:"https://www.linkedin.com/in/davi-severino-738146268/"},
+        { name: "Pedro Rubens", age: "XX", job: "Desenvolvedor Front-End", picture: "logo.png",  instagram:"", github:"", linkedin:""},
+        { name: "Thiago Silva", age: 29, job: "Desenvolvedor Back-End", picture: "thiago.jpg",  instagram:"", github:"https://github.com/ThiagoOitaven", linkedin:"https://www.linkedin.com/in/thiago-oitaven/"}
     ];
 
     for (let i = 0; i < 4; i++){
@@ -54,12 +54,38 @@ export default function aboutUs() {
             pFunction.style.color = "black";
         } */
 
-        const button = document.createElement('button');
-        button.setAttribute('type', 'button');
-        button.setAttribute('class', 'aboutUsButton');
-        button.textContent = 'Contato';
-        button.onclick = () => {
-            location.href = us[i].link
+        const insta = document.createElement("i")
+        insta.classList.add('fa-brands', 'fa-instagram', "link", 'socialImg');
+        insta.title = "Instagram"
+        if (us[i].instagram == "") {
+            console.log("a");
+            insta.style.cursor = "not-allowed"
+        } else {
+            insta.onclick = () => {
+                window.open(us[i].instagram)
+            }
+        }
+
+        const git = document.createElement("i")
+        git.classList.add('fa-brands', 'fa-github', "link", 'socialImg');
+        git.title = "GitHub"
+        if (us[i].github == "") {
+            git.style.cursor = "not-allowed"
+        } else {
+            git.onclick = () => {
+                window.open(us[i].github)
+            }
+        }
+
+        const linkedin = document.createElement("i")
+        linkedin.classList.add('fa-brands', 'fa-linkedin', "link", 'socialImg');
+        linkedin.title = "LinkedIn"
+        if (us[i].linkedin == "") {
+            linkedin.style.cursor = "not-allowed"
+        } else {
+            linkedin.onclick = () => {
+                window.open(us[i].linkedin)
+            }
         }
 
         creator.appendChild(img)
