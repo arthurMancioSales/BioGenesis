@@ -16,18 +16,8 @@ export default async function createBookShelvesPage() {
   const form = document.createElement("form");
   form.setAttribute("action", "");
   form.classList.add("form");
-
-  const labelarea = document.createElement("label");
-  labelarea.setAttribute("for", "labelarea");
-  labelarea.textContent = "Conteudo:";
-
-  const newShelf = document.createElement("input");
-  newShelf.setAttribute("type", "submit");
-  newShelf.setAttribute("name", "newShelf");
-  newShelf.setAttribute("value", "Nova Estante");
-  newShelf.classList.add("button");
-  newShelf.style.alignSelf = "center";
-  newShelf.onclick = async () => {
+  form.onsubmit = async (e) => {
+    e.preventDefault();
     const shelfName = document.querySelector("#shelf-name").value;
     const wrapper = document.querySelector(".modalWrapper");
     try {
@@ -39,6 +29,17 @@ export default async function createBookShelvesPage() {
       console.log("error:", error);
     }
   };
+
+  const labelarea = document.createElement("label");
+  labelarea.setAttribute("for", "labelarea");
+  labelarea.textContent = "Conteudo:";
+
+  const newShelf = document.createElement("input");
+  newShelf.setAttribute("type", "submit");
+  newShelf.setAttribute("name", "newShelf");
+  newShelf.setAttribute("value", "Nova Estante");
+  newShelf.classList.add("button");
+  newShelf.style.alignSelf = "center";
 
   const divInputName = document.createElement("input");
   divInputName.id = "shelf-name";

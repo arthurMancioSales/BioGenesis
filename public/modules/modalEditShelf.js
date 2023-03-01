@@ -16,6 +16,19 @@ export default async function editBookShelvesPage(val, id) {
   const form = document.createElement("form");
   form.setAttribute("action", "");
   form.classList.add("form");
+  form.onsubmit = async (e) => {
+    e.preventDefault();
+    const shelfName = document.querySelector("#shelf-name").value;
+    const wrapper = document.querySelector(".modalWrapper");
+    try {
+      await editBookshelf(shelfName, id);
+      document.querySelector("#root").removeChild(wrapper);
+      document.querySelector("#table").innerHTML = "";
+      await printTable();
+    } catch (error) {
+      console.log("error:", error);
+    }
+  };
 
   const labelarea = document.createElement("label");
   labelarea.setAttribute("for", "labelarea");
@@ -33,18 +46,6 @@ export default async function editBookShelvesPage(val, id) {
   newShelf.setAttribute("value", "Atualizar");
   newShelf.classList.add("button");
   newShelf.style.alignSelf = "center";
-  newShelf.onclick = async () => {
-    const shelfName = document.querySelector("#shelf-name").value;
-    const wrapper = document.querySelector(".modalWrapper");
-    try {
-      await editBookshelf(shelfName, id);
-      document.querySelector("#root").removeChild(wrapper);
-      document.querySelector("#table").innerHTML = "";
-      await printTable();
-    } catch (error) {
-      console.log("error:", error);
-    }
-  };
 
   form.appendChild(divInputName);
 
