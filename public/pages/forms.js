@@ -271,18 +271,30 @@ function createIput() {
     const counter = document.querySelectorAll(".input-group").length + 1;
     if (counter <= 5) {
         const form = document.querySelector("#form");
-        const btnX = document.createElement("div");
-        btnX.classList = "btnX";
-        btnX.onclick = () => {
-            removePage(counter);
-        };
-
+        
         const group = document.createElement("div");
         group.id = `group-${counter}`;
         group.classList.add("input-group");
 
+        const pageHeader = document.createElement("div");
+        pageHeader.classList.add("pageHeader");
+
+        const btnX = document.createElement("i");
+        btnX.classList.add(
+            "fa-regular",
+            "fa-circle-xmark",
+            "link",
+            "pageRemove"
+        );
+        btnX.onclick = () => {
+            removePage(counter);
+        };
+
         const pages = document.createElement("h2");
         pages.innerHTML = `Pagina ${counter - 1}`;
+
+        pageHeader.appendChild(btnX);
+        pageHeader.appendChild(pages);
 
         const textInputLabel = document.createElement("label");
         textInputLabel.classList.add("required");
@@ -370,8 +382,7 @@ function createIput() {
         ImageDiv.appendChild(imageUpload);
         ImageDiv.appendChild(ImageFigure);
 
-        group.appendChild(btnX);
-        group.appendChild(pages);
+        group.appendChild(pageHeader);
         group.appendChild(dropdownLabel);
         group.appendChild(dropdown);
         group.appendChild(textInputLabel);
