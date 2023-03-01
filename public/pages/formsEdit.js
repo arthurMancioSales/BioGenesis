@@ -279,20 +279,31 @@ function createIput() {
     const counter = document.querySelectorAll(".input-group").length + 1;
     if (counter <= 5) {
         const form = document.querySelector("#form");
-        const btnX = document.createElement("div");
-        btnX.classList = "btnX";
-        btnX.id = `btnX-${counter - 1}`;
-        btnX.onclick = () => {
-            console.log(counter);
-            removePage(counter);
-        };
 
         const group = document.createElement("div");
         group.id = `group-${counter}`;
         group.classList.add("input-group");
 
+        const pageHeader = document.createElement("div");
+        pageHeader.classList.add("pageHeader");
+
+        const btnX = document.createElement("i");
+        btnX.classList.add(
+            "fa-regular",
+            "fa-circle-xmark",
+            "link",
+            "pageRemove",
+            "btnX"
+        );
+        btnX.onclick = () => {
+            removePage(counter);
+        };
+
         const pages = document.createElement("h2");
-        pages.innerHTML = `Pagina ${counter - 1}`;
+        pages.innerText = `Pagina ${counter - 1}`;
+
+        pageHeader.appendChild(btnX);
+        pageHeader.appendChild(pages);
 
         const textInputLabel = document.createElement("label");
         textInputLabel.classList.add("required");
@@ -366,8 +377,7 @@ function createIput() {
         ImageDiv.appendChild(imageUpload);
         ImageDiv.appendChild(ImageFigure);
 
-        group.appendChild(btnX);
-        group.appendChild(pages);
+        group.appendChild(pageHeader);
         group.appendChild(dropdownLabel);
         group.appendChild(dropdown);
         group.appendChild(textInputLabel);
@@ -405,7 +415,6 @@ function validateInputSelect() {
 }
 
 async function showPages(user, cont) {
-
     const jsonBook = await fetch(`/api/books/${user[cont - 1].book_id}`);
     const jsonpage = await jsonBook.json();
     jsonpage.forEach((pages, index) => {
@@ -413,11 +422,13 @@ async function showPages(user, cont) {
             createIput();
         }
         if (index == 0) {
-            const coverImagePreview = document.querySelector("#coverImagePreview");
+            const coverImagePreview =
+                document.querySelector("#coverImagePreview");
             coverImagePreview.src = `/uploads/${pages.cover_image}`;
         }
 
-        document.querySelector(`#textInput${index + 2}`).innerText = pages.content;
+        document.querySelector(`#textInput${index + 2}`).innerText =
+            pages.content;
         document.querySelector(`#textInput${index + 2}`).dataset.page_id =
             pages.page_id;
         document.querySelector(
@@ -425,7 +436,9 @@ async function showPages(user, cont) {
         ).src = `/uploads/${pages.image}`;
 
         const select = document.querySelector(`#dropdown${index + 2}`);
-        const option = select.querySelector(`option[value=${pages.topic_name}]`);
+        const option = select.querySelector(
+            `option[value=${pages.topic_name}]`
+        );
         option.selected = true;
     });
 }
@@ -434,8 +447,6 @@ async function showPages(user, cont) {
 // let correcao = 0;
 
 function removePage(pageGroup) {
-    const counter = document.querySelectorAll(".input-group").length + 1;
-
     const addPageButton = document.querySelector("#addPageButton");
     addPageButton.classList.remove("modalButtonDisabled");
     addPageButton.disabled = false;
@@ -451,11 +462,9 @@ function removePage(pageGroup) {
             titlePage.innerText = `Pagina ${index}`;
 
             const btnX = group.querySelector(`.btnX`);
-            console.log(btnX);
             btnX.id = `#btnX-${index+1}`;
 
             btnX.onclick = () => {
-                console.log(counter);
                 removePage(index + 1);
             };
         }

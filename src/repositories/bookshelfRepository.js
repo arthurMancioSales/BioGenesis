@@ -43,7 +43,9 @@ export async function getAllBookshelves() {
             SELECT 
                 bookshelf_id as id,
                 name 
-            FROM bookshelves`;
+            FROM bookshelves
+            ORDER BY 
+    			id ASC;`;
     const response = await pool.query(getQuery);
     return response.rows;
   } catch (error) {

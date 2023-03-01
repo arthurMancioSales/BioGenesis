@@ -56,9 +56,8 @@ export default function collapsableMenu() {
     }
   };
 
-    const editBook = document.createElement('img');
-    editBook.classList.add('colImg', 'link');
-    editBook.setAttribute('src', '/images/editBookPage.png');
+    const editBook = document.createElement('i');
+    editBook.classList.add("link", 'colImg', "fa-file-signature", "fa-solid");
     editBook.setAttribute('alt', 'Editar/Criar Livros');
     editBook.title = "Criar/Editar Livros"
     editBook.onclick = () => {
@@ -68,7 +67,7 @@ export default function collapsableMenu() {
 
 
     const editShelf = document.createElement("i");
-    editShelf.classList.add("fa-regular", "fa-calendar-days", "link", 'colImg');
+    editShelf.classList.add("fa-solid", "fa-list", "link", 'colImg');
     editShelf.id = "shelfPageImg";
     editShelf.title = "Criar/Editar Prateleiras"
     editShelf.onclick = () => {
@@ -76,18 +75,17 @@ export default function collapsableMenu() {
         spa.redirect("/listShelves");
     }
 
-    const addUser = document.createElement('img');
-    addUser.classList.add('colImg', 'link');
-    addUser.setAttribute('src', '/images/addUserPage.png');
+    const addUser = document.createElement('i');
+    addUser.classList.add("fa-solid", "fa-user-plus", "link", 'colImg');
     addUser.setAttribute('alt', 'Adicionar Novo Usuário');
     addUser.title = "Adicionar Usuário"
     addUser.onclick = () => {
         spa.redirect("/register");
     }
 
-    const logOut = document.createElement('img');
-    logOut.classList.add('colImg', 'link');
-    logOut.setAttribute('src', '/images/logOut.png');
+    const logOut = document.createElement('i');
+
+    logOut.classList.add("colImg", "fa-solid", "fa-arrow-right-from-bracket", "link");
     logOut.setAttribute('alt', 'Sair');
     logOut.title = "Sair"
     logOut.onclick = async () => {

@@ -40,16 +40,6 @@ router.post("/book", authenticateUser, bookController.createBook);
 //     'coverImage': 'nome da imagem' -> String
 // }
 
-//Criar uma pagina nova -> @author {Arthur}
-// router.post("/book/page", authenticateUser, pageController.createPage);
-// {
-//     bookID: id do livro, -> Int
-//     topicName: id do topico, -> String
-//     content: "conteudo", -> String
-//     image: "nome da imagem", -> String
-//     authorName: nome do autor -> String
-// }
-
 // Apaga uma estante -> @author {Arthur}
 router.delete(
   "/bookshelves/:id",
@@ -57,10 +47,10 @@ router.delete(
   bookshelfController.deleteBookshelf
 );
 
-// Apaga um livro
+// Apaga um livro -> @author {Thiago}
 router.delete("/book/:id", authenticateUser, bookController.deleteBook);
 
-// Apaga uma pagina
+// Apaga uma pagina -> @author {Thiago}
 router.delete("/book/page/:id", authenticateUser, pageController.deletePage);
 
 // Atualiza uma estante -> @author {Arthur}
@@ -72,16 +62,6 @@ router.put(
 // {
 //     bookshelfID: "ID da estante",
 //     newName: "novo nome da estante"
-// }
-
-// Atualiza uma pagina
-// router.put("/book/page", authenticateUser, pageController.updatePage);
-// {
-//   topicId: 'nome do topico',
-//   content: 'novo conteudo',
-//   image: 'nova imagem',
-//   editor: 'nome do editor',
-//   pageID: 'id da pagina;
 // }
 
 // Cria um usuário novo -> @author {Arthur}
@@ -106,8 +86,8 @@ router.delete("/deleteUser", authenticateUser, userController.deleteUser)
 // Retorna quantos livros um usuário criou -> @author {Arthur} @coauthor {Thiago}
 router.get("/userBooks", authenticateUser, bookController.getUserBooks)
 
-// Rota para upload de de livro
+// Rota para upload de de livro -> @author {Arthur}
 router.post("/upload", authenticateUser, files, bookController.createBook);
 
-// Atualiza um livro
+// Atualiza um livro -> @author {Arthur}
 router.put("/updateBook", authenticateUser, files, bookController.updateBook)
