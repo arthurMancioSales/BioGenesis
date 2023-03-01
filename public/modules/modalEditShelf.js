@@ -48,12 +48,12 @@ export default async function editBookShelvesPage(val, id) {
   newShelf.style.alignSelf = "center";
 
   form.appendChild(divInputName);
+  form.appendChild(newShelf);
 
   divContainer.appendChild(form);
   container.appendChild(title);
 
   container.appendChild(divContainer);
-  container.appendChild(newShelf);
 
   return container;
 }

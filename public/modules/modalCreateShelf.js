@@ -48,11 +48,11 @@ export default async function createBookShelvesPage() {
 
   form.appendChild(divInputName);
 
+  form.appendChild(newShelf);
   divContainer.appendChild(form);
   container.appendChild(title);
 
   container.appendChild(divContainer);
-  container.appendChild(newShelf);
 
   return container;
 }
