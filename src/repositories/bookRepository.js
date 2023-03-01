@@ -101,7 +101,9 @@ export async function getAllBooks() {
         JOIN
             bookshelves ON books.bookshelf_id = bookshelves.bookshelf_id
         JOIN
-            users ON books.author_id = users.user_id`;
+            users ON books.author_id = users.user_id
+        ORDER BY
+            books.book_id ASC;`;
 
         const response = await pool.query(getAllBooksQuery);
         return response.rows;
