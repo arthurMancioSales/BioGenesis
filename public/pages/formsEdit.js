@@ -366,7 +366,7 @@ function createIput() {
         dropdownOption0.textContent = "Selecione uma opção";
         dropdown.appendChild(dropdownOption0);
 
-        ["comportamento", "curiosidade", "habitat", "alimentação"].forEach((opt)=>{
+        ["alimentação","habitat","curiosidade", "comportamento"].forEach((opt)=>{
             const optElement = document.createElement("option");
             optElement.value = opt;
             optElement.textContent = opt;
@@ -399,7 +399,6 @@ function createIput() {
 
 function validateInputSelect() {
     document.querySelectorAll(".optTopico").forEach((opt)=>{
-        console.log(opt);
         opt.disabled = false;
     } );
 
@@ -408,7 +407,6 @@ function validateInputSelect() {
         selectedValues.push(select.value);
     })
 
-    console.log(selectedValues);
     document.querySelectorAll(".optTopico").forEach((opt)=>{
         if (selectedValues.includes(opt.value)) opt.disabled = true;
     });

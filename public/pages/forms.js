@@ -271,7 +271,7 @@ function createIput() {
     const counter = document.querySelectorAll(".input-group").length + 1;
     if (counter <= 5) {
         const form = document.querySelector("#form");
-        
+
         const group = document.createElement("div");
         group.id = `group-${counter}`;
         group.classList.add("input-group");
@@ -302,7 +302,7 @@ function createIput() {
         textInputLabel.htmlFor = `textInput${counter}`;
         textInputLabel.textContent = "Conteúdo da página:";
 
-        
+
         const textInput = document.createElement("textarea");
         textInput.maxLength = "930";
 
@@ -360,10 +360,10 @@ function createIput() {
         const dropdownOption0 = document.createElement("option");
         dropdownOption0.value = ``;
         dropdownOption0.textContent = "Selecione uma opção";
-        
+
         dropdown.appendChild(dropdownOption0);
 
-        ["comportamento", "curiosidade", "habitat", "alimentação"].forEach((opt)=>{
+        ["alimentação", "habitat", "curiosidade", "comportamento"].forEach((opt) => {
             const optElement = document.createElement("option");
             optElement.value = opt;
             optElement.textContent = opt;
@@ -395,18 +395,16 @@ function createIput() {
 }
 
 function validateInputSelect() {
-    document.querySelectorAll(".optTopico").forEach((opt)=>{
-        console.log(opt);
+    document.querySelectorAll(".optTopico").forEach((opt) => {
         opt.disabled = false;
-    } );
+    });
 
     const selectedValues = [];
     document.querySelectorAll(".selectDropdown").forEach(select => {
         selectedValues.push(select.value);
     })
 
-    console.log(selectedValues);
-    document.querySelectorAll(".optTopico").forEach((opt)=>{
+    document.querySelectorAll(".optTopico").forEach((opt) => {
         if (selectedValues.includes(opt.value)) opt.disabled = true;
     });
 }
@@ -434,5 +432,5 @@ function removePage(pageGroup) {
             };
         }
     });
-    
+
 }
