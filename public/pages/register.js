@@ -20,16 +20,19 @@ export default function register() {
         e.preventDefault();
         const createUser = await newUser();
 
-        if (createUser.status == 200) {
-            document.querySelector("#loginResult").innerText =
-                "Usuário criado com sucesso";
-            setTimeout(function () {
-                spa.redirect("/");
-            }, 1000);
-        } else {
-            const resolved = JSON.parse(await createUser.json());
-            document.querySelector("#loginResult").innerText = resolved.error;
-        }
+        if (createUser.status) {
+            if (createUser.status == 200) {
+                document.querySelector("#loginResult").innerText =
+                    "Usuário criado com sucesso";
+                setTimeout(function () {
+                    spa.redirect("/");
+                }, 1000);
+            } else {
+                const resolved = JSON.parse(await createUser.json());
+                document.querySelector("#loginResult").innerText = resolved.error;
+            } 
+        } 
+        
     };
 
     const inputUserName = document.createElement("input");

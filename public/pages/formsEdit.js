@@ -9,6 +9,7 @@ export default async function formEdit(user, cont, editEvent) {
   const userInfoRequest = await fetch("/session");
   const userInfo = await userInfoRequest.json();
   const owner = editEvent.target.dataset.owner;
+    const bookshelfName = editEvent.target.dataset.bookshelfName
 
   if (userInfo.data.username != owner) {
     alert("Você não tem permissão para editar esse livro");
@@ -114,18 +115,21 @@ export default async function formEdit(user, cont, editEvent) {
   dropdown1.name = "bookshelfName";
   dropdown1.required = true;
 
-  fetch(`/api/bookshelves`)
-    .then((response) => {
-      return response.json();
-    })
-    .then((response) => {
-      response.data.forEach((name) => {
-        const dropdown1Option = document.createElement("option");
-        dropdown1Option.value = `${name.name}`;
-        dropdown1Option.textContent = `${name.name}`;
-        dropdown1.appendChild(dropdown1Option);
-      });
-    });
+    fetch(`/api/bookshelves`)
+        .then((response) => {
+            return response.json();
+        })
+        .then((response) => {
+            response.data.forEach((name) => {
+                const dropdown1Option = document.createElement("option");
+                dropdown1Option.value = `${name.name}`;
+                dropdown1Option.textContent = `${name.name}`;
+                if (name.name == bookshelfName) {
+                    dropdown1Option.selected = true;
+                }
+                dropdown1.appendChild(dropdown1Option);
+            });
+        });
 
   coverImageDiv.appendChild(imageUpload1);
   coverImageDiv.appendChild(coverImageFigure);

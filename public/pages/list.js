@@ -186,14 +186,20 @@ function addRow(userList, cont) {
         body.appendChild(wrapper);
         wrapper.innerHTML = "";
         const modal = await formEdit(userList, cont, e);
-        wrapper.appendChild(modal);
+        if (modal) {
+            wrapper.appendChild(modal);
+        }
     };
     bookEdit.dataset.bookTitle = userList[i].book_name;
     bookEdit.dataset.book_id = userList[i].book_id;
     bookEdit.dataset.owner = userList[i].author;
+    bookEdit.dataset.bookshelfName = userList[i].bookshelf_name;
+
     bookEdit.children[0].dataset.bookTitle = userList[i].book_name;
     bookEdit.children[0].dataset.book_id = userList[i].book_id;
     bookEdit.children[0].dataset.owner = userList[i].author;
+    bookEdit.children[0].dataset.bookshelfName = userList[i].bookshelf_name;
+
     bookDelete.innerHTML = `<i class="fa-solid fa-trash listIcon link"></i>`;
     bookDelete.onclick = async () => {
         await deleteBook(userList[i].book_id, userList[i].author);
