@@ -32,6 +32,7 @@ app.use(function (req, res) {
 });
 
 //  Roda o servidor
-https.createServer(options, app).listen(443, () => {
-    console.log(`Server running on http://localhost:${443}`);
+const server = https.createServer(options, app);
+server.listen(port, () => {
+    console.log(`Server running on https://149.28.100.51:${port}`);
 });
