@@ -1,8 +1,5 @@
 // @author {Pedro}
 // @coauthor {Thiago}
-
-import { isLeft, isRight } from "../modules/carrossel.js";
-import loadBooks from "../modules/loadBooks.js";
 import { createPage } from "../modules/createPage.js";
 
 export default function edit() {
