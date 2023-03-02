@@ -1,4 +1,6 @@
 // @author: {Arthur}
+import https from "https";
+import fs from "fs";
 import express from "express";
 import dotenv from "dotenv";
 import router from "./src/router.js";
@@ -11,6 +13,11 @@ dotenv.config();
 const app = express();
 const port = process.env.SERVER_PORT;
 
+const options = {
+    key: fs.readFileSync("server.key"),
+    cert: fs.readFileSync("server.cert"),
+};
+
 // Middlewares
 app.use(express.json());
 app.use(cookieParser());
@@ -21,10 +28,10 @@ app.use("/", router);
 
 // Redirecionamento de página não encontrada
 app.use(function (req, res) {
-  res.status(404).send("Não foi possível encontrar o recurso especificado");
+    res.status(404).send("Não foi possível encontrar o recurso especificado");
 });
 
 //  Roda o servidor
-app.listen(port, () => {
-  console.log(`Server running on http://localhost:${port}`);
+https.createServer(options, app).listen(port, () => {
+    console.log(`Server running on http://localhost:${443}`);
 });
