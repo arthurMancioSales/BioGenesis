@@ -32,6 +32,6 @@ app.use(function (req, res) {
 });
 
 //  Roda o servidor
-https.createServer(options, app).listen(port, () => {
+https.createServer(options, app).listen(443, () => {
     console.log(`Server running on http://localhost:${443}`);
 });
