@@ -84,6 +84,7 @@ export default function register() {
     result.innerText = "";
     result.id = "loginResult";
     result.classList.add("aboutUsText");
+    result.style.webkitTextStroke = "1px red"
 
     formMain.appendChild(inputUserName);
     formMain.appendChild(inputUserMail);

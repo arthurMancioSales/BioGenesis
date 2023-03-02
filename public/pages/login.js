@@ -55,6 +55,7 @@ export default function login() {
     loginStatus.classList.add("bodyText");
     loginStatus.textContent = "";
     loginStatus.id = "loginStatus";
+    loginStatus.style.webkitTextStroke = "1px red"
 
     // Crie um elemento <main> e adicione todos os elementos criados a ele
     const main = document.createElement("main");
