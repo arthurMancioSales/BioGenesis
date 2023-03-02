@@ -21,12 +21,6 @@ app.use(cookieParser());
 app.use("/", express.static("./public"));
 app.use("/", router);
 
-app.use((req, res, next) => {
-    if (req.headers["x-forwarded-proto"] !== "https") {
-        res.redirect("https://" + req.hostname + req.url);
-    }
-});
-
 // 404 redirect
 app.use(function (req, res) {
     res.status(404).send("Não foi possível encontrar o recurso especificado");
