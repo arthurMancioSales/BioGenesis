@@ -386,7 +386,7 @@ function createIput() {
     dropdownOption0.textContent = "Selecione uma opção";
     dropdown.appendChild(dropdownOption0);
 
-    ["alimentação", "habitat", "curiosidade", "comportamento"].forEach(
+    ["alimentação", "habitat", "curiosidades", "comportamento"].forEach(
       (opt) => {
         const optElement = document.createElement("option");
         optElement.value = opt;

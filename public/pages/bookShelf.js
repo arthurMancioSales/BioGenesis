@@ -3,7 +3,6 @@
 
 import { isLeft, isRight } from "../modules/carrossel.js";
 import loadBooks from "../modules/loadBooks.js";
-import { createPage } from "../modules/createPage.js";
 import collapsableMenu from "../modules/collapsableMenu.js";
 
 export default function bookshelf() {
