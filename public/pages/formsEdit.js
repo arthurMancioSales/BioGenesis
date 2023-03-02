@@ -308,9 +308,8 @@ function createIput() {
     btnX.onclick = () => {
       const page = document.querySelector(`#group-${counter} > textArea`)
         .dataset.page_id;
-      if (page != undefined) {
-        removePage(counter);
 
+      if (page != undefined) {
         pagesToDelete.push(page);
       }
       removePage(counter);
@@ -462,7 +461,6 @@ function removePage(pageGroup) {
   const addPageButton = document.querySelector("#addPageButton");
   addPageButton.classList.remove("modalButtonDisabled");
   addPageButton.disabled = false;
-
   const group = document.querySelector(`#group-${pageGroup}`);
   group.remove();
 
@@ -477,6 +475,13 @@ function removePage(pageGroup) {
       btnX.id = `#btnX-${index + 1}`;
 
       btnX.onclick = () => {
+        const page = document.querySelector(`#group-${index + 1} > textArea`)
+          .dataset.page_id;
+
+        if (page != undefined) {
+          pagesToDelete.push(page);
+        }
+
         removePage(index + 1);
       };
     }
