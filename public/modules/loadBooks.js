@@ -35,8 +35,10 @@ function createBookSpine(item) {
   Book.dataset.author = item.username;
   Book.classList.add("Livro");
   Book.alt = "Book";
-  Book.onclick = () => {
-    loadSingleBook(item.book_id, item.book_name, color, item.username);
+  Book.onclick = async () => {
+    Book.style.pointerEvents = "none";
+    await loadSingleBook(item.book_id, item.book_name, color, item.username);
+    Book.style.pointerEvents = "auto";
   };
   Book.onmouseover = (e) => {
     const subtitle = document.querySelector("#subtitle");
